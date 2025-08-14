@@ -4,158 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Reinmax Creative is a design agency that specializes in creating unforgettable brands and digital experiences.">
+    <meta name="keywords" content="creative agency, graphic design, logo design, brand identity, UI/UX design, web design, illustration, motion graphics, poster design, company profiles, branding solutions, digital experiences, visual storytelling, creative courses, professional logo design Tanzania, graphic design Dodoma, web design Tanzania, branding for startups, custom illustration services">
+    <meta name="author" content="Reinmax Creative">
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755166745/icon.ico" type="image/x-icon">
+    
     <title>Reinmax Creative | Creative Design</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.cdnfonts.com/css/sora-3" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #002828;
-            --secondary-color: #99cccc;
-            --background-color: #f0f4f4;
-            --text-color: #333;
-        }
-
-        body {
-            font-family: 'Sora', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        body.overflow-hidden {
-            overflow: hidden;
-        }
-
-        .text-primary {
-            color: var(--primary-color);
-        }
-
-        .text-secondary {
-            color: var(--secondary-color);
-        }
-
-        .grotesk {
-            font-family: 'Space Grotesk', sans-serif;
-
-        }
-
-        .bg-primary {
-            background-color: var(--primary-color);
-        }
-
-        .bg-secondary {
-            background-color: var(--secondary-color);
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--secondary-color);
-            transition: width 0.3s;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--secondary-color);
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        #home {
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        #home::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://images.unsplash.com/photo-1676984026358-ec4c4fcd4af9?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.2;
-            z-index: -1;
-        }
-
-        .floating-buttons {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 1000;
-        }
-
-        .floating-btn {
-            background-color: var(--primary-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-        }
-        
-        .floating-btn.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .floating-btn:hover {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-            transform: scale(1.1);
-        }
-
-        #mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-            background-color: var(--background-color);
-        }
-
-        #mobile-menu.open {
-            transform: translateX(0);
-        }
-        
-        #menu-overlay {
-            transition: opacity 0.3s ease-in-out;
-        }
-    </style>
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="antialiased">
@@ -163,13 +26,15 @@
     <!-- Header Section -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-primary">Reinmax Creative</a>
+            <a href="#" class="text-xl font-bold text-primary">Reinmax Creative</a>
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="selection.html" class="nav-link">Courses</a>
                 <a href="#testimonials" class="nav-link">Testimonials</a>
                 <a href="#contact" class="nav-link">Contact</a>
+                <a href="login.html" class="nav-link">Portal</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden hamburger z-50">
                 <svg class="w-6 h-6" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 204">
@@ -196,8 +61,10 @@
             <a href="#home" class="block py-4 text-2xl hover:text-secondary">Home</a>
             <a href="#services" class="block py-4 text-2xl hover:text-secondary">Services</a>
             <a href="#portfolio" class="block py-4 text-2xl hover:text-secondary">Portfolio</a>
+            <a href="selection.html" class="block py-4 text-2xl hover:text-secondary">Courses</a>
             <a href="#testimonials" class="block py-4 text-2xl hover:text-secondary">Testimonials</a>
             <a href="#contact" class="block py-4 text-2xl hover:text-secondary">Contact</a>
+            <a href="login.html" class="block py-4 text-2xl hover:text-secondary">Login</a>
         </div>
     </div>
 
@@ -205,86 +72,89 @@
     <section id="home" class="pt-32 pb-16 text-center">
         <div class="container mx-auto px-6">
             <h1 class="text-4xl md:text-6xl font-bold text-primary leading-tight mb-4 fade-in">
-                You imagine it, <span class="text-secondary">We bring it to life</span>
+                You imagine it,
+                <br class="md:hidden"> 
+                <span class="text-animated-gradient">We bring it to life</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 fade-in" style="transition-delay: 0.2s;">
                 We are a creative design agency that builds unforgettable brands and digital experiences.
             </p>
             <a href="#contact"
-                class="bg-primary text-white font-bold py-3 px-8 rounded-full hover:bg-secondary hover:text-primary transition duration-300 inline-block fade-in" style="transition-delay: 0.4s;">
-                Start a Project
+            class="hire-us-btn bg-primary text-white font-bold py-3 px-6 rounded-md transition duration-300 inline-block fade-in" style="transition-delay: 0.05s;">
+            Hire Us
             </a>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary">Our Creative Services</h2>
-                <p class="text-lg text-gray-600 mt-2">Crafting solutions that inspire and captivate.</p>
+<section id="services" class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary">Our Creative Services</h2>
+            <p class="text-lg text-gray-600 mt-2">Explore our creative expertise in building brands through design, illustration, and motion graphics.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Service Card 4: Brand Identity -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in" style="transition-delay: 0.3s;">
+                <div class="mb-4">
+                    <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gem"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M12 22V9"/><path d="m3.5 8.5 17 0"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-2">Brand Identity</h3>
+                <p class="text-gray-600">Comprehensive branding solutions that define and elevate your presence.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service Card 1 -->
-                <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in">
-                    <div class="mb-4">
-                        <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-figma"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-2">UI/UX Design</h3>
-                    <p class="text-gray-600">Intuitive and beautiful user interfaces that provide a seamless user experience.</p>
+            <!-- Service Card 1: UI/UX Design -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in">
+                <div class="mb-4">
+                    <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-figma"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
                 </div>
-                <!-- Service Card 2 -->
-                <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in" style="transition-delay: 0.1s;">
-                    <div class="mb-4">
-                        <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clapperboard"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.6 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-2">Motion Graphics</h3>
-                    <p class="text-gray-600">Engaging animations and motion graphics that bring your brand's story to life.</p>
+                <h3 class="text-xl font-bold text-primary mb-2">UI/UX Design</h3>
+                <p class="text-gray-600">Intuitive and beautiful user interfaces that provide a seamless user experience.</p>
+            </div>
+            <!-- Service Card 3: Illustration -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in" style="transition-delay: 0.2s;">
+                <div class="mb-4">
+                    <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-tool"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><path d="m11 13 2.5 2.5"/></svg>
                 </div>
-                <!-- Service Card 3 -->
-                <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in" style="transition-delay: 0.2s;">
-                    <div class="mb-4">
-                        <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-tool"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><path d="m11 13 2.5 2.5"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-2">Illustration</h3>
-                    <p class="text-gray-600">Custom illustrations that add a unique and personal touch to your brand.</p>
+                <h3 class="text-xl font-bold text-primary mb-2">Illustration</h3>
+                <p class="text-gray-600">Custom illustrations that add a unique and personal touch to your brand.</p>
+            </div>
+            <!-- Service Card 2: Motion Graphics -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in" style="transition-delay: 0.1s;">
+                <div class="mb-4">
+                    <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clapperboard"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.6 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
                 </div>
-                <!-- Service Card 4 -->
-                <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in" style="transition-delay: 0.3s;">
-                    <div class="mb-4">
-                        <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gem"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M12 22V9"/><path d="m3.5 8.5 17 0"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary mb-2">Brand Identity</h3>
-                    <p class="text-gray-600">Comprehensive branding solutions that define and elevate your presence.</p>
-                </div>
+                <h3 class="text-xl font-bold text-primary mb-2">Motion Graphics</h3>
+                <p class="text-gray-600">Engaging animations and motion graphics that bring your brand's story to life.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-16">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary">Our Creative Work</h2>
-                <p class="text-lg text-gray-600 mt-2">Exploring the intersection of art and technology.</p>
+                <p class="text-lg text-gray-600 mt-2">A showcase of our branding, design, illustration, and motion projects</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project 1 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in">
-                    <img src="https://images.unsplash.com/photo-1739145974146-c310088417ca?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==" alt="Project 1" class="w-full h-64 object-cover">
+                    <img src="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755165593/logo-design.webp" alt="Project 1" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-primary mb-2">Logo Design and Branding</h3>
+                        <h3 class="text-xl font-bold text-primary mb-2">Brand Identity & Logo Design</h3>
                         <p class="text-gray-600 mb-4">In a crowded market, a distinctive brand is your greatest asset. Our Logo Design and Branding service is a strategic partnership designed to unearth the core of your business and translate it into a powerful visual story.</p>
                         <a href="#" class="text-secondary font-semibold hover:underline">View Projects</a>
                     </div>
                 </div>
                 <!-- Project 2 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in" style="transition-delay: 0.2s;">
-                    <img src="https://distl.com.au/wp-content/uploads/2023/10/Typography-1600x836-Linkedin.png" alt="Project 2" class="w-full h-64 object-cover">
+                    <img src="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755164869/Typography.png" alt="Project 2" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-primary mb-2">Typography and Fonts</h3>
-                        <p class="text-gray-600 mb-4">Typography is the soul of written communication. While anyone can choose a font, the world's most iconic brands have a voice that is exclusively their own. Our custom type service is a deep dive into the art and science of letterforms.</p>
-                        <a href="#" class="text-secondary font-semibold hover:underline">View Fonts</a>
+                        <h3 class="text-xl font-bold text-primary mb-2">Illustrations and Sketches</h3>
+                        <p class="text-gray-600 mb-4">Illustrations breathe life into a brand's narrative. In a world saturated with generic photos, custom artwork cuts through the noise, creating an emotional connection that words alone cannot.</p>
+                        <a href="#" class="text-secondary font-semibold hover:underline">View Projects</a>
                     </div>
                 </div>
             </div>
@@ -301,12 +171,12 @@
                 <!-- Testimonial 1 -->
                 <div class="bg-gray-50 p-8 rounded-lg shadow-lg fade-in">
                     <p class="text-gray-600 italic mb-4">"Reinmax Creative's work is simply breathtaking. They have a unique ability to translate complex ideas into visually stunning and emotionally resonant designs."</p>
-                    <p class="font-bold text-primary">- Alex Johnson, Art Director</p>
+                    <p class="font-bold text-primary">- Jofrey Mashurano, Megaray Studio</p>
                 </div>
                 <!-- Testimonial 2 -->
                 <div class="bg-gray-50 p-8 rounded-lg shadow-lg fade-in" style="transition-delay: 0.2s;">
                     <p class="text-gray-600 italic mb-4">"The team at Reinmax Creative is a powerhouse of talent. Their passion for design is evident in every pixel and every frame."</p>
-                    <p class="font-bold text-primary">- Samantha Lee, Film Producer</p>
+                    <p class="font-bold text-primary">- Aidan Katege, DAN Foundation</p>
                 </div>
             </div>
         </div>
@@ -337,12 +207,12 @@
                         <label for="message" class="block text-gray-700 font-bold mb-2">Message</label>
                         <textarea id="message" name="message" rows="4"
                             class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
-                            placeholder="Tell us about your project..." required></textarea>
+                            placeholder="Drop your message here…" required></textarea>
                     </div>
                     <div class="text-center">
                         <button type="submit"
-                            class="bg-primary text-white font-bold py-3 px-8 rounded-full hover:bg-secondary hover:text-primary transition duration-300">
-                            Send Inquiry
+                            class="bg-primary text-white font-bold py-3 px-6 rounded-xl hover:bg-secondary hover:text-primary transition duration-300">
+                            Send Message
                         </button>
                     </div>
                 </form>
@@ -355,7 +225,7 @@
     <footer class="bg-primary text-white py-6">
         <div class="container mx-auto px-6 text-center">
             <p>&copy; 2025 Reinmax Creative. All rights reserved.</p>
-            <p class="text-sm">Designed by <a href="mailto:creative@reinmax.com" class="hover:underline">Reinmax Creative</a></p>
+            <p class="text-sm">Designed and Maintained by <a href="mailto:mail@reinmaxcreative.com" class="hover:underline">Reinmax Creative</a></p>
         </div>
     </footer>
 
@@ -366,160 +236,9 @@
         </a>
     </div>
 
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const header = document.querySelector('header');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuOverlay = document.getElementById('menu-overlay');
-
-            function toggleMenu() {
-                const isOpen = mobileMenu.classList.toggle('open');
-                const headerHeight = header.offsetHeight;
-                mobileMenu.style.top = `${headerHeight}px`;
-                mobileMenu.style.height = `calc(100vh - ${headerHeight}px)`;
-                
-                document.body.classList.toggle('overflow-hidden');
-                menuOverlay.classList.toggle('hidden', !isOpen);
-            }
-
-            mobileMenuButton.addEventListener('click', toggleMenu);
-
-            document.querySelectorAll('#mobile-menu a').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                    if (mobileMenu.classList.contains('open')) {
-                        toggleMenu();
-                    }
-                });
-            });
-            
-            menuOverlay.addEventListener('click', toggleMenu);
-
-            const faders = document.querySelectorAll('.fade-in');
-            const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-            const appearOnScroll = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, appearOptions);
-            faders.forEach(fader => appearOnScroll.observe(fader));
-
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('header nav a');
-            const contactSection = document.getElementById('contact');
-            const whatsappBtn = document.getElementById('whatsapp-btn');
-
-            const contactObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        whatsappBtn.classList.add('visible');
-                    } else {
-                        whatsappBtn.classList.remove('visible');
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            if(contactSection) {
-                contactObserver.observe(contactSection);
-            }
-
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 70) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
-
+    <!-- Main Script -->
+    <script src="script.js"></script>
     <!-- Firebase Backend Logic -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-
-        let db, auth;
-
-        try {
-            const app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
-
-            if (initialAuthToken) {
-                await signInWithCustomToken(auth, initialAuthToken);
-            } else {
-                await signInAnonymously(auth);
-            }
-            console.log("Firebase initialized and user signed in.");
-
-        } catch (error) {
-            console.error("Firebase initialization failed:", error);
-            const formStatus = document.getElementById('form-status');
-            if(formStatus) formStatus.textContent = "Error: Could not connect to the submission service.";
-        }
-
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-
-                const formStatus = document.getElementById('form-status');
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-
-                submitButton.disabled = true;
-                formStatus.textContent = 'Sending...';
-                formStatus.style.color = 'gray';
-
-                const name = contactForm.name.value;
-                const email = contactForm.email.value;
-                const message = contactForm.message.value;
-                const timestamp = new Date();
-
-                try {
-                    if (!db) {
-                        throw new Error("Database is not initialized.");
-                    }
-                    const messagesCollection = collection(db, `artifacts/${appId}/public/data/messages`);
-                    
-                    await addDoc(messagesCollection, {
-                        name: name,
-                        email: email,
-                        message: message,
-                        createdAt: timestamp
-                    });
-
-                    formStatus.textContent = 'Thank you! Your message has been sent successfully.';
-                    formStatus.style.color = 'green';
-                    contactForm.reset();
-
-                } catch (error) {
-                    console.error("Error adding document: ", error);
-                    formStatus.textContent = 'Sorry, there was an error sending your message. Please try again later.';
-                    formStatus.style.color = 'red';
-                } finally {
-                    submitButton.disabled = false;
-                }
-            });
-        }
-    </script>
+    <script type="module" src="firebase.js"></script>
 </body>
 </html>

@@ -1,0 +1,157 @@
+/* Using the same color variables from style.css */
+:root {
+    --primary-color: #002828;
+    --secondary-color: #99cccc;
+    --background-color: #f0f4f4;
+}
+
+/* Full-height layout to prevent footer overlap */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex-grow: 1;
+}
+
+/* Main layout for the course page */
+.course-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* On larger screens, use a two-column layout */
+@media (min-width: 1024px) {
+    .course-layout {
+        flex-direction: row;
+    }
+    .main-content-area {
+        flex: 2;
+        min-width: 0;
+    }
+    .sidebar-area {
+        flex: 1;
+        min-width: 0;
+        /* This makes the sidebar stick and scroll independently */
+        height: calc(100vh - 8rem);
+        position: sticky;
+        top: 6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .sidebar-area > div:first-child { /* Playlist container */
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    #playlist {
+        overflow-y: auto; /* This makes the playlist scrollable */
+        flex-grow: 1;
+    }
+    #comments-section {
+        display: none; /* Hide the main comment section on desktop */
+    }
+}
+
+/* On mobile, comments are part of the sidebar area */
+@media (max-width: 1023px) {
+    #comments-section {
+        margin-top: 2rem;
+    }
+}
+
+/* User Avatar and Dropdown */
+.user-avatar {
+    border: 2px solid var(--primary-color);
+    transition: box-shadow 0.3s ease;
+}
+.dropdown-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #374151;
+    transition: background-color 0.2s;
+}
+.dropdown-item:hover {
+    background-color: #f3f4f6;
+}
+
+/* Playlist Styles */
+.playlist-item {
+    display: flex; align-items: center; padding: 0.75rem;
+    border-radius: 0.5rem; background-color: var(--background-color);
+    border: 1px solid #e5e7eb; cursor: pointer; transition: all 0.2s ease;
+}
+.playlist-item:hover {
+    border-color: var(--secondary-color); background-color: #fff;
+}
+.playlist-item.active {
+    border-color: var(--primary-color); background-color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.playlist-item .lesson-number {
+    flex-shrink: 0; width: 2.5rem; height: 2.5rem; display: flex;
+    align-items: center; justify-content: center; font-weight: bold;
+    color: var(--primary-color); background-color: #e5e7eb;
+    border-radius: 50%; transition: all 0.2s ease;
+}
+.playlist-item.active .lesson-number {
+    background-color: var(--primary-color); color: white;
+}
+.playlist-item .lesson-info {
+    flex-grow: 1; margin-left: 1rem;
+}
+.playlist-item .lesson-title {
+    font-weight: 600; color: var(--primary-color);
+}
+.playlist-item .lesson-duration {
+    font-size: 0.875rem; color: #6b7280;
+}
+
+/* Custom Checkbox Styles */
+.completion-status {
+    position: relative; width: 1.5rem; height: 1.5rem;
+    flex-shrink: 0; margin-left: 1rem;
+}
+.custom-checkbox {
+    opacity: 0; position: absolute; width: 100%; height: 100%;
+    cursor: pointer; z-index: 2;
+}
+.custom-checkbox + .checkbox-visual {
+    position: absolute; width: 100%; height: 100%;
+    background-color: transparent; border: 2px solid #cbd5e1;
+    border-radius: 0.25rem; transition: all 0.2s ease; z-index: 1;
+}
+.custom-checkbox + .checkbox-visual::after {
+    content: ''; position: absolute; left: 0.45rem; top: 0.15rem;
+    width: 0.35rem; height: 0.7rem; border: solid white;
+    border-width: 0 3px 3px 0; transform: rotate(45deg) scale(0);
+    opacity: 0; transition: all 0.2s ease;
+}
+.custom-checkbox:checked + .checkbox-visual {
+    background-color: var(--primary-color); border-color: var(--primary-color);
+}
+.custom-checkbox:checked + .checkbox-visual::after {
+    transform: rotate(45deg) scale(1); opacity: 1;
+}
+
+/* Comments Section Styles */
+#comments-list .comment {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+}
+.comment-avatar {
+    width: 2.5rem; height: 2.5rem; border-radius: 50%; flex-shrink: 0;
+}
+.comment-content {
+    background-color: var(--background-color);
+    padding: 0.5rem 0.75rem; border-radius: 0.5rem;
+}
+.comment-author {
+    font-weight: bold; color: var(--primary-color); font-size: 0.875rem;
+}
+.comment-text {
+    color: #4b5563; /* gray-600 */
+}

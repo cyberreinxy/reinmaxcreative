@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Login to your Reinmax Creative account.">
+    <meta name="keywords" content="login, signin, reinmax creative, account">
+    <meta name="author" content="Reinmax Creative">
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755166745/icon.ico" type="image/x-icon">
+    
+    <title>Sign In | Reinmax Creative</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/sora-3" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="login-style.css">
+</head>
+
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-primary">Reinmax Creative</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="index.html#contact" class="help">Need help?</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden hamburger z-50">
+                <svg class="w-6 h-6" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 204">
+                  <defs><style>.cls-1{fill:var(--primary-color);}</style></defs>
+                  <path class="cls-1" d="M18,36h252c10.2,0,18-7.8,18-18s-7.8-18-18-18H18C7.8,0,0,7.8,0,18s7.8,18,18,18Z"/>
+                  <path class="cls-1" d="M270,84H18c-10.2,0-18,7.8-18,18s7.8,18,18,18h252c10.2,0,18-7.8,18-18s-7.8-18-18-18Z"/>
+                  <path class="cls-1" d="M270,168H18c-10.2,0-18,7.8-18,18s7.8,18,18,18h252c10.2,0,18-7.8,18-18s-7.8-18-18-18Z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <div id="menu-overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-30 hidden"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 right-0 w-4/5 max-w-sm h-full shadow-lg z-40">
+        <div class="flex flex-col items-start justify-start h-full pt-20 px-8">
+            <a href="index.html#home" class="block py-4 text-2xl nav-link-mobile">Home</a>
+            <a href="index.html#contact" class="block py-4 text-2xl nav-link-mobile">Contact</a>
+            <a href="index.html#contact" class="block py-4 text-2xl nav-link-mobile">Need Help?</a>
+        </div>
+    </div>
+
+    <!-- Login Section -->
+    <main id="login" class="min-h-screen flex items-center justify-center pt-24 pb-12">
+        <div class="container mx-auto px-6">
+            <div class="max-w-md mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-lg fade-in">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-primary">Sign in to your account</h2>
+                    <p class="text-gray-600 mt-2">Welcome back!</p>
+                </div>
+                
+                <form id="login-form" novalidate>
+                    <!-- Role Selector -->
+                    <div class="mb-6">
+                        <div class="role-selector grid grid-cols-2 gap-2 rounded-lg p-1 bg-gray-200 relative">
+                            <span class="highlight"></span>
+                            <label><input type="radio" name="role" value="student" checked><span class="role-label">Student</span></label>
+                            <label><input type="radio" name="role" value="admin"><span class="role-label">Instructor</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Form Inputs -->
+                    <div class="space-y-4">
+                        <div>
+                            <label for="email" class="block text-gray-700 font-bold mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="password" class="block text-gray-700 font-bold">Password</label>
+                                <a href="#" id="forgot-password-link" class="text-sm text-primary hover:underline font-semibold">Forgot?</a>
+                            </div>
+                            <div class="password-container">
+                                <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
+                                <button type="button" class="password-toggle" id="password-toggle">
+                                    <!-- Eye Icon SVG will be injected by JS -->
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center mt-6">
+                        <button type="submit" class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-secondary hover:text-primary transition-colors duration-300">
+                            Sign In
+                        </button>
+                    </div>
+
+                    <!-- Sign Up Link -->
+                    <div class="text-center mt-6">
+                        <p class="text-sm text-gray-600">
+                            Don't have an account? 
+                            <a href="signup.html" class="text-primary hover:underline font-semibold">Sign Up</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgot-password-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button id="close-modal-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-primary">Reset Password</h3>
+                <p class="text-gray-600 mt-2">Enter your email to receive a reset link.</p>
+            </div>
+            <form id="forgot-password-form">
+                <div>
+                    <label for="reset-email" class="block text-gray-700 font-bold mb-2">Email Address</label>
+                    <input type="email" id="reset-email" name="reset-email" class="form-input" placeholder="you@example.com" required>
+                </div>
+                <div class="text-center mt-6">
+                    <button type="submit" class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-secondary hover:text-primary transition-colors duration-300">
+                        Send Reset Link
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-primary text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Reinmax Creative. All rights reserved.</p>
+            <p class="text-sm">Designed and Maintained by <a href="mailto:mail@reinmaxcreative.com" class="hover:underline">Reinmax Creative</a></p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="login-script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+/*
+ * selection-style.css
+ * Custom styles for the Reinmax Creative course selection page.
+ */
+
+/* ------------------------- */
+/* --- Core Brand Styles --- */
+/* ------------------------- */
+:root {
+    --primary-color: #002828;
+    --secondary-color: #99cccc;
+    --background-color: #F8F9FA;
+    --text-color: #343A40;
+    --heading-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Sora', sans-serif;
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+body.overflow-hidden {
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+}
+
+.text-primary { color: var(--primary-color); }
+.bg-primary { background-color: var(--primary-color); }
+.text-secondary { color: var(--secondary-color); }
+.bg-secondary { background-color: var(--secondary-color); }
+
+/* --------------------- */
+/* --- Header & Nav --- */
+/* --------------------- */
+.nav-link {
+    position: relative;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.nav-link:hover { color: var(--primary-color); }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease-in-out;
+}
+.nav-link:hover::after { width: 100%; }
+
+.help {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 9999px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.help:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+#mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    background-color: var(--background-color); /* Corrected background color */
+}
+#mobile-menu.active {
+    transform: translateX(0);
+}
+.nav-link-mobile:hover {
+    color: var(--secondary-color);
+}
+
+/* ------------------------- */
+/* --- Selection Section --- */
+/* ------------------------- */
+#selection {
+    background-color: var(--background-color);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#selection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://res.cloudinary.com/reinmaxcreative/image/upload/v1755162321/background.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    z-index: -1;
+}
+
+.course-option-card, .premium-cta {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    background-color: #f3f4f6; /* gray-100 */
+    color: var(--primary-color);
+    border: 1px solid #e5e7eb;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.cta-button.premium {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.cta-button.premium:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.popular-icon {
+    position: absolute;
+    top: -1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid white;
+}
