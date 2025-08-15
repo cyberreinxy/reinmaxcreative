@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Choose between free and premium design courses at Reinmax Creative.">
+    <meta name="keywords" content="free courses, premium courses, graphic design, learn design, creative education">
+    <meta name="author" content="Reinmax Creative">
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755166745/icon.ico" type="image/x-icon">
+    
+    <title>Select Your Course Path | Reinmax Creative</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/sora-3" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="courses.css">
+</head>
+
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-primary">Reinmax Creative</a>
+            <!-- UPDATED: Added Services and Portfolio links -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="login.html" class="nav-link">Login / Signup</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden hamburger z-50">
+                <svg class="w-6 h-6" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 204">
+                  <defs><style>.cls-1{fill:var(--primary-color);}</style></defs>
+                  <path class="cls-1" d="M18,36h252c10.2,0,18-7.8,18-18s-7.8-18-18-18H18C7.8,0,0,7.8,0,18s7.8,18,18,18Z"/>
+                  <path class="cls-1" d="M270,84H18c-10.2,0-18,7.8-18,18s7.8,18,18,18h252c10.2,0,18-7.8,18-18s-7.8-18-18-18Z"/>
+                  <path class="cls-1" d="M270,168H18c-10.2,0-18,7.8-18,18s7.8,18,18,18h252c10.2,0,18-7.8,18-18s-7.8-18-18-18Z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <div id="menu-overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-30 hidden"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 right-0 w-4/5 max-w-sm h-full shadow-lg z-40">
+        <!-- UPDATED: Changed pt-20 to pt-8 to fix positioning -->
+        <div class="flex flex-col items-start justify-start h-full pt-8 px-8">
+            <a href="index.html#home" class="block py-4 text-2xl nav-link-mobile">Home</a>
+            <a href="index.html#services" class="block py-4 text-2xl nav-link-mobile">Services</a>
+            <a href="index.html#portfolio" class="block py-4 text-2xl nav-link-mobile">Portfolio</a>
+            <a href="index.html#contact" class="block py-4 text-2xl nav-link-mobile">Contact</a>
+            <a href="login.html" class="block py-4 text-2xl nav-link-mobile">Login / Signup</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="selection" class="min-h-screen flex flex-col items-center justify-center text-center p-6 pt-32 pb-16">
+        <div class="w-full max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold text-primary leading-tight mb-2">Discover the World of Creative Design</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">Start your creative journey, choose design courses that suits you.</p>
+
+            <!-- Cards Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Free Courses Card -->
+                <div class="course-option-card">
+                    <div class="p-8">
+                        <h2 class="text-3xl font-bold text-primary mb-2">Free Courses</h2>
+                        <p class="text-gray-600 mb-6">Get started with the fundamentals and build a solid creative foundation.</p>
+                        <a href="free-courses.html" class="cta-button group">
+                            Start Learning
+                            <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Premium Courses Card -->
+                <div class="course-option-card premium-card">
+                    <div class="p-8">
+                        <h2 class="text-3xl font-bold text-primary mb-2">Premium Courses</h2>
+                        <p class="text-gray-600 mb-6">Dive deep with advanced techniques, project files, and direct instructor feedback.</p>
+                        <a href="login.html" class="cta-button premium group">
+                            Registered User
+                            <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium CTA Section -->
+            <div class="flex justify-center mt-8">
+                <div class="premium-cta w-full md:w-1/2">
+                    <div class="popular-icon">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <div class="p-8 pt-12">
+                        <h3 class="text-2xl font-bold text-primary">Ready to Go Pro?</h3>
+                        <p class="text-gray-600 mt-2 mb-6">Join our premium community for exclusive content and personalized support.</p>
+                        <a href="signup.html" class="cta-button premium group">
+                            Explore Premium
+                            <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-primary text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Reinmax Creative. All rights reserved.</p>
+            <p class="text-sm">Designed and Maintained by <a href="mailto:mail@reinmaxcreative.com" class="hover:underline">Reinmax Creative</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="courses.js" defer></script>
+</body>
+</html>

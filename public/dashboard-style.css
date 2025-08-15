@@ -1,0 +1,117 @@
+:root {
+    --primary-color: #002828;
+    --secondary-color: #99cccc;
+    --background-color: #F8F9FA;
+    --text-color: #343A40;
+    --heading-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Sora', sans-serif;
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--text-color);
+}
+
+h1, h2, h3 { font-family: var(--heading-font); }
+.text-primary { color: var(--primary-color); }
+.bg-primary { background-color: var(--primary-color); }
+
+/* Sidebar and Navigation */
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+.nav-link.active {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.nav-link svg {
+    margin-right: 0.75rem;
+}
+
+/* Main Content Sections */
+.content-section {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Reusable Components */
+.card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+}
+.card-title {
+    font-family: var(--heading-font);
+    font-weight: 600;
+    color: var(--text-color);
+}
+.card-data {
+    font-family: var(--heading-font);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 0.5rem;
+}
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem;
+    transition: border-color 0.2s;
+    margin-top: 0.25rem;
+}
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 40, 40, 0.2);
+}
+.form-input:disabled {
+    background-color: #F3F4F6;
+    cursor: not-allowed;
+}
+
+/* Messaging Interface */
+.contact {
+    padding: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #E5E7EB;
+    transition: background-color 0.2s;
+}
+.contact:hover {
+    background-color: #F9FAFB;
+}
+.contact.active {
+    background-color: var(--secondary-color);
+}
+.message-received {
+    background-color: #E5E7EB;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem 1rem 1rem 0;
+    max-width: 75%;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+}
+.message-sent {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem 1rem 0 1rem;
+    max-width: 75%;
+    margin-bottom: 1rem;
+    align-self: flex-end;
+    margin-left: auto;
+}

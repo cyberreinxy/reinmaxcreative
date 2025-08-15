@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Reinmax Creative is a design agency that specializes in creating unforgettable brands and digital experiences.">
+    <meta name="keywords" content="creative agency, graphic design, logo design, brand identity, UI/UX design, web design, illustration, motion graphics, poster design, company profiles, branding solutions, digital experiences, visual storytelling, creative courses, professional logo design Tanzania, graphic design Dodoma, web design Tanzania, branding for startups, custom illustration services">
+    <meta name="author" content="Reinmax Creative">
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755166745/icon.ico" type="image/x-icon">
+    
+    <title>Course Platform | Reinmax Creative</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/sora-3" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Courses Page Stylesheet -->
+    <link rel="stylesheet" href="premium.css">
+</head>
+
+<body class="antialiased bg-background-color">
+
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-primary">Reinmax Creative</a>
+            
+            <!-- User Account Dropdown -->
+            <div class="relative">
+                <button id="account-button" class="flex items-center space-x-2">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocLsf7Za3saFjzOAfqujrkjxuAVEZvlDpFj7QFzL0IFjnDD11j7FXQ=s96-c-rg-br100" alt="User Avatar" class="user-avatar w-10 h-10 rounded-full">
+                </button>
+                <div id="account-dropdown" class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg py-2 z-50 hidden">
+                    <div class="px-4 py-2 border-b border-gray-200">
+                        <p class="font-bold text-primary">Reinmax</p>
+                        <p class="text-sm text-gray-500">reinmax@creative.com</p>
+                    </div>
+                    <a href="#" class="dropdown-item">My Courses</a>
+                    <a href="#" class="dropdown-item">Account Settings</a>
+                    <a href="#" class="dropdown-item">Help Center</a>
+                    <div class="border-t border-gray-200 my-1"></div>
+                    <a href="index.html" class="dropdown-item text-red-600">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Course Title Bar -->
+        <div class="bg-white">
+            <div class="container mx-auto px-6 py-3">
+                <h1 class="text-xl font-bold text-primary">Adobe Illustrator for Beginners</h1>
+                <p class="text-sm text-gray-500">Instructor: Reinmax</p>
+            </div>
+        </div>
+        
+        <div class="course-layout container mx-auto px-6 mt-6">
+            <!-- Left Column: Player & Video Details -->
+            <div class="main-content-area">
+                <div class="video-player-wrapper aspect-video bg-black rounded-lg shadow-2xl mb-6">
+                    <iframe id="video-player" class="w-full h-full" src="https://www.youtube.com/embed/Ib8UBwu3yGA" title="Adobe Illustrator for Beginners | FREE COURSE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div id="video-details" class="mb-8">
+                    <h2 id="video-title" class="text-3xl font-bold text-primary mb-2">Welcome to the Course!</h2>
+                    <p id="video-description" class="text-gray-600">This course will take you from a beginner to a pro in Adobe Illustrator. Select the first lesson from the playlist to get started.</p>
+                </div>
+            </div>
+
+            <!-- Right Column: Playlist & Comments -->
+            <aside class="sidebar-area">
+                <div class="bg-white p-4 rounded-lg shadow-lg h-full">
+                    <h2 class="text-xl font-bold text-primary mb-4">Course Content</h2>
+                    <div id="playlist" class="space-y-2"></div>
+                </div>
+                <div id="comments-section" class="bg-white p-6 rounded-lg shadow-lg mt-6">
+                    <h3 class="text-xl font-bold text-primary mb-4">Lesson Discussion</h3>
+                    <div id="comments-list" class="space-y-4 mb-4 max-h-48 overflow-y-auto"></div>
+                    <form id="comment-form" class="flex space-x-2">
+                        <input type="text" id="comment-input" placeholder="Ask a question..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                        <button type="submit" class="bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-secondary hover:text-primary transition-colors">Send</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-primary text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Reinmax Creative. All rights reserved.</p>
+            <p class="text-sm">Designed and Maintained by <a href="mailto:mail@reinmaxcreative.com" class="hover:underline">Reinmax Creative</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="premium.js"></script>
+</body>
+</html>

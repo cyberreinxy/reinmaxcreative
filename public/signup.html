@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | Reinmax Creative</title>
+    <meta name="description" content="Create your Reinmax Creative account.">
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755166745/icon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.cdnfonts.com/css/sora-3" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
+    <link rel="stylesheet" href="signup-style.css">
+</head>
+<body class="antialiased">
+
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
+        
+        <div class="w-full max-w-md">
+            <!-- Logo and Header -->
+            <div class="text-center mb-8">
+                <div class="flex items-center justify-center mx-auto h-10 w-10">
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                      <defs><style>.cls-1{fill: var(--primary-color);}</style></defs>
+                      <path class="cls-1" d="M0,0v1000h1000V0H0ZM875,500h-375l375,375H125V125h750.01v375Z"/>
+                    </svg>
+                </div>
+                <h2 class="mt-6 text-3xl font-bold text-gray-900">Create your account</h2>
+                <p class="mt-2 text-sm text-gray-600">
+                    Already a member? <a href="login.html" class="font-medium text-primary hover:text-secondary">Sign in</a>
+                </p>
+            </div>
+
+            <!-- Form Container -->
+            <div class="bg-white p-8 shadow-xl rounded-2xl">
+                <form id="signup-form" class="space-y-6" novalidate>
+                    <div id="notification" class="hidden text-center p-3 rounded-md text-sm"></div>
+                    
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <div class="mt-1">
+                            <input id="fullName" name="fullName" type="text" autocomplete="name" required class="form-input">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                        <div class="mt-1">
+                            <input id="email" name="email" type="email" autocomplete="email" required class="form-input">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <div class="mt-1 password-container">
+                            <input id="password" name="password" type="password" required class="form-input">
+                            <button type="button" class="password-toggle" id="password-toggle"></button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                        <div class="mt-1 password-container">
+                            <input id="confirmPassword" name="confirmPassword" type="password" required class="form-input">
+                            <button type="button" class="password-toggle" id="confirm-password-toggle"></button>
+                        </div>
+                    </div>
+
+                    <!-- Payment Checkbox -->
+                    <div class="flex items-center">
+                        <input id="has-paid" name="has-paid" type="checkbox" class="text-primary border-gray-300 rounded focus:ring-primary">
+                        <label for="has-paid" class="ml-3 block text-sm text-gray-900">I have paid for Premium Membership</label>
+                    </div>
+
+                    <!-- Reference Field -->
+                    <div>
+                        <label for="refNumber" class="block text-sm font-medium text-gray-700">Payment Reference Number</label>
+                        <div class="mt-1">
+                            <input id="refNumber" name="refNumber" type="text" class="form-input" placeholder="Provided by Admin" disabled>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-opacity">
+                            Create Account
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="signup-script.js" defer></script>
+</body>
+</html>

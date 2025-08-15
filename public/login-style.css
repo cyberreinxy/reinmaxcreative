@@ -1,0 +1,88 @@
+/* --- Core Brand Styles --- */
+:root {
+    --primary-color: #002828;
+    --secondary-color: #99cccc;
+    --error-color: #D93025;
+    --heading-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Sora', sans-serif;
+}
+body { 
+    font-family: var(--body-font); 
+    color: #374151; /* gray-700 */
+    background-color: #F3F4F6; /* gray-100 */
+}
+h2 { font-family: var(--heading-font); }
+.text-primary { color: var(--primary-color); }
+.bg-primary { background-color: var(--primary-color); }
+.hover\:text-secondary:hover { color: var(--secondary-color); }
+.focus\:ring-primary:focus {
+    --tw-ring-color: var(--primary-color);
+}
+
+/* --- Form Styles --- */
+.form-input { 
+    width: 100%; 
+    padding: 0.75rem 1rem; 
+    border: 1px solid #D1D5DB; /* gray-300 */
+    border-radius: 0.5rem; 
+    transition: border-color 0.2s, box-shadow 0.2s; 
+    font-size: 1rem; 
+    appearance: none;
+}
+.form-input:focus { 
+    outline: none; 
+    border-color: var(--primary-color); 
+    box-shadow: 0 0 0 1px var(--primary-color); 
+}
+.password-container { position: relative; }
+.password-container .form-input { padding-right: 3rem; }
+.password-toggle { position: absolute; top: 0; right: 0; height: 100%; width: 3rem; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6B7280; }
+
+/* --- Custom Checkbox Styling --- */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 1.25rem; /* 20px */
+    width: 1.25rem; /* 20px */
+    border: 1px solid #D1D5DB; /* gray-300 */
+    border-radius: 0.375rem; /* rounded-md */
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+/* **MODIFIED HERE** */
+input[type="checkbox"]:checked {
+    border-color: #002828;
+    background-color: #002828;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1060.66 848.53'%3e%3cpolygon fill='white' points='919.24 0 353.55 565.69 141.42 353.55 0 494.97 212.13 707.11 353.55 848.53 1060.66 141.42 919.24 0'/%3e%3c/svg%3e");
+    background-size: 65% 65%; /* Adjust size of the checkmark inside the box */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+input[type="checkbox"]:focus {
+    outline: none;
+}
+
+
+/* --- Error and Shake Styles --- */
+.form-input.error { border-color: var(--error-color); }
+.shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* --- Modal Styles --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 100; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+.modal-overlay.visible { opacity: 1; visibility: visible; }
+.modal-container { background-color: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 400px; }
+#close-modal-button {
+    color: #9CA3AF; /* gray-400 */
+    transition: color 0.2s ease-in-out;
+}
+#close-modal-button:hover {
+    color: var(--primary-color);
+}

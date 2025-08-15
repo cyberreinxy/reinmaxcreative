@@ -1,0 +1,71 @@
+/* Using the same color variables from style.css */
+:root {
+    --primary-color: #002828;
+    --secondary-color: #99cccc;
+    --background-color: #f0f4f4;
+}
+
+/* Full-height layout to prevent footer overlap */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex-grow: 1;
+}
+
+/* Video Card Styles */
+.video-card {
+    background-color: white;
+    border-radius: 0.75rem; /* 12px */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.video-thumbnail {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: var(--primary-color);
+}
+
+.video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* The new overlay effect */
+.video-thumbnail::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 70% black overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-card:hover .video-thumbnail::after {
+    opacity: 1;
+}
+
+/* Mobile Menu Positioning Fix */
+#mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+#mobile-menu.open {
+    transform: translateX(0);
+}

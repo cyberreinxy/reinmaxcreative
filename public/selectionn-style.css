@@ -1,0 +1,96 @@
+/* Using the same color variables from style.css */
+:root {
+    --primary-color: #002828;
+    --secondary-color: #99cccc;
+    --background-color: #f0f4f4;
+}
+
+/* The body now uses the clean, solid background color from your main theme */
+body {
+    background-color: var(--background-color);
+    position: relative;
+    z-index: 1;
+}
+
+/* This pseudo-element creates the subtle background image with an overlay effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://res.cloudinary.com/reinmaxcreative/image/upload/v1755162321/background.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05; /* This makes the image very subtle */
+    z-index: -1;
+}
+
+.course-option-card {
+    background-color: white;
+    border-radius: 1rem; /* 16px */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb; /* gray-200 */
+    text-decoration: none;
+    position: relative;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border: 1px solid #e5e7eb;
+}
+
+/* The button's hover effect is independent of the card */
+.cta-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.cta-button.premium {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.cta-button.premium:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-color: var(--secondary-color);
+}
+
+/* "Most Popular" Icon */
+.popular-icon {
+    position: absolute;
+    top: -1.25rem; /* -20px */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid white;
+}
+
+/* Premium CTA Section */
+.premium-cta {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 48rem; /* lg */
+    width: 100%;
+}

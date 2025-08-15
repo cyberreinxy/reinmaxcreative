@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Reinmax Creative is a design agency that specializes in creating unforgettable brands and digital experiences.">
+    <meta name="keywords" content="creative agency, graphic design, logo design, brand identity, UI/UX design, web design, illustration, motion graphics, poster design, company profiles, branding solutions, digital experiences, visual storytelling, creative courses, professional logo design Tanzania, graphic design Dodoma, web design Tanzania, branding for startups, custom illustration services">
+    <meta name="author" content="Reinmax Creative">
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755166745/icon.ico" type="image/x-icon">
+    
+    <title>Reinmax Creative | Creative Design</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/sora-3" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-primary">Reinmax Creative</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="courses.html" class="nav-link">Courses</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="login.html" class="nav-link">Login</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden hamburger z-50">
+                <svg class="w-6 h-6" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 204">
+                  <defs>
+                    <style>
+                      .cls-1 {
+                        fill: #002828;
+                      }
+                    </style>
+                  </defs>
+                  <path class="cls-1" d="M18,36h252c10.2,0,18-7.8,18-18s-7.8-18-18-18H18C7.8,0,0,7.8,0,18s7.8,18,18,18Z"/>
+                  <path class="cls-1" d="M270,84H18c-10.2,0-18,7.8-18,18s7.8,18,18,18h252c10.2,0,18-7.8,18-18s-7.8-18-18-18Z"/>
+                  <path class="cls-1" d="M270,168H18c-10.2,0-18,7.8-18,18s7.8,18,18,18h252c10.2,0,18-7.8,18-18s-7.8-18-18-18Z"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <div id="menu-overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-30 hidden"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden fixed right-0 w-4/5 max-w-sm h-full shadow-lg z-40">
+        <div class="flex flex-col items-start justify-start h-full pt-8 px-8">
+            <a href="#home" class="block py-4 text-2xl hover:text-secondary">Home</a>
+            <a href="#services" class="block py-4 text-2xl hover:text-secondary">Services</a>
+            <a href="#portfolio" class="block py-4 text-2xl hover:text-secondary">Portfolio</a>
+            <a href="courses.html" class="block py-4 text-2xl hover:text-secondary">Courses</a>
+            <a href="#testimonials" class="block py-4 text-2xl hover:text-secondary">Testimonials</a>
+            <a href="#contact" class="block py-4 text-2xl hover:text-secondary">Contact</a>
+            <a href="login.html" class="block py-4 text-2xl hover:text-secondary">Login</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-16 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-6xl font-bold text-primary leading-tight mb-4 fade-in">
+                You imagine it,
+                <br class="md:hidden"> 
+                <span class="text-animated-gradient">We bring it to life</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 fade-in" style="transition-delay: 0.2s;">
+                We are a creative design agency that builds unforgettable brands and digital experiences.
+            </p>
+            <a href="#contact"
+            class="hire-us-btn bg-primary text-white font-bold py-3 px-6 rounded-md transition duration-300 inline-block fade-in" style="transition-delay: 0.05s;">
+            Hire Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+<section id="services" class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary">Our Creative Services</h2>
+            <p class="text-lg text-gray-600 mt-2">Explore our creative expertise in building brands through design, illustration, and motion graphics.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Service Card 4: Brand Identity -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in" style="transition-delay: 0.3s;">
+                <div class="mb-4">
+                    <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gem"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M12 22V9"/><path d="m3.5 8.5 17 0"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-2">Brand Identity</h3>
+                <p class="text-gray-600">Comprehensive branding solutions that define and elevate your presence.</p>
+            </div>
+            <!-- Service Card 1: UI/UX Design -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in">
+                <div class="mb-4">
+                    <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-figma"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-2">UI/UX Design</h3>
+                <p class="text-gray-600">Intuitive and beautiful user interfaces that provide a seamless user experience.</p>
+            </div>
+            <!-- Service Card 3: Illustration -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in" style="transition-delay: 0.2s;">
+                <div class="mb-4">
+                    <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-tool"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><path d="m11 13 2.5 2.5"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-2">Illustration</h3>
+                <p class="text-gray-600">Custom illustrations that add a unique and personal touch to your brand.</p>
+            </div>
+            <!-- Service Card 2: Motion Graphics -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition duration-300 fade-in" style="transition-delay: 0.1s;">
+                <div class="mb-4">
+                    <svg class="w-16 h-16 mx-auto text-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clapperboard"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.6 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-2">Motion Graphics</h3>
+                <p class="text-gray-600">Engaging animations and motion graphics that bring your brand's story to life.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary">Our Creative Work</h2>
+                <p class="text-lg text-gray-600 mt-2">A showcase of our branding, design, illustration, and motion projects</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in">
+                    <img src="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755165593/logo-design.webp" alt="Project 1" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">Brand Identity & Logo Design</h3>
+                        <p class="text-gray-600 mb-4">In a crowded market, a distinctive brand is your greatest asset. Our Logo Design and Branding service is a strategic partnership designed to unearth the core of your business and translate it into a powerful visual story.</p>
+                        <a href="#" class="text-secondary font-semibold hover:underline">View Projects</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden fade-in" style="transition-delay: 0.2s;">
+                    <img src="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755164869/Typography.png" alt="Project 2" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">Illustrations and Sketches</h3>
+                        <p class="text-gray-600 mb-4">Illustrations breathe life into a brand's narrative. In a world saturated with generic photos, custom artwork cuts through the noise, creating an emotional connection that words alone cannot.</p>
+                        <a href="#" class="text-secondary font-semibold hover:underline">View Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary">From Our Collaborators</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-lg fade-in">
+                    <p class="text-gray-600 italic mb-4">"Reinmax Creative's work is simply breathtaking. They have a unique ability to translate complex ideas into visually stunning and emotionally resonant designs."</p>
+                    <p class="font-bold text-primary">- Geofrey Mashurano, Megaray Studio</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-lg fade-in" style="transition-delay: 0.2s;">
+                    <p class="text-gray-600 italic mb-4">"The team at Reinmax Creative is a powerhouse of talent. Their passion for design is evident in every pixel and every frame."</p>
+                    <p class="font-bold text-primary">- Klerus Tumsiime, Klerry Creative</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary">Collaborate With Us</h2>
+                <p class="text-lg text-gray-600 mt-2">Let's create something extraordinary together.</p>
+            </div>
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg fade-in">
+                <form id="contact-form">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
+                        <input type="text" id="name" name="name"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                            placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                            placeholder="Your Email" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-gray-700 font-bold mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                            placeholder="Drop your message here…" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit"
+                            class="bg-primary text-white font-bold py-3 px-6 rounded-xl hover:bg-secondary hover:text-primary transition duration-300">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                <div id="form-status" class="mt-4 text-center"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-primary text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Reinmax Creative. All rights reserved.</p>
+            <p class="text-sm">Designed and Maintained by <a href="mailto:mail@reinmaxcreative.com" class="hover:underline">Reinmax Creative</a></p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a id="whatsapp-btn" href="https://wa.me/+255678700731" target="_blank" class="floating-btn" aria-label="Chat on WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </a>
+    </div>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+    <!-- Firebase Backend Logic -->
+    <script type="module" src="firebase.js"></script>
+</body>
+</html>

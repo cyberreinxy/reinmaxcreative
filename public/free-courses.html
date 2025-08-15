@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore free design courses in Adobe Illustrator, Photoshop, Premiere Pro, and After Effects at Reinmax Creative.">
+    <meta name="keywords" content="free courses, adobe illustrator, photoshop, premiere pro, after effects, graphic design, learn design">
+    <meta name="author" content="Reinmax Creative">
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755166745/icon.ico" type="image/x-icon">
+    
+    <title>Free Courses | Reinmax Creative</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/sora-3" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/space-grotesk" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Courses Page Stylesheet -->
+    <link rel="stylesheet" href="free-courses-style.css">
+</head>
+
+<body class="antialiased bg-background-color">
+
+    <!-- Header Section (Identical to index.html) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-primary">Reinmax Creative</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="free-courses.html" class="nav-link active">Courses</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Go Premium</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden hamburger z-50">
+                <svg class="w-6 h-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+        </div>
+    </header>
+    
+    <div id="menu-overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-30 hidden"></div>
+
+    <!-- Mobile Menu (Identical to index.html) -->
+    <div id="mobile-menu" class="md:hidden fixed right-0 top-0 w-4/5 max-w-sm h-full shadow-lg z-40 bg-background-color">
+        <div class="flex flex-col items-start justify-start h-full pt-24 px-8">
+            <a href="index.html#home" class="block py-4 text-2xl hover:text-secondary">Home</a>
+            <a href="index.html#services" class="block py-4 text-2xl hover:text-secondary">Services</a>
+            <a href="index.html#portfolio" class="block py-4 text-2xl hover:text-secondary">Portfolio</a>
+            <a href="free-courses.html" class="block py-4 text-2xl hover:text-secondary">Courses</a>
+            <a href="index.html#testimonials" class="block py-4 text-2xl hover:text-secondary">Testimonials</a>
+            <a href="index.html#contact" class="block py-4 text-2xl hover:text-secondary">Contact</a>
+            <a href="dashboard.html" class="block py-4 text-2xl hover:text-secondary">Go Premium</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary leading-tight mb-2">Free Courses on Youtube</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Free collection of creative design courses from Youtube.</p>
+            </div>
+
+            <!-- Course Categories -->
+            <div id="course-categories" class="space-y-12">
+                <!-- Categories will be dynamically inserted here by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section (Identical to index.html) -->
+    <footer class="bg-primary text-white py-6 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Reinmax Creative. All rights reserved.</p>
+            <p class="text-sm">Designed and Maintained by <a href="mailto:mail@reinmaxcreative.com" class="hover:underline">Reinmax Creative</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="free-courses-script.js"></script>
+</body>
+</html>
