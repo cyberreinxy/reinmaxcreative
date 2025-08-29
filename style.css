@@ -1,0 +1,733 @@
+/* =============================================
+   1. Global Styles & Variables
+   ============================================= */
+:root {
+  --primary-color: #002828;
+  --secondary-color: #99cccc;
+  --tertiary-color: #003333;
+  --background-color: #f0f4f4;
+
+  /* Texts */
+  --text-color: #333333; /* dark gray for primary text */
+  --text-color-light: #666666; /* lighter gray for secondary text */
+  --text-color-xlight: #bcbcbc; /* extra lighter gray for secondary text */
+  --links-color: #3b82f6; /* Links */
+
+  /* Text Animations */
+  --text-animation-primary: #99cccc; /* soft teal */
+  --text-animation-secondary: #002828; /* deep green-teal */
+  --text-animation-accent: #145a52; /* warm coral-orange accent */
+
+  /* Brand + Accent Options */
+  --accent-color-1: #ff9966; /* coral orange */
+  --accent-color-2: #ffcc66; /* golden honey */
+  --accent-color-3: #3366ff; /* clear blue pop */
+  --accent-color-4: #cc6699; /* elegant magenta */
+
+  /* States (hover, borders, muted backgrounds) */
+  --hover-color: #e6f5f5; /* subtle hover for teal areas */
+  --border-color: #d9eaea; /* clean light border */
+  --muted-bg: #fafafa; /* very soft background */
+
+  /* Social */
+  --whatsapp-color: #25d366;
+  --whatsapp-hover-color: #128c7e;
+
+  /* Logo */
+  --logo-height: 2.5rem; /* This is 40px by default */
+}
+
+/* Reset some default styles */
+body {
+  font-family: "Sora", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.overflow-hidden {
+  overflow: hidden;
+}
+
+/* =============================================
+   2. Typography & Color Utilities
+   ============================================= */
+.grotesk {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+/* Hero Section - Text Animations */
+.text-animated-gradient {
+  background: linear-gradient(
+    270deg,
+    var(--text-animation-secondary),
+    var(--text-animation-primary),
+    var(--text-animation-accent),
+    var(--text-animation-primary),
+    var(--text-animation-secondary)
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback for browsers that don't support text-fill-color */
+  animation: gradient-wave 10s ease infinite;
+}
+
+@keyframes gradient-wave {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* =============================================
+   3. Navigation & Header
+   ============================================= */
+.header-logo svg {
+  height: var(--logo-height);
+  width: auto;
+}
+
+.nav-link {
+  position: relative;
+  transition: color 0.3s;
+  color: var(--primary-color);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--secondary-color),
+    transparent
+  );
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--secondary-color);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.login-icon-link:hover::after {
+  width: 0 !important;
+}
+
+#mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  background-color: var(--background-color);
+}
+
+#mobile-menu.open {
+  transform: translateX(0);
+}
+
+#menu-overlay {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.nav-gradient {
+  background: linear-gradient(
+    90deg,
+    rgb(245, 130, 67),
+    rgb(77, 194, 237),
+    rgb(120, 111, 249),
+    rgb(245, 130, 67)
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-move 10s ease infinite;
+}
+
+@keyframes gradient-move {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* This ensures section titles aren't hidden by the fixed header during scroll */
+section[id] {
+  scroll-margin-top: 35px; /* Adjust this value if header height changes */
+}
+
+/* =============================================
+   4. Components (Buttons, etc.)
+   ============================================= */
+.cta {
+  /* This transition should be on the base class for a smooth effect when the mouse leaves */
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.cta:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+/* =============================================
+   5. Animations & Transitions
+   ============================================= */
+
+/* Note: This keyframe animation is defined but not used in the provided CSS.
+   It can be removed if it is not used elsewhere in your project. */
+@keyframes mixed-gradient-move {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  75% {
+    background-position: 0% 0%;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================================
+   6. Page-Specific Styles
+   ============================================= */
+#home {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://res.cloudinary.com/reinmaxcreative/image/upload/v1755488111/graphic-design.webp");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.09;
+  z-index: -1;
+}
+
+.view-project {
+  transition: color 0.2s ease-in;
+}
+
+.view-project:hover {
+  color: var(--secondary-color);
+}
+
+/* =============================================
+   7. Brand Logos Slider - Responsive Styles
+   ============================================= */
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    white 30%,
+    white 80%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    white 30%,
+    white 80%,
+    transparent
+  );
+}
+
+.animate-scroll {
+  /* This CSS variable will be dynamically set by our new JavaScript */
+  --scroll-distance: 0;
+
+  display: flex;
+  gap: 20px; /* consistent horizontal space */
+  /* The animation property is moved to a new rule below */
+}
+
+/* We only apply the animation if the JavaScript has successfully initialized */
+/* This prevents the animation from running before the distance is calculated */
+.animate-scroll[data-animated="true"] {
+  animation: scroll 40s linear infinite;
+}
+
+.slider-container:hover .animate-scroll {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* This variable guarantees a pixel-perfect, seamless loop at all screen sizes */
+    transform: translateX(calc(-1 * var(--scroll-distance)));
+  }
+}
+
+/* Responsive gap */
+@media (max-width: 768px) {
+  .animate-scroll {
+    gap: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .animate-scroll {
+    gap: 80px;
+  }
+}
+
+.logo-item {
+  flex-shrink: 0; /* prevent shrinking */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px; /* consistent height */
+  transition: transform 0.3s ease;
+}
+
+/* Responsive logo container widths */
+@media (max-width: 768px) {
+  .logo-item {
+    width: 150px;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-item {
+    width: 180px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .logo-item {
+    width: 200px;
+  }
+}
+
+.logo-item img,
+.logo-item svg {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(70%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.logo-item:hover img,
+.logo-item:hover svg {
+  filter: grayscale(0%) opacity(100%);
+}
+
+/* This rule uses !important to override other styles and ensure the header logo
+   maintains its brand color. This is a forceful method but effective here. */
+.header-logo svg .cls-1 {
+  fill: var(--primary-color) !important;
+}
+
+/* ====================================
+   8. Search Integrated Code
+   ==================================== */
+
+body.search-active {
+  overflow: hidden;
+}
+
+/* Search Overlay Animations */
+#searchOverlay {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#searchOverlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#searchContent {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#searchOverlay.active #searchContent {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Trending Items Animation */
+.trend-item {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================
+   9. Help Desk and Social Media Icons
+   ============================================= */
+
+/* Social Launcher - Mobile Styles */
+@media (max-width: 768px) {
+  #social-launcher {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+  }
+
+  #social-launcher.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  #social-launcher > .relative > a {
+    width: 50px !important;
+    height: 50px !important;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  #social-launcher > .relative > a svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Social Launcher - Desktop */
+#social-launcher {
+  position: fixed;
+  bottom: 1.35rem;
+  right: 0.55rem;
+  z-index: 10000;
+}
+
+#social-launcher .social-icon,
+#close-socials-btn {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px) scale(0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    opacity 0.6s ease-out;
+}
+
+#social-launcher.is-open .social-icon,
+#social-launcher.is-open #close-socials-btn {
+  transform: translateX(-50%) translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Staggered Open Animation */
+#social-launcher.is-open .social-icon:nth-child(1) {
+  transition-delay: 0.05s;
+  transform: translateX(-50%) translateY(-10px) scale(1);
+}
+#social-launcher.is-open .social-icon:nth-child(2) {
+  transition-delay: 0.15s;
+  transform: translateX(-50%) translateY(-70px) scale(1);
+}
+#social-launcher.is-open .social-icon:nth-child(3) {
+  transition-delay: 0.25s;
+  transform: translateX(-50%) translateY(-130px) scale(1);
+}
+#social-launcher.is-open .social-icon:nth-child(4) {
+  transition-delay: 0.35s;
+  transform: translateX(-50%) translateY(-190px) scale(1);
+}
+#social-launcher.is-open #close-socials-btn {
+  transition-delay: 0.5s;
+  transform: translateX(-50%) translateY(-250px) scale(1);
+}
+
+/* Close button hover animation */
+#close-socials-btn:hover {
+  transform: translateX(-50%) translateY(-250px) rotate(90deg);
+}
+
+/* Social Icon Brand Hovers */
+#social-launcher a[href*="https://www.instagram.com/reinmax_creative"]:hover svg *
+{
+  stroke: #e1306c;
+}
+#social-launcher a[href*="https://x.com/reinmaxstudio"]:hover svg *
+{
+  stroke: #1da1f2;
+}
+#social-launcher a[href*="dribbble.com"]:hover svg * {
+  stroke: #ea4c89;
+}
+#social-launcher a[href*="behance.net"]:hover svg * {
+  fill: #053eff;
+}
+#social-launcher a[href*="wa.me/+255678700731"]:hover svg * {
+  fill: #25d366;
+}
+
+/* Display Photo Gradient Ring */
+.gradient-ring {
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+
+/* =============================================
+   10. PRICING SECTION STYLES
+   ============================================= */
+/* The pill toggle wrapper */
+.pill-toggle-wrapper {
+  position: relative;
+  display: flex;
+  background-color: #e6f1f1; /* Light background color */
+  border-radius: 9999px; /* Pill shape */
+  padding: 4px;
+  gap: 4px;
+}
+
+.pill-toggle-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: calc(100% - 8px);
+  width: calc(50% - 4px);
+  background-color: var(--primary-color);
+  border-radius: 9999px;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 0;
+}
+
+.pill-toggle-btn {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  padding: 10px 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.pill-toggle-btn.active {
+  color: white;
+}
+
+.pill-toggle-wrapper[data-active="services"]::before {
+  transform: translateX(0%);
+}
+
+.pill-toggle-wrapper[data-active="courses"]::before {
+  transform: translateX(100%);
+}
+
+.pill-toggle-wrapper[data-active="usd"]::before {
+  transform: translateX(0%);
+}
+
+.pill-toggle-wrapper[data-active="tzs"]::before {
+  transform: translateX(100%);
+}
+
+.pricing-card {
+  background-color: white;
+  border-radius: 1.5rem;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardFadeIn 0.6s ease forwards;
+  position: relative;
+}
+
+.pricing-card.featured {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 40px rgba(153, 204, 204, 0.6);
+}
+
+.pricing-card ul {
+  margin-top: auto;
+  margin-bottom: 2.5rem;
+}
+
+.pricing-cta-btn {
+  width: 100%;
+  font-weight: 700;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Course CTA Button Styles */
+.btn-illustrator {
+  background-color: #330000; /* default color */
+  color: #ff9a00;
+  transition: background-color 0.3s;
+}
+
+.btn-illustrator:hover {
+  background-color: rgba(51, 0, 0, 0.85); /* slightly transparent */
+}
+
+.btn-photoshop {
+  background-color: #001e36;
+  color: #31a8ff;
+  transition: background-color 0.3s;
+}
+
+.btn-photoshop:hover {
+  background-color: rgba(0, 30, 54, 0.85);
+}
+
+.btn-premiere {
+  background-color: #00005b;
+  color: #9999ff;
+  transition: background-color 0.3s;
+}
+
+.btn-premiere:hover {
+  background-color: rgba(0, 0, 91, 0.85);
+}
+
+.btn-aftereffects {
+  background-color: #00005b;
+  color: #9999ff;
+  transition: background-color 0.3s;
+}
+
+.btn-aftereffects:hover {
+  background-color: rgba(0, 0, 91, 0.85);
+}
+
+.pricing-content-panel {
+  display: none;
+}
+
+.pricing-content-panel.active {
+  display: block;
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pricing-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.pricing-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.pricing-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.pricing-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
