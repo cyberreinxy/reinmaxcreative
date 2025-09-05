@@ -224,42 +224,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /*
 ================================================================================
-  5. BUSINESS HOURS & STATUS
+ 5. BUSINESS HOURS & STATUS (Free API Only - worldtimeapi.org)
 ================================================================================
 */
 (function () {
-  function updateBusinessStatus() {
+  async function updateBusinessStatus() {
     const container = document.getElementById("business-status-container");
     if (!container) return;
 
+    // --- Configuration ---
     const openingHour = 8;
     const closingHour = 18;
     const timeZone = "Africa/Nairobi";
 
-    const now = new Date(new Date().toLocaleString("en-US", { timeZone }));
-    const currentHour = now.getHours();
-    const currentDay = now.getDay();
+    try {
+      // --- 1. Fetch the REAL time from the API ---
+      const response = await fetch(
+        `https://worldtimeapi.org/api/timezone/${timeZone}`
+      );
+      if (!response.ok) {
+        throw new Error("API request failed");
+      }
+
+      const apiData = await response.json();
+
+      // --- 2. Extract time information from the API response ---
+      const apiTime = new Date(apiData.datetime);
+      const currentHour = apiTime.getHours();
+      const currentDay = apiData.day_of_week % 7; // Convert Mon=1/Sun=7 to JS standard
+
+      // --- 3. Update the display using the API time ---
+      updateDisplay(currentHour, currentDay);
+    } catch (error) {
+      console.error("Could not fetch time from API:", error);
+      // If the API fails, show an error message.
+      container.innerHTML = `<div class="bg-yellow-50 text-yellow-800 p-6 rounded-2xl flex flex-col items-center text-center"><p class="font-bold text-xl">Could not retrieve time</p><p class="text-sm text-gray-600 mt-1">Please check your connection or browser extensions.</p></div>`;
+    }
+  }
+
+  // --- Helper function to update the HTML ---
+  function updateDisplay(currentHour, currentDay) {
+    const container = document.getElementById("business-status-container");
+    const openingHour = 8;
+    const closingHour = 18;
 
     const isWeekday = currentDay >= 1 && currentDay <= 5;
     const isOpen =
       isWeekday && currentHour >= openingHour && currentHour < closingHour;
 
     if (isOpen) {
-      const closesAtContent = "Closes Today at 6:00 pm";
+      const closesAtContent = "Closes Today at 6:00 pm EAT";
       container.innerHTML = `<div class="bg-green-50 text-green-800 p-6 rounded-2xl flex flex-col items-center text-center"><svg class="w-10 h-10 mb-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><p class="font-bold text-xl">Now Open</p><p class="text-sm text-gray-600 mt-1">${closesAtContent}</p></div>`;
     } else {
       let opensAtContent = "";
-      if (isWeekday && currentHour < openingHour) {
-        opensAtContent = "Opens Today at 8:00 am";
-      } else if (
+      if (
         (currentDay === 5 && currentHour >= closingHour) ||
         currentDay === 6 ||
         currentDay === 0
       ) {
-        opensAtContent = "Opens Monday at 8:00 am";
+        opensAtContent = "Opens Monday at 8:00 am EAT";
+      } else if (isWeekday && currentHour < openingHour) {
+        opensAtContent = "Opens Today at 8:00 am EAT";
       } else {
-        opensAtContent = "Opens Tomorrow at 8:00 am";
+        opensAtContent = "Opens Tomorrow at 8:00 am EAT";
       }
+
+      // Since the time is 6:42 PM on Friday, this is the message that will be displayed.
       container.innerHTML = `<div class="bg-red-50 p-6 rounded-2xl flex flex-col items-center text-center"><svg class="w-10 h-10 mb-3 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><p class="font-bold text-xl text-red-500">Currently Closed</p><p class="text-sm text-gray-600 mt-1">${opensAtContent}</p></div>`;
     }
   }
