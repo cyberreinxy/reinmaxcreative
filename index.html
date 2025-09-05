@@ -59,7 +59,6 @@
 </head>
 
 <body class="antialiased font-sora">
-
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="" class="text-primary header-logo">
@@ -497,433 +496,68 @@
         </section>
 
         <!-- =============================================
-            Pricing Section
+            START: New Integrated Pricing Section
             ============================================= -->
-        <section id="pricing" class="py-16 bg-white">
-            <div class="container mx-auto px-6">
+        <div id="reinmax-pricing-component">
+            <main>
+                <section id="pricing" class="py-16 md:py-24 relative overflow-hidden bg-white">
+                    <div class="container mx-auto px-6 relative z-10">
+                        <!-- Section Header -->
+                        <div class="text-center mb-12">
+                            <h1 class="text-3xl md:text-4xl font-bold text-primary leading-tight mb-4">Pricing and Plans
+                            </h1>
+                            <p class="text-lg text-gray-600 mt-2 max-w-3xl mx-auto">Flexible pricing options built to
+                                support both your creative journey and<br>your business growth.
+                            </p>
+                        </div>
 
-                <!-- Pricing Header -->
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary">
-                        Pricing and Plans
-                    </h2>
-                    <p class="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">
-                        Pricing you can trust, built to support both your creative journey and your business growth.
-                    </p>
-                </div>
+                        <!-- Card Container -->
+                        <div id="pricing-cards-container"
+                            class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-stretch mt-16">
+                            <!-- Cards are generated here by JavaScript -->
+                        </div>
 
-                <!-- Category and Currency Toggles -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-                    <!-- Category Toggle -->
-                    <div id="category-toggle" class="pill-toggle-wrapper" data-active="services">
-                        <button id="services-btn" class="pill-toggle-btn active">Branding</button>
-                        <button id="courses-btn" class="pill-toggle-btn">Academy</button>
                     </div>
+                </section>
 
-                    <!-- Currency Toggle -->
-                    <div id="currency-toggle" class="pill-toggle-wrapper" data-active="tzs">
-                        <button id="usd-btn" class="pill-toggle-btn">USD</button>
-                        <button id="tzs-btn" class="pill-toggle-btn active">TZS</button>
-                    </div>
-                </div>
-
-                <!-- Pricing Content Area -->
-                <div class="mt-10">
-                    <!-- Services Content Panel -->
-                    <div id="services-content" class="pricing-content-panel active">
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-
-                            <!-- Service Card 1: Starter -->
-                            <div class="pricing-card">
-                                <div class="p-6 flex flex-col flex-grow">
-                                    <h3 class="text-2xl font-bold text-primary h-16 text-center">Starter Brand</h3>
-                                    <div class="flex items-baseline justify-center my-6 h-12" data-price-tzs="100000">
-                                        <span class="text-4xl font-bold text-primary price-value">100,000</span>
-                                        <span class="text-lg font-medium text-gray-500 ml-2 price-currency">TZS</span>
-                                    </div>
-                                    <p class="text-gray-600 mb-8 text-center flex-grow">Ideal for individuals, startups,
-                                        or small businesses looking to create a simple logo, social media graphics, or
-                                        basic brand identity.</p>
-                                    <ul class="space-y-4 text-left text-gray-700 w-fit mx-auto">
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>2 Initial Logo Concepts</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Custom Color Palette</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Professional Typography</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Social Media Profile Kit</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Essential Brand Guideline</li>
-                                    </ul>
-                                    <button class="pricing-cta-btn btn-primary mt-10">Get Started</button>
-                                </div>
-                            </div>
-
-                            <!-- Service Card 2: Pro (Featured) -->
-                            <div class="pricing-card featured bg-secondary bg-opacity-20">
-                                <div
-                                    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondary text-primary px-2.5 py-1.5 rounded-lg text-sm font-bold shadow-lg flex items-center gap-1 z-10">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24"
-                                        fill="#002828" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Most Popular
-                                </div>
-                                <div class="p-6 pt-8 flex flex-col flex-grow">
-                                    <h3 class="text-2xl font-bold text-primary h-16 text-center nav-gradient">Pro
-                                        Branding</h3>
-                                    <div class="flex items-baseline justify-center my-6 h-12" data-price-tzs="150000">
-                                        <span class="text-4xl font-bold text-primary price-value">150,000</span>
-                                        <span class="text-lg font-medium text-gray-500 ml-2 price-currency">TZS</span>
-                                    </div>
-                                    <p class="text-gray-600 mb-8 text-center flex-grow">Ideal for growing businesses
-                                        needing a cohesive brand identity, marketing materials, and professional graphic
-                                        design support.</p>
-                                    <ul class="space-y-4 text-left text-gray-700 w-fit mx-auto">
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>3 Initial Logo Concepts</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Full Brand Identity System</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Basic Website UI</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Social Media Branding Kit</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Comprehensive Brand Guide</li>
-                                    </ul>
-                                    <button class="pricing-cta-btn btn-secondary mt-10">Get a Quote</button>
-                                </div>
-                            </div>
-
-                            <!-- Service Card 3: Enterprise -->
-                            <div class="pricing-card">
-                                <div class="p-6 flex flex-col flex-grow">
-                                    <h3 class="text-2xl font-bold text-primary h-16 text-center">Enterprise</h3>
-                                    <div class="flex items-baseline justify-center my-6 h-12">
-                                        <span class="text-3xl font-bold text-primary">Custom Quote</span>
-                                    </div>
-                                    <p class="text-gray-600 mb-8 text-center flex-grow">Ideal for established companies
-                                        or agencies that require full-scale branding, comprehensive graphic design
-                                        packages, and dedicated account management.</p>
-                                    <ul class="space-y-4 text-left text-gray-700 w-fit mx-auto">
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>In-depth Brand Strategy</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Premium Marketing Materials</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Motion Graphics & Illustration</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Dedicated Creative Partnership</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Ongoing support and consultation</li>
-                                    </ul>
-                                    <button class="pricing-cta-btn btn-primary mt-10">Contact Us</button>
-                                </div>
-                            </div>
+                <div id="floating-toggle-container">
+                    <div id="toggle-panel">
+                        <div id="category-toggle" class="toggle-switch">
+                            <div class="toggle-pill"></div>
+                            <button data-type="services" class="toggle-btn active">Branding</button>
+                            <button data-type="courses" class="toggle-btn">Academy</button>
+                        </div>
+                        <div id="currency-toggle" class="toggle-switch">
+                            <div class="toggle-pill"></div>
+                            <button data-currency="USD" class="toggle-btn">USD</button>
+                            <button data-currency="TZS" class="toggle-btn active">TZS</button>
                         </div>
                     </div>
-
-                    <!-- Courses Content Panel -->
-                    <div id="courses-content" class="pricing-content-panel">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            <!-- Course Card 1: Illustrator -->
-                            <div class="pricing-card">
-                                <div class="p-6 flex flex-col flex-grow items-center">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg"
-                                        alt="Adobe Illustrator Icon" class="w-12 h-12 mb-4">
-                                    <h3 class="text-xl font-bold text-primary h-16 text-center">Adobe
-                                        Illustrator<br><span class="text-sm text-secondary block mt-1">Beginners -
-                                            Professional</span></h3>
-                                    <div class="flex items-baseline justify-center my-6 h-12" data-price-tzs="60000">
-                                        <span class="text-4xl font-bold text-primary price-value">60,000</span>
-                                        <span class="text-lg font-medium text-gray-500 ml-2 price-currency">TZS</span>
-                                    </div>
-                                    <p class="text-gray-600 mb-8 text-center flex-grow">Master the industry-standard
-                                        tool for vector graphics and illustration.</p>
-                                    <ul class="space-y-4 text-left text-gray-700 w-fit">
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Vector and Illustration</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Logo and Iconography</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Typography and Layout</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Color and Gradient</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Print and Digital</li>
-                                    </ul>
-                                    <button class="pricing-cta-btn btn-illustrator mt-10">Enroll Now</button>
-                                </div>
-                            </div>
-                            <!-- Course Card 2: Photoshop -->
-                            <div class="pricing-card">
-                                <div class="p-6 flex flex-col flex-grow items-center">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
-                                        alt="Adobe Photoshop Icon" class="w-12 h-12 mb-4">
-                                    <h3 class="text-xl font-bold text-primary h-16 text-center">Adobe Photoshop
-                                        <br><span class="text-sm text-secondary">Beginners - Professional</span>
-                                    </h3>
-                                    <div class="flex items-baseline justify-center my-6 h-12" data-price-tzs="50000">
-                                        <span class="text-4xl font-bold text-primary price-value">50,000</span>
-                                        <span class="text-lg font-medium text-gray-500 ml-2 price-currency">TZS</span>
-                                    </div>
-                                    <p class="text-gray-600 mb-8 text-center flex-grow">Unlock the power of photo
-                                        editing, compositing, and digital painting.</p>
-                                    <ul class="space-y-4 text-left text-gray-700 w-fit">
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Photo Editing</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Photo Retouching</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Typography and Layout</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Social Media Design</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Digital Painting</li>
-                                    </ul>
-                                    <button class="pricing-cta-btn btn-photoshop mt-10">Enroll Now</button>
-                                </div>
-                            </div>
-                            <!-- Course Card 3: Premiere Pro -->
-                            <div class="pricing-card">
-                                <div class="p-6 flex flex-col flex-grow items-center">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg"
-                                        alt="Adobe Premiere Pro Icon" class="w-12 h-12 mb-4">
-                                    <h3 class="text-xl font-bold text-primary h-16 text-center">Adobe Premiere
-                                        Pro<br><span class="text-sm text-secondary">Beginners - Professional</span></h3>
-                                    <div class="flex items-baseline justify-center my-6 h-12" data-price-tzs="55000">
-                                        <span class="text-4xl font-bold text-primary price-value">55,000</span>
-                                        <span class="text-lg font-medium text-gray-500 ml-2 price-currency">TZS</span>
-                                    </div>
-                                    <p class="text-gray-600 mb-8 text-center flex-grow">Learn professional video editing
-                                        and storytelling from the ground up.</p>
-                                    <ul class="space-y-4 text-left text-gray-700 w-fit">
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Video Editing Mastery</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Timeline and Sequence</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Audio Mixing</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Transitions and Effects</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Export and Delivery</li>
-                                    </ul>
-                                    <button class="pricing-cta-btn btn-premiere mt-10">Enroll Now</button>
-                                </div>
-                            </div>
-                            <!-- Course Card 4: After Effects -->
-                            <div class="pricing-card">
-                                <div class="p-6 flex flex-col flex-grow items-center">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg"
-                                        alt="Adobe After Effects Icon" class="w-12 h-12 mb-4">
-                                    <h3 class="text-xl font-bold text-primary h-16 text-center">Adobe After
-                                        Effects<br><span class="text-sm text-secondary">Beginners - Professional</span>
-                                    </h3>
-                                    <div class="flex items-baseline justify-center my-6 h-12" data-price-tzs="60000">
-                                        <span class="text-4xl font-bold text-primary price-value">60,000</span>
-                                        <span class="text-lg font-medium text-gray-500 ml-2 price-currency">TZS</span>
-                                    </div>
-                                    <p class="text-gray-600 mb-8 text-center flex-grow">Bring your designs to life with
-                                        professional motion graphics.</p>
-                                    <ul class="space-y-4 text-left text-gray-700 w-fit">
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Motion Graphics</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Animation & Keyframes</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Visual Effects</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Typography Animation</li>
-                                        <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="w-5 h-5 text-secondary mr-3 flex-shrink-0">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="m9 12 2 2 4-4" />
-                                            </svg>Rendering & Exporting</li>
-                                    </ul>
-                                    <button class="pricing-cta-btn btn-aftereffects mt-10">Enroll Now</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="toggle-trigger" title="Switch view">
+                        <svg class="icon-filter" xmlns="http://www.w.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 7h-9" />
+                            <path d="M15 7h5" />
+                            <path d="M4 17h9" />
+                            <path d="M9 17H4" />
+                            <circle cx="17" cy="17" r="3" />
+                            <circle cx="7" cy="7" r="3" />
+                        </svg>
+                        <svg class="icon-close" xmlns="http://www.w.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
                     </div>
                 </div>
-            </div>
-        </section>
+
+            </main>
+        </div>
+        <!-- =============================================
+            END: New Integrated Pricing Section
+            ============================================= -->
 
 
         <!-- =============================================

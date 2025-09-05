@@ -1,4 +1,5 @@
-# Reinmax Creative
+# Reinmax Creative &amp; Design Agency
+
 Reinmax Creative &amp; Design Agency
 
 Status: 🚧 Currently under development.

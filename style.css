@@ -35,6 +35,7 @@
 
   /* Logo */
   --logo-height: 2.5rem; /* This is 40px by default */
+  --header-height: 4.5rem; /* 1rem padding-top + 2.5rem logo + 1rem padding-bottom */
 }
 
 /* Reset some default styles */
@@ -465,200 +466,304 @@ section[id] {
 }
 
 /* =============================================
-   9. PRICING SECTION STYLES
+   9. PRICING SECTION STYLES (SCOPED & FINAL)
    ============================================= */
-
-/* Root variables needed for colors */
-:root {
-  --primary-color: #002828;
-  --secondary-color: #99cccc;
-  --border-color: #d9eaea; /* clean light border */
+#reinmax-pricing-component {
+  font-family: "Sora", sans-serif;
+  color: #002828;
 }
 
-/* The main wrapper for the segmented toggle */
-.pill-toggle-wrapper {
+/* --- 3D Flip Card Styles --- */
+#reinmax-pricing-component .flip-card-container {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+}
+
+#reinmax-pricing-component .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 1.5rem;
+  min-height: 520px;
+}
+
+#reinmax-pricing-component .flip-card-inner.is-dragging {
+  transition: none;
+}
+
+#reinmax-pricing-component .pricing-card-wrapper.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+#reinmax-pricing-component .flip-card-front,
+#reinmax-pricing-component .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid rgba(229, 231, 235, 1);
+}
+
+#reinmax-pricing-component .flip-card-back {
+  background-color: #ebf5f5;
+  transform: rotateY(180deg);
+  color: #002828;
+}
+
+#reinmax-pricing-component .flip-card-back h3,
+#reinmax-pricing-component .flip-card-back ul {
+  color: #002828;
+}
+
+#reinmax-pricing-component .flip-card-back svg.benefits-icon {
+  color: #003333;
+}
+
+#reinmax-pricing-component .pricing-card-wrapper.featured .flip-card-front {
+  background-color: #f5fafa;
+}
+
+#reinmax-pricing-component .pricing-card-wrapper.featured .flip-card-front,
+#reinmax-pricing-component .pricing-card-wrapper.featured .flip-card-back {
+  border-color: #99cccc;
+}
+
+#reinmax-pricing-component .see-benefits-btn,
+#reinmax-pricing-component .back-action-btn {
+  background-color: #002828;
+  transition: background-color 0.3s ease;
+}
+
+#reinmax-pricing-component .see-benefits-btn:hover,
+#reinmax-pricing-component .back-action-btn:hover,
+#reinmax-pricing-component .see-benefits-btn:active,
+#reinmax-pricing-component .back-action-btn:active {
+  background-color: #000000;
+}
+
+#reinmax-pricing-component .icon-wrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#reinmax-pricing-component .icon-wrapper svg,
+#reinmax-pricing-component .icon-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+#reinmax-pricing-component .flip-card-front .cls-1,
+#reinmax-pricing-component .flip-card-back .cls-1 {
+  fill: #002828;
+}
+
+#reinmax-pricing-component #pricing-cards-container {
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#reinmax-pricing-component #pricing-cards-container.is-transitioning {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* =========================================================
+   Styles for Floating Pricing Toggles
+   ========================================================= */
+#floating-toggle-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#floating-toggle-container.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#floating-toggle-container #toggle-trigger {
+  position: relative;
+  z-index: 2;
+  width: 3.25rem; /* 52px */
+  height: 3.25rem; /* 52px */
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 40, 40, 0.2);
+  transition: background-color 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#floating-toggle-container #toggle-trigger svg {
+  position: absolute;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.3s ease;
+}
+
+#floating-toggle-container #toggle-trigger .icon-filter {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+#floating-toggle-container #toggle-trigger .icon-close {
+  transform: rotate(-45deg) scale(0);
+  opacity: 0;
+}
+
+/* NEW: White glass panel for high contrast */
+#floating-toggle-container #toggle-panel {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 12px;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4px;
+  border-radius: 1.25rem;
+
+  /* White Glass Morphism */
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#floating-toggle-container.is-open #toggle-panel {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+#floating-toggle-container.is-open #toggle-trigger .icon-filter {
+  transform: rotate(45deg) scale(0);
+  opacity: 0;
+}
+
+#floating-toggle-container.is-open #toggle-trigger .icon-close {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* NEW: Light grey inner track */
+#floating-toggle-container .toggle-switch {
   position: relative;
   display: flex;
-  background-color: rgb(244, 244, 244);
-  border-radius: 0.75rem;
-  padding: 5px;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.05); /* Light track for contrast */
+  border-radius: 9999px;
+  padding: 4px;
   width: 100%;
-  max-width: 300px;
 }
 
-/* The dark, sliding indicator */
-.pill-toggle-wrapper::before {
-  content: "";
+/* Solid white pill */
+#floating-toggle-container .toggle-pill {
   position: absolute;
-  top: 5px;
-  left: 5px;
-  height: calc(100% - 10px);
-  width: calc(50% - 5px);
-  background-color: var(--primary-color);
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  z-index: 1;
+  height: calc(100% - 8px);
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background-color: #ffffff;
+  border-radius: 9999px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* The text buttons inside the toggle */
-.pill-toggle-btn {
+/* NEW: Darker text for inactive state for readability */
+#floating-toggle-container .toggle-btn {
   position: relative;
-  z-index: 2; /* Ensures text is on top of the sliding indicator */
-  flex: 1;
-  padding: 10px 1.5rem;
+  z-index: 1;
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #666666; /* Inactive text color */
-  background: none;
+  color: var(--text-secondary); /* Using your secondary text color */
   border: none;
+  background: none;
   cursor: pointer;
-  white-space: nowrap;
   transition: color 0.3s ease;
 }
 
-/* The style for the active text (now white) */
-.pill-toggle-btn.active {
-  color: #ffffff; /* Active text color */
-}
-
-/* Rules to move the sliding indicator */
-.pill-toggle-wrapper[data-active="services"]::before,
-.pill-toggle-wrapper[data-active="usd"]::before {
-  transform: translateX(0%);
-}
-
-.pill-toggle-wrapper[data-active="courses"]::before,
-.pill-toggle-wrapper[data-active="tzs"]::before {
-  transform: translateX(100%);
-}
-
-.pricing-card {
-  background-color: white;
-  border-radius: 1.5rem;
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: cardFadeIn 0.6s ease forwards;
-  position: relative;
-}
-
-.pricing-card.featured {
-  border-color: var(--secondary-color);
-  box-shadow: 0 0 40px rgba(153, 204, 204, 0.6);
-}
-
-.pricing-card ul {
-  margin-top: auto;
-  margin-bottom: 2.5rem;
-}
-
-.pricing-cta-btn {
-  width: 100%;
-  font-weight: 700;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.btn-primary {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
-
-.btn-primary:hover {
-  background-color: var(--secondary-color);
+/* NEW: Primary brand color for active text */
+#floating-toggle-container .toggle-btn.active {
   color: var(--primary-color);
-  border-color: var(--secondary-color);
 }
 
-.btn-secondary {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border-color: var(--secondary-color);
-}
+@media (min-width: 768px) {
+  #floating-toggle-container #toggle-panel {
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 4px;
+    border-radius: 9999px;
+  }
 
-.btn-secondary:hover {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
+  #floating-toggle-container .toggle-switch {
+    width: auto;
+  }
 
-/* Course CTA Button Styles */
-.btn-illustrator {
-  background-color: #330000;
-  color: #ff9a00;
-  transition: background-color 0.3s;
-}
-
-.btn-illustrator:hover {
-  background-color: rgba(51, 0, 0, 0.85);
-}
-
-.btn-photoshop {
-  background-color: #001e36;
-  color: #31a8ff;
-  transition: background-color 0.3s;
-}
-
-.btn-photoshop:hover {
-  background-color: rgba(0, 30, 54, 0.85);
-}
-
-.btn-premiere {
-  background-color: #00005b;
-  color: #9999ff;
-  transition: background-color 0.3s;
-}
-
-.btn-premiere:hover {
-  background-color: rgba(0, 0, 91, 0.85);
-}
-
-.btn-aftereffects {
-  background-color: #00005b;
-  color: #9999ff;
-  transition: background-color 0.3s;
-}
-
-.btn-aftereffects:hover {
-  background-color: rgba(0, 0, 91, 0.85);
-}
-
-.pricing-content-panel {
-  display: none;
-}
-
-.pricing-content-panel.active {
-  display: block;
-}
-
-@keyframes cardFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  #floating-toggle-container .toggle-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
   }
 }
 
-/* Staggered animation for cards */
-.pricing-card:nth-child(1) {
-  animation-delay: 0.1s;
+/* =============================================
+   Pricing Top Bar Styles
+   ============================================= */
+#pricing-top-bar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  z-index: 49; /* Just below the header (z-50) */
+  padding: 1rem 0;
+
+  transform: translateY(-200%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease,
+    visibility 0s 0.5s;
+  will-change: transform, opacity;
 }
 
-.pricing-card:nth-child(2) {
-  animation-delay: 0.2s;
+#pricing-top-bar.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
-.pricing-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.pricing-card:nth-child(4) {
-  animation-delay: 0.4s;
+#pricing-top-bar #full-toggles-container {
+  gap: 0.5rem;
 }
 
 /* =============================================
@@ -821,12 +926,12 @@ section[id] {
   }
 }
 
-/* --- MOBILE: 3D FLIP CARD --- */
+/* --- MOBILE: 3D FLIP CARD (SCOPED TO TESTIMONIALS) --- */
 @media (max-width: 767px) {
   #desktop-carousel-wrapper {
     display: none;
   }
-  .flip-card-container {
+  #testimonials .flip-card-container {
     perspective: 1500px;
     position: relative;
     height: 350px;
@@ -834,7 +939,7 @@ section[id] {
       0 4px 6px -4px rgb(0 0 0 / 0.1);
     border-radius: 1.25rem;
   }
-  .flip-card-inner {
+  #testimonials .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
@@ -842,10 +947,10 @@ section[id] {
     transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
     will-change: transform;
   }
-  .flip-card-container.is-flipped .flip-card-inner {
+  #testimonials .flip-card-container.is-flipped .flip-card-inner {
     transform: rotateY(180deg);
   }
-  .flip-card-face {
+  #testimonials .flip-card-face {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -854,7 +959,7 @@ section[id] {
     overflow: hidden;
     border-radius: 1.25rem;
   }
-  .flip-card-back {
+  #testimonials .flip-card-back {
     transform: rotateY(180deg);
   }
 
