@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Official brand guidelines for Reinmax Creative, a design agency that specializes in creating unforgettable brands and digital experiences." />
+    <meta name="author" content="Reinmax Creative" />
+
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/svg+xml"
+        href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755780121/logo-icon.svg" />
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755779994/favicon.ico"
+        type="image/x-icon" />
+
+    <title>Reinmax Creative | Brand Guidelines</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#002828",
+                        secondary: "#99cccc",
+                        tertiary: "#003333",
+                        background: "#f0f4f4",
+                    },
+                    fontFamily: {
+                        sora: ["Sora", "sans-serif"],
+                        grotesk: ["Space Grotesk", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- Custom Styles -->
+
+    <style>
+        :root {
+            --primary-color: #002828;
+            --secondary-color: #99cccc;
+            --tertiary-color: #003333;
+            --text-animation-primary: #99cccc;
+            --text-animation-secondary: #002828;
+            --text-animation-accent: #145a52;
+            --border-color: #d9eaea;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background-color: #f0f4f4;
+            color: #333333;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+
+        .guideline-section {
+            padding-top: 4rem;
+            /* 64px */
+            padding-bottom: 4rem;
+            /* 64px */
+        }
+
+        .card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Styles for copied navigation */
+        .header-logo svg {
+            height: 2.5rem;
+            width: auto;
+        }
+
+        #control-panel {
+            will-change: transform, opacity;
+            transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.35s ease;
+        }
+
+        .menu-item {
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+            transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.25s ease;
+            will-change: transform, opacity;
+        }
+
+        #control-panel.is-open .menu-item {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        #control-panel.is-open .menu-item:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        #control-panel.is-open .menu-item:nth-child(2) {
+            transition-delay: 0.12s;
+        }
+
+        #control-panel.is-open .menu-item:nth-child(3) {
+            transition-delay: 0.14s;
+        }
+
+        #control-panel.is-open .menu-item:nth-child(4) {
+            transition-delay: 0.16s;
+        }
+
+        #control-panel.is-open .menu-item:nth-child(5) {
+            transition-delay: 0.18s;
+        }
+
+        #control-panel.is-open .menu-item:nth-child(6) {
+            transition-delay: 0.2s;
+        }
+
+        #control-panel.is-open .menu-item:nth-child(7) {
+            transition-delay: 0.22s;
+        }
+
+        #control-panel.is-open .menu-item:nth-child(8) {
+            transition-delay: 0.24s;
+        }
+
+        main.content-blurred {
+            filter: blur(5px) brightness(0.985);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .icon-bg {
+            transition: background-color 0.25s ease, transform 0.2s ease, color 0.25s ease;
+        }
+
+        .menu-item.active .icon-bg {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        section[id] {
+            scroll-margin-top: 90px;
+        }
+
+
+        main>div:first-of-type {
+            position: relative;
+            isolation: isolate;
+        }
+
+        main>div:first-of-type::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://res.cloudinary.com/reinmaxcreative/image/upload/v1755488111/graphic-design.webp");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.09;
+            z-index: -1;
+        }
+    </style>
+
+</head>
+
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-primary header-logo">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 757.96 200">
+                    <path
+                        d="M286.79 26.5h-36.84v84.83h16V79.34h22.3c4.73 0 6.54 2.67 6.54 6.54v25.45h16V83.58c0-6.79-3.76-11.15-10.18-11.51v-2.18c7.15-2.91 12.6-9.09 12.6-19.27v-1.45c0-13.69-10.54-22.66-26.42-22.66Zm10.42 27.03c0 6.79-4.61 11.27-12.12 11.27h-19.15V41.05h19.15c7.76 0 12.12 4.48 12.12 11.27zm45.32 22.3h35.15V61.28h-35.15V41.05h38.54V26.5h-54.53v84.83h55.26V96.79h-39.27zm51.15-49.33h16v84.83h-16zm81.43 73.93h-2.18L456.08 26.5h-30.41v84.83h15.75V37.41h2.18l16.85 73.92h30.41V26.5h-15.75zm78.29 0h-2.18L536.55 26.5h-29.69v84.83h15.52V38.26h2.18l14.54 73.07h26.42l14.54-73.07h2.18v73.07h15.51V26.5h-29.69zm76.83-73.93-22.3 84.83h16.48l4.6-18.66h30.3l4.6 18.66h16.48l-22.3-84.83h-27.87Zm2.55 51.39 10.3-41.32h2.18l10.3 41.32zm100.34-9.34 24.6-42.05h-18.18L722.7 57.16h-2.19L703.67 26.5h-18.18l24.6 42.05-24.84 42.78h18.18l17.08-31.38h2.19l17.08 31.38h18.18zm-472.06 76.46c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.36 5.52 5.6v.39h5.12v-.24c0-6.46-3.86-10.4-10.64-10.4Zm26.87.56h-11.98v27.58h5.2v-10.4h7.25c1.54 0 2.13.87 2.13 2.13v8.27h5.2v-9.02c0-2.21-1.22-3.63-3.31-3.74v-.71c2.32-.95 4.1-2.96 4.1-6.27v-.47c0-4.45-3.43-7.37-8.59-7.37m3.39 8.78c0 2.21-1.5 3.66-3.94 3.66h-6.23v-7.72h6.23c2.52 0 3.94 1.46 3.94 3.66v.39Zm14.74 7.25h11.43v-4.73h-11.43v-6.58h12.53v-4.72h-17.73v27.58h17.97v-4.73h-12.77zm21.98-16.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58h-9.06Zm.83 16.7 3.35-13.44h.71l3.35 13.44zm14.62-11.98h8.04v22.86h5.2v-22.86h8.04v-4.72h-21.28zm24.82-4.72h5.2v27.58h-5.2zm20.26 24.23h-.56l-5.83-24.23h-5.36l7.02 27.58h8.9l7.02-27.58h-5.36zm19.7-8.2h11.42v-4.73h-11.42v-6.58h12.53v-4.72h-17.73v27.58h17.96v-4.73h-12.76zm43.14-8h-4.97v3.55h-3.82c-2.21 0-4.1-1.1-4.1-3.74 0-2.48 1.73-3.74 4.1-3.74h3.39v-4.1h-4.3c-4.73 0-8.16 2.6-8.16 7.41 0 3.23 1.85 5.12 4.49 5.91v.55c-2.64.79-4.65 2.92-4.65 6.27 0 4.65 3.27 7.45 8.16 7.45h9.85v-11.9h3.63v-4.1h-3.63v-3.55Zm-4.96 15.45h-3.98c-2.17 0-4.1-1.26-4.1-3.9s1.77-3.9 4.1-3.9h3.98zm32.31-23.48h-11.35v4.57h3.63v18.44h-3.63v4.57h11.35c7.41 0 11.35-3.78 11.35-11.19v-5.2c0-7.41-3.94-11.19-11.35-11.19m6.14 16.54c0 4.02-1.89 6.3-6.07 6.3h-2.6v-18.13h2.6c4.18 0 6.07 2.29 6.07 6.31zm14.74-.51h11.43v-4.73h-11.43v-6.58h12.53v-4.72h-17.73v27.58h17.97v-4.73h-12.77zm26.87-4.77-.91-.2c-3.31-.71-4.85-1.69-4.85-3.74s1.46-3.31 4.61-3.31 5.08 1.26 5.08 4.41v1.18h5.12v-1.18c0-5.99-4.29-8.98-10.21-8.98s-9.73 2.99-9.73 8.04 3.35 6.97 9.06 8.24l.91.2c3.55.79 5.56 1.58 5.56 3.86s-1.77 3.78-5.32 3.78-5.71-1.65-5.71-4.97v-1.1H515v1.1c0 5.99 4.45 9.54 10.84 9.54s10.44-3.47 10.44-8.51-3.9-7.09-9.77-8.35Zm13.63-11.26h5.2v27.58h-5.2zm20.89-.56c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.66 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01Zm31.68 24.59H592l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm25.21-24.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58h-9.06Zm.83 16.7 3.35-13.44h.71l3.35 13.44zm29.04-17.26c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.65 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01Zm20.8 16.59h11.43v-4.73h-11.43v-6.58h12.54v-4.72h-17.74v27.58h17.97v-4.73h-12.77zm32.71 8h-.71l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm20.8-24.59c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.36 5.52 5.6v.39h5.12v-.24c0-6.46-3.86-10.4-10.64-10.4Zm30.07.56-5.83 11.82h-.71l-5.84-11.82H734l9.38 18.08v9.5h5.2v-9.5l9.38-18.08zM0 200h200V0H0zM26.3 26.5h147.4v73.6H99.9l73.6 73.6H26.3z"
+                        style="fill:#002828" />
+                </svg>
+            </a>
+            <button type="button" id="mobile-menu-button" class="z-50 text-primary">
+                <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="h-8 w-8 lucide lucide-menu">
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Floating Control Panel -->
+    <div id="control-panel"
+        class="fixed top-24 left-4 right-4 max-w-md mx-auto p-4 rounded-2xl bg-white/40 backdrop-blur-xl border border-white/30 shadow-lg z-40 opacity-0 pointer-events-none transform -translate-y-4 scale-95">
+        <div class="grid grid-cols-4 gap-3">
+            <a href="index.html" data-name="Home"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                        <path
+                            d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    </svg></div><span class="text-xs font-medium text-primary">Home</span>
+            </a>
+            <a href="#logo" data-name="Logo"
+                class="menu-item active flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                        <path d="M2 17l10 5 10-5" />
+                        <path d="M2 12l10 5 10-5" />
+                    </svg></div><span class="text-xs font-medium text-primary">Logo</span>
+            </a>
+            <a href="#colors" data-name="Colors"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 2a7 7 0 1 0 10 10" />
+                    </svg></div><span class="text-xs font-medium text-primary">Colors</span>
+            </a>
+            <a href="#typography" data-name="Typography"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <polyline points="4 7 4 4 20 4 20 7" />
+                        <line x1="9" x2="15" y1="20" y2="20" />
+                        <line x1="12" x2="12" y1="4" y2="20" />
+                    </svg></div><span class="text-xs font-medium text-primary">Typography</span>
+            </a>
+            <a href="#craftsmanship" data-name="Craftsmanship"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg></div><span class="text-xs font-medium text-primary">Craft</span>
+            </a>
+            <a href="#voice" data-name="Voice"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path
+                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                    </svg></div><span class="text-xs font-medium text-primary">Voice</span>
+            </a>
+            <a href="#misuse" data-name="Misuse"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                    </svg></div><span class="text-xs font-medium text-primary">Misuse</span>
+            </a>
+            <a href="index.html#contact" data-name="Support"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path
+                            d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" />
+                        <path d="M21 16v2a4 4 0 0 1-4 4h-5" />
+                    </svg>
+
+                </div>
+                <span class="text-xs font-medium text-primary">Support</span>
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Page Title -->
+        <div class="text-center pt-32 pb-16 px-6 bg-white">
+            <h1 class="text-4xl md:text-5xl font-bold font-sora text-primary tracking-tight">Brand Guidelines</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                Welcome to Reinmax Creative. <br class="md:hidden"> These guidelines ensure our brand is represented
+                consistently
+                and beautifully across all platforms.
+            </p>
+        </div>
+
+        <div class="container mx-auto max-w-5xl px-6">
+            <!-- Section 1: Logo -->
+            <section id="logo" class="guideline-section pt-8">
+                <h2 class="text-3xl md:text-4xl font-bold font-sora text-primary mb-2 text-center">Our Logo</h2>
+                <p class="text-gray-600 mb-12 text-lg text-center">The Reinmax Creative logo is our primary
+                    identifier.<br class="hidden md:block"> We have three main versions for use across different
+                    contexts.</p>
+
+                <div class="space-y-12">
+                    <!-- Interactive Logo Assets -->
+                    <div class="card h-auto">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-semibold font-sora text-primary">Interactive Logo Assets</h3>
+                            <p class="mt-1 text-gray-600">Select a brand color, then download the customized asset.</p>
+                        </div>
+
+                        <!-- Grid for the asset cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+
+                            <!-- Asset Card 1: Horizontal -->
+                            <div id="horizontal-card"
+                                class="asset-card rounded-xl bg-white border border-gray-200 overflow-hidden flex flex-col">
+                                <div class="h-40 flex items-center justify-center p-6 bg-white flex-grow">
+                                    <svg data-logo-id="logo-horizontal-dl" class="h-12 w-auto"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 757.96 200">
+                                        <path fill="#002828"
+                                            d="M286.79 26.5h-36.84v84.83h16V79.34h22.3c4.73 0 6.54 2.67 6.54 6.54v25.45h16V83.58c0-6.79-3.76-11.15-10.18-11.51v-2.18c7.15-2.91 12.6-9.09 12.6-19.27v-1.45c0-13.69-10.54-22.66-26.42-22.66Zm10.42 27.03c0 6.79-4.61 11.27-12.12 11.27h-19.15V41.05h19.15c7.76 0 12.12 4.48 12.12 11.27zm45.32 22.3h35.15V61.28h-35.15V41.05h38.54V26.5h-54.53v84.83h55.26V96.79h-39.27zm51.15-49.33h16v84.83h-16zm81.43 73.93h-2.18L456.08 26.5h-30.41v84.83h15.75V37.41h2.18l16.85 73.92h30.41V26.5h-15.75zm78.29 0h-2.18L536.55 26.5h-29.69v84.83h15.52V38.26h2.18l14.54 73.07h26.42l14.54-73.07h2.18v73.07h15.51V26.5h-29.69zm76.83-73.93-22.3 84.83h16.48l4.6-18.66h30.3l4.6 18.66h16.48l-22.3-84.83h-27.87Zm2.55 51.39 10.3-41.32h2.18l10.3 41.32zm100.34-9.34 24.6-42.05h-18.18L722.7 57.16h-2.19L703.67 26.5h-18.18l24.6 42.05-24.84 42.78h18.18l17.08-31.38h2.19l17.08 31.38h18.18zm-472.06 76.46c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.36 5.52 5.6v.39h5.12v-.24c0-6.46-3.86-10.4-10.64-10.4Zm26.87.56h-11.98v27.58h5.2v-10.4h7.25c1.54 0 2.13.87 2.13 2.13v8.27h5.2v-9.02c0-2.21-1.22-3.63-3.31-3.74v-.71c2.32-.95 4.1-2.96 4.1-6.27v-.47c0-4.45-3.43-7.37-8.59-7.37m3.39 8.78c0 2.21-1.5 3.66-3.94 3.66h-6.23v-7.72h6.23c2.52 0 3.94 1.46 3.94 3.66v.39Zm14.74 7.25h11.43v-4.73h-11.43v-6.58h12.53v-4.72h-17.73v27.58h17.97v-4.73h-12.77zm21.98-16.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58h-9.06Zm.83 16.7 3.35-13.44h.71l3.35 13.44zm14.62-11.98h8.04v22.86h5.2v-22.86h8.04v-4.72h-21.28zm24.82-4.72h5.2v27.58h-5.2zm20.26 24.23h-.56l-5.83-24.23h-5.36l7.02 27.58h8.9l7.02-27.58h-5.36zm19.7-8.2h11.42v-4.73h-11.42v-6.58h12.53v-4.72h-17.73v27.58h17.96v-4.73h-12.76zm43.14-8h-4.97v3.55h-3.82c-2.21 0-4.1-1.1-4.1-3.74 0-2.48 1.73-3.74 4.1-3.74h3.39v-4.1h-4.3c-4.73 0-8.16 2.6-8.16 7.41 0 3.23 1.85 5.12 4.49 5.91v.55c-2.64.79-4.65 2.92-4.65 6.27 0 4.65 3.27 7.45 8.16 7.45h9.85v-11.9h3.63v-4.1h-3.63v-3.55Zm-4.96 15.45h-3.98c-2.17 0-4.1-1.26-4.1-3.9s1.77-3.9 4.1-3.9h3.98zm32.31-23.48h-11.35v4.57h3.63v18.44h-3.63v4.57h11.35c7.41 0 11.35-3.78 11.35-11.19v-5.2c0-7.41-3.94-11.19-11.35-11.19m6.14 16.54c0 4.02-1.89 6.3-6.07 6.3h-2.6v-18.13h2.6c4.18 0 6.07 2.29 6.07 6.31zm14.74-.51h11.43v-4.73h-11.43v-6.58h12.53v-4.72h-17.73v27.58h17.97v-4.73h-12.77zm26.87-4.77-.91-.2c-3.31-.71-4.85-1.69-4.85-3.74s1.46-3.31 4.61-3.31 5.08 1.26 5.08 4.41v1.18h5.12v-1.18c0-5.99-4.29-8.98-10.21-8.98s-9.73 2.99-9.73 8.04 3.35 6.97 9.06 8.24l.91.2c3.55.79 5.56 1.58 5.56 3.86s-1.77 3.78-5.32 3.78-5.71-1.65-5.71-4.97v-1.1H515v1.1c0 5.99 4.45 9.54 10.84 9.54s10.44-3.47 10.44-8.51-3.9-7.09-9.77-8.35Zm13.63-11.26h5.2v27.58h-5.2zm20.89-.56c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.66 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01Zm31.68 24.59H592l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm25.21-24.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58h-9.06Zm.83 16.7 3.35-13.44h.71l3.35 13.44zm29.04-17.26c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.65 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01Zm20.8 16.59h11.43v-4.73h-11.43v-6.58h12.54v-4.72h-17.74v27.58h17.97v-4.73h-12.77zm32.71 8h-.71l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm20.8-24.59c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.36 5.52 5.6v.39h5.12v-.24c0-6.46-3.86-10.4-10.64-10.4Zm30.07.56-5.83 11.82h-.71l-5.84-11.82H734l9.38 18.08v9.5h5.2v-9.5l9.38-18.08zM0 200h200V0H0zM26.3 26.5h147.4v73.6H99.9l73.6 73.6H26.3z" />
+                                    </svg>
+                                </div>
+                                <!-- Controls Area -->
+                                <div class="p-4 text-left border-t border-gray-200 bg-gray-50">
+                                    <h4 class="font-semibold text-primary font-sora mb-3">Horizontal</h4>
+                                    <div class="relative">
+                                        <!-- [FIX] Replaced the flex container with a more robust grid for desktop -->
+                                        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
+                                            <!-- Swatches -->
+                                            <div class="flex items-center justify-center md:justify-start gap-2">
+                                                <button type="button" data-color="#002828"
+                                                    class="color-swatch ring-2 ring-primary ring-offset-1 w-6 h-6 rounded-md border"
+                                                    style="background-color: #002828;"></button>
+                                                <button type="button" data-color="#99cccc"
+                                                    class="color-swatch w-6 h-6 rounded-md border"
+                                                    style="background-color: #99cccc;"></button>
+                                                <button type="button" data-color="#667E7E"
+                                                    class="color-swatch w-6 h-6 rounded-md border"
+                                                    style="background-color: #667E7E;"></button>
+                                                <button type="button" data-color="#f0f4f4"
+                                                    class="color-swatch w-6 h-6 rounded-md border border-gray-300"
+                                                    style="background-color: #f0f4f4;"></button>
+                                            </div>
+                                            <!-- Download Button -->
+                                            <div class="w-full md:w-auto flex md:justify-end">
+                                                <button type="button"
+                                                    class="download-trigger w-full md:w-auto bg-primary text-white font-semibold py-2 px-3 rounded-lg hover:bg-tertiary transition-colors flex items-center justify-center gap-2 text-sm">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2.5" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path d="M12 15V3" />
+                                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                        <path d="m7 10 5 5 5-5" />
+                                                    </svg>
+                                                    <span>Download</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Popover Menu -->
+                                        <div
+                                            class="download-popover absolute bottom-full left-1/2 md:left-auto md:right-0 md:translate-x-0 -translate-x-1/2 mb-2 w-full max-w-xs p-4 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible transition-all duration-300 transform scale-95 -translate-y-2">
+                                            <p class="text-xs text-red-600 font-bold text-center mb-3">For authorized
+                                                use only.<br>Please adhere to brand guidelines.</p>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <button type="button" data-format="svg"
+                                                    class="w-full bg-gray-200 text-gray-800 font-bold py-2 px-3 rounded-lg hover:bg-gray-300 transition-colors text-sm flex items-center justify-center">SVG
+                                                    <span class="file-size text-gray-500 ml-1"></span></button>
+                                                <button type="button" data-format="png"
+                                                    class="w-full bg-gray-200 text-gray-800 font-bold py-2 px-3 rounded-lg hover:bg-gray-300 transition-colors text-sm flex items-center justify-center">PNG
+                                                    <span class="file-size text-gray-500 ml-1"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Asset Card 2: Vertical -->
+                            <div id="vertical-card"
+                                class="asset-card rounded-xl bg-white border border-gray-200 overflow-hidden flex flex-col">
+
+                                <div class="h-48 flex items-center justify-center p-6 bg-white flex-grow">
+                                    <svg data-logo-id="logo-vertical-dl" class="h-36 w-auto" viewBox="0 0 508.01 420"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="#002828"
+                                            d="M36.84 250H0v84.83h16v-31.99h22.3c4.73 0 6.54 2.67 6.54 6.54v25.45h16v-27.75c0-6.79-3.76-11.15-10.18-11.51v-2.18c7.15-2.91 12.6-9.09 12.6-19.27v-1.45c0-13.69-10.54-22.66-26.42-22.66Zm10.42 27.03c0 6.79-4.61 11.27-12.12 11.27H15.99v-23.75h19.15c7.76 0 12.12 4.48 12.12 11.27zm45.32 22.3h35.15v-14.55H92.58v-20.23h38.54V250H76.59v84.83h55.26v-14.54H92.58zM143.73 250h16v84.83h-16zm81.43 73.93h-2.18L206.13 250h-30.41v84.83h15.75v-73.92h2.18l16.85 73.92h30.41V250h-15.75zm78.29 0h-2.18L286.6 250h-29.69v84.83h15.52v-73.07h2.18l14.54 73.07h26.42l14.54-73.07h2.18v73.07h15.51V250h-29.69zM380.28 250l-22.3 84.83h16.48l4.6-18.66h30.3l4.6 18.66h16.48L408.14 250h-27.87zm2.55 51.39 10.3-41.32h2.18l10.3 41.32zm100.34-9.34 24.6-42.05h-18.18l-16.84 30.66h-2.19L453.72 250h-18.18l24.6 42.05-24.84 42.78h18.18l17.08-31.38h2.19l17.08 31.38h18.18zM11.11 368.51C4.25 368.51 0 372.45 0 379.54v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.36 5.52 5.6v.39h5.12v-.24c0-6.46-3.86-10.4-10.64-10.4Zm26.87.56H26v27.58h5.2v-10.4h7.25c1.54 0 2.13.87 2.13 2.13v8.27h5.2v-9.02c0-2.21-1.22-3.63-3.31-3.74v-.71c2.32-.95 4.1-2.96 4.1-6.27v-.47c0-4.45-3.43-7.37-8.59-7.37m3.39 8.78c0 2.21-1.5 3.66-3.94 3.66H31.2v-7.72h6.23c2.52 0 3.94 1.46 3.94 3.66v.39Zm14.74 7.25h11.43v-4.73H56.11v-6.58h12.53v-4.72H50.91v27.58h17.97v-4.73H56.11zm21.98-16.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58zm.83 16.7 3.35-13.44h.71l3.35 13.44zm14.62-11.98h8.04v22.86h5.2v-22.86h8.04v-4.72H93.54zm24.82-4.72h5.2v27.58h-5.2zm20.26 24.23h-.56l-5.83-24.23h-5.36l7.02 27.58h8.9l7.02-27.58h-5.36zm19.7-8.2h11.42v-4.73h-11.42v-6.58h12.53v-4.72h-17.73v27.58h17.96v-4.73h-12.76zm43.14-8h-4.97v3.55h-3.82c-2.21 0-4.1-1.1-4.1-3.74 0-2.48 1.73-3.74 4.1-3.74h3.39v-4.1h-4.3c-4.73 0-8.16 2.6-8.16 7.41 0 3.23 1.85 5.12 4.49 5.91v.55c-2.64.79-4.65 2.92-4.65 6.27 0 4.65 3.27 7.45 8.16 7.45h9.85v-11.9h3.63v-4.1h-3.63v-3.55Zm-4.96 15.45h-3.98c-2.17 0-4.1-1.26-4.1-3.9s1.77-3.9 4.1-3.9h3.98zm32.31-23.48h-11.35v4.57h3.63v18.44h-3.63v4.57h11.35c7.41 0 11.35-3.78 11.35-11.19v-5.2c0-7.41-3.94-11.19-11.35-11.19m6.14 16.54c0 4.02-1.89 6.3-6.07 6.3h-2.6v-18.13h2.6c4.18 0 6.07 2.29 6.07 6.31zm14.74-.51h11.43v-4.73h-11.43v-6.58h12.53v-4.72h-17.73v27.58h17.97v-4.73h-12.77zm26.87-4.77-.91-.2c-3.31-.71-4.85-1.69-4.85-3.74s1.46-3.31 4.61-3.31 5.08 1.26 5.08 4.41v1.18h5.12v-1.18c0-5.99-4.29-8.98-10.21-8.98s-9.73 2.99-9.73 8.04 3.35 6.97 9.06 8.24l.91.2c3.55.79 5.56 1.58 5.56 3.86s-1.77 3.78-5.32 3.78-5.71-1.65-5.71-4.97v-1.1h-5.12v1.1c0 5.99 4.45 9.54 10.84 9.54s10.44-3.47 10.44-8.51-3.9-7.09-9.77-8.35Zm13.63-11.26h5.2v27.58h-5.2zm20.89-.56c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.66 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01h-.01Zm31.68 24.59h-.71l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm25.21-24.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58zm.83 16.7 3.35-13.44h.71l3.35 13.44zm29.04-17.26c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.65 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01h-.01Zm20.8 16.59h11.43v-4.73h-11.43v-6.58h12.54v-4.72h-17.74v27.58h17.97v-4.73h-12.77zm32.71 8h-.71l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm20.8-24.59c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.36 5.52 5.6v.39h5.12v-.24c0-6.46-3.86-10.4-10.64-10.4Zm30.07.56-5.83 11.82h-.71l-5.84-11.82h-5.79l9.38 18.08v9.5h5.2v-9.5l9.38-18.08zM154.01 0v200h200V0zM327.7 100.1h-73.8l73.6 73.6H180.3V26.5h147.4z" />
+                                    </svg>
+                                </div>
+                                <div class="p-4 text-left border-t border-gray-200 bg-gray-50">
+                                    <h4 class="font-semibold text-primary font-sora mb-3">Vertical</h4>
+                                    <div class="relative">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
+                                            <div class="flex items-center justify-center md:justify-start gap-2">
+                                                <button type="button" data-color="#002828"
+                                                    class="color-swatch ring-2 ring-primary ring-offset-1 w-6 h-6 rounded-md border"
+                                                    style="background-color: #002828;"></button>
+                                                <button type="button" data-color="#99cccc"
+                                                    class="color-swatch w-6 h-6 rounded-md border"
+                                                    style="background-color: #99cccc;"></button>
+                                                <button type="button" data-color="#667E7E"
+                                                    class="color-swatch w-6 h-6 rounded-md border"
+                                                    style="background-color: #667E7E;"></button>
+                                                <button type="button" data-color="#f0f4f4"
+                                                    class="color-swatch w-6 h-6 rounded-md border border-gray-300"
+                                                    style="background-color: #f0f4f4;"></button>
+                                            </div>
+                                            <div class="w-full md:w-auto flex md:justify-end">
+                                                <button type="button"
+                                                    class="download-trigger w-full md:w-auto bg-primary text-white font-semibold py-2 px-3 rounded-lg hover:bg-tertiary transition-colors flex items-center justify-center gap-2 text-sm">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2.5" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path d="M12 15V3" />
+                                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                        <path d="m7 10 5 5 5-5" />
+                                                    </svg>
+                                                    <span>Download</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Popover Menu -->
+                                        <div
+                                            class="download-popover absolute bottom-full left-1/2 md:left-auto md:right-0 md:translate-x-0 -translate-x-1/2 mb-2 w-full max-w-xs p-4 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible transition-all duration-300 transform scale-95 -translate-y-2">
+                                            <p class="text-xs text-red-600 font-bold text-center mb-3">For authorized
+                                                use only.<br>Please adhere to brand guidelines.</p>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <button type="button" data-format="svg"
+                                                    class="w-full bg-gray-200 text-gray-800 font-bold py-2 px-3 rounded-lg hover:bg-gray-300 transition-colors text-sm flex items-center justify-center">SVG
+                                                    <span class="file-size text-gray-500 ml-1"></span></button>
+                                                <button type="button" data-format="png"
+                                                    class="w-full bg-gray-200 text-gray-800 font-bold py-2 px-3 rounded-lg hover:bg-gray-300 transition-colors text-sm flex items-center justify-center">PNG
+                                                    <span class="file-size text-gray-500 ml-1"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Asset Card 3: Logomark -->
+                            <div id="icon-card"
+                                class="asset-card rounded-xl bg-white border border-gray-200 overflow-hidden flex flex-col">
+                                <div class="h-40 flex items-center justify-center p-6 bg-white flex-grow">
+                                    <svg data-logo-id="logo-icon-dl" class="h-20 w-20" viewBox="0 0 625.75 625.75"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="#002828"
+                                            d="M625.75 0H0v625.75h625.75V0ZM543.41 312.87h-230.54l230.54 230.54H82.33V82.33h461.08v230.54Z" />
+                                    </svg>
+                                </div>
+                                <div class="p-4 text-left border-t border-gray-200 bg-gray-50">
+                                    <h4 class="font-semibold text-primary font-sora mb-3">Logomark</h4>
+                                    <div class="relative">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
+                                            <div class="flex items-center justify-center md:justify-start gap-2">
+                                                <button type="button" data-color="#002828"
+                                                    class="color-swatch ring-2 ring-primary ring-offset-1 w-6 h-6 rounded-md border"
+                                                    style="background-color: #002828;"></button>
+                                                <button type="button" data-color="#99cccc"
+                                                    class="color-swatch w-6 h-6 rounded-md border"
+                                                    style="background-color: #99cccc;"></button>
+                                                <button type="button" data-color="#667E7E"
+                                                    class="color-swatch w-6 h-6 rounded-md border"
+                                                    style="background-color: #667E7E;"></button>
+                                                <button type="button" data-color="#f0f4f4"
+                                                    class="color-swatch w-6 h-6 rounded-md border border-gray-300"
+                                                    style="background-color: #f0f4f4;"></button>
+                                            </div>
+                                            <div class="w-full md:w-auto flex md:justify-end">
+                                                <button type="button"
+                                                    class="download-trigger w-full md:w-auto bg-primary text-white font-semibold py-2 px-3 rounded-lg hover:bg-tertiary transition-colors flex items-center justify-center gap-2 text-sm">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2.5" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path d="M12 15V3" />
+                                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                        <path d="m7 10 5 5 5-5" />
+                                                    </svg>
+                                                    <span>Download</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Popover Menu -->
+                                        <div
+                                            class="download-popover absolute bottom-full left-1/2 md:left-auto md:right-0 md:translate-x-0 -translate-x-1/2 mb-2 w-full max-w-xs p-4 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible transition-all duration-300 transform scale-95 -translate-y-2">
+                                            <p class="text-xs text-red-600 font-bold text-center mb-3">For authorized
+                                                use only.<br>Please adhere to brand guidelines.</p>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <button type="button" data-format="svg"
+                                                    class="w-full bg-gray-200 text-gray-800 font-bold py-2 px-3 rounded-lg hover:bg-gray-300 transition-colors text-sm flex items-center justify-center">SVG
+                                                    <span class="file-size text-gray-500 ml-1"></span></button>
+                                                <button type="button" data-format="png"
+                                                    class="w-full bg-gray-200 text-gray-800 font-bold py-2 px-3 rounded-lg hover:bg-gray-300 transition-colors text-sm flex items-center justify-center">PNG
+                                                    <span class="file-size text-gray-500 ml-1"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section 2: Color Palette -->
+            <section id="colors" class="guideline-section text-center">
+                <h2 class="text-3xl md:text-4xl font-bold font-sora text-primary mb-2">Color Palette</h2>
+                <p class="text-gray-600 mb-12 text-lg">
+                    Our color palette is sophisticated and modern, reflecting our
+                    creative and professional spirit.<br class="hidden md:block">
+                    These colors form the foundation of our visual identity.
+                </p>
+
+
+                <!-- Primary & Secondary -->
+                <h3 class="text-2xl font-semibold font-sora text-primary mb-4">Primary & Secondary Colors</h3>
+                <!-- [FIX] Changed grid-cols-1 to grid-cols-2 and removed redundant sm:grid-cols-2 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                    <div class="card p-0 overflow-hidden">
+                        <div class="h-32" style="background-color: #002828;"></div>
+                        <div class="p-4 text-left">
+                            <h4 class="font-bold font-sora text-primary">Primary Dark Teal</h4>
+                            <div class="text-sm text-gray-500 mt-2">HEX: #002828</div>
+                        </div>
+                    </div>
+                    <div class="card p-0 overflow-hidden">
+                        <div class="h-32" style="background-color: #003333;"></div>
+                        <div class="p-4 text-left">
+                            <h4 class="font-bold font-sora text-primary">Tertiary Teal</h4>
+                            <div class="text-sm text-gray-500 mt-2">HEX: #003333</div>
+                        </div>
+                    </div>
+                    <div class="card p-0 overflow-hidden">
+                        <div class="h-32" style="background-color: #005757;"></div>
+                        <div class="p-4 text-left">
+                            <h4 class="font-bold font-sora text-primary">Accent Teal</h4>
+                            <div class="text-sm text-gray-500 mt-2">HEX: #005757</div>
+                        </div>
+                    </div>
+                    <div class="card p-0 overflow-hidden">
+                        <div class="h-32" style="background-color: #99cccc;"></div>
+                        <div class="p-4 text-left">
+                            <h4 class="font-bold font-sora text-primary">Secondary Light Teal</h4>
+                            <div class="text-sm text-gray-500 mt-2">HEX: #99cccc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neutrals -->
+                <h3 class="text-2xl font-semibold font-sora text-primary mb-4">Neutral Colors</h3>
+                <!-- [FIX] Changed grid-cols-1 to grid-cols-2 and removed redundant sm:grid-cols-2 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="card p-0 overflow-hidden">
+                        <div class="h-32" style="background-color: #335353;"></div>
+                        <div class="p-4 text-left">
+                            <h4 class="font-bold font-sora text-primary">Dark Neutral</h4>
+                            <div class="text-sm text-gray-500 mt-2">HEX: #335353</div>
+                        </div>
+                    </div>
+                    <div class="card p-0 overflow-hidden">
+                        <div class="h-32" style="background-color: #667E7E;"></div>
+                        <div class="p-4 text-left">
+                            <h4 class="font-bold font-sora text-primary">Medium Neutral</h4>
+                            <div class="text-sm text-gray-500 mt-2">HEX: #667E7E</div>
+                        </div>
+                    </div>
+                    <div class="card p-0 overflow-hidden">
+                        <div class="h-32" style="background-color: #99A9A9;"></div>
+                        <div class="p-4 text-left">
+                            <h4 class="font-bold font-sora text-primary">Light Neutral</h4>
+                            <div class="text-sm text-gray-500 mt-2">HEX: #99A9A9</div>
+                        </div>
+                    </div>
+                    <div class="card p-0 overflow-hidden">
+                        <div class="h-32 border" style="background-color: #f0f4f4;"></div>
+                        <div class="p-4 text-left">
+                            <h4 class="font-bold font-sora text-primary">Background</h4>
+                            <div class="text-sm text-gray-500 mt-2">HEX: #f0f4f4</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Typography -->
+            <section id="typography" class="guideline-section text-center">
+                <h2 class="text-3xl md:text-4xl font-bold font-sora text-primary mb-2">Typography</h2>
+                <p class="text-gray-600 mb-12 text-lg max-w-3xl mx-auto">Our typography creates a clear hierarchy and
+                    ensures
+                    readability. We use two complementary fonts: Sora for clarity in all primary text and Space Grotesk
+                    for
+                    impactful display text.</p>
+
+                <div class="space-y-12 text-left">
+
+                    <!-- Typefaces Display -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Primary Font Card -->
+                        <div class="card">
+                            <h3 class="text-xl font-bold font-sora text-primary">Primary Brand Font</h3>
+                            <p class="text-sm text-gray-500 mb-4">Sora</p>
+                            <p class="text-gray-700 mb-6 flex-grow">Used for all headings, body copy, and UI elements.
+                                Its clean,
+                                geometric forms offer excellent readability across all sizes.</p>
+                            <div class="bg-background p-4 rounded-lg space-y-2">
+                                <div class="text-4xl font-bold font-sora text-tertiary break-words">Aa Bb Cc Dd
+                                </div>
+                                <div class="text-lg font-sora text-tertiary">0 1 2 3 4 5 6 7 8 9</div>
+                                <div class="text-lg font-sora text-tertiary break-all">! @ # $ % & * ( ) _ - + = [] {}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Font Card -->
+                        <div class="card">
+                            <h3 class="text-xl font-bold font-grotesk text-primary">Display & Logotype Font</h3>
+                            <p class="text-sm text-gray-500 mb-4">Space Grotesk</p>
+                            <p class="text-gray-700 font-grotesk mb-6 flex-grow">Used in our logotype and as a display
+                                font for
+                                impactful,
+                                secondary headings or callouts where a distinct, geometric character is desired.</p>
+                            <div class="bg-background p-4 rounded-lg space-y-2">
+                                <div class="text-4xl font-bold font-grotesk text-tertiary break-words">Aa Bb Cc Dd
+                                </div>
+                                <div class="text-lg font-grotesk text-tertiary">0 1 2 3 4 5 6 7 8 9</div>
+                                <div class="text-lg font-grotesk text-tertiary break-all">! @ # $ % & * ( ) _ - + = []
+                                    {}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typographic Scale Card -->
+                    <div class="card">
+                        <h3 class="text-2xl font-semibold font-sora text-primary mb-6 text-center md:text-left">
+                            Typographic Scale
+                            & Hierarchy</h3>
+                        <div class="space-y-4">
+                            <!-- H1 -->
+                            <div
+                                class="flex flex-col md:flex-row items-baseline md:items-center gap-x-4 gap-y-2 py-4 border-b border-gray-200">
+                                <div class="w-full md:w-1/4 flex-shrink-0">
+                                    <div class="font-bold text-primary font-sora">Heading 1</div>
+                                    <div class="text-sm text-gray-500 font-mono">Sora Bold / 48px</div>
+                                </div>
+                                <!-- Desktop version -->
+                                <div class="text-5xl font-bold text-primary font-sora w-full hidden md:block">
+                                    Design is Intelligence
+                                </div>
+
+                                <!-- Mobile version -->
+                                <div class="text-5xl font-bold text-primary font-sora w-full md:hidden">
+                                    Creativity
+                                </div>
+                            </div>
+                            <!-- H2 -->
+                            <div
+                                class="flex flex-col md:flex-row items-baseline md:items-center gap-x-4 gap-y-2 py-4 border-b border-gray-200">
+                                <div class="w-full md:w-1/4 flex-shrink-0">
+                                    <div class="font-bold text-primary font-sora">Heading 2</div>
+                                    <div class="text-sm text-gray-500 font-mono">Sora Bold / 36px</div>
+                                </div>
+                                <div class="text-4xl font-bold text-primary font-sora w-full">Simplicity is key</div>
+                            </div>
+                            <!-- H3 -->
+                            <div
+                                class="flex flex-col md:flex-row items-baseline md:items-center gap-x-4 gap-y-2 py-4 border-b border-gray-200">
+                                <div class="w-full md:w-1/4 flex-shrink-0">
+                                    <div class="font-bold text-primary font-sora">Heading 3</div>
+                                    <div class="text-sm text-gray-500 font-mono">Sora Semibold / 24px</div>
+                                </div>
+                                <div class="text-2xl font-semibold text-primary font-sora w-full">Balance creates
+                                    harmony</div>
+                            </div>
+                            <!-- Paragraph -->
+                            <div class="flex flex-col md:flex-row items-baseline md:items-center gap-x-4 gap-y-2 py-4">
+                                <div class="w-full md:w-1/4 flex-shrink-0">
+                                    <div class="font-bold text-primary font-sora">Paragraph</div>
+                                    <div class="text-sm text-gray-500 font-mono">Sora Regular / 16px</div>
+                                </div>
+                                <div class="text-base text-gray-700 font-sora w-full max-w-3xl leading-relaxed">
+                                    Good design isn’t just about making things look nice, it’s about making them work
+                                    for people. Every choice, from the font you pick to the spacing between lines,
+                                    affects how someone experiences your message.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Section 4: Craftsmanship -->
+            <section id="craftsmanship" class="guideline-section text-center">
+                <h2 class="text-3xl md:text-4xl font-bold font-sora text-primary mb-2">
+                    Logo Craftsmanship
+                </h2>
+                <p class="text-gray-600 mb-12 text-lg">
+                    Our logo is built on a foundation of geometric precision and creative balance.
+                    <br>
+                    The underlying grid ensures every curve and line is intentional and harmonious.
+                </p>
+
+                <div class="card h-auto p-4 sm:p-6 md:p-12 flex items-center justify-center">
+                    <div class="w-full md:max-w-5xl">
+
+                        <!-- Mobile image (fills card) -->
+                        <div class="block md:hidden">
+                            <img src="/svg/process-mobile.svg" alt="Logo construction grid (mobile)"
+                                class="w-full h-auto my-8 px-8">
+                        </div>
+
+
+                        <!-- Desktop image (keeps aspect ratio & max width) -->
+                        <div class="hidden md:block">
+                            <img src="/svg/process-desktop.svg" alt="Logo construction grid (desktop)"
+                                class="w-full h-auto">
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Section 5: Brand Voice -->
+            <section id="voice" class="guideline-section text-center">
+                <h2 class="text-3xl md:text-4xl font-bold font-sora text-primary mb-2">Our Brand Voice</h2>
+                <p class="text-gray-600 mb-12 text-lg max-w-3xl mx-auto">How we communicate is as important as what we
+                    create.
+                    Our voice is the personality of our brand, and it should be consistent across all channels.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+
+                    <!-- Card 1: Creative -->
+                    <!-- [FIX] Changed hover:bg-secondary/30 to hover:bg-secondary/10 and reduced shadow opacity -->
+                    <div
+                        class="card group relative overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-2 hover:bg-secondary/10 hover:shadow-[0_8px_30px_-5px_rgba(153,204,204,0.3)]">
+                        <div class="mb-4">
+                            <div
+                                class="w-16 h-16 rounded-full bg-background flex items-center justify-center border border-gray-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="h-8 w-8 text-primary transition-colors duration-300 group-hover:text-tertiary">
+                                    <path d="M12 18V5" />
+                                    <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" />
+                                    <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5" />
+                                    <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77" />
+                                    <path d="M18 18a4 4 0 0 0 2-7.464" />
+                                    <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517" />
+                                    <path d="M6 18a4 4 0 0 1-2-7.464" />
+                                    <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold font-sora mb-3 gradient-text">Creative</h3>
+                        <p class="flex-grow text-gray-700">We are knowledgeable and passionate about design. We
+                            communicate our
+                            ideas
+                            clearly and with expert authority, avoiding jargon to empower our clients.</p>
+                        <div class="mt-6 border-t pt-4">
+                            <h4 class="font-semibold font-sora text-primary mb-2">Keywords</h4>
+                            <ul class="space-y-1 text-gray-600">
+                                <li class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-secondary">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Confident & Expert
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-secondary">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Clear & Accessible
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Inspiring -->
+                    <div
+                        class="card group relative overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-2 hover:bg-secondary/10 hover:shadow-[0_8px_30px_-5px_rgba(153,204,204,0.3)]">
+                        <div class="mb-4">
+                            <div
+                                class="w-16 h-16 rounded-full bg-background flex items-center justify-center border border-gray-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="h-8 w-8 text-primary transition-colors duration-300 group-hover:text-tertiary">
+                                    <path d="M12 2v8" />
+                                    <path d="m4.93 10.93 1.41 1.41" />
+                                    <path d="M2 18h2" />
+                                    <path d="M20 18h2" />
+                                    <path d="m19.07 10.93-1.41 1.41" />
+                                    <path d="M22 22H2" />
+                                    <path d="m8 6 4-4 4 4" />
+                                    <path d="M16 18a4 4 0 0 0-8 0" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold font-sora mb-3 gradient-text">Inspiring</h3>
+                        <p class="flex-grow text-gray-700">We believe in design's power to transform. Our tone is
+                            encouraging and full of a creative energy that motivates our clients and celebrates their
+                            vision.
+                        </p>
+                        <div class="mt-6 border-t pt-4">
+                            <h4 class="font-semibold font-sora text-primary mb-2">Keywords</h4>
+                            <ul class="space-y-1 text-gray-600">
+                                <li class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-secondary">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Passionate & Encouraging
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-secondary">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Forward-Looking
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Collaborative -->
+                    <div
+                        class="card group relative overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-2 hover:bg-secondary/10 hover:shadow-[0_8px_30px_-5px_rgba(153,204,204,0.3)]">
+                        <div class="mb-4">
+                            <div
+                                class="w-16 h-16 rounded-full bg-background flex items-center justify-center border border-gray-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="h-8 w-8 text-primary transition-colors duration-300 group-hover:text-tertiary">
+                                    <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+                                    <path
+                                        d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+                                    <path d="m21 3 1 11h-2" />
+                                    <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+                                    <path d="M3 4h8" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold font-sora mb-3 gradient-text">Collaborative</h3>
+                        <p class="flex-grow text-gray-700">We are partners, not just providers. We speak like real
+                            people—using
+                            a friendly and respectful tone to foster strong, lasting relationships.</p>
+                        <div class="mt-6 border-t pt-4">
+                            <h4 class="font-semibold font-sora text-primary mb-2">Keywords</h4>
+                            <ul class="space-y-1 text-gray-600">
+                                <li class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-secondary">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Human & Approachable
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-secondary">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Respectful & Partner-like
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section 6: Logo Misuse -->
+            <section id="misuse" class="guideline-section text-center">
+                <h2 class="text-3xl md:text-4xl font-bold font-sora text-primary mb-2">Logo Misuse</h2>
+                <p class="text-gray-600 mb-12 text-lg">To maintain brand integrity, it's crucial to use our logo
+                    correctly. Please avoid the following common misuses.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <!-- Misuse 1: Stretching -->
+                    <div class="card">
+                        <div class="bg-gray-100 p-8 rounded-lg flex-grow flex items-center justify-center">
+                            <svg class="h-16 w-auto" viewBox="0 0 625.75 625.75" xmlns="http://www.w3.org/2000/svg"
+                                style="transform: scaleX(1.5);">
+                                <defs>
+                                    <style>
+                                        .cls-1-icon-misuse-1 {
+                                            fill: #002828;
+                                        }
+                                    </style>
+                                </defs>
+                                <path class="cls-1-icon-misuse-1"
+                                    d="M625.75,0H0v625.75h625.75V0ZM543.41,312.87h-230.54l230.54,230.54H82.33V82.33h461.08v230.54Z" />
+                            </svg>
+                        </div>
+                        <div class="mt-4 flex items-start gap-3 text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="flex-shrink-0 mt-1">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="m15 9-6 6" />
+                                <path d="m9 9 6 6" />
+                            </svg>
+                            <div>
+                                <h4 class="font-bold font-sora text-primary">Don't Stretch or Distort</h4>
+                                <p class="text-gray-600 text-sm mt-1">Always scale the logo proportionally. Do not
+                                    stretch or compress it in any way.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Misuse 2: Altering Colors -->
+                    <div class="card">
+                        <div class="bg-gray-100 p-8 rounded-lg flex-grow flex items-center justify-center">
+                            <svg class="h-16 w-16" viewBox="0 0 625.75 625.75" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <style>
+                                        .cls-1-icon-misuse-2 {
+                                            fill: #EF4444;
+                                        }
+                                    </style>
+                                </defs>
+                                <path class="cls-1-icon-misuse-2"
+                                    d="M625.75,0H0v625.75h625.75V0ZM543.41,312.87h-230.54l230.54,230.54H82.33V82.33h461.08v230.54Z" />
+                            </svg>
+                        </div>
+                        <div class="mt-4 flex items-start gap-3 text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="flex-shrink-0 mt-1">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="m15 9-6 6" />
+                                <path d="m9 9 6 6" />
+                            </svg>
+                            <div>
+                                <h4 class="font-bold font-sora text-primary">Don't Change Colors</h4>
+                                <p class="text-gray-600 text-sm mt-1">Only use the official brand colors. Do not recolor
+                                    the logo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Misuse 3: Adding Effects -->
+                    <div class="card">
+                        <div class="bg-gray-100 p-8 rounded-lg flex-grow flex items-center justify-center">
+                            <svg class="h-16 w-16" viewBox="0 0 625.75 625.75" xmlns="http://www.w3.org/2000/svg"
+                                style="filter: drop-shadow(4px 4px 4px rgba(0,0,0,0.25));">
+                                <defs>
+                                    <style>
+                                        .cls-1-icon-misuse-3 {
+                                            fill: #002828;
+                                        }
+                                    </style>
+                                </defs>
+                                <path class="cls-1-icon-misuse-3"
+                                    d="M625.75,0H0v625.75h625.75V0ZM543.41,312.87h-230.54l230.54,230.54H82.33V82.33h461.08v230.54Z" />
+                            </svg>
+                        </div>
+                        <div class="mt-4 flex items-start gap-3 text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="flex-shrink-0 mt-1">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="m15 9-6 6" />
+                                <path d="m9 9 6 6" />
+                            </svg>
+                            <div>
+                                <h4 class="font-bold font-sora text-primary">Don't Add Effects</h4>
+                                <p class="text-gray-600 text-sm mt-1">Do not add drop shadows, glows, gradients, or
+                                    other visual effects to the logo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Misuse 4: On Busy Backgrounds -->
+                    <div class="card">
+                        <div class="bg-gray-100 p-8 rounded-lg flex-grow flex items-center justify-center"
+                            style="background-image: url('https://pixel77.com/wp-content/uploads/2023/08/Aesthetic-pattern-1-scaled.jpg'); background-size: cover;">
+                            <svg class="h-16 w-16" viewBox="0 0 625.75 625.75" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <style>
+                                        .cls-1-icon-misuse-4 {
+                                            fill: #d1dddd;
+                                        }
+                                    </style>
+                                </defs>
+                                <path class="cls-1-icon-misuse-4"
+                                    d="M625.75,0H0v625.75h625.75V0ZM543.41,312.87h-230.54l230.54,230.54H82.33V82.33h461.08v230.54Z" />
+                            </svg>
+                        </div>
+                        <div class="mt-4 flex items-start gap-3 text-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="flex-shrink-0 mt-1">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="m15 9-6 6" />
+                                <path d="m9 9 6 6" />
+                            </svg>
+                            <div>
+                                <h4 class="font-bold font-sora text-primary">Don't Use on Low-Contrast Backgrounds</h4>
+                                <p class="text-gray-600 text-sm mt-1">Ensure there is sufficient contrast between the
+                                    logo and the background for readability.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>
+                &copy; <span id="currentYear"></span> Reinmax Creative. All rights reserved.
+            </p>
+            <p class="text-sm">
+                Designed and Maintained by
+                <br class="md:hidden" />
+                <a href="mailto:mail@reinmaxcreative.com" class="text-secondary hover:text-blue-400">Reinmax Creative &
+                    Design Agency</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // --- CONTROL PANEL LOGIC ---
+            const mobileMenuButton = document.getElementById("mobile-menu-button");
+            const controlPanel = document.getElementById("control-panel");
+            const mainContent = document.querySelector("main");
+            const menuItems = document.querySelectorAll(".menu-item");
+
+            if (mobileMenuButton && controlPanel && mainContent) {
+                const toggleMenu = (forceClose = false) => {
+                    const isOpen = controlPanel.classList.contains("is-open");
+                    if (isOpen || forceClose) {
+                        document.body.classList.remove("overflow-hidden");
+                        mainContent.classList.remove("content-blurred");
+                        controlPanel.classList.remove("is-open");
+                        controlPanel.classList.add("opacity-0", "-translate-y-4", "scale-95");
+                        setTimeout(() => controlPanel.classList.add("pointer-events-none"), 450);
+                    } else {
+                        document.body.classList.add("overflow-hidden");
+                        mainContent.classList.add("content-blurred");
+                        controlPanel.classList.remove("pointer-events-none");
+                        requestAnimationFrame(() => {
+                            controlPanel.classList.add("is-open");
+                            controlPanel.classList.remove("opacity-0", "-translate-y-4", "scale-95");
+                        });
+                    }
+                };
+
+                mobileMenuButton.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    toggleMenu();
+                });
+
+                document.body.addEventListener("click", (e) => {
+                    if (controlPanel.classList.contains("is-open") && !controlPanel.contains(e.target)) {
+                        toggleMenu(true);
+                    }
+                });
+
+                const sections = document.querySelectorAll("section[id]");
+                const sectionObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                const activeLink = document.querySelector(`.menu-item[href="#${entry.target.id}"]`);
+                                if (activeLink) {
+                                    document.querySelector(".menu-item.active")?.classList.remove("active");
+                                    activeLink.classList.add("active");
+                                }
+                            }
+                        });
+                    }, { rootMargin: "-50% 0px -50% 0px" }
+                );
+
+                sections.forEach((section) => sectionObserver.observe(section));
+
+                menuItems.forEach((item) => {
+                    item.addEventListener("click", (e) => {
+                        const href = item.getAttribute("href");
+                        if (href && href.startsWith("#")) {
+                            e.preventDefault();
+                            const targetElement = document.querySelector(href);
+                            if (targetElement) {
+                                targetElement.scrollIntoView({ behavior: "smooth" });
+                            }
+                            setTimeout(() => toggleMenu(true), 200);
+                        }
+                    });
+                });
+            }
+
+            // --- DYNAMIC FOOTER YEAR ---
+            const yearElement = document.getElementById("currentYear");
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // --- SVG DOWNLOAD FUNCTION ---
+            window.downloadSVG = function (svgId, filename) {
+                const svgElement = document.getElementById(svgId);
+                if (!svgElement) {
+                    console.error("SVG element not found:", svgId);
+                    return;
+                }
+
+                const serializer = new XMLSerializer();
+                let source = serializer.serializeToString(svgElement);
+
+                // Add XML namespace if it's missing
+                if (!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+                    source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+                }
+
+                const blob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }
+        });
+
+        // This self-contained script powers the Interactive Asset Generator.
+        document.addEventListener('DOMContentLoaded', () => {
+            const assetCards = document.querySelectorAll('.asset-card');
+
+            // --- Core Functions ---
+            function togglePopover(popover, forceClose = false) {
+                if (forceClose || !popover.classList.contains('invisible')) {
+                    popover.classList.add('opacity-0', 'invisible', 'scale-95', '-translate-y-2');
+                } else {
+                    // Close any other open popovers first
+                    closeAllPopovers(popover);
+                    popover.classList.remove('opacity-0', 'invisible', 'scale-95', '-translate-y-2');
+                }
+            }
+
+            function closeAllPopovers(exceptThisOne = null) {
+                document.querySelectorAll('.download-popover').forEach(p => {
+                    if (p !== exceptThisOne) {
+                        p.classList.add('opacity-0', 'invisible', 'scale-95', '-translate-y-2');
+                    }
+                });
+            }
+
+            function updateSvgColor(svgElement, color) {
+                svgElement.querySelectorAll('path').forEach(path => path.setAttribute('fill', color));
+            }
+
+            function updateActiveSwatch(swatches, activeSwatch) {
+                swatches.forEach(s => s.classList.remove('ring-2', 'ring-primary', 'ring-offset-1'));
+                activeSwatch.classList.add('ring-2', 'ring-primary', 'ring-offset-1');
+            }
+
+            function formatBytes(bytes, decimals = 1) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const dm = decimals < 0 ? 0 : decimals;
+                const sizes = ['Bytes', 'KB', 'MB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+            }
+
+            // --- Download Handlers ---
+            function downloadCustomSVG(svgElement, filename, button) {
+                const originalText = button.innerHTML;
+                const serializer = new XMLSerializer();
+                let source = serializer.serializeToString(svgElement);
+                if (!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+                    source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+                }
+                const blob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
+                const fileSize = formatBytes(blob.size);
+
+                button.querySelector('.file-size').textContent = `(${fileSize})`;
+                triggerDownload(URL.createObjectURL(blob), filename);
+                setTimeout(() => { button.innerHTML = originalText; }, 2500);
+            }
+
+            function downloadCustomPNG(svgElement, filename, button, multiplier = 3) {
+                const originalText = button.innerHTML;
+                const source = new XMLSerializer().serializeToString(svgElement);
+                const image = new Image();
+                const svgBlob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+                const url = URL.createObjectURL(svgBlob);
+
+                image.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const { width, height } = svgElement.viewBox.baseVal;
+                    canvas.width = width * multiplier;
+                    canvas.height = height * multiplier;
+                    const ctx = canvas.getContext('2d');
+                    const fillColor = svgElement.querySelector('path').getAttribute('fill').toUpperCase();
+
+                    if (['#FFFFFF', '#F0F4F4'].includes(fillColor)) {
+                        ctx.fillStyle = '#CCCCCC';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    }
+
+                    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+                    const pngUrl = canvas.toDataURL('image/png');
+                    const fileSize = formatBytes(pngUrl.length * 0.75); // Estimate size from base64
+
+                    button.querySelector('.file-size').textContent = `(${fileSize})`;
+                    triggerDownload(pngUrl, filename);
+                    URL.revokeObjectURL(url);
+                    setTimeout(() => { button.innerHTML = originalText; }, 2500);
+                };
+                image.src = url;
+            }
+
+            function triggerDownload(url, filename) {
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            // --- Event Listener Setup ---
+            assetCards.forEach(card => {
+                const svgPreview = card.querySelector('svg[data-logo-id]');
+                const colorSwatches = card.querySelectorAll('.color-swatch');
+                const downloadTrigger = card.querySelector('.download-trigger');
+                const popover = card.querySelector('.download-popover');
+                const finalDownloadButtons = popover.querySelectorAll('button[data-format]');
+
+                downloadTrigger.addEventListener('click', e => {
+                    e.stopPropagation();
+                    togglePopover(popover);
+                });
+
+                colorSwatches.forEach(swatch => {
+                    swatch.addEventListener('click', () => {
+                        updateSvgColor(svgPreview, swatch.dataset.color);
+                        updateActiveSwatch(colorSwatches, swatch);
+                    });
+                });
+
+                finalDownloadButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const format = button.dataset.format;
+                        const logoId = svgPreview.dataset.logoId;
+                        const filename = `${logoId.replace('-dl', '')}.${format}`;
+
+                        if (format === 'svg') {
+                            downloadCustomSVG(svgPreview, filename, button);
+                        } else if (format === 'png') {
+                            downloadCustomPNG(svgPreview, filename, button, 3);
+                        }
+                    });
+                });
+            });
+
+            // Global click listener to close any open popover
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.download-popover') && !e.target.closest('.download-trigger')) {
+                    closeAllPopovers();
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Disable right-click on all images
+            document.querySelectorAll("img, svg").forEach(el => {
+                el.addEventListener("contextmenu", e => e.preventDefault());
+            });
+        });
+
+    </script>
+</body>
+
+</html>

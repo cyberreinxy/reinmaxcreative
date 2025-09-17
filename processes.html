@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Workflow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Sora', sans-serif;
+        }
+
+        #design-process {
+            --dp-card-bg-is-active: #e3f0f0;
+            --dp-border-color-active: #c0d8d8;
+            --dp-card-bg-default-icon: #f7fafa;
+            --primary-color: #002828;
+            --border-color: #e2e8f0;
+        }
+
+        #design-process .process-visuals {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #design-process .process-visuals:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        #design-process .process-visuals .visual-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            border-radius: 1rem;
+        }
+
+        #design-process .visual-image[data-index="-1"] {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        #design-process .visual-image.is-active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        #design-process .process-step-group {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+            background-color: #ffffff;
+        }
+
+        #design-process .process-step-group:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            border-color: var(--dp-border-color-active);
+        }
+
+        #design-process .process-step-group.is-active {
+            background-color: var(--dp-card-bg-is-active);
+            border-color: var(--dp-border-color-active);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+            transform: none;
+        }
+
+        #design-process .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        #design-process .step-icon-wrapper {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background-color: var(--dp-card-bg-default-icon);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        #design-process .process-step-group.is-active .step-icon-wrapper {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        #design-process .step-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        #design-process .process-step-group.is-active .step-icon svg {
+            color: #ffffff;
+        }
+
+        #design-process .step-title {
+            text-align: left;
+            flex-grow: 1;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+
+        #design-process .step-description-wrapper {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s ease-in-out;
+            border-top: 1px solid transparent;
+            padding: 0 1.5rem 0 calc(1.5rem + 48px + 1.5rem);
+            margin-top: 0;
+        }
+
+        #design-process .process-step-group.is-active .step-description-wrapper {
+            max-height: 200px;
+            opacity: 1;
+            border-top-color: var(--dp-border-color-active);
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        #design-process .step-description {
+            color: var(--primary-color);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* Styles for the plus/x icon */
+        #design-process .step-toggle-icon {
+            margin-left: auto;
+            width: 24px;
+            height: 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        #design-process .step-toggle-icon span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform-origin: center;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        #design-process .step-toggle-icon span:first-child {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        #design-process .step-toggle-icon span:last-child {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        #design-process .process-step-group.is-active .step-toggle-icon span:first-child {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        #design-process .process-step-group.is-active .step-toggle-icon span:last-child {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        @media (min-width: 1024px) {
+            #design-process .mobile-view {
+                display: none;
+            }
+
+            #design-process .process-scrolly-wrapper {
+                height: 550px;
+            }
+
+            #design-process .process-container {
+                display: grid;
+                grid-template-columns: 1fr 1.3fr;
+                gap: 1.5rem;
+                height: 100%;
+                align-items: flex-start;
+            }
+
+            #design-process .process-accordion {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                height: 100%;
+            }
+
+            #design-process .process-accordion .process-step-group {
+                flex-grow: 1;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            #design-process .process-scrolly-wrapper {
+                display: none;
+            }
+
+            #design-process .mobile-view {
+                display: block;
+            }
+
+            #design-process .mobile-view .process-visuals {
+                height: 0;
+                padding-bottom: 75%;
+                margin-bottom: 1.5rem;
+            }
+
+            #design-process .mobile-view .process-accordion {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Our Brand's Design Process -->
+    <section id="design-process" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary-color)]">
+                    Our Creative Workflow
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-[var(--primary-color)]">
+                    A collaborative workflow to transform your vision into an unforgettable <br>
+                    brand experience.
+                </p>
+            </div>
+
+            <!-- Desktop Layout -->
+            <div class="process-scrolly-wrapper">
+                <div class="sticky-container">
+                    <div class="process-container">
+                        <div class="process-accordion">
+                            <!-- Step 1: Writing a Creative Brief -->
+                            <div class="process-step-group" data-index="0">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path
+                                                    d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4M2 6h4m-4 4h4m-4 4h4m-4 4h4" />
+                                                <path
+                                                    d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Writing a Creative Brief</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">We begin with a deep dive into your brand, audience, and
+                                        goals to build a solid strategic foundation.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2: Conducting Research -->
+                            <div class="process-step-group" data-index="1">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path
+                                                    d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44m-2.875 6.493 4.332-.924M16 21l-3.105-6.21" />
+                                                <path
+                                                    d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455zM6.158 8.633l1.114 4.456M8 21l3.105-6.21" />
+                                                <circle cx="12" cy="13" r="2" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Conducting Research</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">Our team dives into market trends, competitor analysis,
+                                        and audience insights to inform a strong, data-driven creative strategy.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3: Concept Development -->
+                            <div class="process-step-group" data-index="2">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                                                <path
+                                                    d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                                                <path d="M9 18h6" />
+                                                <path d="M10 22h4" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Concept Development</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">We explore a range of unique ideas and creative
+                                        directions, presenting you with distinct concepts that tell your brand’s story.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Step 4: Sketching and Designing -->
+                            <div class="process-step-group" data-index="3">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z" />
+                                                <path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7m0-4h.01" />
+                                                <path
+                                                    d="m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Sketching and Designing</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">The chosen concept is brought to life. We meticulously
+                                        design and build the final assets, focusing on aesthetics and functionality.</p>
+                                </div>
+                            </div>
+                            <!-- Step 5: Client's Feedback -->
+                            <div class="process-step-group" data-index="4">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="lucide lucide-messages-square-icon lucide-messages-square">
+                                                <path
+                                                    d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                                                <path
+                                                    d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Client's Feedback</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">We present the designs to you and use your valuable
+                                        feedback to refine and perfect every detail, ensuring the final product meets
+                                        your vision.</p>
+                                </div>
+                            </div>
+                            <!-- Step 6: Final Assets Delivery -->
+                            <div class="process-step-group" data-index="5">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path
+                                                    d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2" />
+                                                <path
+                                                    d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0m1 7v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Final Assets Delivery</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">We provide all finalized, production-ready assets and a
+                                        detailed style guide, empowering your team to maintain brand consistency.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-visuals">
+                            <!-- Initial state -->
+                            <img src="https://i.ibb.co/JjL2RmtV/discovery.webp" alt="Creative Workflow"
+                                class="visual-image" data-index="-1">
+
+                            <!-- Hardcoded images for each step -->
+                            <img src="https://i.ibb.co/JjL2RmtV/discovery.webp" alt="Creative Brief"
+                                class="visual-image" data-index="0">
+                            <img src="https://i.ibb.co/5g6SP435/sketching.webp" alt="Research" class="visual-image"
+                                data-index="1">
+                            <img src="https://i.ibb.co/JLR8YPP/logo-design.webp" alt="Concept Development"
+                                class="visual-image" data-index="2">
+                            <img src="https://i.ibb.co/TBTKmYBc/launch.webp" alt="Sketching" class="visual-image"
+                                data-index="3">
+                            <img src="https://i.ibb.co/TBTKmYBc/launch.webp" alt="Feedback" class="visual-image"
+                                data-index="4">
+                            <img src="https://i.ibb.co/TBTKmYBc/launch.webp" alt="Delivery" class="visual-image"
+                                data-index="5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Layout -->
+            <div class="mobile-view">
+                <div class="process-visuals">
+                    <!-- Initial state -->
+                    <img src="https://i.ibb.co/JjL2RmtV/discovery.webp" alt="Creative Workflow" class="visual-image"
+                        data-index="-1">
+
+                    <!-- Hardcoded images for each step -->
+                    <img src="https://i.ibb.co/JjL2RmtV/discovery.webp" alt="Creative Brief" class="visual-image"
+                        data-index="0">
+                    <img src="https://i.ibb.co/5g6SP435/sketching.webp" alt="Research" class="visual-image"
+                        data-index="1">
+                    <img src="https://i.ibb.co/JLR8YPP/logo-design.webp" alt="Concept Development" class="visual-image"
+                        data-index="2">
+                    <img src="https://i.ibb.co/TBTKmYBc/launch.webp" alt="Sketching" class="visual-image"
+                        data-index="3">
+                    <img src="https://i.ibb.co/TBTKmYBc/launch.webp" alt="Feedback" class="visual-image" data-index="4">
+                    <img src="https://i.ibb.co/TBTKmYBc/launch.webp" alt="Delivery" class="visual-image" data-index="5">
+                </div>
+                <div class="process-accordion">
+                    <!-- Step 1: Writing a Creative Brief -->
+                    <div class="process-step-group" data-index="0">
+                        <div class="step-header">
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4M2 6h4m-4 4h4m-4 4h4m-4 4h4" />
+                                        <path
+                                            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="step-title">Writing a Creative Brief</span>
+                            <div class="step-toggle-icon"><span></span><span></span></div>
+                        </div>
+                        <div class="step-description-wrapper">
+                            <p class="step-description">We begin with a deep dive into your brand, audience, and goals
+                                to build a solid strategic foundation.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2: Conducting Research -->
+                    <div class="process-step-group" data-index="1">
+                        <div class="step-header">
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44m-2.875 6.493 4.332-.924M16 21l-3.105-6.21" />
+                                        <path
+                                            d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455zM6.158 8.633l1.114 4.456M8 21l3.105-6.21" />
+                                        <circle cx="12" cy="13" r="2" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="step-title">Conducting Research</span>
+                            <div class="step-toggle-icon"><span></span><span></span></div>
+                        </div>
+                        <div class="step-description-wrapper">
+                            <p class="step-description">Our team dives into market trends, competitor analysis, and
+                                audience insights to inform a strong, data-driven creative strategy.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3: Concept Development -->
+                    <div class="process-step-group" data-index="2">
+                        <div class="step-header">
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                                        <path
+                                            d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                                        <path d="M9 18h6" />
+                                        <path d="M10 22h4" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="step-title">Concept Development</span>
+                            <div class="step-toggle-icon"><span></span><span></span></div>
+                        </div>
+                        <div class="step-description-wrapper">
+                            <p class="step-description">We explore a range of unique ideas and creative directions,
+                                presenting you with distinct concepts that tell your brand’s story.</p>
+                        </div>
+                    </div>
+                    <!-- Step 4: Sketching and Designing -->
+                    <div class="process-step-group" data-index="3">
+                        <div class="step-header">
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z" />
+                                        <path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7m0-4h.01" />
+                                        <path
+                                            d="m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="step-title">Sketching and Designing</span>
+                            <div class="step-toggle-icon"><span></span><span></span></div>
+                        </div>
+                        <div class="step-description-wrapper">
+                            <p class="step-description">The chosen concept is brought to life. We meticulously design
+                                and build the final assets, focusing on aesthetics and functionality.</p>
+                        </div>
+                    </div>
+                    <!-- Step 5: Client's Feedback -->
+                    <div class="process-step-group" data-index="4">
+                        <div class="step-header">
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="lucide lucide-messages-square-icon lucide-messages-square">
+                                        <path
+                                            d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                                        <path
+                                            d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="step-title">Client's Feedback</span>
+                            <div class="step-toggle-icon"><span></span><span></span></div>
+                        </div>
+                        <div class="step-description-wrapper">
+                            <p class="step-description">We present the designs to you and use your valuable feedback to
+                                refine and perfect every detail, ensuring the final product meets your vision.</p>
+                        </div>
+                    </div>
+                    <!-- Step 6: Final Assets Delivery -->
+                    <div class="process-step-group" data-index="5">
+                        <div class="step-header">
+                            <div class="step-icon-wrapper">
+                                <div class="step-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2" />
+                                        <path
+                                            d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0m1 7v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="step-title">Final Assets Delivery</span>
+                            <div class="step-toggle-icon"><span></span><span></span></div>
+                        </div>
+                        <div class="step-description-wrapper">
+                            <p class="step-description">We provide all finalized, production-ready assets and a detailed
+                                style guide, empowering your team to maintain brand consistency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const designProcessSection = document.getElementById('design-process');
+            if (!designProcessSection) return;
+
+            const allSteps = designProcessSection.querySelectorAll('.process-step-group');
+            let currentActiveIndex = -1;
+            let resizeTimeout;
+
+            function setActiveState(index) {
+                allSteps.forEach(step => step.classList.remove('is-active'));
+                designProcessSection.querySelectorAll('.visual-image').forEach(img => img.classList.remove('is-active'));
+
+                if (index !== -1) {
+                    designProcessSection.querySelectorAll(`.process-step-group[data-index="${index}"]`).forEach(step => {
+                        step.classList.add('is-active');
+                    });
+                    designProcessSection.querySelectorAll(`.visual-image[data-index="${index}"]`).forEach(img => {
+                        img.classList.add('is-active');
+                    });
+                } else {
+                    designProcessSection.querySelectorAll('.visual-image[data-index="-1"]').forEach(img => {
+                        img.classList.add('is-active');
+                    });
+                }
+                currentActiveIndex = index;
+            }
+
+            function handleStepClick(e) {
+                const clickedIndex = parseInt(e.currentTarget.dataset.index);
+                const newIndex = (clickedIndex === currentActiveIndex) ? -1 : clickedIndex;
+                setActiveState(newIndex);
+            }
+
+            function handleResize() {
+                // Reset the view to default state on resize
+                setActiveState(-1);
+            }
+
+            // Initial setup
+            setActiveState(-1);
+
+            allSteps.forEach(step => {
+                step.addEventListener('click', handleStepClick);
+            });
+
+            document.addEventListener('click', function (e) {
+                if (currentActiveIndex !== -1 && !e.target.closest('#design-process')) {
+                    setActiveState(-1);
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(handleResize, 200);
+            });
+        });
+    </script>
+</body>
+
+</html>

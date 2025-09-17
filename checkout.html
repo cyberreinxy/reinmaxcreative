@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Checkout for Reinmax Creative Academy courses." />
+    <meta name="author" content="Reinmax Creative" />
+
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/svg+xml"
+        href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755780121/logo-icon.svg" />
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755779994/favicon.ico"
+        type="image/x-icon" />
+
+    <title>Checkout | Reinmax Creative</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#002828",
+                        secondary: "#99cccc",
+                        tertiary: "#003333",
+                    },
+                    fontFamily: {
+                        sora: ["Sora", "sans-serif"],
+                        mono: ["Inconsolata", "monospace"],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- Helper Libraries -->
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: 'Sora', sans-serif;
+        }
+
+        .form-input,
+        .form-select {
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            border-color: #99cccc;
+            box-shadow: 0 0 0 3px rgba(153, 204, 204, 0.4);
+            outline: none;
+        }
+
+        .form-input.invalid {
+            border-color: #ef4444;
+        }
+
+        .form-input.invalid:focus {
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.4);
+        }
+
+        .form-input-container:focus-within .input-icon {
+            color: #002828;
+        }
+
+        .payment-option {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .payment-option.selected {
+            border-color: #002828;
+            background-color: #e9edee;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .loader {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #add-course-list {
+            transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s;
+            transform-origin: bottom center;
+        }
+
+        #add-course-list.hidden {
+            opacity: 0;
+            transform: scale(0.95) translateY(10px);
+            visibility: hidden;
+        }
+
+        .modal-enter,
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .modal-leave,
+        .fade-out {
+            animation: fadeOut 0.3s ease-in forwards;
+        }
+
+        .modal-content-enter {
+            animation: scaleIn 0.3s ease-out forwards;
+        }
+
+        .modal-content-leave {
+            animation: scaleOut 0.3s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes scaleOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased text-gray-800">
+
+    <!-- YOUR HEADER CODE HERE -->
+    <!-- This space is reserved for your website's header and navigation. -->
+
+    <main id="checkout-page" class="container mx-auto px-6 py-12 md:py-16">
+        <!-- JS will generate the content here -->
+    </main>
+
+    <div id="payment-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div id="modal-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div id="modal-content" class="relative bg-white w-full max-w-md p-8 rounded-2xl shadow-xl">
+            <!-- Modal Content will be injected by JS -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const allCourses = {
+                'illustrator': { id: 'illustrator', name: 'Adobe Illustrator', price: 60000, image: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg' },
+                'photoshop': { id: 'photoshop', name: 'Adobe Photoshop', price: 50000, image: 'https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg' },
+                'figma': { id: 'figma', name: 'Figma', price: 55000, image: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' }
+            };
+
+            let cart = [];
+            let hasPaid = false;
+            let selectedPaymentMethod = null;
+
+            const checkoutPage = document.getElementById('checkout-page');
+            const paymentModal = document.getElementById('payment-modal');
+            const modalBackdrop = document.getElementById('modal-backdrop');
+            const modalContent = document.getElementById('modal-content');
+
+            function saveCartToLocalStorage() { localStorage.setItem('reinmaxCart', JSON.stringify(cart.map(item => item.id))); }
+            function loadCartFromLocalStorage() {
+                const savedCartIds = JSON.parse(localStorage.getItem('reinmaxCart') || '[]');
+                cart = savedCartIds.map(id => allCourses[id]).filter(Boolean);
+            }
+
+            function addCourseToCart(courseId) {
+                if (courseId && allCourses[courseId] && !cart.find(c => c.id === courseId)) {
+                    cart.push(allCourses[courseId]);
+                    saveCartToLocalStorage();
+                    renderOrderSummary();
+                }
+            }
+
+            function removeCourseFromCart(courseId) {
+                cart = cart.filter(course => course.id !== courseId);
+                saveCartToLocalStorage();
+                if (cart.length === 0) renderEmptyStatePage();
+                else renderOrderSummary();
+            }
+
+            function renderEmptyStatePage() {
+                checkoutPage.innerHTML = `<div class="text-center max-w-lg mx-auto bg-white p-12 rounded-2xl shadow-lg mt-16"><h1 class="text-3xl font-bold text-primary mb-4">Your Cart is Empty</h1><p class="text-gray-600 mb-8">Please select a course to begin the enrollment process.</p><a href="index.html#plans" class="inline-block bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-tertiary transition-colors">View Courses</a></div>`;
+            }
+
+            function renderOrderSummary() {
+                const summaryContainer = document.getElementById('order-summary-content');
+                if (!summaryContainer) return;
+                const cartItemsEl = summaryContainer.querySelector('#cart-items'), subtotalEl = summaryContainer.querySelector('#subtotal'), discountRow = summaryContainer.querySelector('#discount-row'), discountAmountEl = summaryContainer.querySelector('#discount-amount'), totalEl = summaryContainer.querySelector('#total'), addCourseContainer = summaryContainer.querySelector('#add-course-container'), discountInfo = summaryContainer.querySelector('#discount-info');
+                cartItemsEl.innerHTML = ''; let subtotal = 0;
+                cart.forEach(course => {
+                    subtotal += course.price;
+                    cartItemsEl.insertAdjacentHTML('beforeend', `<div class="flex items-center justify-between py-3"><div class="flex items-center space-x-4"><img src="${course.image}" alt="${course.name} Logo" class="w-12 h-12 object-contain bg-gray-100 p-1 rounded-md"><div><h4 class="font-semibold text-primary">${course.name}</h4><p class="text-sm text-gray-500">${course.price.toLocaleString('en-US')} TZS</p></div></div><button title="Remove Course" class="remove-item-btn text-gray-400 hover:text-red-500 transition-colors" data-course-id="${course.id}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button></div>`);
+                });
+                let discount = cart.length >= 2 ? subtotal * 0.08 : 0;
+                discountRow.classList.toggle('hidden', discount === 0);
+                discountAmountEl.textContent = `- ${discount.toLocaleString('en-US')} TZS`;
+                discountInfo.classList.toggle('hidden', !(cart.length === 1 && Object.keys(allCourses).length > 1));
+                const finalTotal = subtotal - discount;
+                subtotalEl.textContent = `${subtotal.toLocaleString('en-US')} TZS`;
+                totalEl.textContent = `${finalTotal.toLocaleString('en-US')} TZS`;
+                const availableCourses = Object.values(allCourses).filter(c => !cart.some(cartItem => cartItem.id === c.id));
+                addCourseContainer.style.display = availableCourses.length > 0 ? 'block' : 'none';
+                if (availableCourses.length > 0) addCourseContainer.innerHTML = `<div class="relative"><button type="button" id="add-course-button" class="w-full flex items-center justify-center space-x-2 text-sm font-medium text-gray-600 bg-white hover:bg-gray-100 rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg><span>Add another course</span></button><ul id="add-course-list" class="absolute bottom-full mb-2 w-full bg-white rounded-lg shadow-xl border border-gray-200 p-1.5 hidden z-10">${availableCourses.map(course => `<li><button type="button" data-course-id="${course.id}" class="add-course-item block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors">${course.name}</button></li>`).join('')}</ul></div>`;
+
+                addDynamicElementListeners();
+            }
+
+            function renderCheckoutPage() {
+                checkoutPage.innerHTML = `<div class="max-w-6xl mx-auto"><div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start"><div id="form-container" class="bg-white p-8 rounded-2xl shadow-lg lg:col-span-3 order-2 lg:order-1">${renderFormContent()}</div><div class="order-1 lg:order-2 lg:col-span-2"><div id="order-summary-content" class="bg-card-bg p-8 rounded-2xl shadow-lg h-fit lg:sticky lg:top-8"><h2 class="text-xl font-bold text-primary mb-4 border-b border-gray-200 pb-4">Order Summary</h2><div id="cart-items" class="divide-y divide-gray-200"></div><div id="discount-info" class="mt-4 p-3 bg-green-50 text-green-700 text-sm text-center rounded-lg hidden">Add another course for a <strong>8% discount!</strong></div><div id="add-course-container" class="mt-4 pt-4 border-t border-gray-200"></div><div class="mt-6 pt-6 border-t border-gray-200 space-y-3"><div class="flex justify-between items-center text-gray-600"><span>Subtotal</span><span id="subtotal" class="font-mono"></span></div><div id="discount-row" class="flex justify-between items-center text-green-600 hidden"><span>Volume Discount (8%)</span><span id="discount-amount" class="font-mono"></span></div><div class="flex justify-between items-center font-bold text-2xl"><span class="text-primary">Total</span><span id="total" class="text-primary font-mono"></span></div></div><div class="text-center mt-6"><a href="index.html#plans" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors inline-flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>Not ready? Go back</span></a></div></div></div></div></div>`;
+                addFormAndPaymentListeners();
+            }
+
+            function renderFormContent() {
+                return `<div id="form-content"><h1 class="text-3xl font-bold text-primary mb-6">Enrollment Details</h1><form id="checkout-form" novalidate><div class="space-y-5"><div><label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label><div class="relative form-input-container"><div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon text-gray-400 transition-colors"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><input type="text" id="fullName" name="fullName" required class="form-input block w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 sm:text-sm"></div><p id="fullName-error" class="text-red-500 text-xs mt-1 h-4"></p></div><div><label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label><div class="relative form-input-container"><div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon text-gray-400 transition-colors"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><input type="email" id="email" name="email" required class="form-input block w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 sm:text-sm"></div><p id="email-error" class="text-red-500 text-xs mt-1 h-4"></p></div><div><label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label><div class="relative form-input-container"><div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon text-gray-400 transition-colors"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><input type="tel" id="phone" name="phone" required class="form-input block w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 sm:text-sm"></div><p id="phone-error" class="text-red-500 text-xs mt-1 h-4"></p></div></div><div class="mt-8"><h2 class="text-lg font-semibold text-primary mb-4">Payment Method</h2><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="payment-option border-2 border-gray-300 p-4 rounded-lg cursor-pointer flex items-center justify-between" data-payment="mobile"><div class="flex items-center space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg><span class="font-medium">Mobile Money</span></div><div class="payment-check"></div></div><div class="payment-option border-2 border-gray-300 p-4 rounded-lg cursor-pointer flex items-center justify-between" data-payment="bank"><div class="flex items-center space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg><span class="font-medium">Bank Transfer</span></div><div class="payment-check"></div></div></div></div><div id="transaction-id-container" class="mt-6 hidden"><div><label for="transactionId" class="block text-sm font-medium text-gray-700 mb-1">Payment Transaction ID</label><div class="relative form-input-container"><div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon text-gray-400 transition-colors"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></div><input type="text" id="transactionId" name="transactionId" class="form-input block w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 sm:text-sm" placeholder="e.g. 9TP3820PL1A"></div><p id="transactionId-error" class="text-red-500 text-xs mt-1 h-4"></p></div></div><div class="mt-8 pt-6 border-t border-gray-200"><div id="h-captcha-container" class="h-captcha" data-sitekey="f4784f50-0b2c-4c52-ac6a-a61a4fd457fa"></div><p id="captcha-error" class="text-red-500 text-xs mt-1 h-4"></p></div><div class="mt-6"><p class="text-xs text-center text-gray-500 mb-4">By clicking 'Complete Enrollment', you agree to our <a href="#" class="text-tertiary hover:underline font-medium">Terms & Conditions</a>.</p><button type="submit" id="submit-button" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-primary hover:bg-tertiary transition-all duration-300"><span>Complete Enrollment</span></button></div><p id="form-message" class="text-center text-sm mt-4 h-5"></p></form></div></div>`;
+            }
+
+            function renderReceiptCard(data) {
+                const formContainer = document.getElementById('form-container');
+                const paymentStatus = data.paid ? `<div class="inline-flex items-center space-x-2 text-green-700 bg-green-100 py-1.5 px-3 rounded-full text-sm font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Paid</span></div>` : `<div class="inline-flex items-center space-x-2 text-amber-700 bg-amber-100 py-1.5 px-3 rounded-full text-sm font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6"/><path d="M12 16h.01"/></svg><span>Pending</span></div>`;
+                formContainer.innerHTML = `<div id="receipt-wrapper" class="fade-in"><div id="receipt-content" class="bg-white p-8 rounded-2xl border border-gray-200 shadow-lg"><header class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-gray-200"><div><svg data-logo-id="logo-icon-dl" class="h-16 w-16 mb-4 sm:mb-0" viewBox="0 0 625.75 625.75" xmlns="http://www.w3.org/2000/svg"><path fill="#002828" d="M625.75 0H0v625.75h625.75V0ZM543.41 312.87h-230.54l230.54 230.54H82.33V82.33h461.08v230.54Z"/></svg></div><div class="text-left sm:text-right"><h1 class="text-3xl font-bold text-primary">Enrollment Receipt</h1><p class="text-gray-500 font-mono text-sm mt-1">${data.enrollmentId}</p></div></header><section class="grid grid-cols-1 sm:grid-cols-2 gap-8 my-8"><div><h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Billed To</h2><p class="font-bold text-lg mt-1 text-gray-800">${data.fullName}</p><p class="text-gray-600">${data.email}</p></div><div class="text-left sm:text-right"><h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Payment Details</h2><div class="mt-1">${paymentStatus}</div>${data.paid ? `<p class="text-gray-500 mt-2 text-xs">Transaction ID: <span class="font-semibold text-gray-800 font-mono">${data.transactionId}</span></p>` : ''}</div></section><section id="order-summary-receipt"><h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Order Summary</h2><ul role="list" class="divide-y divide-gray-200 border-t border-b">${data.items.map(item => `<li class="py-3 flex justify-between items-center text-md"><p class="font-medium text-gray-800">${item.name}</p><p class="font-mono text-gray-700">${item.price}</p></li>`).join('')}</ul></section><section class="mt-6 flex flex-col sm:flex-row justify-between items-start gap-6"><div id="qrcode-container" class="bg-white p-2 border rounded-lg"></div><div class="w-full sm:w-auto text-right space-y-3 flex-grow"><div class="flex justify-between items-center text-gray-600"><span>Subtotal</span><span class="font-mono">${data.subtotal}</span></div><div class="flex justify-between items-center text-gray-600"><span>Discount</span><span class="font-mono">${data.discount}</span></div><div class="flex justify-between items-center font-bold text-2xl border-t pt-3 mt-2"><span class="text-primary">Total Paid</span><span class="font-mono text-primary">${data.total}</span></div></div></section><footer class="text-center mt-10 pt-6 border-t border-dashed"><p class="text-lg font-semibold text-primary">Thank You for Enrolling!</p><p class="text-sm text-gray-500 mt-1">For support, contact us at support@reinmax.com</p></footer></div></div><div class="mt-8 text-center"><button id="download-pdf-btn" class="w-full sm:w-auto inline-flex justify-center items-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-md font-bold text-white bg-primary hover:bg-tertiary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg><span>Download as PDF</span></button></div>`;
+                new QRCode(document.getElementById("qrcode-container"), { text: data.enrollmentId, width: 90, height: 90, colorDark: "#002828", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
+                document.getElementById('download-pdf-btn').addEventListener('click', () => {
+                    const { jsPDF } = window.jspdf;
+                    const receiptElement = document.getElementById('receipt-content');
+                    html2canvas(receiptElement, { scale: 2, backgroundColor: null }).then(canvas => {
+                        const imgData = canvas.toDataURL('image/png');
+                        const pdf = new jsPDF('p', 'mm', 'a4');
+                        const pdfWidth = pdf.internal.pageSize.getWidth() - 20;
+                        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+                        pdf.addImage(imgData, 'PNG', 10, 10, pdfWidth, pdfHeight);
+                        pdf.save(`Reinmax-Receipt-${data.enrollmentId}.pdf`);
+                    });
+                });
+            }
+
+            function showPaymentModal(method, totalAmount) {
+                const isMobile = method === 'mobile';
+                const title = isMobile ? 'Mobile Money Payment' : 'Bank Transfer Payment';
+                const details = isMobile ? `<p class="text-gray-600">Please send <strong class="text-tertiary">${totalAmount}</strong> to:</p><p class="my-4 text-2xl font-bold text-center text-primary bg-gray-100 p-3 rounded-lg font-mono">0678 700 731</p><p class="text-sm text-gray-500">Networks: Tigo Pesa, M-Pesa, Airtel Money.</p>` : `<p class="text-gray-600">Please transfer <strong class="text-tertiary">${totalAmount}</strong> to:</p><div class="my-4 text-left text-primary bg-gray-100 p-4 rounded-lg space-y-2 text-md"><p><strong>Bank:</strong> CRDB Bank</p><p><strong>Name:</strong> Reinmax Creative</p><p class="font-mono"><strong>Account:</strong> 1234 5678 9012</p></div>`;
+                modalContent.innerHTML = `<h2 class="text-2xl font-bold text-primary mb-4">${title}</h2>${details}<div class="mt-8 pt-6 border-t border-gray-200"><p class="text-center font-medium mb-4">After sending, confirm below.</p><div class="flex space-x-4"><button id="paid-button" class="w-full py-2 px-4 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors">I Have Paid</button><button id="not-paid-button" class="w-full py-2 px-4 rounded-lg bg-gray-200 text-gray-800 font-semibold hover:bg-gray-300 transition-colors">I Will Pay Later</button></div></div>`;
+                paymentModal.classList.remove('hidden'); paymentModal.classList.add('flex', 'modal-enter'); modalContent.classList.add('modal-content-enter');
+                const transactionContainer = document.getElementById('transaction-id-container'), transactionInput = document.getElementById('transactionId');
+                document.getElementById('paid-button').addEventListener('click', () => { hasPaid = true; transactionContainer.classList.remove('hidden'); transactionContainer.classList.add('fade-in'); transactionInput.required = true; closePaymentModal(); });
+                document.getElementById('not-paid-button').addEventListener('click', () => { hasPaid = false; transactionContainer.classList.add('hidden'); transactionInput.required = false; transactionInput.value = ''; closePaymentModal(); });
+            }
+
+            function closePaymentModal() {
+                paymentModal.classList.add('modal-leave'); modalContent.classList.add('modal-content-leave');
+                setTimeout(() => { paymentModal.classList.add('hidden'); paymentModal.classList.remove('flex', 'modal-enter', 'modal-leave'); modalContent.classList.remove('modal-content-enter', 'modal-content-leave'); }, 300);
+            }
+            modalBackdrop.addEventListener('click', closePaymentModal);
+
+            function addFormAndPaymentListeners() {
+                const form = document.getElementById('checkout-form');
+                const inputs = { fullName: form.querySelector('#fullName'), email: form.querySelector('#email'), phone: form.querySelector('#phone'), transactionId: form.querySelector('#transactionId') };
+                const errors = { fullName: form.querySelector('#fullName-error'), email: form.querySelector('#email-error'), phone: form.querySelector('#phone-error'), captcha: form.querySelector('#captcha-error'), transactionId: form.querySelector('#transactionId-error') };
+                const paymentOptions = document.querySelectorAll('.payment-option');
+                const checkmarkSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`;
+
+                function validateField(field) {
+                    let isValid = true; errors[field].textContent = ''; inputs[field].classList.remove('invalid');
+                    switch (field) {
+                        case 'fullName': if (inputs.fullName.value.trim() === '') { errors.fullName.textContent = 'Full name is required.'; isValid = false; } break;
+                        case 'email': if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputs.email.value)) { errors.email.textContent = 'Please enter a valid email address.'; isValid = false; } break;
+                        case 'phone': if (!/^\+?[0-9\s-()]{10,}$/.test(inputs.phone.value)) { errors.phone.textContent = 'Please enter a valid phone number.'; isValid = false; } break;
+                        case 'transactionId': if (inputs.transactionId.required && inputs.transactionId.value.trim() === '') { errors.transactionId.textContent = 'Transaction ID is required.'; isValid = false; } break;
+                    }
+                    if (!isValid) inputs[field].classList.add('invalid'); return isValid;
+                }
+
+                function validateHCaptcha() {
+                    const hcaptchaResponse = form.querySelector('[name="h-captcha-response"]')?.value;
+                    if (!hcaptchaResponse || hcaptchaResponse.trim() === '') {
+                        errors.captcha.textContent = 'Please complete the security check.';
+                        return false;
+                    }
+                    errors.captcha.textContent = '';
+                    return true;
+                }
+
+                Object.keys(inputs).forEach(key => inputs[key] && inputs[key].addEventListener('input', () => validateField(key)));
+
+                paymentOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        paymentOptions.forEach(opt => { opt.classList.remove('selected'); opt.querySelector('.payment-check').innerHTML = ''; });
+                        option.classList.add('selected'); selectedPaymentMethod = option.dataset.payment;
+                        option.querySelector('.payment-check').innerHTML = checkmarkSVG;
+                        showPaymentModal(option.dataset.payment, document.getElementById('total').textContent);
+                    });
+                });
+
+                document.addEventListener('click', (e) => { const list = document.getElementById('add-course-list'); if (list && !list.classList.contains('hidden') && !e.target.closest('#add-course-container')) list.classList.add('hidden'); });
+
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault(); const formMessage = document.getElementById('form-message'); formMessage.textContent = '';
+                    const areInputsValid = Object.keys(inputs).reduce((acc, key) => inputs[key] ? validateField(key) && acc : acc, true);
+                    const isCaptchaValid = validateHCaptcha();
+
+                    if (!selectedPaymentMethod) { formMessage.textContent = 'Please select a payment method.'; formMessage.style.color = 'red'; return; }
+                    if (!areInputsValid || !isCaptchaValid) { formMessage.textContent = 'Please correct the errors above.'; formMessage.style.color = 'red'; return; }
+
+                    const submitButton = document.getElementById('submit-button'); submitButton.disabled = true; submitButton.innerHTML = `<div class="loader"></div>`;
+                    setTimeout(() => {
+                        enrollmentData = {
+                            fullName: inputs.fullName.value, email: inputs.email.value, enrollmentId: 'RC-' + Date.now().toString().slice(-8),
+                            transactionId: inputs.transactionId.value.trim().toUpperCase(), total: document.getElementById('total').textContent,
+                            subtotal: document.getElementById('subtotal').textContent, discount: cart.length >= 2 ? document.getElementById('discount-amount').textContent : 'N/A', paid: hasPaid,
+                            items: cart.map(c => ({ name: c.name, price: c.price.toLocaleString('en-US') + ' TZS' }))
+                        };
+                        document.getElementById('form-content').classList.add('fade-out');
+                        setTimeout(() => renderReceiptCard(enrollmentData), 300);
+                        localStorage.removeItem('reinmaxCart');
+                    }, 1500);
+                });
+            }
+
+            function addDynamicElementListeners() {
+                const summaryContainer = document.getElementById('order-summary-content');
+                if (!summaryContainer) return;
+
+                summaryContainer.querySelectorAll('.remove-item-btn').forEach(btn => {
+                    btn.addEventListener('click', () => removeCourseFromCart(btn.dataset.courseId));
+                });
+
+                const addCourseButton = document.getElementById('add-course-button');
+                const addCourseList = document.getElementById('add-course-list');
+
+                if (addCourseButton && addCourseList) {
+                    addCourseButton.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        addCourseList.classList.toggle('hidden');
+                    });
+
+                    addCourseList.querySelectorAll('.add-course-item').forEach(item => {
+                        item.addEventListener('click', () => {
+                            addCourseToCart(item.dataset.courseId);
+                            addCourseList.classList.add('hidden');
+                        });
+                    });
+                }
+            }
+
+
+            function initializePage() {
+                const params = new URLSearchParams(window.location.search);
+                const initialCourseId = params.get('course');
+                loadCartFromLocalStorage();
+                if (initialCourseId && !cart.some(c => c.id === initialCourseId)) {
+                    if (allCourses[initialCourseId]) {
+                        cart.push(allCourses[initialCourseId]); saveCartToLocalStorage();
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                    }
+                }
+                if (cart.length > 0) { renderCheckoutPage(); renderOrderSummary(); }
+                else { renderEmptyStatePage(); }
+            }
+            initializePage();
+        });
+    </script>
+</body>
+
+</html>
