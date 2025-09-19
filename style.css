@@ -48,79 +48,107 @@ body.overflow-hidden {
 
 /*
  * =============================================
- *  2. NAVIGATION CONTROL PANEL
+ *  2. NAVIGATION CONTROL PANEL - ANIMATIONS
  * =============================================
  */
 
-#control-panel {
-  will-change: transform, opacity;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
-}
+/* 1. Base State & Closing Transition
+ * ------------------------------------------- */
 
-/* Defines the "spring-in" animation for menu items on open. */
-@keyframes menu-item-spring-in {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  70% {
-    opacity: 1;
-    transform: translateY(-5px) scale(1.05); /* Overshoots to create a bounce. */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1); /* Settles in final position. */
-  }
-}
-
-/* Base state for menu items. The transition here handles the smooth closing animation. */
+/* This defines the default hidden state for menu items.
+ * The 'transition' property ensures they animate out smoothly and efficiently
+ * when the .is-open class is removed from the parent panel.
+ * The 'will-change' property is a key performance optimization, telling the
+ * browser to prepare for animation on these properties. */
 .menu-item {
   opacity: 0;
   will-change: transform, opacity;
-  transform: translateY(16px) scale(0.98);
-  transition: transform 0.35s cubic-bezier(0.5, 0, 0.2, 1), opacity 0.25s linear;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.4s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    opacity 0.3s linear;
 }
 
-/*
- * Triggers the spring-in animation when the panel is opened.
- * The opacity and transform are explicitly reset here to guarantee the animation
- * always starts from the keyframe's 0% state, preserving the original effect.
- */
+/* 2. Opening Animation Keyframes
+ * ------------------------------------------- */
 
+/* Defines a simple, clean, and highly performant "fade-in-up" effect.
+ * By avoiding complex movements, we ensure maximum smoothness. */
+@keyframes menu-item-fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 3. Animation Trigger
+ * ------------------------------------------- */
+
+/* When the control panel is open, this applies the animation to each menu item. */
 #control-panel.is-open .menu-item {
+  /* Reset opacity and transform to the starting state of the keyframes.
+   * This guarantees the animation runs correctly every single time. */
   opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  animation: menu-item-spring-in 0.6s cubic-bezier(0.22, 1.2, 0.54, 1.05)
-    forwards;
+  transform: translateY(20px) scale(0.98);
+
+  /* Apply the animation.
+   * - Duration: 0.6s is long enough to feel graceful but quick enough for responsiveness.
+   * - Easing: cubic-bezier(0.23, 1, 0.32, 1) is a very smooth "ease-out" curve.
+   * - Forwards: Ensures the item stays in its final visible state after animating. */
+  animation: menu-item-fade-in-up 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
-/* Staggered animation delay for the "wave" effect on open. */
+/* 4. Staggered Delay for "Cascade" Effect
+ * ------------------------------------------- */
+
+/* A subtle delay on each subsequent item creates an elegant cascade effect. */
 #control-panel.is-open .menu-item:nth-child(1) {
   animation-delay: 0.08s;
 }
 #control-panel.is-open .menu-item:nth-child(2) {
-  animation-delay: 0.1s;
-}
-#control-panel.is-open .menu-item:nth-child(3) {
   animation-delay: 0.12s;
 }
-#control-panel.is-open .menu-item:nth-child(4) {
-  animation-delay: 0.14s;
-}
-#control-panel.is-open .menu-item:nth-child(5) {
+#control-panel.is-open .menu-item:nth-child(3) {
   animation-delay: 0.16s;
 }
+#control-panel.is-open .menu-item:nth-child(4) {
+  animation-delay: 0.2s;
+}
+#control-panel.is-open .menu-item:nth-child(5) {
+  animation-delay: 0.24s;
+}
 #control-panel.is-open .menu-item:nth-child(6) {
-  animation-delay: 0.18s;
+  animation-delay: 0.28s;
 }
 #control-panel.is-open .menu-item:nth-child(7) {
-  animation-delay: 0.2s;
+  animation-delay: 0.32s;
+}
+#control-panel.is-open .menu-item:nth-child(8) {
+  animation-delay: 0.36s;
+}
+#control-panel.is-open .menu-item:nth-child(9) {
+  animation-delay: 0.4s;
+}
+#control-panel.is-open .menu-item:nth-child(10) {
+  animation-delay: 0.44s;
+}
+#control-panel.is-open .menu-item:nth-child(11) {
+  animation-delay: 0.48s;
+}
+#control-panel.is-open .menu-item:nth-child(12) {
+  animation-delay: 0.52s;
 }
 /* ...add more if needed */
 
+/* This rule applies the active state colors to the icon background. */
 .menu-item.active .icon-bg {
   background-color: var(--secondary-color);
   color: var(--primary-color);
+  transform: scale(1.1); /* Optional: a subtle scale to make it pop */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 /*
@@ -273,13 +301,25 @@ section[id] {
 
 /*
  * =============================================
- *  7. CREATIVE WORKFLOW (DESIGN PROCESS)
+ *  7. CREATIVE WORKFLOW
  * =============================================
  */
 #design-process {
   --dp-card-bg-is-active: #e5f0f0;
   --dp-border-color-active: #c0d8d8;
   --dp-card-bg-default-icon: #f7fafa;
+  --primary-color: #002828;
+  --border-color: #e2e8f0;
+}
+
+/* Process Visuals */
+#design-process .process-visuals {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 #design-process .process-visuals .visual-image {
@@ -292,62 +332,156 @@ section[id] {
   opacity: 0;
   transform: scale(1.05);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  border-radius: 1rem;
 }
 
-#design-process .visual-image.is-active,
-#design-process .visual-image[data-index="-1"] {
+#design-process .visual-image[data-index="-1"],
+#design-process .visual-image.is-active {
   opacity: 1;
   transform: scale(1);
 }
 
+/* Process Step Groups */
 #design-process .process-step-group {
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--border-color);
   border-radius: 1rem;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   -webkit-tap-highlight-color: transparent;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
+}
+
+.process-accordion.has-active-step .process-step-group:not(.is-active):hover {
+  opacity: 1;
+  border-color: var(--dp-border-color-active);
 }
 
 #design-process .process-step-group.is-active {
   background-color: var(--dp-card-bg-is-active);
   border-color: var(--dp-border-color-active);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+  opacity: 1;
 }
 
+/* Step Header */
+#design-process .step-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+/* Step Icon */
+#design-process .step-icon-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--dp-card-bg-default-icon);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+
+  /* Smooth transition for color changes */
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Active state */
 #design-process .process-step-group.is-active .step-icon-wrapper {
   background-color: var(--tertiary-color);
   border-color: var(--tertiary-color);
 }
+
+#design-process .step-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+  transition: color 0.05s ease;
+}
+
 #design-process .process-step-group.is-active .step-icon svg {
   color: #ffffff;
 }
 
-/* Accordion open/close animation using max-height. */
+/* Step Title */
+#design-process .step-title {
+  color: var(--primary-color);
+  text-align: left;
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+/* Step Description */
 #design-process .step-description-wrapper {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
   transition: all 0.4s ease-in-out;
-}
-#design-process .process-step-group.is-active .step-description-wrapper {
-  max-height: 200px; /* Should be larger than the content's max possible height. */
-  opacity: 1;
+  padding: 0 1.5rem 0 calc(1.5rem + 48px + 1.5rem);
+  margin-top: 0;
 }
 
-/* Animates the plus icon into a close (X) icon. */
+#design-process .process-step-group.is-active .step-description-wrapper {
+  max-height: 200px;
+  opacity: 1;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-top: -1.5rem;
+}
+
+#design-process .step-description {
+  color: var(--primary-color);
+  line-height: 1.6;
+  text-align: left;
+  border-top: 1px solid var(--dp-border-color-active);
+  padding-top: 1.5rem;
+}
+
+/* Toggle Icon */
+#design-process .step-toggle-icon {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 10;
+}
+
+#design-process .step-toggle-icon span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 #design-process .step-toggle-icon span:first-child {
   transform: translate(-50%, -50%) rotate(0deg);
 }
+
 #design-process .step-toggle-icon span:last-child {
   transform: translate(-50%, -50%) rotate(90deg);
 }
+
 #design-process
   .process-step-group.is-active
   .step-toggle-icon
   span:first-child {
   transform: translate(-50%, -50%) rotate(45deg);
 }
+
 #design-process
   .process-step-group.is-active
   .step-toggle-icon
@@ -355,23 +489,257 @@ section[id] {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-/* Responsive layout for the design process section. */
+/* Desktop View */
 @media (min-width: 1024px) {
   #design-process .mobile-view {
     display: none;
   }
+
+  #design-process .process-scrolly-wrapper {
+    min-height: 550px;
+  }
+
   #design-process .process-container {
     display: grid;
     grid-template-columns: 1fr 1.3fr;
     gap: 1.5rem;
+    height: 100%;
+    align-items: flex-start;
+  }
+
+  #design-process .process-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
   }
 }
 
+/* Mobile View */
 @media (max-width: 1023px) {
   #design-process .process-scrolly-wrapper {
     display: none;
   }
+
   #design-process .mobile-view {
     display: block;
+  }
+
+  #design-process .mobile-view .process-visuals {
+    height: 0;
+    padding-bottom: 75%;
+    margin-bottom: 1.5rem;
+  }
+
+  #design-process .mobile-view .process-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/*
+ * =============================================
+ *  8. FLOATING SOCIAL MEDIA ICONS
+ * =============================================
+ */
+/* Sophisticated "Frosted Glass" effect with enhanced depth */
+.fsl-glass-card {
+  /* A cool, desaturated gradient for a more sophisticated "frosted" tint */
+  background: linear-gradient(0deg, rgba(0, 40, 40, 0.2), rgba(0, 40, 40, 0.1));
+
+  /* High blur remains the core of the effect */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  /* A brighter, crisper border to define the crystalline edge */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  /* THE KEY: An inner shadow gives the glass a 3D, frosted-edge look */
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
+    /* Inner highlight */ 0 8px 32px 0 rgba(14, 18, 82, 0.25); /* Subtle drop shadow */
+}
+
+/* The main container bar */
+#fsl-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%) translateZ(0);
+  -webkit-transform: translateX(-50%) translateY(120%) translateZ(0);
+  opacity: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.5s ease;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Visibility class for the container */
+#fsl-container.visible {
+  transform: translateX(-50%) translateY(0) translateZ(0);
+  -webkit-transform: translateX(-50%) translateY(0) translateZ(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Individual icon wrapper */
+.fsl-item {
+  transform: translateY(100%) scale(0.7);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.4s ease;
+}
+
+/* Staggered animation for icons appearing */
+#fsl-container.visible .fsl-item {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+#fsl-container.visible .fsl-item:nth-child(1) {
+  transition-delay: 0.2s;
+}
+#fsl-container.visible .fsl-item:nth-child(2) {
+  transition-delay: 0.25s;
+}
+#fsl-container.visible .fsl-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+#fsl-container.visible .fsl-item:nth-child(4) {
+  transition-delay: 0.35s;
+}
+#fsl-container.visible .fsl-item:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+/* General styling for all icon buttons */
+.fsl-item a,
+.fsl-item button {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Specific background for social links */
+.fsl-item a {
+  background-color: #e5eaeb; /* gray-200 */
+  color: #002828;
+}
+.fsl-item a:hover {
+  background-color: #d1d5db; /* gray-300 */
+}
+
+/* Hover animation for the close button's SVG */
+#fsl-close-svg {
+  transition: transform 0.35s ease-in-out;
+}
+#fsl-close-button:hover #fsl-close-svg {
+  transform: rotate(180deg);
+}
+
+/*
+ * =============================================
+ *  9. FOOTER STYLE
+ * =============================================
+ */
+
+/* --- Main Content Area --- */
+.content-area {
+  min-height: 200vh;
+}
+
+/* --- Modern Hover Effect for Footer Links --- */
+.footer-link {
+  position: relative;
+  display: inline-block;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+/* Hover color change to secondary (#99cccc) */
+.footer-link:hover {
+  color: var(--secondary);
+}
+
+/* Remove any old underline animation */
+.footer-link::after {
+  display: none;
+}
+
+/* --- Custom Form Validation Styles --- */
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-4px);
+  }
+  20%,
+  80% {
+    transform: translateX(4px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+.input-error {
+  border-color: var(--error-color) !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+.error-message {
+  color: var(--error-color);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.error-message.visible {
+  opacity: 1;
+  height: auto;
+}
+
+/* --- Footer Background Overlay --- */
+.footer-with-overlay {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.footer-with-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url("https://i.ibb.co/V8xpFqK/minimalist.webp");
+  background-size: cover;
+  background-position: center; /* default center */
+  background-repeat: no-repeat;
+  opacity: 0.15;
+}
+
+/* --- Mobile Adjustment: Shift Image Left --- */
+@media (max-width: 768px) {
+  .footer-with-overlay::before {
+    background-position: 28% center; /* 28% from left, vertically centered */
   }
 }

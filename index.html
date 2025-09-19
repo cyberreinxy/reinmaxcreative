@@ -316,81 +316,122 @@
                     </p>
                 </div>
 
-                <!-- Grid Container with fade-in animation class -->
-                <div class="grid grid-cols-1 gap-4 md:gap-8 lg:grid-cols-4 fade-in">
+                <div class="pillar-grid group grid grid-cols-1 gap-4 md:gap-8 lg:grid-cols-4">
 
                     <!-- Pillar Card 1: Innovation -->
-                    <div class="bg-[#F9FAFB] border border-slate-200 p-6 md:p-8 rounded-2xl shadow-lg">
-                        <div class="bg-[#EBEEEE] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="text-primary h-6 w-6">
-                                <path
-                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                                <line x1="12" y1="22.08" x2="12" y2="12" />
-                            </svg>
+                    <div class="relative bg-[#F9FAFB] border border-slate-200 rounded-2xl shadow-lg 
+                transition-all duration-700 ease-out delay-150
+                opacity-0 translate-y-8
+                group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="p-6 md:p-8">
+                            <div class="transition-all duration-500 ease-out delay-300
+                        opacity-0 translate-y-6
+                        group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="bg-[#EBEEEE] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
+                                    <svg class="text-primary h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                        <line x1="12" y1="22.08" x2="12" y2="12" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="transition-all duration-700 ease-out delay-[400ms]
+                        opacity-0 translate-y-6
+                        group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Innovation</h3>
+                                <p class="text-sm text-gray-600 leading-relaxed">We constantly push boundaries,
+                                    exploring new tech and creative solutions.</p>
+                            </div>
                         </div>
-                        <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Innovation</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">We constantly push boundaries, exploring
-                            new tech and creative solutions.</p>
                     </div>
 
                     <!-- Pillar Card 2: Excellence -->
-                    <div class="bg-[#F9FAFB] border border-slate-200 p-6 md:p-8 rounded-2xl shadow-lg">
-                        <div class="bg-[#EBEEEE] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="text-primary h-6 w-6">
-                                <path d="M7 10v12" />
-                                <path
-                                    d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
-                            </svg>
+                    <div
+                        class="relative bg-[#F9FAFB] border border-slate-200 rounded-2xl shadow-lg transition-all duration-700 ease-out delay-300 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="p-6 md:p-8">
+                            <div
+                                class="transition-all duration-500 ease-out delay-[450ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="bg-[#EBEEEE] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
+                                    <svg class="text-primary h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M7 10v12" />
+                                        <path
+                                            d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div
+                                class="transition-all duration-700 ease-out delay-[550ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Excellence</h3>
+                                <p class="text-sm text-gray-600 leading-relaxed">Committed to the highest standards,
+                                    ensuring every detail is perfected.</p>
+                            </div>
                         </div>
-                        <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Excellence</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Committed to the highest standards,
-                            ensuring every detail is perfected.</p>
                     </div>
 
                     <!-- Pillar Card 3: Collaboration -->
-                    <div class="bg-[#F9FAFB] border border-slate-200 p-6 md:p-8 rounded-2xl shadow-lg">
-                        <div class="bg-[#EBEEEE] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="text-primary h-6 w-6">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            </svg>
+                    <div
+                        class="relative bg-[#F9FAFB] border border-slate-200 rounded-2xl shadow-lg transition-all duration-700 ease-out delay-[450ms] opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="p-6 md:p-8">
+                            <div
+                                class="transition-all duration-500 ease-out delay-[600ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="bg-[#EBEEEE] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
+                                    <svg class="text-primary h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div
+                                class="transition-all duration-700 ease-out delay-[700ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Collaboration</h3>
+                                <p class="text-sm text-gray-600 leading-relaxed">The best ideas are born from
+                                    partnership. We work closely with our clients.</p>
+                            </div>
                         </div>
-                        <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Collaboration</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">The best ideas are born from partnership.
-                            We work closely with our clients.</p>
                     </div>
 
                     <!-- Pillar Card 4: Integrity -->
-                    <div class="bg-[#F9FAFB] border border-slate-200 p-6 md:p-8 rounded-2xl shadow-lg">
-                        <div class="bg-[#EBEEEE] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="text-primary h-6 w-6">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                            </svg>
+                    <div
+                        class="relative bg-[#F9FAFB] border border-slate-200 rounded-2xl shadow-lg transition-all duration-700 ease-out delay-[600ms] opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="p-6 md:p-8">
+                            <div
+                                class="transition-all duration-500 ease-out delay-[750ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="bg-[#EBEEEE] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
+                                    <svg class="text-primary h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div
+                                class="transition-all duration-700 ease-out delay-[850ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Integrity</h3>
+                                <p class="text-sm text-gray-600 leading-relaxed">Operating with transparency and
+                                    honesty, building trust with our clients.</p>
+                            </div>
                         </div>
-                        <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Integrity</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Operating with transparency and honesty,
-                            building trust with our clients.</p>
                     </div>
+
                 </div>
             </div>
         </section>
-        <!-- Our Brand's Philosophy Section -->
 
         <!-- Our Brand's Design Process -->
         <section id="design-process" data-nav="workflow" class="py-16 overflow-hidden bg-white">
             <div class="container mx-auto px-6 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
+                <!-- Title Block: Animates as a single unit -->
+                <div
+                    class="animate-on-scroll text-center mb-16 transition-all duration-700 ease-out opacity-0 translate-y-8 [&.visible]:opacity-100 [&.visible]:translate-y-0">
                     <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary-color)]">
                         Our Creative Workflow
                     </h2>
@@ -400,8 +441,9 @@
                     </p>
                 </div>
 
-                <!-- Desktop Layout -->
-                <div class="process-scrolly-wrapper fade-in">
+                <!-- Desktop Layout Wrapper: Animates as a whole unit -->
+                <div
+                    class="animate-on-scroll process-scrolly-wrapper transition-all duration-1000 ease-out opacity-0 scale-95 [&.visible]:opacity-100 [&.visible]:scale-100">
                     <div class="sticky-container">
                         <div class="process-container">
                             <div class="process-accordion">
@@ -476,8 +518,7 @@
                                     <div class="step-description-wrapper">
                                         <p class="step-description">We explore a range of unique ideas and creative
                                             directions, presenting you with distinct concepts that tell your brand’s
-                                            story.
-                                        </p>
+                                            story.</p>
                                     </div>
                                 </div>
                                 <!-- Step 4: Sketching and Designing -->
@@ -574,8 +615,9 @@
                     </div>
                 </div>
 
-                <!-- Mobile Layout -->
-                <div class="mobile-view fade-in">
+                <!-- Mobile Layout Wrapper: Animates as a whole unit -->
+                <div
+                    class="animate-on-scroll mobile-view transition-all duration-1000 ease-out opacity-0 scale-95 [&.visible]:opacity-100 [&.visible]:scale-100">
                     <div class="process-visuals">
                         <img src="https://i.ibb.co/kdYjp67/brainstorming.webp" alt="Creative Workflow"
                             class="visual-image" data-index="-1">
@@ -709,8 +751,7 @@
                             </div>
                             <div class="step-description-wrapper">
                                 <p class="step-description">We present the designs for your feedback and collaborate
-                                    closely to refine and adjust every detail.
-                                </p>
+                                    closely to refine and adjust every detail.</p>
                             </div>
                         </div>
                         <!-- Step 6: Final Assets Delivery -->
@@ -740,8 +781,6 @@
                 </div>
             </div>
         </section>
-        <!-- Our Brand's Design Process -->
-
 
         <!-- Team Section -->
         <section id="team" class="py-16 overflow-hidden bg-background">
@@ -756,7 +795,8 @@
 
             <div class="container mx-auto px-6 sm:px-6 lg:px-8">
                 <!-- Team Section Header -->
-                <div class="text-center mb-16">
+                <div
+                    class="animate-on-scroll text-center mb-16 transition-all duration-500 ease-out opacity-0 translate-y-8 [&.visible]:opacity-100 [&.visible]:translate-y-0">
                     <h2 class="text-3xl md:text-4xl font-bold text-primary">
                         Our Creative Force
                     </h2>
@@ -766,282 +806,348 @@
                     </p>
                 </div>
 
-                <!-- Team Member Cards Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 fade-in">
+                <!-- Team Member Cards Grid: The parent group that triggers the staggered animation -->
+                <div
+                    class="animate-on-scroll group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
-                    <!-- Team Card 1: Creative Designer -->
-                    <div class="bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+                    <!-- Team Card 1: Reinhard Baraka -->
+                    <div
+                        class="transition-all duration-500 ease-out delay-0 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+
+                        <!-- Profile Image -->
                         <div class="p-6 flex-grow">
-                            <div class="relative w-24 h-24 mx-auto mb-4">
-                                <!-- Gradient Ring for profile picture -->
-                                <div class="w-full h-full rounded-full p-1 gradient-ring">
-                                    <img class="w-full h-full rounded-full object-cover border-2 border-white"
-                                        src="https://lh3.googleusercontent.com/a/ACg8ocLsf7Za3saFjzOAfqujrkjxuAVEZvlDpFj7QFzL0IFjnDD11j7FXQ=s288-c-no"
-                                        alt="Profile picture of Reinhard Baraka"
-                                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/E2E8F0/4A5568?text=RB';">
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="flex items-center justify-center gap-1">
-                                    <h3 class="text-xl font-bold text-gray-900">Reinhard Baraka</h3>
-                                    <!-- Verified Badge with SVG Gradient -->
-                                    <div class="group relative">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
-                                                fill="url(#verify-gradient)" />
-                                            <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="relative w-24 h-24 mx-auto mb-4">
+                                    <div class="w-full h-full rounded-full p-1 gradient-ring">
+                                        <img class="w-full h-full rounded-full object-cover border-2 border-white"
+                                            src="https://lh3.googleusercontent.com/a/ACg8ocLsf7Za3saFjzOAfqujrkjxuAVEZvlDpFj7QFzL0IFjnDD11j7FXQ=s288-c-no"
+                                            alt="Profile picture of Reinhard Baraka"
+                                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/E2E8F0/4A5568?text=RB';" />
                                     </div>
                                 </div>
-                                <p class="text-primary font-medium mt-1">Creative Designer</p>
-                                <p class="text-sm text-gray-600 mt-2 px-4">
-                                    The visionary force setting the creative standards for our agency and the brands we
-                                    partner with.
-                                </p>
                             </div>
-                        </div>
 
-                        <!-- Social Links Container -->
-                        <div class="p-4 bg-slate-50 mt-auto">
-                            <div class="flex justify-center space-x-5 text-primary">
-                                <a href="https://www.instagram.com/reinmax_creative/" target="_blank"
-                                    class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                                    </svg>
-                                </a>
-                                <a href="https://x.com/reinmaxstudio/" target="_blank"
-                                    class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                                    </svg>
-                                </a>
-                                <a href="https://github.com/cyberreinxy/" target="_blank"
-                                    class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Card 2: Brand Strategist -->
-                    <div class="bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
-                        <div class="p-6 flex-grow">
-                            <div class="relative w-24 h-24 mx-auto mb-4">
-                                <!-- Gradient Ring for profile picture -->
-                                <div class="w-full h-full rounded-full p-1 gradient-ring">
-                                    <img class="w-full h-full rounded-full object-cover border-2 border-white"
-                                        src="https://i.ibb.co/cSjLHVRm/mr-henry.webp" alt="Profile picture of Maya Chen"
-                                        onerror="this.onerror=null;this.src='https://img.freepik.com/premium-vector/man-avatar-profile-picture-isolated-background-avatar-profile-picture-man_1293239-4855.jpg?w=360';">
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="flex items-center justify-center gap-1">
-                                    <h3 class="text-xl font-bold text-gray-900">Henry Binamungu</h3>
-                                    <!-- Verified Badge -->
-                                    <div class="group relative">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
-                                                fill="url(#verify-gradient)" />
-                                            <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                            <!-- Name + Role -->
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-200 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="text-center">
+                                    <div class="flex items-center justify-center gap-1">
+                                        <h3 class="text-xl font-bold text-gray-900">Reinhard Baraka</h3>
+                                        <div class="group relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
+                                                    fill="url(#verify-gradient)"></path>
+                                                <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
                                     </div>
+                                    <p class="text-primary font-medium mt-1">Creative Designer</p>
+                                    <p class="text-sm text-gray-600 mt-2 px-4">
+                                        The visionary force setting the creative standards for our agency and the brands
+                                        we partner with.
+                                    </p>
                                 </div>
-                                <p class="text-primary font-medium mt-1">Brand Strategist</p>
-                                <p class="text-sm text-gray-600 mt-2 px-4">
-                                    He is the strategic force behind our brand narratives, crafting the core stories for
-                                    brands
-                                </p>
                             </div>
                         </div>
 
-                        <!-- Social Links Container -->
-                        <div class="p-4 bg-slate-50 mt-auto">
-                            <div class="flex justify-center space-x-5 text-primary">
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                </a>
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                                    </svg>
-                                </a>
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                                    </svg>
-                                </a>
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Card 3: Developer -->
-                    <div class="bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
-                        <div class="p-6 flex-grow">
-                            <div class="relative w-24 h-24 mx-auto mb-4">
-                                <!-- Gradient Ring for profile picture -->
-                                <div class="w-full h-full rounded-full p-1 gradient-ring">
-                                    <img class="w-full h-full rounded-full object-cover border-2 border-white"
-                                        src="https://i.ibb.co/m51NTYVJ/klerry.webp"
-                                        alt="Profile picture of Klerry Tumsiime"
-                                        onerror="this.onerror=null;this.src='https://img.freepik.com/premium-vector/boy-with-hoodie-his-head_1230457-36710.jpg?semt=ais_hybrid&w=740';">
+                        <!-- Social Icons -->
+                        <div
+                            class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div class="p-4 bg-slate-50 mt-auto">
+                                <div class="flex justify-center space-x-5 text-primary">
+                                    <a href="https://www.instagram.com/reinmax_creative/" target="_blank"
+                                        class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="https://x.com/reinmaxstudio/" target="_blank"
+                                        class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                    <a href="https://github.com/cyberreinxy/" target="_blank"
+                                        class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                                            </path>
+                                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <div class="flex items-center justify-center gap-1">
-                                    <h3 class="text-xl font-bold text-gray-900">Klerry Tumsiime</h3>
-                                    <!-- Verified Badge -->
-                                    <div class="group relative">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
-                                                fill="url(#verify-gradient)" />
-                                            <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                        </div>
+
+                    </div>
+
+                    <!-- Team Card 2: Henry Binamungu -->
+                    <div
+                        class="transition-all duration-500 ease-out delay-0 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+
+                        <!-- Profile Image -->
+                        <div class="p-6 flex-grow">
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="relative w-24 h-24 mx-auto mb-4">
+                                    <div class="w-full h-full rounded-full p-1 gradient-ring">
+                                        <img class="w-full h-full rounded-full object-cover border-2 border-white"
+                                            src="https://i.ibb.co/cSjLHVRm/mr-henry.webp"
+                                            alt="Profile picture of Henry Binamungu"
+                                            onerror="this.onerror=null;this.src='https://img.freepik.com/premium-vector/man-avatar-profile-picture-isolated-background-avatar-profile-picture-man_1293239-4855.jpg?w=360';" />
                                     </div>
                                 </div>
-                                <p class="text-primary font-medium mt-1">Developer</p>
-                                <p class="text-sm text-gray-600 mt-4 px-4">
-                                    Klerry is the engineering force behind our digital work, web engineering and
-                                    interactive experiences.
-                                </p>
                             </div>
-                        </div>
-                        <!-- Social Links Container (Footer) -->
-                        <div class="p-4 bg-slate-50 mt-auto">
-                            <div class="flex justify-center space-x-5 text-primary">
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                </a>
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                                    </svg>
-                                </a>
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                                    </svg>
-                                </a>
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Team Card 4: Creative Designer -->
-                    <div class="bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
-                        <div class="p-6 flex-grow">
-                            <div class="relative w-24 h-24 mx-auto mb-4">
-                                <!-- Gradient Ring for profile picture -->
-                                <div class="w-full h-full rounded-full p-1 gradient-ring">
-                                    <img class="w-full h-full rounded-full object-cover border-2 border-white"
-                                        src="https://i.ibb.co/Q7Z9LwZR/maggie.webp" alt="Profile picture of Sam Jones"
-                                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/E2E8F0/4A5568?text=SJ';">
+
+                            <!-- Name + Role -->
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-200 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="text-center">
+                                    <div class="flex items-center justify-center gap-1">
+                                        <h3 class="text-xl font-bold text-gray-900">Henry Binamungu</h3>
+                                        <div class="group relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
+                                                    fill="url(#verify-gradient)"></path>
+                                                <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="text-primary font-medium mt-1">Brand Strategist</p>
+                                    <p class="text-sm text-gray-600 mt-2 px-4">
+                                        He is the strategic force behind our brand narratives, crafting the core stories
+                                        for brands.
+                                    </p>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <div class="flex items-center justify-center gap-1">
-                                    <h3 class="text-xl font-bold text-gray-900">Maggie Shayo</h3>
-                                    <!-- Verified Badge -->
-                                    <div class="group relative">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
-                                                fill="url(#verify-gradient)" />
-                                            <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                        </div>
+
+                        <!-- Social Icons -->
+                        <div
+                            class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div class="p-4 bg-slate-50 mt-auto">
+                                <div class="flex justify-center space-x-5 text-primary">
+                                    <a href="#" class="hover:text-secondary transition-colors"></a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
                                         </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                                            </path>
+                                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Team Card 3: Klerry Tumsiime -->
+                    <div
+                        class="transition-all duration-500 ease-out delay-0 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+
+                        <!-- Profile Image -->
+                        <div class="p-6 flex-grow">
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="relative w-24 h-24 mx-auto mb-4">
+                                    <div class="w-full h-full rounded-full p-1 gradient-ring">
+                                        <img class="w-full h-full rounded-full object-cover border-2 border-white"
+                                            src="https://i.ibb.co/m51NTYVJ/klerry.webp"
+                                            alt="Profile picture of Klerry Tumsiime"
+                                            onerror="this.onerror=null;this.src='https://img.freepik.com/premium-vector/boy-with-hoodie-his-head_1230457-36710.jpg?semt=ais_hybrid&w=740';" />
                                     </div>
                                 </div>
-                                <p class="text-primary font-medium mt-1">Creative Designer</p>
-                                <p class="text-sm text-gray-600 mt-2 px-4">
-                                    She is the creative force behind our visual output, designing stunning assets for
-                                    our agency and clients.
-                                </p>
+                            </div>
+
+                            <!-- Name + Role -->
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-200 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="text-center">
+                                    <div class="flex items-center justify-center gap-1">
+                                        <h3 class="text-xl font-bold text-gray-900">Klerry Tumsiime</h3>
+                                        <div class="group relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
+                                                    fill="url(#verify-gradient)"></path>
+                                                <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="text-primary font-medium mt-1">Developer</p>
+                                    <p class="text-sm text-gray-600 mt-2 px-4">
+                                        Klerry is the engineering force behind our digital work, web engineering and
+                                        interactive experiences.
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <!-- Social Links Container (Footer) -->
-                        <div class="p-4 bg-slate-50 mt-auto">
-                            <div class="flex justify-center space-x-5 text-primary">
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                </a>
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                                    </svg>
-                                </a>
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                                    </svg>
-                                </a>
-                                <a href="#" class="hover:text-secondary transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                                    </svg>
-                                </a>
+
+                        <!-- Social Icons -->
+                        <div
+                            class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div class="p-4 bg-slate-50 mt-auto">
+                                <div class="flex justify-center space-x-5 text-primary">
+                                    <a href="#" class="hover:text-secondary transition-colors"></a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                                            </path>
+                                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
                         </div>
+
                     </div>
+
+                    <!-- Team Card 4: Maggie Shayo -->
+                    <div
+                        class="transition-all duration-500 ease-out delay-0 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+
+                        <!-- Profile Image -->
+                        <div class="p-6 flex-grow">
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="relative w-24 h-24 mx-auto mb-4">
+                                    <div class="w-full h-full rounded-full p-1 gradient-ring">
+                                        <img class="w-full h-full rounded-full object-cover border-2 border-white"
+                                            src="https://i.ibb.co/Q7Z9LwZR/maggie.webp"
+                                            alt="Profile picture of Maggie Shayo"
+                                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/E2E8F0/4A5568?text=SJ';" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Name + Role -->
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-200 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="text-center">
+                                    <div class="flex items-center justify-center gap-1">
+                                        <h3 class="text-xl font-bold text-gray-900">Maggie Shayo</h3>
+                                        <div class="group relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
+                                                    fill="url(#verify-gradient)"></path>
+                                                <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="text-primary font-medium mt-1">Creative Designer</p>
+                                    <p class="text-sm text-gray-600 mt-2 px-4">
+                                        She is the creative force behind our visual output, designing stunning assets
+                                        for our agency and clients.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Icons -->
+                        <div
+                            class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div class="p-4 bg-slate-50 mt-auto">
+                                <div class="flex justify-center space-x-5 text-primary">
+                                    <a href="#" class="hover:text-secondary transition-colors"></a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                                            </path>
+                                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
                 <!-- End of Team Grid -->
             </div>
@@ -1050,7 +1156,9 @@
         <!-- Services Section -->
         <section id="services" class="py-16 overflow-hidden bg-white">
             <div class="container mx-auto px-6 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
+                <!-- Section Header -->
+                <div
+                    class="animate-on-scroll text-center mb-16 transition-all duration-500 ease-out opacity-0 translate-y-8 [&.visible]:opacity-100 [&.visible]:translate-y-0">
                     <h2 class="text-3xl md:text-4xl font-bold text-primary">
                         Our Creative Solutions
                     </h2>
@@ -1059,13 +1167,15 @@
                         illustration, and motion graphics.
                     </p>
                 </div>
-                <!-- Services Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in">
+
+                <!-- Services Grid: The parent group that triggers the staggered animation -->
+                <div class="animate-on-scroll group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
                     <!-- Service Card 1: Brand Identity -->
                     <div
-                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300">
+                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transition-all duration-700 ease-out opacity-0 translate-y-8 scale-95 -rotate-2 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 group-[.visible]:scale-100 group-[.visible]:rotate-0 hover:!scale-105 hover:!rotate-0">
                         <div class="mb-4">
-                            <svg class="w-16 h-16 mx-auto text-secondary lucide lucide-briefcase"
+                            <svg class="w-12 h-12 mx-auto text-secondary lucide lucide-briefcase"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -1081,11 +1191,12 @@
                             presence.
                         </p>
                     </div>
+
                     <!-- Service Card 2: UI/UX Design -->
                     <div
-                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300">
+                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transition-all duration-700 ease-out opacity-0 translate-y-8 scale-95 -rotate-2 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 group-[.visible]:scale-100 group-[.visible]:rotate-0 hover:!scale-105 hover:!rotate-0">
                         <div class="mb-4 svg-gradient">
-                            <svg class="w-16 h-16 mx-auto text-secondary lucide lucide-figma"
+                            <svg class="w-12 h-12 mx-auto text-secondary lucide lucide-figma"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -1101,11 +1212,12 @@
                             user experience.
                         </p>
                     </div>
+
                     <!-- Service Card 3: Illustration -->
                     <div
-                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300">
+                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transition-all duration-700 ease-out opacity-0 translate-y-8 scale-95 -rotate-2 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 group-[.visible]:scale-100 group-[.visible]:rotate-0 hover:!scale-105 hover:!rotate-0">
                         <div class="mb-4">
-                            <svg class="w-16 h-16 mx-auto text-secondary lucide lucide-pen-tool"
+                            <svg class="w-12 h-12 mx-auto text-secondary lucide lucide-pen-tool"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -1123,11 +1235,12 @@
                             your brand.
                         </p>
                     </div>
+
                     <!-- Service Card 4: Motion Graphics -->
                     <div
-                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300">
+                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transition-all duration-700 ease-out opacity-0 translate-y-8 scale-95 -rotate-2 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 group-[.visible]:scale-100 group-[.visible]:rotate-0 hover:!scale-105 hover:!rotate-0">
                         <div class=" mb-4">
-                            <svg class="w-16 h-16 mx-auto text-secondary lucide lucide-clapperboard"
+                            <svg class="w-12 h-12 mx-auto text-secondary lucide lucide-clapperboard"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -1150,7 +1263,9 @@
         <!-- Portfolio Section -->
         <section id="portfolio" class="py-16 overflow-hidden bg-background">
             <div class="container mx-auto px-6 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
+                <!-- Section Header -->
+                <div
+                    class="animate-on-scroll text-center mb-16 transition-all duration-500 ease-out opacity-0 translate-y-8 [&.visible]:opacity-100 [&.visible]:translate-y-0">
                     <h2 class="text-3xl md:text-4xl font-bold text-primary">
                         Our Creative Work
                     </h2>
@@ -1159,10 +1274,13 @@
                         projects
                     </p>
                 </div>
-                <!-- Portfolio Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-in">
+
+                <!-- Portfolio Grid: The parent group that triggers the staggered animation -->
+                <div class="animate-on-scroll group grid grid-cols-1 md:grid-cols-2 gap-8">
+
                     <!-- Portfolio Card 1: Brand Identity -->
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 ease-out opacity-0 translate-y-8 scale-95 -rotate-2 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 group-[.visible]:scale-100 group-[.visible]:rotate-0 hover:scale-105 hover:shadow-xl">
                         <img src="https://cdn.dribbble.com/userupload/19372077/file/original-8c487672d7e4cce8373592b47384c8ff.jpg?resize=1024x768&vertical=center"
                             alt="Project 1" class="w-full h-64 object-cover" />
                         <div class="p-6">
@@ -1177,12 +1295,13 @@
                                 with audiences and leaves a lasting impression.
                             </p>
                             <a href="portfolio.html#brand-identity"
-                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse
-                                Projects</a>
+                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse Projects</a>
                         </div>
                     </div>
+
                     <!-- Portfolio Card 2: Illustration -->
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 ease-out opacity-0 translate-y-8 scale-95 -rotate-2 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 group-[.visible]:scale-100 group-[.visible]:rotate-0 hover:scale-105 hover:shadow-xl">
                         <img src="https://inspi.com.br/wp-content/uploads/2023/05/design-e-designer-diferenca.jpg"
                             alt="Project 2" class="w-full h-64 object-cover" />
                         <div class="p-6">
@@ -1197,12 +1316,13 @@
                                 visually compelling.
                             </p>
                             <a href="portfolio.html#illustrations"
-                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse
-                                Projects</a>
+                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse Projects</a>
                         </div>
                     </div>
+
                     <!-- Portfolio Card 3: Graphic Design -->
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 ease-out opacity-0 translate-y-8 scale-95 -rotate-2 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 group-[.visible]:scale-100 group-[.visible]:rotate-0 hover:scale-105 hover:shadow-xl">
                         <img src="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755488111/graphic-design.webp"
                             alt="Project 2" class="w-full h-64 object-cover" />
                         <div class="p-6">
@@ -1217,12 +1337,13 @@
                                 both digital and print platforms.
                             </p>
                             <a href="portfolio.html#ui-ux"
-                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse
-                                Projects</a>
+                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse Projects</a>
                         </div>
                     </div>
+
                     <!-- Portfolio Card 4: Motion Graphics -->
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 ease-out opacity-0 translate-y-8 scale-95 -rotate-2 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 group-[.visible]:scale-100 group-[.visible]:rotate-0 hover:scale-105 hover:shadow-xl">
                         <img src="https://cdn.prod.website-files.com/650b672b6d49343e2368aa57/6553870d2010e022bbdf20db_6171946b9862996e03b20db2_2D_Animation.gif"
                             alt="Project 2" class="w-full h-64 object-cover" />
                         <div class="p-6">
@@ -1237,8 +1358,7 @@
                                 the brand’s communication.
                             </p>
                             <a href="portfolio.html#motion-graphics"
-                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse
-                                Projects</a>
+                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse Projects</a>
                         </div>
                     </div>
                 </div>
@@ -1774,8 +1894,8 @@
 
                     <!-- Newsletter Text -->
                     <div>
-                        <h2 class="text-3xl md:text-4xl font-bold">Join Our Community</h2>
-                        <p class="mt-4 text-[var(--text-muted)]">
+                        <h2 class="text-3xl md:text-4xl md:center font-bold text-white">Join Our Community</h2>
+                        <p class="mt-4 text-white/60">
                             Get expert insights, creative design inspiration, design tips, and exclusive updates on the
                             latest trends in creative design.
                         </p>
@@ -1788,12 +1908,12 @@
                             <div class="flex-grow">
                                 <label for="email-signup" class="sr-only">Your Email</label>
                                 <input type="email" id="email-signup" required
-                                    class="w-full p-3 bg-white/5 border border-white/20 rounded-md md:rounded-2xl placeholder:text-gray-500 focus:outline-none focus:border-white focus:ring-0 transition-colors">
+                                    class="w-full p-3 bg-white/5 border border-white/20 rounded-md placeholder:text-gray-500 focus:outline-none focus:border-white focus:ring-0 transition-colors">
                             </div>
 
                             <!-- Subscribe Button -->
                             <button id="subscribe-button" type="submit"
-                                class="relative flex items-center justify-center gap-2 bg-[var(--primary-color)] text-white font-medium md:font-semibold py-3 px-6 rounded-md md:rounded-2xl hover:bg-[#003333] transition-all duration-300">
+                                class="relative flex items-center justify-center gap-2 bg-[var(--primary-color)] text-white font-medium py-3 px-6 rounded-md hover:bg-[#001c1c] transition-all duration-300">
                                 <span class="btn-text">Subscribe</span>
                                 <span class="loader hidden"></span>
                             </button>
@@ -1813,7 +1933,7 @@
                     <h3 class="font-semibold tracking-wide text-white">Company</h3>
                     <ul class="space-y-3">
                         <li><a href="#" class="footer-link">About Us</a></li>
-                        <li><a href="#" class="footer-link">Contact Us</a></li>
+                        <li><a href="#" class="footer-link">Get in Touch</a></li>
                         <li><a href="#" class="footer-link">Community</a></li>
                     </ul>
                 </div>
@@ -1854,7 +1974,7 @@
                     <ul class="space-y-3">
                         <li><a href="#" class="footer-link">Privacy Policy</a></li>
                         <li><a href="#" class="footer-link">Terms of Business</a></li>
-                        <li><a href="#" class="footer-link">Report a Problem</a></li>
+                        <li><a href="#" class="footer-link">Data Protection</a></li>
                     </ul>
                 </div>
 
@@ -1876,6 +1996,8 @@
 
     <!-- External JavaScript files -->
     <script src="script.js"></script>
+    <script src="scroll.js"></script>
+    <script src="animations.js"></script>
     <script src="footer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"> </script>
 
