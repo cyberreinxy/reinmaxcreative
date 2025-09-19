@@ -1,0 +1,109 @@
+/* Sophisticated "Frozen Glass" effect with enhanced depth */
+.fsl-glass-card {
+  /* A cool, desaturated gradient for a more sophisticated "frozen" tint */
+  background: linear-gradient(
+    135deg,
+    rgba(210, 215, 230, 0.4),
+    rgba(190, 195, 215, 0.1)
+  );
+
+  /* High blur remains the core of the effect */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  /* A brighter, crisper border to define the crystalline edge */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  /* THE KEY: An inner shadow gives the glass a 3D, frosted-edge look */
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.3),
+    /* Inner highlight */ 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Subtle drop shadow */
+}
+
+/* The main container bar */
+#fsl-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%) translateZ(0);
+  -webkit-transform: translateX(-50%) translateY(120%) translateZ(0);
+  opacity: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.5s ease;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Visibility class for the container */
+#fsl-container.visible {
+  transform: translateX(-50%) translateY(0) translateZ(0);
+  -webkit-transform: translateX(-50%) translateY(0) translateZ(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Individual icon wrapper */
+.fsl-item {
+  transform: translateY(100%) scale(0.7);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.4s ease;
+}
+
+/* Staggered animation for icons appearing */
+#fsl-container.visible .fsl-item {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+#fsl-container.visible .fsl-item:nth-child(1) {
+  transition-delay: 0.2s;
+}
+#fsl-container.visible .fsl-item:nth-child(2) {
+  transition-delay: 0.25s;
+}
+#fsl-container.visible .fsl-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+#fsl-container.visible .fsl-item:nth-child(4) {
+  transition-delay: 0.35s;
+}
+#fsl-container.visible .fsl-item:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+/* General styling for all icon buttons */
+.fsl-item a,
+.fsl-item button {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Specific background for social links */
+.fsl-item a {
+  background-color: #e5e7eb; /* gray-200 */
+  color: #002828;
+}
+.fsl-item a:hover {
+  background-color: #d1d5db; /* gray-300 */
+}
+
+/* Hover animation for the close button's SVG */
+#fsl-close-svg {
+  transition: transform 0.3s ease-in-out;
+}
+#fsl-close-button:hover #fsl-close-svg {
+  transform: rotate(180deg);
+}
+
+/* --- End: Floating Social Launcher --- */

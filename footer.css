@@ -1,0 +1,90 @@
+/* --- Main Content Area --- */
+.content-area {
+  min-height: 200vh;
+}
+
+/* --- Modern Hover Effect for Footer Links --- */
+.footer-link {
+  position: relative;
+  display: inline-block;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+/* Hover color change to secondary (#99cccc) */
+.footer-link:hover {
+  color: var(--secondary);
+}
+
+/* Remove any old underline animation */
+.footer-link::after {
+  display: none;
+}
+
+/* --- Custom Form Validation Styles --- */
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-4px);
+  }
+  20%,
+  80% {
+    transform: translateX(4px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+.input-error {
+  border-color: var(--error-color) !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+.error-message {
+  color: var(--error-color);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.error-message.visible {
+  opacity: 1;
+  height: auto;
+}
+
+/* --- Footer Background Overlay --- */
+.footer-with-overlay {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.footer-with-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url("https://i.ibb.co/V8xpFqK/minimalist.webp");
+  background-size: cover;
+  background-position: center; /* default center */
+  background-repeat: no-repeat;
+  opacity: 0.15;
+}
+
+/* --- Mobile Adjustment: Shift Image Left --- */
+@media (max-width: 768px) {
+  .footer-with-overlay::before {
+    background-position: 28% center; /* 28% from left, vertically centered */
+  }
+}

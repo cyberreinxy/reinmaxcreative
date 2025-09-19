@@ -24,11 +24,15 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700&family=Roboto+Slab:wght@400;500;700&family=Sora:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/tt-hoves-pro-trial" rel="stylesheet">
+
+
 
     <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            // Safelist ensures these classes are always included
             safelist: [
                 'bg-green-50',
                 'text-green-800',
@@ -41,20 +45,28 @@
                         primary: "#002828",
                         secondary: "#99cccc",
                         tertiary: "#003333",
+                        danger: "#ef4444",
+                        dangerHover: "#dc2626",
                     },
                     fontFamily: {
                         sora: ["Sora", "sans-serif"],
                         grotesk: ["Space Grotesk", "sans-serif"],
-                        robotoSlab: ['Roboto Slab', 'serif'],
-                        gothic: ['Gothic A1', 'sans-serif'],
+                        hovesTrial: ["'TT Hoves Pro Trial'", "sans-serif"],
+                        hovesTrialVar: ["'TT Hoves Pro Trial Variable'", "sans-serif"],
+                        hovesPro: ["'TT Hoves Pro'", "sans-serif"],
+
+
                     },
                 },
             },
         };
     </script>
 
+
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="socials.css">
 </head>
 
 <body class="antialiased font-sora">
@@ -81,14 +93,14 @@
         </div>
     </header>
 
-    <!-- Nav Link Panel -->
+    <!-- Navigations Control Panel -->
     <div id="control-panel"
         class="fixed top-24 left-4 right-4 max-w-md mx-auto p-4 rounded-2xl bg-white/40 backdrop-blur-xl border border-white/30 shadow-lg z-40 opacity-0 pointer-events-none transform -translate-y-4 scale-95">
         <div class="grid grid-cols-3 md:grid-cols-4 gap-3">
             <a href="#home" data-name="Home"
-                class="menu-item active flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
                 <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="w-6 h-6">
@@ -99,25 +111,65 @@
                 </div>
                 <span class="text-xs font-medium text-primary">Home</span>
             </a>
+            <a href="#cores" data-name="Cores"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-flame-icon lucide-flame">
+                        <path
+                            d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Cores</span>
+            </a>
+            <a href="#design-process" data-name="Workflow"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-workflow-icon lucide-workflow">
+                        <rect width="8" height="8" x="3" y="3" rx="2" />
+                        <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+                        <rect width="8" height="8" x="13" y="13" rx="2" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Workflow</span>
+            </a>
+            <a href="#team" data-name="Team"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                        <circle cx="9" cy="7" r="4" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Team</span>
+            </a>
             <a href="#services" data-name="Services"
                 class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
                 <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-settings-icon lucide-settings">
-                        <path
-                            d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
-                        <circle cx="12" cy="12" r="3" />
+                        class="lucide lucide-briefcase-icon lucide-briefcase">
+                        <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                        <rect width="20" height="14" x="2" y="6" rx="2" />
                     </svg>
-
                 </div>
                 <span class="text-xs font-medium text-primary">Services</span>
             </a>
-            <a href="portfolio.html" data-name="Portfolio"
+            <a href="#portfolio" data-name="Portfolio"
                 class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
                 <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="w-6 h-6">
@@ -130,10 +182,10 @@
                 </div>
                 <span class="text-xs font-medium text-primary">Portfolio</span>
             </a>
-            <a href="#plans" data-name="Pricing"
+            <a href="#plans" data-name="plans"
                 class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
                 <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="w-6 h-6">
@@ -145,25 +197,10 @@
                 </div>
                 <span class="text-xs font-medium text-primary">Pricing</span>
             </a>
-            <a href="#team" data-name="Team"
-                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
-                <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="w-6 h-6">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                        <path d="M16 3.128a4 4 0 0 1 0 7.744" />
-                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                        <circle cx="9" cy="7" r="4" />
-                    </svg>
-                </div>
-                <span class="text-xs font-medium text-primary">Team</span>
-            </a>
             <a href="#testimonials" data-name="Testimonials"
                 class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
                 <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="w-6 h-6">
@@ -176,10 +213,41 @@
                 </div>
                 <span class="text-xs font-medium text-primary">Reviews</span>
             </a>
+
+            <a href="#contact" data-name="Support"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path
+                            d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" />
+                        <path d="M21 16v2a4 4 0 0 1-4 4h-5" />
+                    </svg>
+
+                </div>
+                <span class="text-xs font-medium text-primary">Support</span>
+            </a>
+            <a href="FAQ.html" data-name="FAQ"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-message-circle-question-mark-icon lucide-message-circle-question-mark">
+                        <path
+                            d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <path d="M12 17h.01" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">FAQ</span>
+            </a>
             <a href="guidelines.html" data-name="Brand Guidelines"
                 class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
                 <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="lucide lucide-file-text-icon lucide-file-text">
@@ -192,69 +260,10 @@
                 </div>
                 <span class="text-xs font-medium text-primary">Guidelines</span>
             </a>
-            <a href="store.html" data-name="Store"
-                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
-                <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-store-icon lucide-store">
-                        <path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5" />
-                        <path
-                            d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244" />
-                        <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05" />
-                    </svg>
-                </div>
-                <span class="text-xs font-medium text-primary">Store</span>
-            </a>
-            <a href="#toolkit" data-name="Toolkit"
-                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
-                <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="w-6 h-6">
-                        <path d="M9 17H7A5 5 0 0 1 7 7h2" />
-                        <path d="M15 7h2a5 5 0 1 1 0 10h-2" />
-                        <line x1="8" x2="16" y1="12" y2="12" />
-                    </svg>
-                </div>
-                <span class="text-xs font-medium text-primary">Toolkit</span>
-            </a>
-            <a href="FAQ.html" data-name="FAQ"
-                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
-                <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-message-circle-question-mark-icon lucide-message-circle-question-mark">
-                        <path
-                            d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                        <path d="M12 17h.01" />
-                    </svg>
-                </div>
-                <span class="text-xs font-medium text-primary">FAQ</span>
-            </a>
-            <a href="#contact" data-name="Support"
-                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
-                <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="w-6 h-6">
-                        <path
-                            d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" />
-                        <path d="M21 16v2a4 4 0 0 1-4 4h-5" />
-                    </svg>
-
-                </div>
-                <span class="text-xs font-medium text-primary">Support</span>
-            </a>
             <a href="academy.html" data-name="Academy"
                 class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
                 <div
-                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-xl bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="w-6 h-6">
@@ -268,6 +277,7 @@
             </a>
         </div>
     </div>
+    <!-- Navigations Control Panel -->
 
     <main>
         <!-- Hero Section -->
@@ -284,7 +294,7 @@
                     <br class="md:hidden" />digital experiences.
                 </p>
 
-                <a href="#start"
+                <a href="#plans"
                     class="cta bg-primary text-white font-bold py-3 px-4 rounded-xl transition duration-300 inline-block fade-in"
                     style="transition-delay: 0.05s">
                     Get Started
@@ -294,7 +304,7 @@
 
 
         <!-- Our Brand's Philosophy Section -->
-        <section id="pillars" class="py-16 overflow-hidden bg-background">
+        <section id="cores" data-nav="cores" class="py-16 overflow-hidden bg-background">
             <div class="container mx-auto px-6 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-primary">
@@ -378,7 +388,7 @@
         <!-- Our Brand's Philosophy Section -->
 
         <!-- Our Brand's Design Process -->
-        <section id="design-process" class="py-16 overflow-hidden bg-white">
+        <section id="design-process" data-nav="workflow" class="py-16 overflow-hidden bg-white">
             <div class="container mx-auto px-6 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary-color)]">
@@ -414,9 +424,9 @@
                                         <div class="step-toggle-icon"><span></span><span></span></div>
                                     </div>
                                     <div class="step-description-wrapper">
-                                        <p class="step-description">We begin with a deep dive into your brand,
-                                            audience, and
-                                            goals to build a solid strategic foundation.</p>
+                                        <p class="step-description">We collect detailed information about your brand,
+                                            goals, target audience, and vision to establish a clear strategic foundation
+                                            for the project.</p>
                                     </div>
                                 </div>
                                 <!-- Step 2: Conducting Research -->
@@ -439,10 +449,9 @@
                                         <div class="step-toggle-icon"><span></span><span></span></div>
                                     </div>
                                     <div class="step-description-wrapper">
-                                        <p class="step-description">Our team dives into market trends, competitor
-                                            analysis,
-                                            and audience insights to inform a strong, data-driven creative strategy.
-                                        </p>
+                                        <p class="step-description">We conduct comprehensive research on market trends,
+                                            competitors, and audience preferences. Insights from this research inform a
+                                            strategic approach tailored to your brand.</p>
                                     </div>
                                 </div>
                                 <!-- Step 3: Concept Development -->
@@ -490,10 +499,9 @@
                                         <div class="step-toggle-icon"><span></span><span></span></div>
                                     </div>
                                     <div class="step-description-wrapper">
-                                        <p class="step-description">The chosen concept is brought to life. We
-                                            meticulously
-                                            design and build the final assets, focusing on aesthetics and
-                                            functionality.</p>
+                                        <p class="step-description">The chosen concept is transformed into polished,
+                                            high-quality designs, focusing on aesthetics, usability, and functionality
+                                            to ensure the final product represents your brand perfectly.</p>
                                     </div>
                                 </div>
                                 <!-- Step 5: Client's Feedback -->
@@ -512,18 +520,16 @@
                                                 </svg>
                                             </div>
                                         </div>
-                                        <span class="step-title">Client's Feedback</span>
+                                        <span class="step-title">Feedback and Refinement</span>
                                         <div class="step-toggle-icon"><span></span><span></span></div>
                                     </div>
                                     <div class="step-description-wrapper">
-                                        <p class="step-description">We present the designs to you and use your
-                                            valuable
-                                            feedback to refine and perfect every detail, ensuring the final product
-                                            meets
-                                            your vision.</p>
+                                        <p class="step-description">We present the designs for your feedback and
+                                            collaborate closely to refine and adjust every detail. This iterative
+                                            process ensures the final design aligns with your vision.</p>
                                     </div>
                                 </div>
-                                <!-- Step 6: Assets Delivery -->
+                                <!-- Step 6: Asset Delivery -->
                                 <div class="process-step-group" data-index="5">
                                     <div class="step-header">
                                         <div class="step-icon-wrapper">
@@ -538,14 +544,13 @@
                                                 </svg>
                                             </div>
                                         </div>
-                                        <span class="step-title">Assets Delivery</span>
+                                        <span class="step-title">Asset Delivery</span>
                                         <div class="step-toggle-icon"><span></span><span></span></div>
                                     </div>
                                     <div class="step-description-wrapper">
-                                        <p class="step-description">We provide all finalized, production-ready
-                                            assets and a
-                                            detailed style guide, empowering your team to maintain brand
-                                            consistency.</p>
+                                        <p class="step-description">Deliver all finalized assets in appropriate formats,
+                                            production-ready and a detailed brand guidelines, empowering your team to
+                                            maintain brand consistency.</p>
                                     </div>
                                 </div>
                             </div>
@@ -607,9 +612,9 @@
                                 <div class="step-toggle-icon"><span></span><span></span></div>
                             </div>
                             <div class="step-description-wrapper">
-                                <p class="step-description">We begin with a deep dive into your brand, audience, and
-                                    goals
-                                    to build a solid strategic foundation.</p>
+                                <p class="step-description">We collect detailed information about your brand, goals,
+                                    target audience, and vision to establish a clear strategic foundation for the
+                                    project.</p>
                             </div>
                         </div>
                         <!-- Step 2: Conducting Research -->
@@ -632,9 +637,8 @@
                                 <div class="step-toggle-icon"><span></span><span></span></div>
                             </div>
                             <div class="step-description-wrapper">
-                                <p class="step-description">Our team dives into market trends, competitor analysis,
-                                    and
-                                    audience insights to inform a strong, data-driven creative strategy.</p>
+                                <p class="step-description">We conduct comprehensive research on market trends,
+                                    competitors, and audience preferences.</p>
                             </div>
                         </div>
                         <!-- Step 3: Concept Development -->
@@ -657,9 +661,8 @@
                                 <div class="step-toggle-icon"><span></span><span></span></div>
                             </div>
                             <div class="step-description-wrapper">
-                                <p class="step-description">We explore a range of unique ideas and creative
-                                    directions,
-                                    presenting you with distinct concepts that tell your brand’s story.</p>
+                                <p class="step-description">We explore a range of unique ideas and creative directions,
+                                    presenting you with distinct concepts that tell your brand’s story. </p>
                             </div>
                         </div>
                         <!-- Step 4: Sketching and Designing -->
@@ -681,9 +684,8 @@
                                 <div class="step-toggle-icon"><span></span><span></span></div>
                             </div>
                             <div class="step-description-wrapper">
-                                <p class="step-description">The chosen concept is brought to life. We meticulously
-                                    design
-                                    and build the final assets, focusing on aesthetics and functionality.</p>
+                                <p class="step-description">The chosen concept is transformed into polished,
+                                    high-quality designs, focusing on aesthetics, usability.</p>
                             </div>
                         </div>
                         <!-- Step 5: Client's Feedback -->
@@ -706,9 +708,8 @@
                                 <div class="step-toggle-icon"><span></span><span></span></div>
                             </div>
                             <div class="step-description-wrapper">
-                                <p class="step-description">We present the designs to you and use your valuable
-                                    feedback to
-                                    refine and perfect every detail, ensuring the final product meets your vision.
+                                <p class="step-description">We present the designs for your feedback and collaborate
+                                    closely to refine and adjust every detail.
                                 </p>
                             </div>
                         </div>
@@ -727,13 +728,12 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <span class="step-title">Assets Delivery</span>
+                                <span class="step-title">Asset Delivery</span>
                                 <div class="step-toggle-icon"><span></span><span></span></div>
                             </div>
                             <div class="step-description-wrapper">
-                                <p class="step-description">We provide all finalized, production-ready assets and a
-                                    detailed
-                                    style guide, empowering your team to maintain brand consistency.</p>
+                                <p class="step-description">Deliver all finalized assets in appropriate formats,
+                                    production-ready and a detailed, pretty brand guidelines for consistency.</p>
                             </div>
                         </div>
                     </div>
@@ -914,7 +914,7 @@
                                 <!-- Gradient Ring for profile picture -->
                                 <div class="w-full h-full rounded-full p-1 gradient-ring">
                                     <img class="w-full h-full rounded-full object-cover border-2 border-white"
-                                        src="https://img.freepik.com/premium-vector/boy-with-hoodie-his-head_1230457-36710.jpg?semt=ais_hybrid&w=740"
+                                        src="https://i.ibb.co/m51NTYVJ/klerry.webp"
                                         alt="Profile picture of Klerry Tumsiime"
                                         onerror="this.onerror=null;this.src='https://img.freepik.com/premium-vector/boy-with-hoodie-his-head_1230457-36710.jpg?semt=ais_hybrid&w=740';">
                                 </div>
@@ -1245,11 +1245,11 @@
             </div>
         </section>
 
-        <!-- Plans Section -->
-        <section id="plans" class="py-16 overflow-hidden bg-white">
+        <!-- Plans (Pricing) Section -->
+        <section id="plans" class="py-16 overflow-hidden bg-white" data-nav="plans">
             <div class="container mx-auto px-6 sm:px-6 lg:px-8">
-                <!-- Branding Section -->
-                <section id="branding-plans">
+                <!-- Branding Plans Section -->
+                <section>
                     <div class="text-center mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-[#002828] mb-4">Branding Plans</h2>
                         <p class="text-lg text-slate-600 max-w-2xl mx-auto">Crafting unique and memorable identities to
@@ -1509,15 +1509,13 @@
                     </div>
                 </section>
 
-                <!-- Academy Section -->
-                <section id="academy-plans" class="mt-24">
+                <!-- Academy Plans Section -->
+                <section class="mt-16">
                     <div class="text-center mb-16">
                         <h2 class="text-3xl md:text-4xl font-bold text-[#002828] mb-4">Academy Plans</h2>
                         <p class="text-lg text-slate-600 max-w-2xl mx-auto">Gain graphic design and branding skills with
-                            our expert-led
-                            courses, <br>from beginner to professional</p>
+                            our expert-led courses</p>
                     </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
                         <!-- Adobe Illustrator Card -->
                         <div
@@ -1712,359 +1710,174 @@
                         </div>
                     </div>
                 </section>
-
             </div>
         </section>
 
+    </main>
 
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="py-16 overflow-hidden bg-white">
-            <div class="container mx-auto px-6 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary">Collaborators Feedback</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We're proud to have partnered with amazing
-                        companies.<br>Here's what they think.</p>
-                </div>
-
-                <!-- Wrapper 1: Desktop "Enlarged" Slider -->
-                <div id="desktop-carousel-wrapper">
-                    <div class="cover-flow-container">
-                        <div class="cover-flow-track">
-                            <!-- JS populates this -->
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center gap-4 mt-8">
-                        <button id="desktop-prev-btn" aria-label="Previous Testimonial"
-                            class="bg-white rounded-full p-3 shadow-md border border-black/10 hover:bg-gray-50 transition active:scale-90 disabled:opacity-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-6 h-6">
-                                <path d="m15 18-6-6 6-6" />
-                            </svg>
-                        </button>
-                        <button id="desktop-next-btn" aria-label="Next Testimonial"
-                            class="bg-white rounded-full p-3 shadow-md border border-black/10 hover:bg-gray-50 transition active:scale-90 disabled:opacity-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-6 h-6">
-                                <path d="m9 18 6-6-6-6" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Wrapper 2: Mobile 3D Flip Card -->
-                <div id="mobile-flip-card-wrapper">
-                    <div class="flip-card-container">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-face flip-card-front">
-                                <!-- JS populates this -->
-                            </div>
-                            <div class="flip-card-face flip-card-back">
-                                <!-- JS populates this -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center gap-6 mt-8">
-                        <button id="mobile-prev-btn" aria-label="Previous Testimonial"
-                            class="bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-md border border-black/10 active:scale-90 transition disabled:opacity-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-7 h-7">
-                                <path d="m15 18-6-6 6-6" />
-                            </svg>
-                        </button>
-                        <button id="flip-btn" aria-label="Flip Card"
-                            class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg border border-black/10 active:scale-90 transition">
-                            <svg class="" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-rotate-3d w-8 h-8">
-                                <path
-                                    d="M16.466 7.5C15.643 4.237 13.952 2 12 2 9.239 2 7 6.477 7 12s2.239 10 5 10c.342 0 .677-.069 1-.2" />
-                                <path d="m15.194 13.707 3.814 1.86-1.86 3.814" />
-                                <path
-                                    d="M19 15.57c-1.804.885-4.274 1.43-7 1.43-5.523 0-10-2.239-10-5s4.477-5 10-5c4.838 0 8.873 1.718 9.8 4" />
-                            </svg>
-                        </button>
-                        <button id="mobile-next-btn" aria-label="Next Testimonial"
-                            class="bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-md border border-black/10 active:scale-90 transition disabled:opacity-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-7 h-7">
-                                <path d="m9 18 6-6-6-6" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 bg-background">
-            <div class="container mx-auto px-6 sm:px-6 lg:px-8">
-                <div class="hidden bg-green-50 text-green-800 text-green-500 bg-red-50 text-red-500"></div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col p-8 sm:p-12">
-                        <div class="text-center mb-10">
-                            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Let's Collaborate</h2>
-                            <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                                We’d love to connect with you.<br>
-                                Reach out to us for support, or partnerships.
-                            </p>
-                        </div>
-
-                        <div class="space-y-8 mt-auto">
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-12 h-12 bg-secondary/30 text-primary rounded-full flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                                        <circle cx="12" cy="10" r="3" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-primary">Our Office</h3>
-                                    <p class="text-gray-600 mt-1">41110 Kilimani, Dodoma</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-12 h-12 bg-secondary/30 text-primary rounded-full flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <rect width="20" height="16" x="2" y="4" rx="2" />
-                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-primary">Email Us</h3>
-                                    <p class="text-gray-600 mt-1">mail@reinmaxcreative.com</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-12 h-12 bg-secondary/30 text-primary rounded-full flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-primary">Call Us</h3>
-                                    <p class="text-gray-600 mt-1">+255 678 700 731</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
-                        <div class="p-8 sm:p-12 flex flex-col flex-grow">
-
-                            <div id="business-status-container" class="mb-12">
-                            </div>
-
-                            <div class="bg-slate-50 p-8 mt-auto rounded-2xl">
-                                <h3 class="text-2xl font-bold text-primary mb-8 text-center">Business Hours</h3>
-                                <div class="space-y-3 text-gray-600 max-w-md mx-auto">
-                                    <div class="flex justify-between items-center">
-                                        <span>
-                                            <span class="inline md:hidden">Mon – Fri</span>
-                                            <span class="hidden md:inline">Monday – Friday</span>
-                                        </span>
-                                        <span class="font-medium text-primary">8:00 am – 6:00 pm</span>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span>
-                                            <span class="inline md:hidden">Sat & Sun</span>
-                                            <span class="hidden md:inline">Saturday & Sunday</span>
-                                        </span>
-                                        <span class="font-medium text-red-500">Closed</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Premium Toolkit -->
-        <section id="toolkit" class="py-16 bg-white">
-            <div class="container mx-auto px-6 sm:px-6 lg:px-8">
-                <div class="max-w-6xl mx-auto bg-gray-50 p-8 md:p-12 rounded-2xl shadow-xl fade-in">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-primary">Our Toolkit</h2>
-                        <p class="text-lg text-gray-600 mt-2">Explore our suite of proprietary tools, engineered to
-                            accelerate your workflow and enhance productivity.</p>
-                    </div>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-
-                        <a href="/tools/upscaler.html" target="_blank" rel="noopener noreferrer"
-                            class="bg-white rounded-2xl p-4 shadow-lg aspect-square flex items-center justify-center">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 221.96 144.51" class="h-1/3 text-[#8AB4FF]">
-                                <defs>
-                                    <style>
-                                        .cls-1 {
-                                            fill: currentColor;
-                                        }
-                                    </style>
-                                </defs>
-                                <path class="cls-1"
-                                    d="M24.6 107.21c-1.31 0-2.27.81-2.87 2.32L13.67 131h-.3l-8.01-21.47c-.6-1.51-1.61-2.32-2.92-2.32-1.61 0-2.42 1.16-2.42 3.07v31.9c0 1.06.76 2.32 2.32 2.32 1.66 0 2.42-1.26 2.42-2.32l-.05-8.22c0-5.29-.1-10.23-.5-15.62h.25c.5 2.07 3.07 8.77 3.38 9.63l3.28 8.92c.55 1.51 1.61 1.71 2.42 1.71.86 0 1.86-.2 2.47-1.71l3.23-8.92c.81-2.12 2.82-7.46 3.38-9.63h.25c-.35 5.75-.4 7.31-.45 15.62l-.05 8.22c0 1.06.81 2.32 2.32 2.32 1.61 0 2.42-1.26 2.42-2.32v-31.9c0-1.91-.81-3.07-2.47-3.07ZM50.2 112c1.46 0 2.27-1.06 2.27-2.17s-.81-2.12-2.27-2.12H37.3c-1.61 0-2.42 1.21-2.42 2.27v31.75c0 1.06.81 2.27 2.42 2.27h12.9c1.46 0 2.27-1.01 2.27-2.17 0-1.06-.81-2.12-2.27-2.12H39.62v-11.95h7.86c1.46 0 2.27-1.01 2.27-2.12s-.81-2.17-2.27-2.17h-7.86v-11.49H50.2Zm24.09 12.35h-5.8c-1.41 0-2.22 1.01-2.22 2.12s.76 2.07 1.97 2.12h3.63v6.45c0 3.53-2.42 5.19-5.04 5.19s-5.04-1.66-5.04-5.19v-18.35c0-3.53 2.52-5.19 5.09-5.19 2.22 0 3.73 1.06 4.33 2.92l.15.5c.35 1.21.86 2.22 2.37 2.22s2.37-1.06 2.37-2.12v-.3c0-3.53-3.13-7.51-9.32-7.51s-9.73 3.93-9.73 9.17v19c0 5.19 3.83 9.12 9.83 9.12s9.73-3.93 9.73-9.12v-8.82c0-1.11-.81-2.22-2.32-2.22Zm20.21-15.17c-.35-1.21-1.31-1.97-2.42-1.97-1.01 0-1.97.76-2.37 1.97l-9.32 32.11c-.6 1.97.6 3.23 2.22 3.23.96 0 1.97-.4 2.37-1.86l1.81-6.85h10.59l1.86 6.85c.4 1.46 1.41 1.86 2.37 1.86 1.61 0 2.77-1.31 2.22-3.23l-9.32-32.11Zm-6.55 22.43 2.57-9.58c.4-1.46 1.06-4.03 1.46-6.4h.2c.45 2.37 1.06 4.94 1.46 6.4l2.57 9.58h-8.27Zm29.33-24.4c-5.7 0-9.32 3.68-9.32 9.02 0 4.44 2.47 6.7 4.59 8.42l6.55 5.44c1.31 1.06 2.62 2.87 2.62 5.39 0 3.38-2.32 4.84-5.04 4.84-2.32 0-4.28-1.06-4.89-4.08l-.3-1.51c-.25-1.26-1.01-2.22-2.37-2.22-1.56 0-2.57 1.36-2.12 3.28l.3 1.41c.86 3.63 3.58 7.31 9.43 7.31s9.63-3.58 9.63-9.32c0-4.64-2.42-7.01-3.43-7.86l-8.17-6.75c-1.11-.91-2.17-2.32-2.17-4.49 0-3.02 2.02-4.69 4.69-4.69 2.07 0 3.68 1.06 4.28 3.07l.2.5c.35 1.16.91 2.17 2.37 2.17s2.22-1.01 2.22-2.07v-.3c0-3.58-3.23-7.56-9.07-7.56m31.8 24.4c-1.56 0-2.32 1.26-2.32 2.32v1.16c0 3.58-2.57 5.14-5.09 5.14s-5.04-1.56-5.04-5.14v-18.45c0-3.48 2.42-5.14 5.14-5.14 2.17 0 3.68 1.01 4.23 2.92l.15.5c.35 1.16.96 2.22 2.47 2.22s2.32-1.06 2.32-2.12v-.3c0-3.53-3.12-7.51-9.22-7.51s-9.83 3.93-9.83 9.17v19c0 5.19 3.83 9.12 9.78 9.12s9.83-3.93 9.83-9.12v-1.46c0-1.06-.86-2.32-2.42-2.32Zm19.66-22.43c-.35-1.21-1.31-1.97-2.42-1.97-1.01 0-1.97.76-2.37 1.97l-9.33 32.11c-.6 1.97.6 3.23 2.22 3.23.96 0 1.97-.4 2.37-1.86l1.81-6.85h10.58l1.86 6.85c.4 1.46 1.41 1.86 2.37 1.86 1.61 0 2.77-1.31 2.22-3.23l-9.32-32.11Zm-6.55 22.43 2.57-9.58c.4-1.46 1.06-4.03 1.46-6.4h.2c.45 2.37 1.06 4.94 1.46 6.4l2.57 9.58h-8.27Zm35.13 8.11h-9.68v-30.19c0-1.06-.81-2.32-2.42-2.32-1.51 0-2.32 1.26-2.32 2.32v32.26c0 1.11.81 2.22 2.32 2.22h12.1c1.41 0 2.22-1.01 2.22-2.17 0-1.06-.81-2.12-2.22-2.12m22.38 0h-10.58v-11.95h7.86c1.46 0 2.27-1.01 2.27-2.12s-.81-2.17-2.27-2.17h-7.86v-11.49h10.58c1.46 0 2.27-1.06 2.27-2.17s-.81-2.12-2.27-2.12h-12.9c-1.61 0-2.42 1.21-2.42 2.27v31.75c0 1.06.81 2.27 2.42 2.27h12.9c1.46 0 2.27-1.01 2.27-2.17 0-1.06-.81-2.12-2.27-2.12Zm-70.98-87.86V22.33C148.72 10 138.72 0 126.39 0H96.86C84.53 0 74.53 10 74.53 22.33v29.53c0 12.33 10 22.33 22.33 22.33h29.53c12.33 0 22.33-10 22.33-22.33m-38.36-.17c0 3.16-2.56 5.71-5.71 5.71h-7.62c-3.16 0-5.71-2.56-5.71-5.71v-7.62c0-3.16 2.56-5.71 5.71-5.71h7.62c.63 0 1.25.11 1.85.31l6.62-6.66h-3.92c-1.34.03-2.48-.96-2.65-2.29 0-.09-.01-.17-.01-.26 0-1.4 1.15-2.53 2.55-2.53h6.35c3.51 0 6.35 2.84 6.35 6.35v6.24c.03 1.34-.96 2.48-2.29 2.65-.09 0-.17.01-.26.01-1.4 0-2.53-1.15-2.53-2.55V35.6l-6.64 6.67c.19.58.29 1.19.29 1.8zm21.59-6.34a8.89 8.89 0 0 1-8.89 8.89h-5.08c-.09 0-.17 0-.26-.01a2.54 2.54 0 0 1-2.28-2.78 2.616 2.616 0 0 1 2.65-2.29h4.97c2.1 0 3.81-1.71 3.81-3.81V25.67c0-2.1-1.71-3.81-3.81-3.81h-19.68c-2.1 0-3.81 1.71-3.81 3.81v5.08c0 .09 0 .17-.01.26a2.54 2.54 0 0 1-2.78 2.28 2.616 2.616 0 0 1-2.29-2.65v-4.97a8.89 8.89 0 0 1 8.89-8.89h19.68a8.89 8.89 0 0 1 8.89 8.89z" />
-                                <rect class="cls-1" x="96.39" y="43.44" width="8.89" height="8.89" rx=".63" ry=".63" />
-                            </svg>
-                        </a>
-
-                        <a href="/tools/yt-downloader.html" target="_blank" rel="noopener noreferrer"
-                            class="bg-white rounded-2xl p-4 shadow-lg aspect-square flex items-center justify-center">
-                            <svg data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 180.06 144.01" class="h-1/3 text-[#e2aa52]">
-                                <defs>
-                                    <style>
-                                        .cls-1 {
-                                            fill: currentColor;
-                                        }
-                                    </style>
-                                </defs>
-                                <path class="cls-1"
-                                    d="M24.02 107.58c-1.28 0-2.21.79-2.8 2.26l-7.88 20.97h-.29l-7.83-20.97c-.59-1.48-1.58-2.26-2.85-2.26-1.58 0-2.36 1.13-2.36 3v31.16c0 1.03.74 2.26 2.26 2.26 1.62 0 2.36-1.23 2.36-2.26l-.05-8.02c0-5.17-.1-9.99-.49-15.26h.25c.49 2.02 3 8.57 3.3 9.4l3.2 8.71c.54 1.48 1.57 1.67 2.36 1.67.84 0 1.82-.2 2.41-1.67l3.15-8.71c.79-2.07 2.76-7.29 3.3-9.4h.25c-.34 5.61-.39 7.14-.44 15.26l-.05 8.02c0 1.03.79 2.26 2.26 2.26 1.58 0 2.36-1.23 2.36-2.26v-31.16c0-1.87-.79-3-2.41-3Zm25.01 4.68c1.43 0 2.22-1.03 2.22-2.12s-.79-2.07-2.22-2.07h-12.6c-1.58 0-2.36 1.18-2.36 2.22v31.01c0 1.03.79 2.21 2.36 2.21h12.6c1.43 0 2.22-.98 2.22-2.12 0-1.03-.79-2.07-2.22-2.07H38.69v-11.67h7.68c1.43 0 2.22-.98 2.22-2.07s-.79-2.12-2.22-2.12h-7.68v-11.22h10.34Zm23.52 12.06h-5.66c-1.38 0-2.17.98-2.17 2.07s.74 2.02 1.92 2.07h3.54v6.3c0 3.45-2.36 5.07-4.92 5.07s-4.92-1.62-4.92-5.07v-17.92c0-3.45 2.46-5.07 4.97-5.07 2.17 0 3.64 1.03 4.23 2.85l.15.49c.35 1.18.84 2.17 2.31 2.17s2.31-1.03 2.31-2.07v-.29c0-3.45-3.05-7.33-9.11-7.33s-9.5 3.84-9.5 8.96v18.56c0 5.07 3.74 8.91 9.6 8.91s9.5-3.84 9.5-8.91v-8.62c0-1.08-.79-2.17-2.26-2.17Zm19.74-14.82c-.34-1.18-1.28-1.92-2.36-1.92-.98 0-1.92.74-2.31 1.92l-9.11 31.36c-.59 1.92.59 3.15 2.17 3.15.94 0 1.92-.39 2.31-1.82l1.77-6.69H95.1l1.82 6.69c.39 1.43 1.38 1.82 2.31 1.82 1.57 0 2.71-1.28 2.17-3.15zm-6.4 21.91 2.51-9.35c.39-1.43 1.03-3.94 1.43-6.25h.2c.44 2.31 1.03 4.82 1.43 6.25l2.51 9.35H85.9Zm39.78-23.34h-7.19c-1.57 0-2.36 1.18-2.36 2.22v31.01c0 1.03.79 2.21 2.36 2.21h7.19c5.56 0 9.55-3.84 9.55-8.96v-17.52c0-5.12-3.99-8.96-9.55-8.96m4.92 26.24c0 3.5-2.46 5.02-4.92 5.02h-4.92v-27.07h4.92c2.46 0 4.92 1.58 4.92 5.07zm25.3 5.02h-9.45v-29.49c0-1.03-.79-2.26-2.36-2.26-1.48 0-2.26 1.23-2.26 2.26v31.5c0 1.08.79 2.17 2.26 2.17h11.81c1.38 0 2.17-.98 2.17-2.12 0-1.03-.79-2.07-2.17-2.07Zm15.31-27.66c2.02 0 3.59 1.03 4.18 3l.2.49c.34 1.13.89 2.12 2.31 2.12s2.17-.98 2.17-2.02v-.3c0-3.5-3.15-7.38-8.86-7.38s-9.11 3.59-9.11 8.81c0 4.33 2.41 6.55 4.48 8.22l6.4 5.32c1.28 1.03 2.56 2.81 2.56 5.27 0 3.3-2.27 4.73-4.92 4.73-2.26 0-4.18-1.03-4.77-3.99l-.3-1.48c-.25-1.23-.98-2.17-2.31-2.17-1.53 0-2.51 1.33-2.07 3.2l.3 1.38c.84 3.54 3.49 7.14 9.21 7.14s9.4-3.5 9.4-9.11c0-4.53-2.36-6.84-3.35-7.68l-7.97-6.6c-1.08-.89-2.12-2.26-2.12-4.38 0-2.95 1.97-4.58 4.58-4.58Zm-44.08-59.81V22.33C127.12 10 117.12 0 104.79 0H75.26C62.93 0 52.93 10 52.93 22.33v29.53c0 12.33 10 22.33 22.33 22.33h29.53c12.33 0 22.33-10 22.33-22.33M77.41 33.88a1.89 1.89 0 0 1 2.66 0l8.08 8.08V20.17c0-1.04.84-1.88 1.88-1.88s1.88.84 1.88 1.88v21.79l8.08-8.08c.73-.73 1.93-.73 2.66 0s.73 1.93 0 2.66L91.37 47.82c-.17.17-.38.31-.61.41s-.47.14-.72.14-.49-.05-.72-.14c-.23-.1-.44-.23-.61-.41L77.43 36.54a1.89 1.89 0 0 1 0-2.66ZM103.2 55.9H76.87c-1.04 0-1.88-.84-1.88-1.88s.84-1.88 1.88-1.88h26.33c1.04 0 1.88.84 1.88 1.88s-.84 1.88-1.88 1.88" />
-                            </svg>
-                        </a>
-
-                        <a href="/tools/upscaler.html" target="_blank" rel="noopener noreferrer"
-                            class="bg-white rounded-2xl p-4 shadow-lg aspect-square flex items-center justify-center">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 221.96 144.51" class="h-1/3 text-[#e2e2e2]">
-                                <defs>
-                                    <style>
-                                        .cls-1 {
-                                            fill: currentColor;
-                                        }
-                                    </style>
-                                </defs>
-                                <path class="cls-1"
-                                    d="M24.6 107.21c-1.31 0-2.27.81-2.87 2.32L13.67 131h-.3l-8.01-21.47c-.6-1.51-1.61-2.32-2.92-2.32-1.61 0-2.42 1.16-2.42 3.07v31.9c0 1.06.76 2.32 2.32 2.32 1.66 0 2.42-1.26 2.42-2.32l-.05-8.22c0-5.29-.1-10.23-.5-15.62h.25c.5 2.07 3.07 8.77 3.38 9.63l3.28 8.92c.55 1.51 1.61 1.71 2.42 1.71.86 0 1.86-.2 2.47-1.71l3.23-8.92c.81-2.12 2.82-7.46 3.38-9.63h.25c-.35 5.75-.4 7.31-.45 15.62l-.05 8.22c0 1.06.81 2.32 2.32 2.32 1.61 0 2.42-1.26 2.42-2.32v-31.9c0-1.91-.81-3.07-2.47-3.07ZM50.2 112c1.46 0 2.27-1.06 2.27-2.17s-.81-2.12-2.27-2.12H37.3c-1.61 0-2.42 1.21-2.42 2.27v31.75c0 1.06.81 2.27 2.42 2.27h12.9c1.46 0 2.27-1.01 2.27-2.17 0-1.06-.81-2.12-2.27-2.12H39.62v-11.95h7.86c1.46 0 2.27-1.01 2.27-2.12s-.81-2.17-2.27-2.17h-7.86v-11.49H50.2Zm24.09 12.35h-5.8c-1.41 0-2.22 1.01-2.22 2.12s.76 2.07 1.97 2.12h3.63v6.45c0 3.53-2.42 5.19-5.04 5.19s-5.04-1.66-5.04-5.19v-18.35c0-3.53 2.52-5.19 5.09-5.19 2.22 0 3.73 1.06 4.33 2.92l.15.5c.35 1.21.86 2.22 2.37 2.22s2.37-1.06 2.37-2.12v-.3c0-3.53-3.13-7.51-9.32-7.51s-9.73 3.93-9.73 9.17v19c0 5.19 3.83 9.12 9.83 9.12s9.73-3.93 9.73-9.12v-8.82c0-1.11-.81-2.22-2.32-2.22Zm20.21-15.17c-.35-1.21-1.31-1.97-2.42-1.97-1.01 0-1.97.76-2.37 1.97l-9.32 32.11c-.6 1.97.6 3.23 2.22 3.23.96 0 1.97-.4 2.37-1.86l1.81-6.85h10.59l1.86 6.85c.4 1.46 1.41 1.86 2.37 1.86 1.61 0 2.77-1.31 2.22-3.23l-9.32-32.11Zm-6.55 22.43 2.57-9.58c.4-1.46 1.06-4.03 1.46-6.4h.2c.45 2.37 1.06 4.94 1.46 6.4l2.57 9.58h-8.27Zm29.33-24.4c-5.7 0-9.32 3.68-9.32 9.02 0 4.44 2.47 6.7 4.59 8.42l6.55 5.44c1.31 1.06 2.62 2.87 2.62 5.39 0 3.38-2.32 4.84-5.04 4.84-2.32 0-4.28-1.06-4.89-4.08l-.3-1.51c-.25-1.26-1.01-2.22-2.37-2.22-1.56 0-2.57 1.36-2.12 3.28l.3 1.41c.86 3.63 3.58 7.31 9.43 7.31s9.63-3.58 9.63-9.32c0-4.64-2.42-7.01-3.43-7.86l-8.17-6.75c-1.11-.91-2.17-2.32-2.17-4.49 0-3.02 2.02-4.69 4.69-4.69 2.07 0 3.68 1.06 4.28 3.07l.2.5c.35 1.16.91 2.17 2.37 2.17s2.22-1.01 2.22-2.07v-.3c0-3.58-3.23-7.56-9.07-7.56m31.8 24.4c-1.56 0-2.32 1.26-2.32 2.32v1.16c0 3.58-2.57 5.14-5.09 5.14s-5.04-1.56-5.04-5.14v-18.45c0-3.48 2.42-5.14 5.14-5.14 2.17 0 3.68 1.01 4.23 2.92l.15.5c.35 1.16.96 2.22 2.47 2.22s2.32-1.06 2.32-2.12v-.3c0-3.53-3.12-7.51-9.22-7.51s-9.83 3.93-9.83 9.17v19c0 5.19 3.83 9.12 9.78 9.12s9.83-3.93 9.83-9.12v-1.46c0-1.06-.86-2.32-2.42-2.32Zm19.66-22.43c-.35-1.21-1.31-1.97-2.42-1.97-1.01 0-1.97.76-2.37 1.97l-9.33 32.11c-.6 1.97.6 3.23 2.22 3.23.96 0 1.97-.4 2.37-1.86l1.81-6.85h10.58l1.86 6.85c.4 1.46 1.41 1.86 2.37 1.86 1.61 0 2.77-1.31 2.22-3.23l-9.32-32.11Zm-6.55 22.43 2.57-9.58c.4-1.46 1.06-4.03 1.46-6.4h.2c.45 2.37 1.06 4.94 1.46 6.4l2.57 9.58h-8.27Zm35.13 8.11h-9.68v-30.19c0-1.06-.81-2.32-2.42-2.32-1.51 0-2.32 1.26-2.32 2.32v32.26c0 1.11.81 2.22 2.32 2.22h12.1c1.41 0 2.22-1.01 2.22-2.17 0-1.06-.81-2.12-2.22-2.12m22.38 0h-10.58v-11.95h7.86c1.46 0 2.27-1.01 2.27-2.12s-.81-2.17-2.27-2.17h-7.86v-11.49h10.58c1.46 0 2.27-1.06 2.27-2.17s-.81-2.12-2.27-2.12h-12.9c-1.61 0-2.42 1.21-2.42 2.27v31.75c0 1.06.81 2.27 2.42 2.27h12.9c1.46 0 2.27-1.01 2.27-2.17 0-1.06-.81-2.12-2.27-2.12Zm-70.98-87.86V22.33C148.72 10 138.72 0 126.39 0H96.86C84.53 0 74.53 10 74.53 22.33v29.53c0 12.33 10 22.33 22.33 22.33h29.53c12.33 0 22.33-10 22.33-22.33m-38.36-.17c0 3.16-2.56 5.71-5.71 5.71h-7.62c-3.16 0-5.71-2.56-5.71-5.71v-7.62c0-3.16 2.56-5.71 5.71-5.71h7.62c.63 0 1.25.11 1.85.31l6.62-6.66h-3.92c-1.34.03-2.48-.96-2.65-2.29 0-.09-.01-.17-.01-.26 0-1.4 1.15-2.53 2.55-2.53h6.35c3.51 0 6.35 2.84 6.35 6.35v6.24c.03 1.34-.96 2.48-2.29 2.65-.09 0-.17.01-.26.01-1.4 0-2.53-1.15-2.53-2.55V35.6l-6.64 6.67c.19.58.29 1.19.29 1.8zm21.59-6.34a8.89 8.89 0 0 1-8.89 8.89h-5.08c-.09 0-.17 0-.26-.01a2.54 2.54 0 0 1-2.28-2.78 2.616 2.616 0 0 1 2.65-2.29h4.97c2.1 0 3.81-1.71 3.81-3.81V25.67c0-2.1-1.71-3.81-3.81-3.81h-19.68c-2.1 0-3.81 1.71-3.81 3.81v5.08c0 .09 0 .17-.01.26a2.54 2.54 0 0 1-2.78 2.28 2.616 2.616 0 0 1-2.29-2.65v-4.97a8.89 8.89 0 0 1 8.89-8.89h19.68a8.89 8.89 0 0 1 8.89 8.89z" />
-                                <rect class="cls-1" x="96.39" y="43.44" width="8.89" height="8.89" rx=".63" ry=".63" />
-                            </svg>
-                        </a>
-
-                        <a href="/tools/upscaler.html" target="_blank" rel="noopener noreferrer"
-                            class="bg-white rounded-2xl p-4 shadow-lg aspect-square flex items-center justify-center">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 221.96 144.51" class="h-1/3 text-[#e2e2e2]">
-                                <defs>
-                                    <style>
-                                        .cls-1 {
-                                            fill: currentColor;
-                                        }
-                                    </style>
-                                </defs>
-                                <path class="cls-1"
-                                    d="M24.6 107.21c-1.31 0-2.27.81-2.87 2.32L13.67 131h-.3l-8.01-21.47c-.6-1.51-1.61-2.32-2.92-2.32-1.61 0-2.42 1.16-2.42 3.07v31.9c0 1.06.76 2.32 2.32 2.32 1.66 0 2.42-1.26 2.42-2.32l-.05-8.22c0-5.29-.1-10.23-.5-15.62h.25c.5 2.07 3.07 8.77 3.38 9.63l3.28 8.92c.55 1.51 1.61 1.71 2.42 1.71.86 0 1.86-.2 2.47-1.71l3.23-8.92c.81-2.12 2.82-7.46 3.38-9.63h.25c-.35 5.75-.4 7.31-.45 15.62l-.05 8.22c0 1.06.81 2.32 2.32 2.32 1.61 0 2.42-1.26 2.42-2.32v-31.9c0-1.91-.81-3.07-2.47-3.07ZM50.2 112c1.46 0 2.27-1.06 2.27-2.17s-.81-2.12-2.27-2.12H37.3c-1.61 0-2.42 1.21-2.42 2.27v31.75c0 1.06.81 2.27 2.42 2.27h12.9c1.46 0 2.27-1.01 2.27-2.17 0-1.06-.81-2.12-2.27-2.12H39.62v-11.95h7.86c1.46 0 2.27-1.01 2.27-2.12s-.81-2.17-2.27-2.17h-7.86v-11.49H50.2Zm24.09 12.35h-5.8c-1.41 0-2.22 1.01-2.22 2.12s.76 2.07 1.97 2.12h3.63v6.45c0 3.53-2.42 5.19-5.04 5.19s-5.04-1.66-5.04-5.19v-18.35c0-3.53 2.52-5.19 5.09-5.19 2.22 0 3.73 1.06 4.33 2.92l.15.5c.35 1.21.86 2.22 2.37 2.22s2.37-1.06 2.37-2.12v-.3c0-3.53-3.13-7.51-9.32-7.51s-9.73 3.93-9.73 9.17v19c0 5.19 3.83 9.12 9.83 9.12s9.73-3.93 9.73-9.12v-8.82c0-1.11-.81-2.22-2.32-2.22Zm20.21-15.17c-.35-1.21-1.31-1.97-2.42-1.97-1.01 0-1.97.76-2.37 1.97l-9.32 32.11c-.6 1.97.6 3.23 2.22 3.23.96 0 1.97-.4 2.37-1.86l1.81-6.85h10.59l1.86 6.85c.4 1.46 1.41 1.86 2.37 1.86 1.61 0 2.77-1.31 2.22-3.23l-9.32-32.11Zm-6.55 22.43 2.57-9.58c.4-1.46 1.06-4.03 1.46-6.4h.2c.45 2.37 1.06 4.94 1.46 6.4l2.57 9.58h-8.27Zm29.33-24.4c-5.7 0-9.32 3.68-9.32 9.02 0 4.44 2.47 6.7 4.59 8.42l6.55 5.44c1.31 1.06 2.62 2.87 2.62 5.39 0 3.38-2.32 4.84-5.04 4.84-2.32 0-4.28-1.06-4.89-4.08l-.3-1.51c-.25-1.26-1.01-2.22-2.37-2.22-1.56 0-2.57 1.36-2.12 3.28l.3 1.41c.86 3.63 3.58 7.31 9.43 7.31s9.63-3.58 9.63-9.32c0-4.64-2.42-7.01-3.43-7.86l-8.17-6.75c-1.11-.91-2.17-2.32-2.17-4.49 0-3.02 2.02-4.69 4.69-4.69 2.07 0 3.68 1.06 4.28 3.07l.2.5c.35 1.16.91 2.17 2.37 2.17s2.22-1.01 2.22-2.07v-.3c0-3.58-3.23-7.56-9.07-7.56m31.8 24.4c-1.56 0-2.32 1.26-2.32 2.32v1.16c0 3.58-2.57 5.14-5.09 5.14s-5.04-1.56-5.04-5.14v-18.45c0-3.48 2.42-5.14 5.14-5.14 2.17 0 3.68 1.01 4.23 2.92l.15.5c.35 1.16.96 2.22 2.47 2.22s2.32-1.06 2.32-2.12v-.3c0-3.53-3.12-7.51-9.22-7.51s-9.83 3.93-9.83 9.17v19c0 5.19 3.83 9.12 9.78 9.12s9.83-3.93 9.83-9.12v-1.46c0-1.06-.86-2.32-2.42-2.32Zm19.66-22.43c-.35-1.21-1.31-1.97-2.42-1.97-1.01 0-1.97.76-2.37 1.97l-9.33 32.11c-.6 1.97.6 3.23 2.22 3.23.96 0 1.97-.4 2.37-1.86l1.81-6.85h10.58l1.86 6.85c.4 1.46 1.41 1.86 2.37 1.86 1.61 0 2.77-1.31 2.22-3.23l-9.32-32.11Zm-6.55 22.43 2.57-9.58c.4-1.46 1.06-4.03 1.46-6.4h.2c.45 2.37 1.06 4.94 1.46 6.4l2.57 9.58h-8.27Zm35.13 8.11h-9.68v-30.19c0-1.06-.81-2.32-2.42-2.32-1.51 0-2.32 1.26-2.32 2.32v32.26c0 1.11.81 2.22 2.32 2.22h12.1c1.41 0 2.22-1.01 2.22-2.17 0-1.06-.81-2.12-2.22-2.12m22.38 0h-10.58v-11.95h7.86c1.46 0 2.27-1.01 2.27-2.12s-.81-2.17-2.27-2.17h-7.86v-11.49h10.58c1.46 0 2.27-1.06 2.27-2.17s-.81-2.12-2.27-2.12h-12.9c-1.61 0-2.42 1.21-2.42 2.27v31.75c0 1.06.81 2.27 2.42 2.27h12.9c1.46 0 2.27-1.01 2.27-2.17 0-1.06-.81-2.12-2.27-2.12Zm-70.98-87.86V22.33C148.72 10 138.72 0 126.39 0H96.86C84.53 0 74.53 10 74.53 22.33v29.53c0 12.33 10 22.33 22.33 22.33h29.53c12.33 0 22.33-10 22.33-22.33m-38.36-.17c0 3.16-2.56 5.71-5.71 5.71h-7.62c-3.16 0-5.71-2.56-5.71-5.71v-7.62c0-3.16 2.56-5.71 5.71-5.71h7.62c.63 0 1.25.11 1.85.31l6.62-6.66h-3.92c-1.34.03-2.48-.96-2.65-2.29 0-.09-.01-.17-.01-.26 0-1.4 1.15-2.53 2.55-2.53h6.35c3.51 0 6.35 2.84 6.35 6.35v6.24c.03 1.34-.96 2.48-2.29 2.65-.09 0-.17.01-.26.01-1.4 0-2.53-1.15-2.53-2.55V35.6l-6.64 6.67c.19.58.29 1.19.29 1.8zm21.59-6.34a8.89 8.89 0 0 1-8.89 8.89h-5.08c-.09 0-.17 0-.26-.01a2.54 2.54 0 0 1-2.28-2.78 2.616 2.616 0 0 1 2.65-2.29h4.97c2.1 0 3.81-1.71 3.81-3.81V25.67c0-2.1-1.71-3.81-3.81-3.81h-19.68c-2.1 0-3.81 1.71-3.81 3.81v5.08c0 .09 0 .17-.01.26a2.54 2.54 0 0 1-2.78 2.28 2.616 2.616 0 0 1-2.29-2.65v-4.97a8.89 8.89 0 0 1 8.89-8.89h19.68a8.89 8.89 0 0 1 8.89 8.89z" />
-                                <rect class="cls-1" x="96.39" y="43.44" width="8.89" height="8.89" rx=".63" ry=".63" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Social Media Launcher -->
-        <div id="social-launcher" class="fixed bottom-4 right-4 z-[10000]">
-            <div class="relative w-12 h-12">
-
-                <!-- Hidden Social Icons -->
-                <a href="https://wa.me/+255678700731" target="_blank"
-                    class="social-icon w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-200 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-whatsapp" viewBox="0 0 16 16">
-                        <path
-                            d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/reinmax_creative/" target="_blank"
-                    class="social-icon w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-200 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="#002828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <section>
+        <!-- Socials Floating Panel -->
+        <div id="fsl-container" class="fsl-glass-card">
+            <div class="fsl-item"><a href="https://instagram.com" target="_blank"
+                    class="bg-white/30 text-primary hover:bg-white/50"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37m1.5-4.87h.01" />
-                    </svg>
-                </a>
-                <a href="https://dribbble.com" target="_blank"
-                    class="social-icon w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-200 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="#002828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94m19.5 1.9c-6.62-1.41-12.14 1-16.38 6.32" />
-                        <path d="M8.56 2.75c4.37 6 6 9.42 8 17.72" />
-                    </svg>
-                </a>
-                <a href="https://x.com/reinmaxstudio" target="_blank"
-                    class="social-icon w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-200 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="#002828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg></a></div>
+            <div class="fsl-item"><a href="https://twitter.com" target="_blank"
+                    class="bg-white/30 text-primary hover:bg-white/50"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path
-                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2" />
-                    </svg>
-                </a>
-                <button id="close-socials-btn"
-                    class="social-icon w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center shadow-md hover:bg-red-600 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 6 6 18M6 6l12 12" />
+                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                    </svg></a></div>
+            <div class="fsl-item"><a href="https://dribbble.com" target="_blank"
+                    class="bg-white/30 text-primary hover:bg-white/50"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94" />
+                        <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32" />
+                        <path d="M8.56 2.75c4.37 6 6 9.42 8 17.72" />
+                    </svg></a></div>
+            <div class="fsl-item"><a href="https://twitch.tv" target="_blank"
+                    class="bg-white/30 text-primary hover:bg-white/50"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7" />
+                    </svg></a></div>
+            <div class="fsl-item">
+                <button id="fsl-close-button" class="bg-danger text-white hover:bg-dangerHover">
+                    <svg id="fsl-close-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
                     </svg>
                 </button>
-
-                <!-- Main Icon -->
-                <div
-                    class="absolute bottom-0 left-0 w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-green-600 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2z" />
-                        <path d="M21 16v2a4 4 0 0 1-4 4h-5" />
-                    </svg>
-                </div>
             </div>
         </div>
 
         <!-- The container where JavaScript will add the notification -->
         <div id="notification-container" class="notification-container"></div>
-    </main>
-
+    </section>
 
     <!-- Footer Section -->
-    <footer class="bg-primary text-white py-6">
-        <div class="container mx-auto px-6 sm:px-6 lg:px-8 text-center">
-            <p>
-                &copy; <span id="currentYear"></span> Reinmax Creative. All rights reserved.
-            </p>
-            <p class="text-sm">
-                Designed and Maintained by
-                <br class="md:hidden" />
-                <a href="mailto:mail@reinmaxcreative.com" class="text-secondary hover:text-blue-400">Reinmax Creative &
-                    Design Agency</a>
-            </p>
+    <footer class="bg-[var(--background-footer)] text-[var(--text-light)] footer-with-overlay">
+        <div class="container mx-auto px-6 md:px-8 relative z-10">
+
+            <!-- Zone 1: CTA & Newsletter -->
+            <div class="py-16 border-b border-[var(--border-color)]">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+
+                    <!-- Newsletter Text -->
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold">Join Our Community</h2>
+                        <p class="mt-4 text-[var(--text-muted)]">
+                            Get expert insights, creative design inspiration, design tips, and exclusive updates on the
+                            latest trends in creative design.
+                        </p>
+                    </div>
+
+                    <form id="newsletter-form" class="w-full" novalidate>
+                        <div class="flex flex-col sm:flex-row gap-6">
+
+                            <!-- Email Input -->
+                            <div class="flex-grow">
+                                <label for="email-signup" class="sr-only">Your Email</label>
+                                <input type="email" id="email-signup" required
+                                    class="w-full p-3 bg-white/5 border border-white/20 rounded-md md:rounded-2xl placeholder:text-gray-500 focus:outline-none focus:border-white focus:ring-0 transition-colors">
+                            </div>
+
+                            <!-- Subscribe Button -->
+                            <button id="subscribe-button" type="submit"
+                                class="relative flex items-center justify-center gap-2 bg-[var(--primary-color)] text-white font-medium md:font-semibold py-3 px-6 rounded-md md:rounded-2xl hover:bg-[#003333] transition-all duration-300">
+                                <span class="btn-text">Subscribe</span>
+                                <span class="loader hidden"></span>
+                            </button>
+                        </div>
+
+                        <!-- Error Message -->
+                        <p id="error-message" class="text-sm mt-2 error-message"></p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Zone 2: Core Content (Link Grid) -->
+            <div class="py-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+
+                <!-- Company Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Contact Us</a></li>
+                        <li><a href="#" class="footer-link">Community</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Brand Strategy</a></li>
+                        <li><a href="#" class="footer-link">Brand Design</a></li>
+                        <li><a href="#" class="footer-link">Motion Graphics</a></li>
+                    </ul>
+                </div>
+
+                <!-- Our Work Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">Showcase</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Branding Projects</a></li>
+                        <li><a href="#" class="footer-link">UI/UX Projects</a></li>
+                        <li><a href="#" class="footer-link">Web Development</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">Academy</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Adobe Illustrator</a></li>
+                        <li><a href="#" class="footer-link">Adobe Photoshop</a></li>
+                        <li><a href="#" class="footer-link">Figma</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal & Academy Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">Legal</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Business</a></li>
+                        <li><a href="#" class="footer-link">Report a Problem</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Zone 3: Meta & Copyright -->
+            <div class="py-8 border-t border-[var(--border-color)]">
+                <div class="text-center text-sm text-[var(--text-muted)]">
+                    <p>
+                        <span class="font-hovesTrialVar font-medium">&copy;</span> <span id="copyright-year"></span>
+                        Reinmax Creative & Design Agency
+                        <span class="block sm:inline mt-2">All Rights Reserved.</span>
+                    </p>
+                </div>
+            </div>
+
         </div>
     </footer>
 
     <!-- External JavaScript files -->
     <script src="script.js"></script>
+    <script src="footer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"> </script>
-
 
 </body>
 
