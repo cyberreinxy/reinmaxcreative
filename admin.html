@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Manager | Reinmax Creative</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#002828",
+                        secondary: "#99cccc",
+                        tertiary: "#003333",
+                        background: "#f0f4f4",
+                    },
+                    fontFamily: {
+                        sora: ["Sora", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- Google Fonts: Sora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide-js@latest"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Add some basic styling for the admin page */
+        .admin-section {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            margin-bottom: 2rem;
+            padding: 2rem;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        .header-logo svg {
+            height: 2.5rem;
+            width: auto;
+        }
+
+        .header-logo svg .cls-1 {
+            fill: #002828 !important;
+        }
+
+        /* Undo notification styles */
+        #undo-notification {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background-color: #2c2c2c;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #undo-notification.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Smooth reordering transition */
+        .project-list {
+            transition: transform 0.3s ease;
+        }
+
+        /* Drag and Drop styles */
+        .drop-zone {
+            border: 2px dashed #99cccc;
+            background-color: #f0f4f4;
+            transition: all 0.3s ease;
+        }
+
+        .drop-zone.drag-over {
+            background-color: #99cccc20;
+            border-color: #002828;
+        }
+
+        /* Disabled state for button */
+        #generate-code-btn:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body class="antialiased font-sora bg-background">
+    <!-- Undo Notification -->
+    <div id="undo-notification" class="flex items-center gap-4">
+        <span>Project deleted.</span>
+        <button id="undo-btn" class="text-secondary hover:text-white font-semibold transition-colors duration-200">
+            Undo
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Company Logo -->
+            <a href="index.html" class="text-primary header-logo">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 757.96 200">
+                    <path
+                        d="M286.79 26.5h-36.84v84.83h16V79.34h22.3c4.73 0 6.54 2.67 6.54 6.54v25.45h16V83.58c0-6.79-3.76-11.15-10.18-11.51v-2.18c7.15-2.91 12.6-9.09 12.6-19.27v-1.45c0-13.69-10.54-22.66-26.42-22.66Zm10.42 27.03c0 6.79-4.61 11.27-12.12 11.27h-19.15V41.05h19.15c7.76 0 12.12 4.48 12.12 11.27zm45.32 22.3h35.15V61.28h-35.15V41.05h38.54V26.5h-54.53v84.83h55.26V96.79h-39.27zm51.15-49.33h16v84.83h-16zm81.43 73.93h-2.18L456.08 26.5h-30.41v84.83h15.75V37.41h2.18l16.85 73.92h30.41V26.5h-15.75zm78.29 0h-2.18L536.55 26.5h-29.69v84.83h15.52V38.26h2.18l14.54 73.07h26.42l14.54-73.07h2.18v73.07h15.51V26.5h-29.69zm76.83-73.93-22.3 84.83h16.48l4.6-18.66h30.3l4.6 18.66h16.48l-22.3-84.83h-27.87Zm2.55 51.39 10.3-41.32h2.18l10.3 41.32zm100.34-9.34 24.6-42.05h-18.18L722.7 57.16h-2.19L703.67 26.5h-18.18l24.6 42.05-24.84 42.78h18.18l17.08-31.38h2.19l17.08 31.38h18.18zm-472.06 76.46c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.36 5.52 5.6v.39h5.12v-.24c0-6.46-3.86-10.4-10.64-10.4Zm26.87.56h-11.98v27.58h5.2v-10.4h7.25c1.54 0 2.13.87 2.13 2.13v8.27h5.2v-9.02c0-2.21-1.22-3.63-3.31-3.74v-.71c2.32-.95 4.1-2.96 4.1-6.27v-.47c0-4.45-3.43-7.37-8.59-7.37m3.39 8.78c0 2.21-1.5 3.66-3.94 3.66h-6.23v-7.72h6.23c2.52 0 3.94 1.46 3.94 3.66v.39Zm14.74 7.25h11.43v-4.73h-11.43v-6.58h12.53v-4.72h-17.73v27.58h17.97v-4.73h-12.77zm21.98-16.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58h-9.06Zm.83 16.7 3.35-13.44h.71l3.35 13.44zm14.62-11.98h8.04v22.86h5.2v-22.86h8.04v-4.72h-21.28zm24.82-4.72h5.2v27.58h-5.2zm20.26 24.23h-.56l-5.83-24.23h-5.36l7.02 27.58h8.9l7.02-27.58h-5.36zm19.7-8.2h11.42v-4.73h-11.42v-6.58h12.53v-4.72h-17.73v27.58h17.96v-4.73h-12.76zm43.14-8h-4.97v3.55h-3.82c-2.21 0-4.1-1.1-4.1-3.74 0-2.48 1.73-3.74 4.1-3.74h3.39v-4.1h-4.3c-4.73 0-8.16 2.6-8.16 7.41 0 3.23 1.85 5.12 4.49 5.91v.55c-2.64.79-4.65 2.92-4.65 6.27 0 4.65 3.27 7.45 8.16 7.45h9.85v-11.9h3.63v-4.1h-3.63v-3.55Zm-4.96 15.45h-3.98c-2.17 0-4.1-1.26-4.1-3.9s1.77-3.9 4.1-3.9h3.98zm32.31-23.48h-11.35v4.57h3.63v18.44h-3.63v4.57h11.35c7.41 0 11.35-3.78 11.35-11.19v-5.2c0-7.41-3.94-11.19-11.35-11.19m6.14 16.54c0 4.02-1.89 6.3-6.07 6.3h-2.6v-18.13h2.6c4.18 0 6.07 2.29 6.07 6.31zm14.74-.51h11.43v-4.73h-11.43v-6.58h12.53v-4.72h-17.73v27.58h17.97v-4.73h-12.77zm26.87-4.77-.91-.2c-3.31-.71-4.85-1.69-4.85-3.74s1.46-3.31 4.61-3.31 5.08 1.26 5.08 4.41v1.18h5.12v-1.18c0-5.99-4.29-8.98-10.21-8.98s-9.73 2.99-9.73 8.04 3.35 6.97 9.06 8.24l.91.2c3.55.79 5.56 1.58 5.56 3.86s-1.77 3.78-5.32 3.78-5.71-1.65-5.71-4.97v-1.1H515v1.1c0 5.99 4.45 9.54 10.84 9.54s10.44-3.47 10.44-8.51-3.9-7.09-9.77-8.35Zm13.63-11.26h5.2v27.58h-5.2zm20.89-.56c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.66 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01Zm31.68 24.59H592l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm25.21-24.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58h-9.06Zm.83 16.7 3.35-13.44h.71l3.35 13.44zm29.04-17.26c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.65 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01Zm20.8 16.59h11.43v-4.73h-11.43v-6.58h12.54v-4.72h-17.74v27.58h17.97v-4.73h-12.77zm32.71 8h-.71l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm20.8-24.59c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01Zm30.07.56-5.83 11.82h-.71l-5.84-11.82H734l9.38 18.08v9.5h5.2v-9.5l9.38-18.08zM0 200h200V0H0zM26.3 26.5h147.4v73.6H99.9l73.6 73.6H26.3z"
+                        style="fill:#002828" />
+                </svg>
+            </a>
+            <h1 class="text-xl font-bold text-primary">Portfolio Content Manager</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <!-- Instructions -->
+        <div class="admin-section">
+            <h2 class="text-2xl font-bold text-primary mb-4">How to Use This Page</h2>
+            <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                <li><strong>Load Your Data:</strong> Drag and drop your `portfolio-data.js` file into the area below, or
+                    click to browse. Your data will then appear in the sections below.</li>
+                <li><strong>Manage Projects:</strong> Add, edit, reorder, or delete projects in the categories. Your
+                    changes are saved automatically in your browser.</li>
+                <li><strong>Generate & Publish:</strong>Click the <span class="text-green-500">Generate &
+                        Download</span> button to generate and
+                    immediately download the updated `portfolio-data.js` file.</li>
+                <li><strong>Update Your Website:</strong> Upload the new `portfolio-data.js` file to your server to see
+                    the changes live on your portfolio page.</li>
+            </ol>
+            <div class="mt-6 space-x-4">
+                <button id="generate-code-btn"
+                    class="cta bg-green-500 hover:bg-green-300 hover:text-green-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                    Generate & Download
+                </button>
+            </div>
+            <div id="copy-feedback" class="mt-2 text-green-600 font-semibold opacity-0 transition-opacity"></div>
+        </div>
+
+        <!-- Load Data Section -->
+        <div class="admin-section">
+            <h3 class="text-xl font-bold text-primary mb-2">Load Existing `portfolio-data.js`</h3>
+            <div id="drop-zone"
+                class="drop-zone flex flex-col items-center justify-center p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <p class="text-gray-600 font-semibold text-center">Drag and drop your `portfolio-data.js` file here</p>
+                <p class="text-gray-500 text-sm mt-1">or</p>
+                <input type="file" id="file-input" class="hidden" accept=".js" />
+                <label for="file-input"
+                    class="mt-2 text-secondary hover:text-primary font-semibold transition-colors duration-200 cursor-pointer">
+                    Click to browse files
+                </label>
+            </div>
+        </div>
+
+        <!-- Code Output Area -->
+        <div id="code-output-section" class="admin-section hidden">
+            <h3 class="text-xl font-bold text-primary mb-2">Your New `portfolio-data.js` Code:</h3>
+            <textarea id="code-output" rows="15"
+                class="w-full p-4 border rounded-lg bg-gray-50 font-mono text-sm"></textarea>
+        </div>
+
+        <!-- Project Categories -->
+        <div id="categories-container" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Categories will be dynamically generated here -->
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let portfolioData = {};
+            let lastDeletedProject = null;
+            let undoTimeout = null;
+
+            const categoryTitles = {
+                "brand-identity": "Brand Identity & Logo Design",
+                "illustrations": "Drawing and Illustrations",
+                "ui-ux": "Graphic Design & UI/UX",
+                "motion-graphics": "Motion Graphics"
+            };
+
+            function saveData() {
+                localStorage.setItem('portfolioDataAdmin', JSON.stringify(portfolioData));
+            }
+
+            function loadData() {
+                const savedData = localStorage.getItem('portfolioDataAdmin');
+                if (savedData) {
+                    portfolioData = JSON.parse(savedData);
+                } else {
+                    portfolioData = {};
+                }
+                renderAllCategories();
+            }
+
+            function undoDelete() {
+                if (lastDeletedProject) {
+                    const { categoryId, index, project } = lastDeletedProject;
+                    portfolioData[categoryId].splice(index, 0, project);
+                    saveData();
+                    renderAllCategories();
+                    hideUndoMessage();
+                }
+            }
+
+            function showUndoMessage() {
+                const undoNotification = document.getElementById('undo-notification');
+                undoNotification.classList.add('visible');
+                clearTimeout(undoTimeout);
+                undoTimeout = setTimeout(hideUndoMessage, 5000);
+            }
+
+            function hideUndoMessage() {
+                const undoNotification = document.getElementById('undo-notification');
+                undoNotification.classList.remove('visible');
+                lastDeletedProject = null;
+            }
+
+            function renderAllCategories() {
+                const container = document.getElementById('categories-container');
+                container.innerHTML = '';
+                Object.keys(categoryTitles).forEach(categoryId => {
+                    container.innerHTML += createCategorySection(categoryId, portfolioData[categoryId] || []);
+                });
+                addEventListeners();
+            }
+
+            function createCategorySection(categoryId, projects) {
+                return `
+                    <div class="admin-section" data-category-id="${categoryId}">
+                        <h3 class="text-2xl font-bold text-primary mb-6">${categoryTitles[categoryId]}</h3>
+                        <div class="space-y-4 mb-8 project-list">
+                            ${projects.map((p, index) => createProjectItem(p, categoryId, index)).join('')}
+                        </div>
+                        <div class="add-project-form bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-lg mb-2 text-tertiary">Add New Project</h4>
+                            <input type="text" placeholder="Project Title" class="w-full p-2 border rounded mb-2 new-project-title">
+                            <input type="text" placeholder="Image URL" class="w-full p-2 border rounded mb-2 new-project-image">
+                            <input type="text" placeholder="Year (e.g., 2023)" class="w-full p-2 border rounded mb-2 new-project-year">
+                            <input type="text" placeholder="Project Link URL (e.g., # or https://...)" class="w-full p-2 border rounded mb-2 new-project-url">
+                            <textarea placeholder="Description" class="w-full p-2 border rounded mb-2 new-project-desc"></textarea>
+                            <button class="add-btn cta bg-secondary text-primary font-bold py-2 px-4 rounded-lg">Add Project</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function createProjectItem(project, categoryId, index) {
+                return `
+                    <div class="border p-4 rounded-lg space-y-4" data-index="${index}">
+                        <div class="flex items-center justify-between transition-transform duration-300 transform">
+                            <div class="flex items-center overflow-hidden">
+                                <img src="${project.image}" class="w-16 h-16 object-cover rounded-md mr-4 flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/64x64/e2e8f0/475569?text=Img';">
+                                <div class="truncate">
+                                    <p class="font-bold truncate">${project.title} <span class="text-secondary text-sm">(${project.year})</span></p>
+                                    <p class="text-sm text-gray-500 truncate">${project.description}</p>
+                                    <p class="text-sm text-blue-500 truncate">${project.url || '#'}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 ml-4">
+                                <div class="flex flex-col">
+                                    <button class="move-up-btn control-btn" title="Move Up"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#002828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up-icon lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg></button>
+                                    <button class="move-down-btn control-btn" title="Move Down"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#002828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg></button>
+                                </div>
+                                <button class="edit-btn text-blue-500 hover:text-blue-700">Edit</button>
+                                <button class="delete-btn text-red-500 hover:text-red-700">Delete</button>
+                            </div>
+                        </div>
+                        <div class="edit-form-container mt-4 hidden"></div>
+                    </div>
+                `;
+            }
+
+            function addEventListeners() {
+                document.querySelectorAll('.add-btn').forEach(btn => btn.addEventListener('click', handleAddProject));
+                document.querySelectorAll('.delete-btn').forEach(btn => btn.addEventListener('click', handleDeleteProject));
+                document.querySelectorAll('.edit-btn').forEach(btn => btn.addEventListener('click', handleEditProject));
+                document.querySelectorAll('.move-up-btn').forEach(btn => btn.addEventListener('click', handleMoveProject));
+                document.querySelectorAll('.move-down-btn').forEach(btn => btn.addEventListener('click', handleMoveProject));
+                document.getElementById('undo-btn').addEventListener('click', undoDelete);
+            }
+
+            function handleAddProject(e) {
+                const section = e.target.closest('.admin-section');
+                const categoryId = section.dataset.categoryId;
+                const title = section.querySelector('.new-project-title').value.trim();
+                const image = section.querySelector('.new-project-image').value.trim();
+                const year = section.querySelector('.new-project-year').value.trim();
+                const url = section.querySelector('.new-project-url').value.trim();
+                const description = section.querySelector('.new-project-desc').value.trim();
+
+                if (title && image && description && url && year) {
+                    if (!portfolioData[categoryId]) portfolioData[categoryId] = [];
+                    portfolioData[categoryId].push({ title, image, description, url, year });
+                    saveData();
+                    renderAllCategories();
+                } else {
+                    alert('Please fill out all fields.');
+                }
+            }
+
+            function handleDeleteProject(e) {
+                const item = e.target.closest('[data-index]');
+                const section = e.target.closest('.admin-section');
+                const categoryId = section.dataset.categoryId;
+                const index = parseInt(item.dataset.index, 10);
+
+                lastDeletedProject = {
+                    categoryId,
+                    index,
+                    project: portfolioData[categoryId][index]
+                };
+
+                portfolioData[categoryId].splice(index, 1);
+                saveData();
+                renderAllCategories();
+                showUndoMessage();
+            }
+
+            function handleEditProject(e) {
+                const item = e.target.closest('[data-index]');
+                const section = e.target.closest('.admin-section');
+                const categoryId = section.dataset.categoryId;
+                const index = parseInt(item.dataset.index, 10);
+                const project = portfolioData[categoryId][index];
+                const formContainer = item.querySelector('.edit-form-container');
+
+                if (formContainer.classList.contains('hidden')) {
+                    formContainer.innerHTML = `
+                        <div class="bg-gray-100 p-4 rounded-lg space-y-2">
+                            <input type="text" value="${project.title}" placeholder="Project Title" class="w-full p-2 border rounded edit-title">
+                            <input type="text" value="${project.image}" placeholder="Image URL" class="w-full p-2 border rounded edit-image">
+                            <input type="text" value="${project.year}" placeholder="Year (e.g., 2023)" class="w-full p-2 border rounded edit-year">
+                            <input type="text" value="${project.url || '#'}" placeholder="Project Link URL (e.g., # or https://...)" class="w-full p-2 border rounded edit-url">
+                            <textarea placeholder="Description" class="w-full p-2 border rounded edit-desc">${project.description}</textarea>
+                            <button class="update-btn cta bg-green-500 text-white py-2 px-4 rounded-lg">Update</button>
+                            <button class="cancel-btn cta bg-gray-500 text-white py-2 px-4 rounded-lg">Cancel</button>
+                        </div>
+                    `;
+                    formContainer.classList.remove('hidden');
+                    formContainer.querySelector('.update-btn').onclick = () => handleUpdateProject(categoryId, index);
+                    formContainer.querySelector('.cancel-btn').onclick = () => formContainer.classList.add('hidden');
+                } else {
+                    formContainer.classList.add('hidden');
+                }
+            }
+
+            function handleUpdateProject(categoryId, index) {
+                const item = document.querySelector(`[data-category-id="${categoryId}"] [data-index="${index}"]`);
+                const title = item.querySelector('.edit-title').value.trim();
+                const image = item.querySelector('.edit-image').value.trim();
+                const year = item.querySelector('.edit-year').value.trim();
+                const url = item.querySelector('.edit-url').value.trim();
+                const description = item.querySelector('.edit-desc').value.trim();
+
+                if (title && image && description && url && year) {
+                    portfolioData[categoryId][index] = { title, image, description, url, year };
+                    saveData();
+                    renderAllCategories();
+                } else {
+                    alert('Please fill out all fields.');
+                }
+            }
+
+            function handleMoveProject(e) {
+                const isUp = e.target.closest('.move-up-btn');
+                const item = e.target.closest('[data-index]');
+                const section = e.target.closest('.admin-section');
+                const categoryId = section.dataset.categoryId;
+                const index = parseInt(item.dataset.index, 10);
+                const projects = portfolioData[categoryId];
+
+                if (isUp && index > 0) {
+                    [projects[index], projects[index - 1]] = [projects[index - 1], projects[index]];
+                } else if (!isUp && index < projects.length - 1) {
+                    [projects[index], projects[index + 1]] = [projects[index + 1], projects[index]];
+                }
+
+                saveData();
+                renderAllCategories();
+            }
+
+            function parseProjectData(dataString) {
+                try {
+                    const func = new Function(`${dataString}; return projectData;`);
+                    return func();
+                } catch (e) {
+                    console.error("Failed to parse project data string:", e);
+                    return null;
+                }
+            }
+
+            const dropZone = document.getElementById('drop-zone');
+            const fileInput = document.getElementById('file-input');
+            const generateBtn = document.getElementById('generate-code-btn');
+
+            function handleFile(file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const dataString = event.target.result;
+                    const parsedData = parseProjectData(dataString);
+                    if (parsedData) {
+                        portfolioData = parsedData;
+                        Object.keys(portfolioData).forEach(category => {
+                            portfolioData[category].forEach(project => {
+                                if (!project.url) project.url = "#";
+                                if (!project.year) project.year = "N/A";
+                            });
+                        });
+                        saveData();
+                        renderAllCategories();
+                        generateBtn.disabled = false;
+                        alert('Data loaded successfully from file!');
+                    } else {
+                        alert('Invalid data format in the file. Please check the file content.');
+                    }
+                };
+                reader.readAsText(file);
+            }
+
+            dropZone.addEventListener('click', () => fileInput.click());
+
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    handleFile(file);
+                }
+            });
+
+            dropZone.addEventListener('dragover', (event) => {
+                event.preventDefault();
+                dropZone.classList.add('drag-over');
+            });
+
+            dropZone.addEventListener('dragleave', (event) => {
+                event.preventDefault();
+                dropZone.classList.remove('drag-over');
+            });
+
+            dropZone.addEventListener('drop', (event) => {
+                event.preventDefault();
+                dropZone.classList.remove('drag-over');
+                const file = event.dataTransfer.files[0];
+                if (file && file.name.endsWith('.js')) {
+                    handleFile(file);
+                } else {
+                    alert('Please drop a valid .js file.');
+                }
+            });
+
+            generateBtn.addEventListener('click', function () {
+                const codeString = `const projectData = ${JSON.stringify(portfolioData, null, 4)};`;
+
+                const blob = new Blob([codeString], { type: 'text/javascript' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'portfolio-data.js';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                const feedback = document.getElementById('copy-feedback');
+                feedback.textContent = 'Code generated and downloaded!';
+                feedback.classList.remove('opacity-0');
+                feedback.classList.add('opacity-100');
+                setTimeout(() => {
+                    feedback.classList.remove('opacity-100');
+                    feedback.classList.add('opacity-0');
+                }, 5000);
+            });
+
+
+            document.getElementById('undo-btn').addEventListener('click', undoDelete);
+
+            loadData();
+        });
+    </script>
+</body>
+
+</html>

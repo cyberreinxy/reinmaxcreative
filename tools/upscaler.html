@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor Pro</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Cropper.js for cropping -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <!-- Google Fonts: Sora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        :root {
+            --primary-color: #8ab4ff;
+            --primary-text-on-dark: #e5e7eb;
+            --dark-text-on-primary: #111827;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background-color: #0d1117;
+            color: var(--primary-text-on-dark);
+        }
+
+        .main-container {
+            background: linear-gradient(145deg, #111827, #1f2937);
+            border: 1px solid #374151;
+        }
+
+        .checkerboard {
+            background-image:
+                linear-gradient(45deg, #2d2d2d 25%, transparent 25%),
+                linear-gradient(-45deg, #2d2d2d 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #2d2d2d 75%),
+                linear-gradient(-45deg, transparent 75%, #2d2d2d 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+
+        #drop-zone {
+            border: 2px dashed var(--primary-color);
+            transition: all 0.2s ease-in-out;
+        }
+
+        #drop-zone.dragover {
+            border-color: var(--primary-color);
+            background-color: rgba(138, 180, 255, 0.1);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #374151;
+            transition: .4s;
+            border-radius: 28px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary-color);
+        }
+
+        input:disabled+.slider {
+            cursor: not-allowed;
+            background-color: #4b5563;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(24px);
+        }
+
+        .control-btn {
+            background-color: #374151;
+            color: #d1d5db;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .control-btn.active {
+            background-color: var(--primary-color);
+            color: var(--dark-text-on-primary);
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(138, 180, 255, 0.4);
+        }
+
+        .control-btn:hover:not(.active):not(:disabled) {
+            background-color: #4b5563;
+        }
+
+        .crop-tool-btn {
+            background-color: #374151;
+            color: #d1d5db;
+        }
+
+        .crop-tool-btn.active {
+            background-color: var(--primary-color);
+            color: var(--dark-text-on-primary);
+        }
+
+        .cropper-view-box,
+        .cropper-face {
+            border-radius: 0.25rem;
+        }
+
+        #process-btn,
+        #export-btn {
+            background: var(--primary-color);
+            color: var(--dark-text-on-primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 180, 255, 0.2);
+        }
+
+        #process-btn:hover:not(:disabled),
+        #export-btn:hover:not(:disabled) {
+            box-shadow: 0 8px 20px rgba(138, 180, 255, 0.3);
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-top: -6px;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: var(--primary-color);
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background: var(--primary-color);
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        #export-modal-overlay {
+            background-color: rgba(13, 17, 23, 0.8);
+        }
+
+        /* Responsive grid for crop tools on mobile */
+        @media (max-width: 767px) {
+            #crop-controls {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Ensure smooth scrolling on touch devices */
+        #original-image-preview {
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body class="p-4">
+
+    <div class="w-full max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <svg class="mx-auto h-12 mb-12 mt-4" id=" Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 334.56 74.18">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: #8ab4ff
+                        }
+                    </style>
+                </defs>
+                <path class="cls-1"
+                    d="M119.53 16.77c-1.43 0-2.47.88-3.13 2.53l-8.79 23.39h-.33L98.55 19.3c-.66-1.65-1.76-2.53-3.18-2.53-1.76 0-2.64 1.26-2.64 3.35v34.76c0 1.15.82 2.53 2.53 2.53 1.81 0 2.64-1.37 2.64-2.53l-.05-8.95c0-5.77-.11-11.15-.55-17.02h.27c.55 2.25 3.35 9.56 3.68 10.49l3.57 9.72c.6 1.65 1.76 1.87 2.64 1.87.93 0 2.03-.22 2.69-1.87l3.51-9.72c.88-2.31 3.07-8.13 3.68-10.49h.27c-.38 6.26-.44 7.96-.49 17.02l-.05 8.95c0 1.15.88 2.53 2.53 2.53 1.76 0 2.64-1.37 2.64-2.53V20.12c0-2.09-.88-3.35-2.69-3.35Zm27.89 5.22c1.59 0 2.47-1.15 2.47-2.36s-.88-2.31-2.47-2.31h-14.06c-1.76 0-2.64 1.32-2.64 2.47v34.6c0 1.15.88 2.47 2.64 2.47h14.06c1.59 0 2.47-1.1 2.47-2.36 0-1.15-.88-2.31-2.47-2.31h-11.53V39.18h8.57c1.59 0 2.47-1.1 2.47-2.31s-.88-2.36-2.47-2.36h-8.57V21.99zm26.25 13.45h-6.31c-1.54 0-2.42 1.1-2.42 2.31s.82 2.25 2.14 2.31h3.95v7.03c0 3.84-2.64 5.66-5.49 5.66s-5.49-1.81-5.49-5.66V27.1c0-3.84 2.75-5.66 5.55-5.66 2.42 0 4.06 1.15 4.72 3.18l.16.55c.38 1.32.93 2.42 2.58 2.42s2.58-1.15 2.58-2.31v-.33c0-3.84-3.4-8.18-10.16-8.18s-10.6 4.28-10.6 9.99v20.7c0 5.66 4.17 9.94 10.71 9.94s10.6-4.28 10.6-9.94v-9.61c0-1.21-.88-2.42-2.53-2.42Zm22.02-16.53c-.38-1.32-1.43-2.14-2.64-2.14-1.1 0-2.14.82-2.58 2.14l-10.16 34.98c-.66 2.14.66 3.51 2.42 3.51 1.04 0 2.14-.44 2.58-2.03l1.98-7.47h11.53l2.03 7.47c.44 1.59 1.54 2.03 2.58 2.03 1.76 0 3.02-1.43 2.42-3.51zm-7.14 24.44 2.8-10.43c.44-1.59 1.15-4.39 1.59-6.97h.22c.49 2.58 1.15 5.38 1.59 6.97l2.8 10.43h-9.01Zm31.96-26.58c-6.21 0-10.16 4.01-10.16 9.83 0 4.83 2.69 7.3 5 9.17l7.14 5.93c1.43 1.15 2.86 3.13 2.86 5.88 0 3.68-2.53 5.27-5.49 5.27-2.53 0-4.67-1.15-5.33-4.45l-.33-1.65c-.27-1.37-1.1-2.42-2.58-2.42-1.7 0-2.8 1.48-2.31 3.57l.33 1.54c.93 3.95 3.9 7.96 10.27 7.96s10.49-3.9 10.49-10.16c0-5.05-2.64-7.63-3.73-8.57l-8.9-7.36c-1.21-.99-2.36-2.53-2.36-4.89 0-3.29 2.2-5.11 5.11-5.11 2.25 0 4.01 1.15 4.67 3.35l.22.55c.38 1.26.99 2.36 2.58 2.36s2.42-1.1 2.42-2.25v-.33c0-3.9-3.51-8.24-9.88-8.24Zm34.65 26.58c-1.7 0-2.53 1.37-2.53 2.53v1.26c0 3.9-2.8 5.6-5.55 5.6s-5.49-1.7-5.49-5.6v-20.1c0-3.79 2.64-5.6 5.6-5.6 2.36 0 4.01 1.1 4.61 3.18l.16.55c.38 1.26 1.04 2.42 2.69 2.42s2.53-1.15 2.53-2.31v-.33c0-3.84-3.4-8.18-10.05-8.18s-10.71 4.28-10.71 9.99v20.7c0 5.66 4.17 9.94 10.65 9.94s10.71-4.28 10.71-9.94v-1.59c0-1.15-.93-2.53-2.64-2.53Zm21.41-24.44c-.38-1.32-1.43-2.14-2.64-2.14-1.1 0-2.14.82-2.58 2.14l-10.16 34.98c-.66 2.14.66 3.51 2.42 3.51 1.04 0 2.14-.44 2.58-2.03l1.98-7.47h11.53l2.03 7.47c.44 1.59 1.54 2.03 2.58 2.03 1.76 0 3.02-1.43 2.42-3.51zm-7.14 24.44 2.8-10.43c.44-1.59 1.15-4.39 1.59-6.97h.22c.49 2.58 1.15 5.38 1.59 6.97l2.8 10.43h-9.01Zm38.28 8.84h-10.54V19.3c0-1.15-.88-2.53-2.64-2.53-1.65 0-2.53 1.37-2.53 2.53v35.15c0 1.21.88 2.42 2.53 2.42h13.18c1.54 0 2.42-1.1 2.42-2.36 0-1.15-.88-2.31-2.42-2.31Zm24.38 0h-11.53V39.18h8.57c1.59 0 2.47-1.1 2.47-2.31s-.88-2.36-2.47-2.36h-8.57V21.99h11.53c1.59 0 2.47-1.15 2.47-2.36s-.88-2.31-2.47-2.31h-14.06c-1.76 0-2.64 1.32-2.64 2.47v34.6c0 1.15.88 2.47 2.64 2.47h14.06c1.59 0 2.47-1.1 2.47-2.36 0-1.15-.88-2.31-2.47-2.31M51.86 0H22.33C10 0 0 10 0 22.33v29.53c0 12.33 10 22.33 22.33 22.33h29.53c12.33 0 22.33-10 22.33-22.33V22.33C74.19 10 64.19 0 51.86 0M35.82 51.69c0 3.16-2.56 5.71-5.71 5.71h-7.62c-3.16 0-5.71-2.56-5.71-5.71v-7.62c0-3.16 2.56-5.71 5.71-5.71h7.62c.63 0 1.25.11 1.85.31l6.62-6.66h-3.92c-1.34.03-2.48-.96-2.65-2.29 0-.09-.01-.17-.01-.26 0-1.4 1.15-2.53 2.55-2.53h6.35c3.51 0 6.35 2.84 6.35 6.35v6.24c.03 1.34-.96 2.48-2.29 2.65-.09 0-.17.01-.26.01-1.4 0-2.53-1.15-2.53-2.55V35.6l-6.64 6.67c.19.58.29 1.19.29 1.8zm21.59-6.34a8.89 8.89 0 0 1-8.89 8.89h-5.08c-.09 0-.17 0-.26-.01a2.54 2.54 0 0 1-2.28-2.78 2.616 2.616 0 0 1 2.65-2.29h4.97c2.1 0 3.81-1.71 3.81-3.81V25.67c0-2.1-1.71-3.81-3.81-3.81H28.84c-2.1 0-3.81 1.71-3.81 3.81v5.08c0 .09 0 .17-.01.26a2.54 2.54 0 0 1-2.78 2.28 2.616 2.616 0 0 1-2.29-2.65v-4.97a8.89 8.89 0 0 1 8.89-8.89h19.68a8.89 8.89 0 0 1 8.89 8.89z" />
+                <rect class="cls-1" x="21.85" y="43.44" width="8.89" height="8.89" rx=".63" ry=".63" />
+            </svg>
+            <h1 class="text-xl md:text-3xl font-bold text-white">Image Editor Pro</h1>
+            <p class="text-gray-400 mt-2">Crop, resize, and compress your images with AI.</p>
+        </header>
+
+        <!-- Loading from cache message -->
+        <div id="cache-message"
+            class="hidden fixed top-0 left-0 right-0 py-2 text-center text-sm font-medium bg-blue-500/20 text-blue-300 border-b border-blue-500/50">
+            Image loaded from cache. You can resume editing.
+        </div>
+
+        <!-- Main Workspace -->
+        <main>
+            <div id="workspace" class="hidden">
+                <div class="flex flex-col gap-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left Column: Controls (Mobile: Top) -->
+                        <div class="flex flex-col gap-6 order-1 lg:order-1">
+                            <!-- Original Image Card -->
+                            <div
+                                class="bg-slate-900/70 border border-slate-700 rounded-xl p-4 shadow-lg flex flex-col h-full">
+                                <h3 class="text-lg font-semibold text-gray-300 mb-2">Original</h3>
+                                <p id="original-dimensions" class="text-xs text-gray-500 mb-3 text-center h-4 truncate">
+                                </p>
+                                <div
+                                    class="w-full flex-grow checkerboard rounded-md flex items-center justify-center overflow-hidden">
+                                    <img id="original-image-preview" src="#" alt="Original Image"
+                                        class="max-w-full max-h-full block">
+                                </div>
+                                <div class="mt-3 flex flex-col justify-center" style="min-height: 50px;">
+                                    <div id="crop-controls" class="grid grid-cols-3 lg:grid-cols-6 gap-1">
+                                        <button id="aspect-ratio-free"
+                                            class="crop-tool-btn p-1.5 rounded-md flex flex-col items-center text-xs"
+                                            title="Free Aspect Ratio"><i data-lucide="crop"
+                                                class="w-4 h-4 mb-1"></i>Free</button>
+                                        <button id="aspect-ratio-1-1"
+                                            class="crop-tool-btn p-1.5 rounded-md flex flex-col items-center text-xs"
+                                            title="1:1 Aspect Ratio"><i data-lucide="square"
+                                                class="w-4 h-4 mb-1"></i>Square</button>
+                                        <button id="aspect-ratio-9-16"
+                                            class="crop-tool-btn p-1.5 rounded-md flex flex-col items-center text-xs"
+                                            title="9:16 Aspect Ratio"><i data-lucide="rectangle-vertical"
+                                                class="w-4 h-4 mb-1"></i>Portrait</button>
+                                        <button id="aspect-ratio-16-9"
+                                            class="crop-tool-btn p-1.5 rounded-md flex flex-col items-center text-xs"
+                                            title="16:9 Aspect Ratio"><i data-lucide="rectangle-horizontal"
+                                                class="w-4 h-4 mb-1"></i>Landscape</button>
+                                        <button id="rotate-btn"
+                                            class="crop-tool-btn p-1.5 rounded-md flex flex-col items-center text-xs"
+                                            title="Rotate"><i data-lucide="rotate-cw"
+                                                class="w-4 h-4 mb-1"></i>Rotate</button>
+                                        <button id="reset-crop-btn"
+                                            class="crop-tool-btn p-1.5 rounded-md flex flex-col items-center text-xs"
+                                            title="Reset Crop"><i data-lucide="refresh-cw"
+                                                class="w-4 h-4 mb-1"></i>Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool Cards -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div id="resizer-controls" class="w-full main-container rounded-xl shadow-2xl p-6">
+                                    <h3 class="text-lg font-semibold text-gray-300 mb-4 border-b border-slate-700 pb-2">
+                                        Resizer</h3>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Scale Factor</label>
+                                    <div class="grid grid-cols-5 gap-2" id="scale-options">
+                                        <button data-scale="0.25"
+                                            class="control-btn text-sm font-semibold py-2 px-1 rounded-md shadow">0.25x</button>
+                                        <button data-scale="0.5"
+                                            class="control-btn text-sm font-semibold py-2 px-1 rounded-md shadow">0.5x</button>
+                                        <button data-scale="1"
+                                            class="control-btn text-sm font-semibold py-2 px-1 rounded-md shadow active">1x</button>
+                                        <button data-scale="2"
+                                            class="control-btn text-sm font-semibold py-2 px-1 rounded-md shadow">2x</button>
+                                        <button data-scale="3"
+                                            class="control-btn text-sm font-semibold py-2 px-1 rounded-md shadow">3x</button>
+                                    </div>
+                                    <label
+                                        class="block text-sm font-medium text-gray-400 mt-4 mb-2">Interpolation</label>
+                                    <div
+                                        class="flex items-center justify-between space-x-2 bg-slate-800/50 p-2 rounded-md">
+                                        <span class="text-gray-400 font-medium text-xs px-2">Pixelated</span>
+                                        <label class="switch"><input type="checkbox" id="smoothing-toggle" checked><span
+                                                class="slider"></span></label>
+                                        <span class="text-gray-400 font-medium text-xs px-2">Smooth</span>
+                                    </div>
+                                </div>
+                                <div id="formatting-controls" class="w-full main-container rounded-xl shadow-2xl p-6">
+                                    <h3 class="text-lg font-semibold text-gray-300 mb-4 border-b border-slate-700 pb-2">
+                                        Formatting</h3>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Format</label>
+                                    <select id="format-select"
+                                        class="control-btn bg-slate-800/50 rounded-md h-[40px] px-3 text-sm flex-grow w-full">
+                                        <option value="png">PNG</option>
+                                        <option value="jpeg" selected>JPEG</option>
+                                        <option value="webp">WEBP</option>
+                                    </select>
+                                    <div id="quality-control" class="mt-4">
+                                        <label class="block text-sm font-medium text-gray-400 mb-2">Quality</label>
+                                        <div class="relative">
+                                            <input type="range" id="quality-slider" min="10" max="100" value="80"
+                                                step="5"
+                                                class="w-full h-full appearance-none bg-transparent cursor-pointer">
+                                            <span id="quality-value"
+                                                class="absolute -top-5 right-0 text-xs text-gray-400">80%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Process Button Card (New Location) -->
+                            <div id="process-container" class="w-full main-container rounded-xl shadow-2xl p-4">
+                                <button id="process-btn"
+                                    class="w-full font-bold py-3 px-6 rounded-lg h-[48px] disabled:bg-gray-600 disabled:cursor-not-allowed disabled:shadow-none flex items-center justify-center relative bg-primary-color text-dark-text-on-primary">
+                                    <span class="flex items-center justify-center" id="btn-content">
+                                        <i data-lucide="wand-2" class="w-5 h-5 mr-2"></i><span>Process</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right Column (Desktop) / Last Element (Mobile) : Result -->
+                        <div class="order-last flex flex-col">
+                            <div
+                                class="bg-slate-900/70 border border-slate-700 rounded-xl p-4 shadow-lg flex flex-col h-full">
+                                <h3 class="text-lg font-semibold text-gray-300 mb-2">Result</h3>
+                                <p id="output-dimensions" class="text-xs text-gray-500 mb-3 text-center h-4 truncate">
+                                </p>
+                                <div
+                                    class="w-full flex-grow checkerboard rounded-md flex items-center justify-center overflow-hidden p-4">
+                                    <div id="result-preview-wrapper"
+                                        class="w-full h-full flex items-center justify-center">
+                                        <canvas id="output-canvas" class="max-w-full max-h-full block hidden"></canvas>
+                                        <div id="result-placeholder"
+                                            class="text-center text-gray-600 flex flex-col items-center">
+                                            <i data-lucide="image" class="w-12 h-12"></i>
+                                            <p class="mt-2 text-sm">Your result will appear here</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Action Buttons: Full width bar at the bottom -->
+                    <div id="action-bar" class="main-container rounded-xl shadow-2xl p-4 lg:col-span-2">
+                        <div class="flex justify-center items-center gap-2 md:gap-4">
+                            <button id="start-over-btn" title="New Project"
+                                class="control-btn text-sm font-semibold p-3 md:py-3 md:px-5 rounded-lg flex items-center justify-center gap-2 transition-colors h-[48px]">
+                                <i data-lucide="file-plus-2" class="w-5 h-5"></i>
+                                <span class="hidden md:inline">New Project</span>
+                            </button>
+                            <button id="export-btn"
+                                class="w-full font-bold py-3 px-5 rounded-lg shadow-lg transition-all duration-300 flex items-center justify-center disabled:bg-gray-600 disabled:cursor-not-allowed disabled:shadow-none h-[48px]"
+                                disabled>
+                                <i data-lucide="share-2" class="w-4 h-4 mr-2"></i> <span
+                                    class="hidden md:inline">Export</span>
+                            </button>
+                            <button id="reset-all-btn" title="Reset Changes"
+                                class="control-btn text-sm font-semibold p-3 md:py-3 md:px-5 rounded-lg flex items-center justify-center gap-2 transition-colors h-[48px]">
+                                <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                                <span class="hidden md:inline">Reset Changes</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Initial Upload Prompt -->
+            <div id="upload-container" class="w-full max-w-3xl mx-auto flex flex-col items-center">
+                <div id="drop-zone"
+                    class="w-full rounded-xl p-8 text-center cursor-pointer bg-slate-800/20 hover:bg-slate-800/40 flex flex-col justify-center items-center">
+                    <div class="text-gray-400 flex flex-col items-center">
+                        <i data-lucide="upload-cloud" class="w-12 h-12 mb-4 text-[#8ab4ff]"></i>
+                        <h2 class="text-xl font-semibold text-gray-200">Drag & drop an image to start</h2>
+                        <p class="text-gray-500 mt-2">or click to browse your files</p>
+                        <p id="file-name" class="text-sm text-center text-[#8ab4ff] mt-4 h-5 truncate"></p>
+                    </div>
+                </div>
+                <input type="file" id="image-input" class="hidden"
+                    accept="image/png, image/jpeg, image/webp, image/bmp">
+                <div class="mt-6 w-full max-w-md">
+                    <p class="text-gray-500 mb-2 text-center">or fetch from a URL</p>
+                    <div class="flex gap-2">
+                        <input type="text" id="image-url-input" placeholder="Paste image URL ..."
+                            class="flex-grow bg-slate-900 border border-slate-600 text-gray-300 text-sm rounded-lg focus:ring-0 focus:border-slate-600 block w-full p-2.5">
+                        <button id="fetch-url-btn"
+                            class="bg-slate-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-slate-700 transition-all duration-300 flex items-center justify-center disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <span id="fetch-btn-text">Fetch</span>
+                            <svg id="fetch-spinner" class="animate-spin h-5 w-5 text-white hidden"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <p id="url-error" class="text-red-500 text-xs mt-2 h-4 text-left"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="export-modal" class="fixed inset-0 z-50 items-center justify-center hidden">
+        <div id="export-modal-overlay" class="absolute inset-0"></div>
+        <div class="relative main-container rounded-xl shadow-2xl p-6 w-full max-w-md m-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold">Export Image</h3>
+                <button id="close-modal-btn" class="text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label for="filename-input" class="block text-sm font-medium text-gray-400 mb-2">Filename</label>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="filename-input"
+                            class="flex-grow bg-slate-900 border border-slate-600 text-gray-300 text-sm rounded-lg focus:ring-0 focus:border-slate-600 block w-full p-2.5">
+                        <span id="filename-extension" class="text-gray-400 text-sm">.jpg</span>
+                    </div>
+                </div>
+                <button id="download-btn"
+                    class="w-full bg-slate-700 hover:bg-slate-600 font-bold py-3 px-5 rounded-lg flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-4 h-4 mr-2">
+                        <path d="M12 15V3" />
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <path d="m7 10 5 5 5-5" />
+                    </svg>
+                    Download Image
+                </button>
+                <button id="upload-link-btn"
+                    class="w-full bg-slate-700 hover:bg-slate-600 font-bold py-3 px-5 rounded-lg flex items-center justify-center gap-2">
+                    <i data-lucide="link" class="w-4 h-4"></i> Upload & Get Link
+                </button>
+                <p class="text-xs text-gray-500 text-center">Uploads are hosted on a free, public service (imgbb.com)
+                    and may be removed.</p>
+            </div>
+            <div id="upload-status-container" class="mt-4"></div>
+            <div id="link-container" class="mt-4 hidden space-y-2">
+                <label class="block text-sm font-medium text-gray-400">Image URL</label>
+                <div class="flex gap-2">
+                    <input type="text" id="image-url-output" readonly
+                        class="flex-grow bg-slate-900 border border-slate-600 text-gray-300 text-sm rounded-lg focus:ring-0 focus:border-slate-600 block w-full p-2.5">
+                    <button id="copy-link-btn"
+                        class="bg-slate-800 text-white font-bold py-2 px-3 rounded-lg hover:bg-slate-700">Copy</button>
+                </div>
+                <a id="delete-link-output" href="#" target="_blank" class="text-xs text-blue-400 hover:underline">View
+                    deletion link</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // DOM Elements
+        const uploadContainer = document.getElementById('upload-container');
+        const dropZone = document.getElementById('drop-zone');
+        const workspace = document.getElementById('workspace');
+        const imageInput = document.getElementById('image-input');
+        const fileNameDisplay = document.getElementById('file-name');
+        const imageUrlInput = document.getElementById('image-url-input');
+        const fetchUrlBtn = document.getElementById('fetch-url-btn');
+        const fetchBtnText = document.getElementById('fetch-btn-text');
+        const fetchSpinner = document.getElementById('fetch-spinner');
+        const urlError = document.getElementById('url-error');
+        const scaleOptions = document.getElementById('scale-options');
+        const processBtn = document.getElementById('process-btn');
+        const smoothingToggle = document.getElementById('smoothing-toggle');
+        const originalImagePreview = document.getElementById('original-image-preview');
+        const originalDimensions = document.getElementById('original-dimensions');
+        const outputCanvas = document.getElementById('output-canvas');
+        const outputDimensions = document.getElementById('output-dimensions');
+        const resultPlaceholder = document.getElementById('result-placeholder');
+        const exportBtn = document.getElementById('export-btn');
+        const startOverBtn = document.getElementById('start-over-btn');
+        const btnContent = document.getElementById('btn-content');
+        const cropControls = document.getElementById('crop-controls');
+        const rotateBtn = document.getElementById('rotate-btn');
+        const resetCropBtn = document.getElementById('reset-crop-btn');
+        const aspectFreeBtn = document.getElementById('aspect-ratio-free');
+        const aspect11Btn = document.getElementById('aspect-ratio-1-1');
+        const aspect916Btn = document.getElementById('aspect-ratio-9-16');
+        const aspect169Btn = document.getElementById('aspect-ratio-16-9');
+        const cropControlBtns = [aspectFreeBtn, aspect11Btn, aspect916Btn, aspect169Btn];
+        const formatSelect = document.getElementById('format-select');
+        const qualityControl = document.getElementById('quality-control');
+        const qualitySlider = document.getElementById('quality-slider');
+        const qualityValue = document.getElementById('quality-value');
+        const filenameInput = document.getElementById('filename-input');
+        const filenameExtension = document.getElementById('filename-extension');
+        const exportModal = document.getElementById('export-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const exportModalOverlay = document.getElementById('export-modal-overlay');
+        const downloadBtn = document.getElementById('download-btn');
+        const uploadLinkBtn = document.getElementById('upload-link-btn');
+        const uploadStatusContainer = document.getElementById('upload-status-container');
+        const linkContainer = document.getElementById('link-container');
+        const imageUrlOutput = document.getElementById('image-url-output');
+        const copyLinkBtn = document.getElementById('copy-link-btn');
+        const deleteLinkOutput = document.getElementById('delete-link-output');
+        const resultPreviewWrapper = document.getElementById('result-preview-wrapper');
+        const actionBar = document.getElementById('action-bar');
+        const resetAllBtn = document.getElementById('reset-all-btn');
+        const cacheMessage = document.getElementById('cache-message');
+
+        // State variables
+        let selectedFile = null;
+        let selectedScale = 1;
+        let cropper = null;
+        let isFromCache = false;
+        let isDraggingForScroll = false;
+        let dragModeBeforeScroll = 'crop';
+
+        // Constant for local storage key
+        const CACHE_KEY = 'imageEditorState';
+
+        qualityValue.textContent = `${qualitySlider.value}%`;
+
+        function formatBytes(bytes, decimals = 2) {
+            if (!+bytes) return '0 Bytes';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+        }
+
+        // --- Local Storage Caching Functions ---
+        function saveStateToLocalStorage() {
+            if (!selectedFile) return;
+            const state = {
+                fileDataURL: originalImagePreview.src,
+                fileName: selectedFile.name,
+                cropperData: cropper ? cropper.getData(true) : null,
+                selectedScale: selectedScale,
+                smoothingChecked: smoothingToggle.checked,
+                format: formatSelect.value,
+                quality: qualitySlider.value,
+            };
+            try {
+                localStorage.setItem(CACHE_KEY, JSON.stringify(state));
+            } catch (e) {
+                console.error("Error saving state to localStorage", e);
+            }
+        }
+
+        function loadStateFromLocalStorage() {
+            try {
+                const cachedState = localStorage.getItem(CACHE_KEY);
+                if (cachedState) {
+                    const state = JSON.parse(cachedState);
+                    if (state.fileDataURL) {
+                        isFromCache = true;
+                        // Create a dummy file object for consistent state management
+                        fetch(state.fileDataURL)
+                            .then(res => res.blob())
+                            .then(blob => {
+                                selectedFile = new File([blob], state.fileName, { type: blob.type });
+                                handleFileSelect();
+
+                                // Restore UI state and cropper data after image is loaded
+                                setTimeout(() => {
+                                    if (state.cropperData && cropper) {
+                                        cropper.setData(state.cropperData);
+                                    }
+                                    selectedScale = state.selectedScale || 1;
+                                    smoothingToggle.checked = state.smoothingChecked;
+                                    formatSelect.value = state.format;
+                                    qualitySlider.value = state.quality;
+                                    qualityValue.textContent = `${qualitySlider.value}%`;
+
+                                    // Update scale button active state
+                                    document.querySelectorAll('#scale-options .control-btn').forEach(btn => btn.classList.remove('active'));
+                                    const scaleBtn = document.querySelector(`[data-scale="${selectedScale}"]`);
+                                    if (scaleBtn) scaleBtn.classList.add('active');
+
+                                    cacheMessage.classList.remove('hidden');
+                                    setTimeout(() => cacheMessage.classList.add('hidden'), 3000);
+                                }, 100); // Small delay to ensure cropper is ready
+                            })
+                            .catch(e => {
+                                console.error("Error loading cached image:", e);
+                                localStorage.removeItem(CACHE_KEY); // Clear invalid cache
+                            });
+                    }
+                }
+            } catch (e) {
+                console.error("Error loading state from localStorage", e);
+                localStorage.removeItem(CACHE_KEY); // Clear invalid cache
+            }
+        }
+        // --- End of Caching Functions ---
+
+        // Event Listeners
+        dropZone.addEventListener('click', () => imageInput.click());
+        imageInput.addEventListener('change', () => handleFileSelect(false));
+        fetchUrlBtn.addEventListener('click', handleUrlFetch);
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); });
+        });
+        dropZone.addEventListener('dragenter', () => dropZone.classList.add('dragover'));
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('dragover'));
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', e => {
+            dropZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                imageInput.files = files;
+                handleFileSelect(false);
+            }
+        });
+
+        function resetFetchUI() {
+            fetchBtnText.classList.remove('hidden');
+            fetchSpinner.classList.add('hidden');
+            fetchUrlBtn.disabled = false;
+            imageUrlInput.disabled = false;
+        }
+
+        function handleUrlFetch() {
+            const url = imageUrlInput.value.trim();
+            if (!url) { urlError.textContent = 'Please enter a URL.'; return; }
+            urlError.textContent = '';
+            fetchBtnText.classList.add('hidden');
+            fetchSpinner.classList.remove('hidden');
+            fetchUrlBtn.disabled = true;
+            imageUrlInput.disabled = true;
+            const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(url);
+            fetch(proxyUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    let fileName = 'fetched-image';
+                    try { const path = new URL(url).pathname; const name = path.substring(path.lastIndexOf('/') + 1); if (name) fileName = name; } catch (_) { }
+                    const file = new File([blob], fileName, { type: blob.type });
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    imageInput.files = dataTransfer.files;
+                    handleFileSelect(false);
+                    resetFetchUI();
+                })
+                .catch(error => { console.error('Fetch error:', error); urlError.textContent = 'Error: Cannot load image. Check URL/CORS.'; resetFetchUI(); });
+        }
+
+        function setupRasterMode(file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                originalImagePreview.src = e.target.result;
+                if (cropper) cropper.destroy();
+                cropper = new Cropper(originalImagePreview, {
+                    viewMode: 1, background: false, autoCropArea: 1, responsive: true,
+                    ready() {
+                        const imageData = cropper.getImageData();
+                        originalDimensions.textContent = `${file.name} - ${imageData.naturalWidth} x ${imageData.naturalHeight} px (${formatBytes(file.size)})`;
+                        if (!isFromCache) {
+                            saveStateToLocalStorage();
+                        }
+                        // Set up touch events for smooth scrolling
+                        setupTouchScrolling();
+                    },
+                    crop(event) {
+                        const data = event.detail;
+                        originalDimensions.textContent = `${selectedFile.name} - ${Math.round(data.width)} x ${Math.round(data.height)} px`;
+                        saveStateToLocalStorage();
+                    },
+                });
+            };
+            reader.readAsDataURL(file);
+            filenameInput.value = sanitizeFilename(file.name);
+            updateFilenameExtension();
+        }
+
+        function setupTouchScrolling() {
+            let startY = 0;
+            let startX = 0;
+
+            originalImagePreview.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                    startY = e.touches[0].pageY;
+                    startX = e.touches[0].pageX;
+                    dragModeBeforeScroll = cropper.getDragMode();
+                }
+            });
+
+            originalImagePreview.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1) {
+                    const moveY = e.touches[0].pageY;
+                    const moveX = e.touches[0].pageX;
+                    const deltaY = Math.abs(moveY - startY);
+                    const deltaX = Math.abs(moveX - startX);
+
+                    // Check if the user is primarily scrolling vertically
+                    if (deltaY > deltaX * 1.5 && deltaY > 10) { // A threshold to prevent accidental mode changes
+                        isDraggingForScroll = true;
+                        cropper.setDragMode('none');
+                    } else {
+                        isDraggingForScroll = false;
+                        cropper.setDragMode(dragModeBeforeScroll);
+                    }
+                }
+            });
+
+            originalImagePreview.addEventListener('touchend', () => {
+                if (isDraggingForScroll) {
+                    setTimeout(() => {
+                        cropper.setDragMode(dragModeBeforeScroll);
+                    }, 50); // Small delay to prevent re-engaging too quickly
+                    isDraggingForScroll = false;
+                }
+            });
+        }
+
+        function sanitizeFilename(name) {
+            const nameWithoutExtension = name.split('.').slice(0, -1).join('.');
+            return nameWithoutExtension.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+        }
+
+        function handleFileSelect() {
+            if (imageInput.files.length === 0 && !isFromCache) return;
+            selectedFile = imageInput.files[0];
+            fileNameDisplay.textContent = selectedFile.name;
+            uploadContainer.classList.add('hidden');
+            workspace.classList.remove('hidden');
+            workspace.classList.add('fade-in');
+            actionBar.classList.remove('hidden');
+            resultPlaceholder.classList.remove('hidden');
+            outputCanvas.classList.add('hidden');
+            exportBtn.disabled = true;
+            outputDimensions.textContent = '';
+            setupRasterMode(selectedFile);
+        }
+
+        scaleOptions.addEventListener('click', (e) => {
+            const target = e.target.closest('.control-btn');
+            if (target) {
+                document.querySelectorAll('#scale-options .control-btn').forEach(btn => btn.classList.remove('active'));
+                target.classList.add('active');
+                selectedScale = parseFloat(target.dataset.scale);
+                saveStateToLocalStorage();
+            }
+        });
+
+        function updateFilenameExtension() {
+            filenameExtension.textContent = `.${formatSelect.value}`;
+            saveStateToLocalStorage();
+        }
+        formatSelect.addEventListener('change', updateFilenameExtension);
+        qualitySlider.addEventListener('input', (e) => {
+            qualityValue.textContent = `${e.target.value}%`;
+            saveStateToLocalStorage();
+        });
+
+
+        processBtn.addEventListener('click', () => startProcess());
+
+        exportBtn.addEventListener('click', () => {
+            uploadStatusContainer.innerHTML = '';
+            linkContainer.classList.add('hidden');
+            exportModal.style.display = 'flex';
+        });
+
+        closeModalBtn.addEventListener('click', () => exportModal.style.display = 'none');
+        exportModalOverlay.addEventListener('click', () => exportModal.style.display = 'none');
+
+        downloadBtn.addEventListener('click', () => {
+            const filename = filenameInput.value || sanitizeFilename(selectedFile.name) || 'image';
+            const link = document.createElement('a');
+            const format = formatSelect.value;
+            const quality = parseInt(qualitySlider.value) / 100;
+            link.href = outputCanvas.toDataURL(`image/${format}`, quality);
+            link.download = `${filename}.${format}`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        rotateBtn.addEventListener('click', () => {
+            if (cropper) {
+                cropper.rotate(90);
+                saveStateToLocalStorage();
+            }
+        });
+        resetCropBtn.addEventListener('click', () => {
+            if (cropper) {
+                cropper.reset();
+                saveStateToLocalStorage();
+            }
+        });
+        aspectFreeBtn.addEventListener('click', () => setAspectRatio(NaN));
+        aspect11Btn.addEventListener('click', () => setAspectRatio(1 / 1));
+        aspect916Btn.addEventListener('click', () => setAspectRatio(9 / 16));
+        aspect169Btn.addEventListener('click', () => setAspectRatio(16 / 9));
+
+        function setAspectRatio(ratio) {
+            if (cropper) {
+                cropper.setAspectRatio(ratio);
+                cropControlBtns.forEach(btn => btn.classList.remove('active'));
+                if (isNaN(ratio)) aspectFreeBtn.classList.add('active');
+                else if (ratio === 1 / 1) aspect11Btn.classList.add('active');
+                else if (ratio === 9 / 16) aspect916Btn.classList.add('active');
+                else if (ratio === 16 / 9) aspect169Btn.classList.add('active');
+                saveStateToLocalStorage();
+            }
+        }
+
+        startOverBtn.addEventListener('click', resetApp);
+        resetAllBtn.addEventListener('click', () => {
+            resetToolSettings();
+            saveStateToLocalStorage();
+        });
+
+        smoothingToggle.addEventListener('change', () => {
+            saveStateToLocalStorage();
+        });
+
+
+        function resetToolSettings() {
+            // Reset scale buttons
+            document.querySelectorAll('#scale-options .control-btn').forEach(btn => btn.classList.remove('active'));
+            const defaultScaleBtn = document.querySelector('#scale-options .control-btn[data-scale="1"]');
+            if (defaultScaleBtn) defaultScaleBtn.classList.add('active');
+            selectedScale = 1;
+
+            // Reset smoothing toggle
+            smoothingToggle.checked = true;
+
+            // Reset format select
+            formatSelect.value = 'jpeg';
+            updateFilenameExtension();
+
+            // Reset quality slider
+            qualitySlider.value = 80;
+            qualityValue.textContent = '80%';
+
+            // Also reset the crop
+            if (cropper) cropper.reset();
+        }
+
+        function resetApp() {
+            if (cropper) cropper.destroy();
+            cropper = null;
+            selectedFile = null;
+            imageInput.value = '';
+            imageUrlInput.value = '';
+            urlError.textContent = '';
+            workspace.classList.add('hidden');
+            workspace.classList.remove('fade-in');
+            actionBar.classList.add('hidden');
+            uploadContainer.classList.remove('hidden');
+            fileNameDisplay.textContent = '';
+            originalDimensions.textContent = '';
+            outputDimensions.textContent = '';
+            resultPlaceholder.classList.remove('hidden');
+            outputCanvas.classList.add('hidden');
+            exportBtn.disabled = true;
+            resetToolSettings();
+            localStorage.removeItem(CACHE_KEY); // Clear cache
+            isFromCache = false;
+        }
+
+        function startProcess() {
+            resultPlaceholder.classList.add('hidden');
+            outputCanvas.classList.add('hidden');
+            exportBtn.disabled = true;
+
+            processBtn.disabled = true;
+            btnContent.innerHTML = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span class="ml-2">Processing...</span>`;
+
+            setTimeout(() => {
+                processImage();
+                processBtn.disabled = false;
+                btnContent.innerHTML = `<i data-lucide="wand-2" class="w-5 h-5 mr-2"></i><span>Process</span>`;
+                lucide.createIcons();
+            }, 500);
+        }
+
+        function processImage() {
+            const cropData = cropper.getData(true);
+            const croppedCanvas = cropper.getCroppedCanvas({ imageSmoothingEnabled: false });
+            if (!croppedCanvas) return;
+            const ctx = outputCanvas.getContext('2d');
+            const newWidth = Math.round(cropData.width * selectedScale);
+            const newHeight = Math.round(cropData.height * selectedScale);
+            outputCanvas.width = newWidth > 0 ? newWidth : 1;
+            outputCanvas.height = newHeight > 0 ? newHeight : 1;
+            const useSmoothing = smoothingToggle.checked;
+            ctx.imageSmoothingEnabled = useSmoothing;
+            outputCanvas.style.imageRendering = useSmoothing ? 'auto' : 'pixelated';
+            if (!useSmoothing) {
+                outputCanvas.style.imageRendering = '-moz-crisp-edges';
+                outputCanvas.style.imageRendering = 'crisp-edges';
+            }
+            ctx.drawImage(croppedCanvas, 0, 0, outputCanvas.width, outputCanvas.height);
+            outputCanvas.toBlob((blob) => {
+                if (!blob) {
+                    console.error("Could not create blob from canvas.");
+                    outputDimensions.textContent = `${outputCanvas.width} x ${outputCanvas.height} px`;
+                    return;
+                }
+                const baseName = sanitizeFilename(selectedFile.name);
+                const newExtension = formatSelect.value;
+                outputDimensions.textContent = `${baseName}.${newExtension} - ${outputCanvas.width} x ${outputCanvas.height} px (${formatBytes(blob.size)})`;
+            }, `image/${formatSelect.value}`, parseInt(qualitySlider.value) / 100);
+            outputCanvas.classList.remove('hidden');
+            exportBtn.disabled = false;
+        }
+
+        async function uploadAndGetLink() {
+            uploadStatusContainer.innerHTML = '';
+            linkContainer.classList.add('hidden');
+            const originalContent = uploadLinkBtn.innerHTML;
+            uploadLinkBtn.innerHTML = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span class="ml-2">Uploading...</span>`;
+            uploadLinkBtn.disabled = true;
+
+            outputCanvas.toBlob(async (blob) => {
+                const formData = new FormData();
+                const filename = filenameInput.value || sanitizeFilename(selectedFile.name) || 'image';
+                const format = formatSelect.value;
+                formData.append('image', blob, `${filename}.${format}`);
+
+                const apiKey = 'b378c7b29326badda8323af073be3109';
+                const apiUrl = `https://api.imgbb.com/1/upload?key=${apiKey}`;
+                try {
+                    const response = await fetch(apiUrl, { method: 'POST', body: formData });
+                    const result = await response.json();
+                    if (result.success) {
+                        imageUrlOutput.value = result.data.url;
+                        deleteLinkOutput.href = result.data.delete_url;
+                        linkContainer.classList.remove('hidden');
+                    } else {
+                        const errorMessage = result.error?.message || 'Unknown error.';
+                        uploadStatusContainer.innerHTML = `<p class="text-red-500 text-xs text-center">Upload failed: ${errorMessage}</p>`;
+                    }
+                } catch (error) {
+                    console.error('Upload error:', error);
+                    uploadStatusContainer.innerHTML = `<p class="text-red-500 text-xs text-center">Upload failed. Please try downloading instead.</p>`;
+                } finally {
+                    uploadLinkBtn.innerHTML = originalContent;
+                    uploadLinkBtn.disabled = false;
+                    lucide.createIcons();
+                }
+            }, `image/${formatSelect.value}`, parseInt(qualitySlider.value) / 100);
+        }
+        uploadLinkBtn.addEventListener('click', uploadAndGetLink);
+
+        copyLinkBtn.addEventListener('click', () => {
+            imageUrlOutput.select(); document.execCommand('copy');
+            copyLinkBtn.textContent = 'Copied!';
+            setTimeout(() => { copyLinkBtn.textContent = 'Copy'; }, 2000);
+        });
+
+        // Initial check for cached state
+        loadStateFromLocalStorage();
+    </script>
+</body>
+
+</html>

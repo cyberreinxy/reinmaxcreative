@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Explore the portfolio of Reinmax Creative, a design agency specializing in unforgettable brands and digital experiences." />
+    <meta name="keywords"
+        content="creative portfolio, graphic design projects, logo design examples, brand identity case studies, UI/UX design portfolio" />
+    <meta name="author" content="Reinmax Creative" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755780121/logo-icon.svg" />
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755779994/favicon.ico"
+        type="image/x-icon" />
+
+    <title>Portfolio | Reinmax Creative & Design Agency</title>
+
+    <!-- Load Google Fonts first -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide-js@latest"></script>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#002828",
+                        secondary: "#99cccc",
+                        tertiary: "#003333",
+                        background: "#f0f4f4",
+                    },
+                    fontFamily: {
+                        sora: ["Sora", "sans-serif"],
+                        grotesk: ["Space Grotesk", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* All project cards should have the same style now */
+        .project-card .card-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        /* Icons transition on hover */
+        .project-card .icon-container {
+            transform: translateY(10px);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .project-card:hover .icon-container {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Card links transition */
+        .project-card .card-links a {
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="antialiased font-sora bg-background">
+    <!-- The background container has been removed for performance optimization -->
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="" class="text-primary header-logo">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 757.96 200">
+                    <path
+                        d="M286.79 26.5h-36.84v84.83h16V79.34h22.3c4.73 0 6.54 2.67 6.54 6.54v25.45h16V83.58c0-6.79-3.76-11.15-10.18-11.51v-2.18c7.15-2.91 12.6-9.09 12.6-19.27v-1.45c0-13.69-10.54-22.66-26.42-22.66Zm10.42 27.03c0 6.79-4.61 11.27-12.12 11.27h-19.15V41.05h19.15c7.76 0 12.12 4.48 12.12 11.27zm45.32 22.3h35.15V61.28h-35.15V41.05h38.54V26.5h-54.53v84.83h55.26V96.79h-39.27zm51.15-49.33h16v84.83h-16zm81.43 73.93h-2.18L456.08 26.5h-30.41v84.83h15.75V37.41h2.18l16.85 73.92h30.41V26.5h-15.75zm78.29 0h-2.18L536.55 26.5h-29.69v84.83h15.52V38.26h2.18l14.54 73.07h26.42l14.54-73.07h2.18v73.07h15.51V26.5h-29.69zm76.83-73.93-22.3 84.83h16.48l4.6-18.66h30.3l4.6 18.66h16.48l-22.3-84.83h-27.87Zm2.55 51.39 10.3-41.32h2.18l10.3 41.32zm100.34-9.34 24.6-42.05h-18.18L722.7 57.16h-2.19L703.67 26.5h-18.18l24.6 42.05-24.84 42.78h18.18l17.08-31.38h2.19l17.08 31.38h18.18zm-472.06 76.46c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.36 5.52 5.6v.39h5.12v-.24c0-6.46-3.86-10.4-10.64-10.4Zm26.87.56h-11.98v27.58h5.2v-10.4h7.25c1.54 0 2.13.87 2.13 2.13v8.27h5.2v-9.02c0-2.21-1.22-3.63-3.31-3.74v-.71c2.32-.95 4.1-2.96 4.1-6.27v-.47c0-4.45-3.43-7.37-8.59-7.37m3.39 8.78c0 2.21-1.5 3.66-3.94 3.66h-6.23v-7.72h6.23c2.52 0 3.94 1.46 3.94 3.66v.39Zm14.74 7.25h11.43v-4.73h-11.43v-6.58h12.53v-4.72h-17.73v27.58h17.97v-4.73h-12.77zm21.98-16.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58h-9.06Zm.83 16.7 3.35-13.44h.71l3.35 13.44zm14.62-11.98h8.04v22.86h5.2v-22.86h8.04v-4.72h-21.28zm24.82-4.72h5.2v27.58h-5.2zm20.26 24.23h-.56l-5.83-24.23h-5.36l7.02 27.58h8.9l7.02-27.58h-5.36zm19.7-8.2h11.42v-4.73h-11.42v-6.58h12.53v-4.72h-17.73v27.58h17.96v-4.73h-12.76zm43.14-8h-4.97v3.55h-3.82c-2.21 0-4.1-1.1-4.1-3.74 0-2.48 1.73-3.74 4.1-3.74h3.39v-4.1h-4.3c-4.73 0-8.16 2.6-8.16 7.41 0 3.23 1.85 5.12 4.49 5.91v.55c-2.64.79-4.65 2.92-4.65 6.27 0 4.65 3.27 7.45 8.16 7.45h9.85v-11.9h3.63v-4.1h-3.63v-3.55Zm-4.96 15.45h-3.98c-2.17 0-4.1-1.26-4.1-3.9s1.77-3.9 4.1-3.9h3.98zm32.31-23.48h-11.35v4.57h3.63v18.44h-3.63v4.57h11.35c7.41 0 11.35-3.78 11.35-11.19v-5.2c0-7.41-3.94-11.19-11.35-11.19m6.14 16.54c0 4.02-1.89 6.3-6.07 6.3h-2.6v-18.13h2.6c4.18 0 6.07 2.29 6.07 6.31zm14.74-.51h11.43v-4.73h-11.43v-6.58h12.53v-4.72h-17.73v27.58h17.97v-4.73h-12.77zm26.87-4.77-.91-.2c-3.31-.71-4.85-1.69-4.85-3.74s1.46-3.31 4.61-3.31 5.08 1.26 5.08 4.41v1.18h5.12v-1.18c0-5.99-4.29-8.98-10.21-8.98s-9.73 2.99-9.73 8.04 3.35 6.97 9.06 8.24l.91.2c3.55.79 5.56 1.58 5.56 3.86s-1.77 3.78-5.32 3.78-5.71-1.65-5.71-4.97v-1.1H515v1.1c0 5.99 4.45 9.54 10.84 9.54s10.44-3.47 10.44-8.51-3.9-7.09-9.77-8.35Zm13.63-11.26h5.2v27.58h-5.2zm20.89-.56c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.66 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01Zm31.68 24.59H592l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm25.21-24.03-7.25 27.58h5.36l1.5-6.07h9.85l1.5 6.07h5.36l-7.25-27.58h-9.06Zm.83 16.7 3.35-13.44h.71l3.35 13.44zm29.04-17.26c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.49 11.03 10.17 11.03 4.26 0 5.52-1.85 6.07-3.19h.71v2.64h4.81v-14.11h-11.66v4.41h6.54v.39c0 3.07-1.65 5.28-5.44 5.28s-5.99-2.52-5.99-6.38v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.29 5.52 5.2v.32h5.12v-.16c0-6.15-3.86-10.01-10.64-10.01Zm20.8 16.59h11.43v-4.73h-11.43v-6.58h12.54v-4.72h-17.74v27.58h17.97v-4.73h-12.77zm32.71 8h-.71l-5.48-24.03h-9.89v27.58h5.12v-24.04h.71l5.48 24.04h9.89v-27.58h-5.12zm20.8-24.59c-6.86 0-11.11 3.94-11.11 11.03v6.62c0 7.09 4.26 11.03 11.11 11.03s10.64-3.94 10.64-10.4v-.55h-5.12v.71c0 3.23-1.81 5.6-5.52 5.6s-5.91-2.44-5.91-6.3v-6.78c0-3.86 2.21-6.3 5.91-6.3s5.52 2.36 5.52 5.6v.39h5.12v-.24c0-6.46-3.86-10.4-10.64-10.4Zm30.07.56-5.83 11.82h-.71l-5.84-11.82H734l9.38 18.08v9.5h5.2v-9.5l9.38-18.08zM0 200h200V0H0zM26.3 26.5h147.4v73.6H99.9l73.6 73.6H26.3z"
+                        style="fill:#002828" />
+                </svg>
+            </a>
+            <button type="button" id="mobile-menu-button" class="z-50 text-primary">
+                <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="h-8 w-8 lucide lucide-menu">
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation Links Panel -->
+    <div id="control-panel"
+        class="fixed top-24 left-4 right-4 max-w-md mx-auto p-4 rounded-2xl bg-white/40 backdrop-blur-xl border border-white/30 shadow-lg z-40 opacity-0 pointer-events-none transform -translate-y-4 scale-95">
+        <div class="grid grid-cols-3 md:grid-cols-4 gap-3">
+            <a href="#home" data-name="Home"
+                class="menu-item active flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                        <path
+                            d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Home</span>
+            </a>
+            <a href="#services" data-name="Services"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-settings-icon lucide-settings">
+                        <path
+                            d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+
+                </div>
+                <span class="text-xs font-medium text-primary">Services</span>
+            </a>
+            <a href="portfolio.html" data-name="Portfolio"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path d="M15 12h-5" />
+                        <path d="M15 8h-5" />
+                        <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                        <path
+                            d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Portfolio</span>
+            </a>
+            <a href="#pricing" data-name="Pricing"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path
+                            d="M13.172 2a2 2 0 0 1 1.414.586l6.71 6.71a2.4 2.4 0 0 1 0 3.408l-4.592 4.592a2.4 2.4 0 0 1-3.408 0l-6.71-6.71A2 2 0 0 1 6 9.172V3a1 1 0 0 1 1-1z" />
+                        <path d="M2 7v6.172a2 2 0 0 0 .586 1.414l6.71 6.71a2.4 2.4 0 0 0 3.191.193" />
+                        <circle cx="10.5" cy="6.5" r=".5" fill="currentColor" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Pricing</span>
+            </a>
+            <a href="#team" data-name="Team"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                        <circle cx="9" cy="7" r="4" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Team</span>
+            </a>
+            <a href="#testimonials" data-name="Testimonials"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path
+                            d="M16.051 12.616a1 1 0 0 1 1.909.024l.737 1.452a1 1 0 0 0 .737.535l1.634.256a1 1 0 0 1 .588 1.806l-1.172 1.168a1 1 0 0 0-.282.866l.259 1.613a1 1 0 0 1-1.541 1.134l-1.465-.75a1 1 0 0 0-.912 0l-1.465.75a1 1 0 0 1-1.539-1.133l.258-1.613a1 1 0 0 0-.282-.866l-1.156-1.153a1 1 0 0 1 .572-1.822l1.633-.256a1 1 0 0 0 .737-.535z" />
+                        <path d="M8 15H7a4 4 0 0 0-4 4v2" />
+                        <circle cx="10" cy="7" r="4" />
+                    </svg>
+
+                </div>
+                <span class="text-xs font-medium text-primary">Reviews</span>
+            </a>
+            <a href="guidelines.html" data-name="Brand Guidelines"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-file-text-icon lucide-file-text">
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                        <path d="M10 9H8" />
+                        <path d="M16 13H8" />
+                        <path d="M16 17H8" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Guidelines</span>
+            </a>
+            <a href="store.html" data-name="Store"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-store-icon lucide-store">
+                        <path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5" />
+                        <path
+                            d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244" />
+                        <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Store</span>
+            </a>
+            <a href="#links" data-name="Public Resources"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path d="M9 17H7A5 5 0 0 1 7 7h2" />
+                        <path d="M15 7h2a5 5 0 1 1 0 10h-2" />
+                        <line x1="8" x2="16" y1="12" y2="12" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">Shortcuts</span>
+            </a>
+            <a href="FAQ.html" data-name="FAQ"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-message-circle-question-mark-icon lucide-message-circle-question-mark">
+                        <path
+                            d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <path d="M12 17h.01" />
+                    </svg>
+                </div>
+                <span class="text-xs font-medium text-primary">FAQ</span>
+            </a>
+            <a href="#contact" data-name="Support"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path
+                            d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" />
+                        <path d="M21 16v2a4 4 0 0 1-4 4h-5" />
+                    </svg>
+
+                </div>
+                <span class="text-xs font-medium text-primary">Support</span>
+            </a>
+            <a href="academy.html" data-name="Academy"
+                class="menu-item flex flex-col items-center justify-center space-y-2 p-2 rounded-lg">
+                <div
+                    class="icon-bg w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 text-primary hover:bg-gray-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-6 h-6">
+                        <path d="M12 7v14" />
+                        <path
+                            d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+                    </svg>
+
+                </div>
+                <span class="text-xs font-medium text-primary">Academy</span>
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Brand Identity & Logo Design Section -->
+        <section id="brand-identity" class="py-16 pt-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-3xl font-bold text-primary">
+                        Brand Identity &amp;
+                        <span class="block md:inline">Logo Design</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mt-6">Comprehensive branding solutions that define and elevate your
+                        presence.</p>
+                </div>
+                <div id="brand-identity-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cards will be populated here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Drawing and Illustrations Section -->
+        <section id="illustrations" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-3xl font-bold text-primary">Drawing and Illustrations</h2>
+                    <p class="text-lg text-gray-600 mt-2">Custom illustrations that add a unique and personal touch to
+                        your brand.</p>
+                </div>
+                <div id="illustrations-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cards will be populated here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Graphic Design & UI/UX Section -->
+        <section id="ui-ux" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary">Graphic Design & UI/UX</h2>
+                    <p class="text-lg text-gray-600 mt-6">Intuitive and beautiful user interfaces that provide a
+                        seamless user experience.</p>
+                </div>
+                <div id="ui-ux-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cards will be populated here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Motion Graphics Section -->
+        <section id="motion-graphics" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary">Motion Graphics</h2>
+                    <p class="text-lg text-gray-600 mt-6">Engaging animations and motion graphics that bring your
+                        brand's story to life.</p>
+                </div>
+                <div id="motion-graphics-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cards will be populated here by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>
+                &copy; <span id="currentYear"></span> Reinmax Creative. All rights reserved.
+            </p>
+            <p class="text-sm">
+                Designed and Maintained by
+                <br class="md:hidden" />
+                <a href="mailto:mail@reinmaxcreative.com" class="text-secondary hover:text-blue-400">Reinmax Creative &
+                    Design Agency</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="data.js"></script>
+    <script>
+        // --- SCRIPT FOR PORTFOLIO PAGE ---
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // The portfolio data object from portfolio-data.js is expected to be available here.
+
+            function createProjectCard(project) {
+                // All projects are now visible by default
+                return `
+                    <a href="${project.url}" class="project-card block rounded-2xl shadow-lg overflow-hidden relative group">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-80 object-cover transform transition-transform duration-500">
+                        <div class="card-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center p-6 text-white">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold text-white">${project.title}</h3>
+                                <p class="text-lg text-white mb-4 mt-2">(${project.year})</p>
+                                <p class="text-gray-300 max-w-sm">${project.description}</p>
+                            </div>
+                            <div class="icon-container flex space-x-4 mt-6">
+                                <span class="text-white hover:text-secondary transition-colors duration-300">
+                                   <img src="/svg/telescope.svg" alt="Link icon" class="w-6 h-6"/>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }
+
+            function populateGrids() {
+                if (typeof projectData === 'undefined') {
+                    console.error('Portfolio data is not loaded. Make sure portfolio-data.js is linked correctly.');
+                    return;
+                }
+                const sections = ['brand-identity', 'illustrations', 'ui-ux', 'motion-graphics'];
+                sections.forEach(sectionId => {
+                    const gridElement = document.getElementById(sectionId + '-grid');
+                    if (gridElement) {
+                        gridElement.innerHTML = projectData[sectionId].map(p => createProjectCard(p)).join('');
+                    }
+                });
+            }
+
+            populateGrids();
+        });
+    </script>
+    <script>
+        // Automatically replace lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

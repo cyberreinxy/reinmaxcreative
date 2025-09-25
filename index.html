@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Reinmax Creative is a design agency that specializes in creating unforgettable brands and digital experiences." />
+    <meta name="keywords"
+        content="creative agency, graphic design, logo design, brand identity, UI/UX design, web design, illustration, motion graphics, poster design, company profiles, branding solutions, digital experiences, visual storytelling, creative courses, professional logo design Tanzania, graphic design Dodoma, web design Tanzania, branding for startups, custom illustration services" />
+    <meta name="author" content="Reinmax Creative" />
+
+    <!-- Favicon Links: Provide different sizes for various devices -->
+    <link rel="icon" type="image/svg+xml"
+        href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755780121/logo-icon.svg" />
+    <link rel="icon" href="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755779994/favicon.ico"
+        type="image/x-icon" />
+
+    <title>Reinmax Creative | Design Agency that builds unforgettable Brands and Digital Experiences.</title>
+
+    <!-- Fonts Library -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+
+    <!-- Preload critical assets for faster rendering and interaction -->
+    <link rel="preload" href="mp4/HD.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            // Safelist ensures these classes are always included
+            safelist: [
+                'bg-green-50',
+                'text-green-800',
+                'bg-red-50',
+                'text-red-500',
+                'hidden',
+                'lg:block',
+                'h-4'
+            ],
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#002828",
+                        secondary: "#99cccc",
+                        tertiary: "#003333",
+                        danger: "#ef4444",
+                        dangerHover: "#dc2626",
+                    },
+                    fontFamily: {
+                        sora: ["Sora", "sans-serif"],
+                        grotesk: ["Space Grotesk", "sans-serif"],
+                        ibm: ["IBM Plex Sans", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+
+</head>
+
+<body class="antialiased font-sora">
+
+    <!-- Loader - Launch -->
+    <div class="vibe-loader-wrapper">
+        <div class="vibe-loader-ping"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+
+            <!-- Reinmax Creative Logo -->
+            <div class="logo-container">
+                <a href="" aria-label="Reinmax Creative Header Logo">
+                    <svg class="logo" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_2302_1136)">
+                            <path d="M0 0V24H24V0H0ZM21 12H12L21 21H3V3H21V12Z" fill="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_2302_1136">
+                                <rect width="24" height="24" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Menu Toggle -->
+            <button id="menu-toggle" class="menu-toggle p-0 flex items-center justify-center" aria-label="Open Menu"
+                aria-expanded="false" aria-controls="navigation-panel">
+                <svg class="icon" width="32" height="16" viewBox="0 0 32 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect y="14" width="32" height="2" fill="white" />
+                    <rect width="32" height="2" fill="white" />
+                </svg>
+
+            </button>
+
+            <!-- Primary Navigation -->
+            <nav id="navigation-panel" class="navigation-panel" aria-label="Website Navigation Panel">
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link nav-item" data-target="home">Home</a></li>
+                    <li><a href="#" class="nav-link nav-item" data-target="cores">About</a></li>
+                    <li><a href="#" class="nav-link nav-item" data-target="services">Services</a></li>
+                    <li><a href="#" class="nav-link nav-item" data-target="portfolio">Projects</a></li>
+                    <li><a href="#" class="nav-link nav-item" data-target="plans">Pricing</a></li>
+                    <li><a href="#" class="nav-link nav-item" data-target="contact">Contact</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section id="home" class="relative w-full overflow-hidden">
+            <div class="hero-container relative w-full h-full overflow-hidden">
+
+                <!-- Hero Clip -->
+                <div class="relative w-full h-full">
+                    <video id="hero-video" autoplay muted loop playsinline preload="metadata"
+                        poster="jpg/hero-fallback.jpg" class="absolute top-0 left-0 w-full h-full object-cover">
+                        <source src="mp4/HD.mp4" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+
+                <!-- Video loading indicator -->
+                <div id="video-loading-indicator"
+                    class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-10">
+                    <div class="vibe-loader-ping"></div>
+                </div>
+
+                <!-- Custom Play Button Overlay (for autoplay failure) -->
+                <div id="video-play-overlay"
+                    class="absolute inset-0 z-[2] hidden items-center justify-center cursor-pointer bg-black/20">
+                    <button
+                        class="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white transition-transform duration-300 ease-out hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-10 h-10 ml-1">
+                            <path fill-rule="evenodd"
+                                d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.647c1.295.748 1.295 2.536 0 3.284L7.279 20.99c-1.25.72-2.779-.217-2.779-1.643V5.653z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Hero content overlay -->
+                <div class="hero-overlay">
+                    <div>
+                        <h1 id="hero-text"
+                            class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-normal font-sora mb-[5rem] text-center">
+                            <!-- Words populated dynamically via JS -->
+                        </h1>
+
+                        <a href="#cores" id="cta-button"
+                            class="inline-block backdrop-blur-lg border border-white/20 text-white font-semibold py-3.5 px-3.5 rounded-full hover:bg-white/5 hover:backdrop-blur-sm opacity-0 font-sora">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Video play/pause control -->
+                <div id="video-control-wrapper" class="absolute bottom-1 right-1">
+                    <button id="video-control"
+                        class="flex items-center justify-center p-2 text-white opacity-0 pointer-events-none">
+                        <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
+                            fill="currentColor" class="w-6 h-6">
+                            <path
+                                d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 256L288 384C288 401.7 273.7 416 256 416C238.3 416 224 401.7 224 384L224 256C224 238.3 238.3 224 256 224C273.7 224 288 238.3 288 256zM416 256L416 384C416 401.7 401.7 416 384 416C366.3 416 352 401.7 352 384L352 256C352 238.3 366.3 224 384 224C401.7 224 416 238.3 416 256z" />
+                        </svg>
+                        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor"
+                            class="w-6 h-6 hidden">
+                            <path
+                                d="M64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM252.3 211.1C244.7 215.3 240 223.4 240 232L240 408C240 416.7 244.7 424.7 252.3 428.9C259.9 433.1 269.1 433 276.6 428.4L420.6 340.4C427.7 336 432.1 328.3 432.1 319.9C432.1 311.5 427.7 303.8 420.6 299.4L276.6 211.4C269.2 206.9 259.9 206.7 252.3 210.9z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Brand's Philosophy Section -->
+        <section id="cores" data-nav="cores" class="py-16 overflow-hidden bg-background">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary">
+                        Our Brand's Philosophy
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                        These core values guide our creative process and define our commitment to every project and
+                        partner.
+                    </p>
+                </div>
+
+                <div class="pillar-grid group grid grid-cols-1 gap-4 md:gap-8 lg:grid-cols-4">
+
+                    <!-- Pillar Card 1: Innovation -->
+                    <div class="relative bg-[#F9FAFB] border border-slate-200 rounded-2xl shadow-lg 
+                transition-all duration-700 ease-out delay-150
+                opacity-0 translate-y-8
+                group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="p-6 md:p-8">
+                            <div class="transition-all duration-500 ease-out delay-300
+                        opacity-0 translate-y-6
+                        group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="bg-[#ebeeee] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
+                                    <svg class="text-primary h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                        <line x1="12" y1="22.08" x2="12" y2="12" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="transition-all duration-700 ease-out delay-[400ms]
+                        opacity-0 translate-y-6
+                        group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Innovation</h3>
+                                <p class="text-sm text-gray-600 leading-relaxed">We constantly push boundaries,
+                                    exploring new tech and creative solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pillar Card 2: Excellence -->
+                    <div
+                        class="relative bg-[#F9FAFB] border border-slate-200 rounded-2xl shadow-lg transition-all duration-700 ease-out delay-300 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="p-6 md:p-8">
+                            <div
+                                class="transition-all duration-500 ease-out delay-[450ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="bg-[#ebeeee] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
+                                    <svg class="text-primary h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M7 10v12" />
+                                        <path
+                                            d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div
+                                class="transition-all duration-700 ease-out delay-[550ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Excellence</h3>
+                                <p class="text-sm text-gray-600 leading-relaxed">Committed to the highest standards,
+                                    ensuring every detail is perfected.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pillar Card 3: Collaboration -->
+                    <div
+                        class="relative bg-[#F9FAFB] border border-slate-200 rounded-2xl shadow-lg transition-all duration-700 ease-out delay-[450ms] opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="p-6 md:p-8">
+                            <div
+                                class="transition-all duration-500 ease-out delay-[600ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="bg-[#ebeeee] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
+                                    <svg class="text-primary h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div
+                                class="transition-all duration-700 ease-out delay-[700ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Collaboration</h3>
+                                <p class="text-sm text-gray-600 leading-relaxed">The best ideas are born from
+                                    partnership. We work closely with our clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pillar Card 4: Integrity -->
+                    <div
+                        class="relative bg-[#F9FAFB] border border-slate-200 rounded-2xl shadow-lg transition-all duration-700 ease-out delay-[600ms] opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="p-6 md:p-8">
+                            <div
+                                class="transition-all duration-500 ease-out delay-[750ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="bg-[#ebeeee] h-12 w-12 rounded-2xl flex items-center justify-center mb-6">
+                                    <svg class="text-primary h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div
+                                class="transition-all duration-700 ease-out delay-[850ms] opacity-0 translate-y-6 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">Integrity</h3>
+                                <p class="text-sm text-gray-600 leading-relaxed">Operating with transparency and
+                                    honesty, building trust with our clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Brand's Design Process -->
+        <section id="design-process" data-nav="workflow" class="py-16 overflow-hidden bg-white">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <!-- New animation wrapper for the entire section -->
+                <div class="workflow-section-wrapper group">
+                    <!-- Title Block -->
+                    <div
+                        class="text-center mb-16 transition-all duration-700 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <h2 class="text-3xl md:text-4xl font-bold text-[var(--primary-color)]">
+                            Our Creative Workflow
+                        </h2>
+                        <p class="mt-4 max-w-2xl mx-auto text-lg text-[var(--primary-color)]">
+                            A collaborative workflow to transform your vision into an unforgettable <br>
+                            brand experience.
+                        </p>
+                    </div>
+                    <!-- Layout Wrapper -->
+                    <div class="workflow-grid flex flex-col lg:flex-row gap-8 lg:gap-12">
+                        <!-- Visuals Column (Order 1 on mobile, Order 2 on desktop) -->
+                        <div
+                            class="workflow-visuals-wrapper w-full lg:w-1/2 order-1 lg:order-2 transition-all duration-700 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div class="process-visuals">
+                                <img src="https://i.ibb.co/kdYjp67/brainstorming.webp" alt="Creative Workflow"
+                                    class="visual-image" data-index="-1">
+                                <img src="https://i.ibb.co/LzSP81Ld/note-taking.webp" alt="Creative Brief"
+                                    class="visual-image" data-index="0">
+                                <img src="https://i.ibb.co/JjL2RmtV/discovery.webp" alt="Research" class="visual-image"
+                                    data-index="1" />
+                                <img src="https://i.ibb.co/kdYjp67/brainstorming.webp" alt="Concept Development"
+                                    class="visual-image" data-index="2">
+                                <img src="https://i.ibb.co/VY4TFSCH/rein.webp" alt="Sketching" class="visual-image"
+                                    data-index="3">
+                                <img src="https://i.ibb.co/KRQmfF8/satisfaction.webp" alt="Feedback"
+                                    class="visual-image" data-index="4">
+                                <img src="https://i.ibb.co/0V2FV8SJ/work-delivery.webp" alt="Delivery"
+                                    class="visual-image" data-index="5">
+                            </div>
+                        </div>
+
+                        <!-- Accordion Column (Order 2 on mobile, Order 1 on desktop) -->
+                        <div
+                            class="process-accordion w-full lg:w-1/2 order-2 lg:order-1 transition-all duration-700 ease-out delay-200 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <!-- Step 1: Writing a Creative Brief -->
+                            <div class="process-step-group" data-index="0">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path
+                                                    d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4M2 6h4m-4 4h4m-4 4h4m-4 4h4" />
+                                                <path
+                                                    d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">The Creative Brief</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">We collect detailed information about your brand,
+                                        goals, target audience, and vision to establish a clear strategic foundation
+                                        for the project.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2: Conducting Research -->
+                            <div class="process-step-group" data-index="1">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path
+                                                    d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44m-2.875 6.493 4.332-.924M16 21l-3.105-6.21" />
+                                                <path
+                                                    d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455zM6.158 8.633l1.114 4.456M8 21l3.105-6.21" />
+                                                <circle cx="12" cy="13" r="2" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Research and Strategy</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">We conduct comprehensive research on market trends,
+                                        competitors, and audience preferences. Insights from this research inform a
+                                        strategic approach tailored to your brand.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3: Concept Development -->
+                            <div class="process-step-group" data-index="2">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                                                <path
+                                                    d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                                                <path d="M9 18h6" />
+                                                <path d="M10 22h4" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Concept Development</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">We explore a range of unique ideas and creative
+                                        directions, presenting you with distinct concepts that tell your brand’s
+                                        story.</p>
+                                </div>
+                            </div>
+                            <!-- Step 4: Sketching and Designing -->
+                            <div class="process-step-group" data-index="3">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z" />
+                                                <path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7m0-4h.01" />
+                                                <path
+                                                    d="m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Sketching and Designing</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">The chosen concept is transformed into polished,
+                                        high-quality designs, focusing on aesthetics, usability, and functionality
+                                        to ensure the final product represents your brand perfectly.</p>
+                                </div>
+                            </div>
+                            <!-- Step 5: Client's Feedback -->
+                            <div class="process-step-group" data-index="4">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="lucide lucide-messages-square-icon lucide-messages-square">
+                                                <path
+                                                    d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                                                <path
+                                                    d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Feedback and Refinement</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">We present the designs for your feedback and
+                                        collaborate closely to refine and adjust every detail. This iterative
+                                        process ensures the final design aligns with your vision.</p>
+                                </div>
+                            </div>
+                            <!-- Step 6: Asset Delivery -->
+                            <div class="process-step-group" data-index="5">
+                                <div class="step-header">
+                                    <div class="step-icon-wrapper">
+                                        <div class="step-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path
+                                                    d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2" />
+                                                <path
+                                                    d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0m1 7v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span class="step-title">Asset Delivery</span>
+                                    <div class="step-toggle-icon"><span></span><span></span></div>
+                                </div>
+                                <div class="step-description-wrapper">
+                                    <p class="step-description">Deliver all finalized assets in appropriate formats,
+                                        production-ready and a detailed brand guidelines, empowering your team to
+                                        maintain brand consistency.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Layout Wrapper: Animates as a whole unit -->
+                <div class="hidden">
+                    <!-- This is now hidden and replaced by the unified layout above -->
+                </div>
+
+                <!--
+                <div
+                    class="animate-on-scroll mobile-view transition-all duration-1000 ease-out opacity-0 scale-95 [&.visible]:opacity-100 [&.visible]:scale-100">
+                    <div class="process-visuals">
+                        <img src="https://i.ibb.co/kdYjp67/brainstorming.webp" alt="Creative Workflow"
+                            class="visual-image" data-index="-1">
+                        <img src="https://i.ibb.co/LzSP81Ld/note-taking.webp" alt="Creative Brief" class="visual-image"
+                            data-index="0">
+                        <img src="https://i.ibb.co/5g6SP435/sketching.webp" alt="Research" class="visual-image"
+                            data-index="1">
+                        <img src="https://i.ibb.co/kdYjp67/brainstorming.webp" alt="Concept Development"
+                            class="visual-image" data-index="2">
+                        <img src="https://i.ibb.co/W4g5DBMw/sketching.webp" alt="Sketching" class="visual-image"
+                            data-index="3">
+                        <img src="https://i.ibb.co/KRQmfF8/satisfaction.webp" alt="Feedback" class="visual-image"
+                            data-index="4">
+                        <img src="https://i.ibb.co/0V2FV8SJ/work-delivery.webp" alt="Delivery" class="visual-image"
+                            data-index="5">
+                    </div>
+                    <div class="process-accordion">
+                        <div class="process-step-group" data-index="0">
+                            <div class="step-header">
+                                <div class="step-icon-wrapper">
+                                    <div class="step-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path
+                                                        d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4M2 6h4m-4 4h4m-4 4h4m-4 4h4" />
+                                                    <path
+                                                        d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                -->
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="py-16 overflow-hidden bg-background">
+            <svg width="0" height="0" style="position:absolute">
+                <defs>
+                    <linearGradient id="verify-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color: var(--primary-color);" />
+                        <stop offset="100%" style="stop-color: var(--secondary-color);" />
+                    </linearGradient>
+                </defs>
+            </svg>
+
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <!-- Team Section Header -->
+                <div
+                    class="animate-on-scroll text-center mb-16 transition-all duration-500 ease-out opacity-0 translate-y-8 [&.visible]:opacity-100 [&.visible]:translate-y-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary">
+                        Our Creative Force
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                        The brilliant minds turning ideas into reality. We're a passionate blend of core team members
+                        who love what we do.
+                    </p>
+                </div>
+
+                <!-- Team Member Cards Grid: The parent group that triggers the staggered animation -->
+                <div
+                    class="animate-on-scroll group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+                    <!-- Team Card 1: Reinhard Baraka -->
+                    <div
+                        class="transition-all duration-500 ease-out delay-150 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+
+                        <!-- Profile Image -->
+                        <div class="p-6 flex-grow">
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="relative w-24 h-24 mx-auto mb-4">
+                                    <div class="w-full h-full rounded-full p-1 gradient-ring">
+                                        <img class="w-full h-full rounded-full object-cover border-2 border-white"
+                                            src="https://lh3.googleusercontent.com/a/ACg8ocLsf7Za3saFjzOAfqujrkjxuAVEZvlDpFj7QFzL0IFjnDD11j7FXQ=s288-c-no"
+                                            alt="Profile picture of Reinhard Baraka"
+                                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/E2E8F0/4A5568?text=RB';" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Name + Role -->
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-200 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="text-center">
+                                    <div class="flex items-center justify-center gap-1">
+                                        <h3 class="text-xl font-bold text-gray-900">Reinhard Baraka</h3>
+                                        <div class="group relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
+                                                    fill="url(#verify-gradient)"></path>
+                                                <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="text-primary font-medium mt-1">Creative Designer</p>
+                                    <p class="text-sm text-gray-600 mt-2 px-4">
+                                        The visionary force setting the creative standards for our agency and the brands
+                                        we partner with.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Icons -->
+                        <div
+                            class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div class="p-4 bg-slate-50 mt-auto">
+                                <div class="flex justify-center space-x-5 text-primary">
+                                    <a href="https://www.instagram.com/reinmax_creative/" target="_blank"
+                                        class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="https://x.com/reinmaxstudio/" target="_blank"
+                                        class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                    <a href="https://github.com/cyberreinxy/" target="_blank"
+                                        class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                                            </path>
+                                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Team Card 2: Henry Binamungu -->
+                    <div
+                        class="transition-all duration-500 ease-out delay-300 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+
+                        <!-- Profile Image -->
+                        <div class="p-6 flex-grow">
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="relative w-24 h-24 mx-auto mb-4">
+                                    <div class="w-full h-full rounded-full p-1 gradient-ring">
+                                        <img class="w-full h-full rounded-full object-cover border-2 border-white"
+                                            src="https://i.ibb.co/cSjLHVRm/mr-henry.webp"
+                                            alt="Profile picture of Henry Binamungu"
+                                            onerror="this.onerror=null;this.src='https://img.freepik.com/premium-vector/man-avatar-profile-picture-isolated-background-avatar-profile-picture-man_1293239-4855.jpg?w=360';" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Name + Role -->
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-200 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="text-center">
+                                    <div class="flex items-center justify-center gap-1">
+                                        <h3 class="text-xl font-bold text-gray-900">Henry Binamungu</h3>
+                                        <div class="group relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
+                                                    fill="url(#verify-gradient)"></path>
+                                                <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="text-primary font-medium mt-1">Brand Strategist</p>
+                                    <p class="text-sm text-gray-600 mt-2 px-4">
+                                        He is the strategic force behind our brand narratives, crafting the core stories
+                                        for brands.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Icons -->
+                        <div
+                            class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div class="p-4 bg-slate-50 mt-auto">
+                                <div class="flex justify-center space-x-5 text-primary">
+                                    <a href="#" class="hover:text-secondary transition-colors"></a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                                            </path>
+                                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Team Card 3: Klerry Tumsiime -->
+                    <div
+                        class="transition-all duration-500 ease-out delay-[450ms] opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+
+                        <!-- Profile Image -->
+                        <div class="p-6 flex-grow">
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="relative w-24 h-24 mx-auto mb-4">
+                                    <div class="w-full h-full rounded-full p-1 gradient-ring">
+                                        <img class="w-full h-full rounded-full object-cover border-2 border-white"
+                                            src="https://i.ibb.co/m51NTYVJ/klerry.webp"
+                                            alt="Profile picture of Klerry Tumsiime"
+                                            onerror="this.onerror=null;this.src='https://img.freepik.com/premium-vector/boy-with-hoodie-his-head_1230457-36710.jpg?semt=ais_hybrid&w=740';" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Name + Role -->
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-200 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="text-center">
+                                    <div class="flex items-center justify-center gap-1">
+                                        <h3 class="text-xl font-bold text-gray-900">Klerry Tumsiime</h3>
+                                        <div class="group relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
+                                                    fill="url(#verify-gradient)"></path>
+                                                <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="text-primary font-medium mt-1">Developer</p>
+                                    <p class="text-sm text-gray-600 mt-2 px-4">
+                                        Klerry is the engineering force behind our digital work, web engineering and
+                                        interactive experiences.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Icons -->
+                        <div
+                            class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div class="p-4 bg-slate-50 mt-auto">
+                                <div class="flex justify-center space-x-5 text-primary">
+                                    <a href="#" class="hover:text-secondary transition-colors"></a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                                            </path>
+                                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Team Card 4: Maggie Shayo -->
+                    <div
+                        class="transition-all duration-500 ease-out delay-[600ms] opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0 bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
+
+                        <!-- Profile Image -->
+                        <div class="p-6 flex-grow">
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="relative w-24 h-24 mx-auto mb-4">
+                                    <div class="w-full h-full rounded-full p-1 gradient-ring">
+                                        <img class="w-full h-full rounded-full object-cover border-2 border-white"
+                                            src="https://i.ibb.co/Q7Z9LwZR/maggie.webp"
+                                            alt="Profile picture of Maggie Shayo"
+                                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/E2E8F0/4A5568?text=SJ';" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Name + Role -->
+                            <div
+                                class="animate-on-scroll transition-all duration-500 ease-out delay-200 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                                <div class="text-center">
+                                    <div class="flex items-center justify-center gap-1">
+                                        <h3 class="text-xl font-bold text-gray-900">Maggie Shayo</h3>
+                                        <div class="group relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76"
+                                                    fill="url(#verify-gradient)"></path>
+                                                <path d="m9 12 2 2 4-4" fill="none" stroke="white" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="text-primary font-medium mt-1">Creative Designer</p>
+                                    <p class="text-sm text-gray-600 mt-2 px-4">
+                                        She is the creative force behind our visual output, designing stunning assets
+                                        for our agency and clients.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Icons -->
+                        <div
+                            class="animate-on-scroll transition-all duration-500 ease-out delay-100 opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div class="p-4 bg-slate-50 mt-auto">
+                                <div class="flex justify-center space-x-5 text-primary">
+                                    <a href="#" class="hover:text-secondary transition-colors"></a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="hover:text-secondary transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path
+                                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                                            </path>
+                                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- End of Team Grid -->
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 overflow-hidden bg-white">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <!-- Section Header -->
+                <div
+                    class="animate-on-scroll text-center mb-16 transition-all duration-500 ease-out opacity-0 translate-y-8 [&.visible]:opacity-100 [&.visible]:translate-y-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary">
+                        Our Creative Solutions
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                        Explore our creative expertise in building brands through design,
+                        illustration, and motion graphics.
+                    </p>
+                </div>
+
+                <!-- Services Grid: The parent group that triggers the staggered animation -->
+                <div class="animate-on-scroll group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Service Card 1: Brand Identity -->
+                    <div
+                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="mb-4">
+                            <svg class="w-12 h-12 mx-auto text-secondary lucide lucide-briefcase"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                                <rect width="20" height="14" x="2" y="6" rx="2" />
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-primary mb-2">
+                            Brand Identity
+                        </h2>
+                        <p class="text-gray-600">
+                            Comprehensive branding solutions that define and elevate your
+                            presence.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 2: UI/UX Design -->
+                    <div
+                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="mb-4 svg-gradient">
+                            <svg class="w-12 h-12 mx-auto text-secondary lucide lucide-figma"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5M12 2h3.5a3.5 3.5 0 1 1 0 7H12z" />
+                                <path
+                                    d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0m-7 7A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0m0-7A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5" />
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-primary mb-2">UI/UX Design</h2>
+                        <p class="text-gray-600">
+                            Intuitive and beautiful user interfaces that provide a seamless
+                            user experience.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 3: Illustration -->
+                    <div
+                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class="mb-4">
+                            <svg class="w-12 h-12 mx-auto text-secondary lucide lucide-pen-tool"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z" />
+                                <path
+                                    d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18" />
+                                <path d="m2.3 2.3 7.286 7.286" />
+                                <circle cx="11" cy="11" r="2" />
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-primary mb-2">Illustration</h2>
+                        <p class="text-gray-600">
+                            Custom illustrations that add a unique and personal touch to
+                            your brand.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 4: Motion Graphics -->
+                    <div
+                        class="bg-gray-50 p-8 rounded-2xl shadow-lg text-center transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <div class=" mb-4">
+                            <svg class="w-12 h-12 mx-auto text-secondary lucide lucide-clapperboard"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Zm-14-.7 3.1 3.9m3.1-5.8 3.1 4M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-primary mb-2">
+                            Motion Graphics
+                        </h2>
+                        <p class="text-gray-600">
+                            Engaging animations and motion graphics that bring your brand's
+                            story to life.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16 overflow-hidden bg-background">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <!-- Section Header -->
+                <div
+                    class="animate-on-scroll text-center mb-16 transition-all duration-500 ease-out opacity-0 translate-y-8 [&.visible]:opacity-100 [&.visible]:translate-y-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary">
+                        Our Creative Work
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                        A showcase of our branding, design, illustration, and motion
+                        projects
+                    </p>
+                </div>
+
+                <!-- Portfolio Grid: The parent group that triggers the staggered animation -->
+                <div class="animate-on-scroll group grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- Portfolio Card 1: Brand Identity -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <img src="https://cdn.dribbble.com/userupload/19372077/file/original-8c487672d7e4cce8373592b47384c8ff.jpg?resize=1024x768&vertical=center"
+                            alt="Project 1" class="w-full h-64 object-cover" />
+                        <div class="p-6">
+                            <h2 class="text-xl font-bold text-primary mb-2">
+                                Brand Identity & Logo Design
+                            </h2>
+                            <p class="text-gray-600 mb-4">
+                                In a crowded market, a distinctive brand is your greatest
+                                asset. Logos and brand identities serve as the visual
+                                heartbeat of a business, carefully crafted to uncover its core
+                                values and translate them into a cohesive story that resonates
+                                with audiences and leaves a lasting impression.
+                            </p>
+                            <a href="portfolio.html#brand-identity"
+                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse Projects</a>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Card 2: Illustration -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <img src="https://inspi.com.br/wp-content/uploads/2023/05/design-e-designer-diferenca.jpg"
+                            alt="Project 2" class="w-full h-64 object-cover" />
+                        <div class="p-6">
+                            <h2 class="text-xl font-bold text-primary mb-2">
+                                Drawing and Illustrations
+                            </h2>
+                            <p class="text-gray-600 mb-4">
+                                Illustrations breathe life into a brand’s narrative. Each
+                                piece of custom artwork is designed to reflect the brand’s
+                                personality, capture attention, and communicate ideas in a way
+                                that evokes emotion, making the message unforgettable and
+                                visually compelling.
+                            </p>
+                            <a href="portfolio.html#illustrations"
+                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse Projects</a>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Card 3: Graphic Design -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <img src="https://res.cloudinary.com/reinmaxcreative/image/upload/v1755488111/graphic-design.webp"
+                            alt="Project 2" class="w-full h-64 object-cover" />
+                        <div class="p-6">
+                            <h2 class="text-xl font-bold text-primary mb-2">
+                                Graphic Design & UI/UX
+                            </h2>
+                            <p class="text-gray-600 mb-4">
+                                Strong graphic and interface design goes beyond aesthetics.
+                                Every visual element is intentionally created to engage the
+                                audience, convey information clearly, and provide a seamless,
+                                intuitive experience that strengthens brand perception across
+                                both digital and print platforms.
+                            </p>
+                            <a href="portfolio.html#ui-ux"
+                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse Projects</a>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Card 4: Motion Graphics -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                        <img src="https://cdn.prod.website-files.com/650b672b6d49343e2368aa57/6553870d2010e022bbdf20db_6171946b9862996e03b20db2_2D_Animation.gif"
+                            alt="Project 2" class="w-full h-64 object-cover" />
+                        <div class="p-6">
+                            <h2 class="text-xl font-bold text-primary mb-2">
+                                Motions Graphics
+                            </h2>
+                            <p class="text-gray-600 mb-4">
+                                Motion graphics turn static ideas into dynamic visual stories.
+                                Through carefully timed animations and creative movement,
+                                concepts are brought to life in a way that captivates viewers,
+                                emphasizes key messages, and enhances the overall impact of
+                                the brand’s communication.
+                            </p>
+                            <a href="portfolio.html#motion-graphics"
+                                class="text-tertiary text-opacity-85 font-semibold view-project">Browse Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plans (Pricing) Section -->
+        <section id="plans" class="py-16 overflow-hidden bg-white" data-nav="plans">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <!-- Branding Plans Section -->
+                <section>
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-[#002828] mb-4">Branding Plans</h2>
+                        <p class="text-lg text-slate-600 max-w-2xl mx-auto">Crafting unique and memorable identities to
+                            make
+                            your brand stand out.</p>
+                    </div>
+                    <div class="animate-on-scroll group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        id="images">
+                        <!-- Twiga Card -->
+                        <div
+                            class="bg-[url('/webp/twiga.webp')] bg-cover bg-center bg-[#F2F5F5]/95 bg-blend-overlay rounded-2xl shadow-lg overflow-hidden border border-slate-200 p-8 flex flex-col h-full transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div>
+                                <div class="flex items-center mb-4 min-h-[60px]">
+                                    <svg class="w-14 h-14 mr-4" id="giraffe" data-name="giraffe"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.75 108.24">
+                                        <defs>
+                                            <style>
+                                                .path {
+                                                    fill: #002828
+                                                }
+                                            </style>
+                                        </defs>
+                                        <path class="path"
+                                            d="M96.04 16.01c-2.49-.44-4.9-.66-7.18-.66-12.53 0-19.23 6.53-22.59 11.76l-2.54-4.51c2.98-7.72 4.39-19.05 4.45-19.55l.27-2.23-2.2-.49C65.28.11 64.28 0 63.26 0c-2.76 0-4.76.8-4.98.89l-1.32.55-.2 1.41c-.87 6.32-2.94 10.41-4.52 12.72-.68.99-1.33 1.75-1.86 2.31-.68-.72-1.31-1.49-1.86-2.31-1.58-2.31-3.64-6.39-4.52-12.72l-.2-1.41-1.32-.55C42.26.8 40.26 0 37.5 0c-1.02 0-2.03.11-2.99.33l-2.2.49.27 2.23c.06.5 1.47 11.83 4.45 19.55l-2.54 4.51c-3.36-5.23-10.06-11.76-22.59-11.76-2.28 0-4.69.22-7.18.66L0 16.83l3.38 3.38h.06s3.66 3.76 5.08 9.14c.76 2.9 2.8 5.96 5.46 8.19 3.36 2.82 7.67 4.37 12.48 4.5-.03.41-.35.84-.89 1.56-1.05 1.37-2.63 3.45-2.1 7.06.51 3.42 2.85 7.76 7.38 13.67 4.55 5.94 3.52 11.21 2.43 16.8-.85 4.37-1.73 8.9.21 13.54 2.11 5.05 7.17 9.22 15.91 13.12l1.01.45 1.01-.45c8.74-3.9 13.8-8.07 15.91-13.12 1.94-4.64 1.06-9.16.21-13.54-1.09-5.58-2.12-10.86 2.43-16.8 4.53-5.91 6.87-10.25 7.38-13.67.54-3.62-1.05-5.69-2.1-7.06-.55-.72-.86-1.14-.89-1.56 4.82-.13 9.12-1.68 12.48-4.5 2.65-2.23 4.7-5.29 5.46-8.19 1.42-5.38 5.04-9.1 5.07-9.13l3.38-3.38zM32.27 54.5c-.62-.14-1.17-.44-1.5-.85-.09-.11-.29-.39-.25-.63.07-.34.71-.7 1.54-.7.22 0 .45.02.67.07 1.23.27 1.83 1.11 1.75 1.48-.07.34-.71.7-1.54.7-.22 0-.45-.02-.67-.07m37.74-.84c-.33.4-.88.71-1.5.85-.22.05-.45.07-.67.07-.83 0-1.47-.36-1.54-.7-.05-.24.16-.53.25-.64.33-.4.88-.71 1.5-.85.22-.05.45-.07.67-.07.83 0 1.47.36 1.54.7.05.24-.16.53-.25.64m17.52-25.58c-.39 1.5-1.61 3.77-3.85 5.64-2.65 2.22-6 3.35-9.96 3.35-.62 0-1.26-.03-1.91-.08l-3.2-.28.53 3.17c.04.23.07.45.1.68-1.05-.47-2.16-.89-3.31-1.23-1.31-.4-2.7.35-3.1 1.66s.35 2.7 1.66 3.1c4.26 1.28 6.66 3.34 7.24 3.89-.9-.4-1.92-.62-3-.62-.57 0-1.15.06-1.72.19-1.72.37-3.25 1.28-4.29 2.55-1.17 1.42-1.63 3.19-1.27 4.85.56 2.58 2.96 4.42 5.92 4.6q-.63.855-1.32 1.77c-2.65 3.46-4.07 7.09-4.34 11.12-.23 3.44.38 6.6.98 9.66.78 3.98 1.45 7.42.09 10.67-1.5 3.58-5.54 6.87-12.34 10.04-6.8-3.17-10.84-6.46-12.34-10.04-1.36-3.25-.69-6.69.09-10.67.6-3.06 1.21-6.21.98-9.66-.27-4.03-1.7-7.66-4.34-11.12q-.705-.915-1.32-1.77c2.94-.2 5.31-2.03 5.87-4.6.36-1.67-.1-3.43-1.27-4.85-1.04-1.27-2.57-2.17-4.29-2.55-.57-.12-1.14-.19-1.72-.19-1.05 0-2.03.21-2.91.58.65-.6 3.04-2.59 7.2-3.85a2.486 2.486 0 0 0-1.44-4.76c-1.22.37-2.32.79-3.31 1.24.03-.23.07-.45.1-.68l.53-3.17-3.2.28c-.65.06-1.29.08-1.91.08-3.96 0-7.31-1.13-9.96-3.35-2.23-1.87-3.45-4.14-3.85-5.64-.82-3.11-2.2-5.74-3.47-7.68.71-.05 1.42-.07 2.1-.07h-.02c5.8 0 10.66 1.63 14.44 4.87 3.12 2.67 4.87 5.85 5.78 8.05l1.96 4.71 8.48-15.04-.49-1.13c-.54-1.24-1.02-2.65-1.46-4.12.16 0 .32.01.48.01.84 0 1.73-.1 2.64-.36.29.47.58.92.89 1.35 2.19 3.11 4.19 4.44 4.41 4.58l1.34.85 1.34-.85c.22-.14 2.22-1.47 4.41-4.58.31-.44.6-.89.89-1.35.9.26 1.8.36 2.64.36.16 0 .32 0 .48-.01-.44 1.47-.93 2.88-1.46 4.12l-.49 1.13 8.48 15.04 1.96-4.71c.91-2.2 2.66-5.39 5.78-8.05 3.78-3.24 8.64-4.88 14.44-4.88.68 0 1.39.02 2.1.07-1.27 1.94-2.65 4.57-3.47 7.68" />
+                                        <path class="path"
+                                            d="M41.69 90.05c-.71-.05-1.15.77-.73 1.34 4.13 5.68 7.64 7.57 6.62 2.92-.74-3.35-3.89-4.12-5.88-4.27Zm17.37 0c-1.99.14-5.15.91-5.88 4.27-1.02 4.64 2.49 2.76 6.62-2.92.42-.58-.02-1.4-.73-1.34Zm-3.78-4.62c.47-.82.25-1.98-.48-2.42-1.17-.71-2.81-1.37-4.78-1.29-1.63.07-2.99.62-4.05 1.27-.74.45-.98 1.61-.5 2.44.38.67 1.09.89 1.68.53.74-.45 1.75-.88 2.96-.93 1.43-.07 2.61.41 3.46.92.6.36 1.32.16 1.71-.51Z" />
+                                    </svg>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-[#002828]">Twiga</h3>
+                                        <p class="text-md text-[#99cccc]">Essential Plan</p>
+                                    </div>
+                                </div>
+                                <p class="text-[#335353] mb-4 min-h-[70px]">Ideal for individuals, startups, or small
+                                    businesses
+                                    getting off the ground.</p>
+                                <div class="mb-4 min-h-[72px]">
+                                    <span class="text-4xl font-bold text-[#002828] mr-1">150,000</span>
+                                    <span class="text-md text-slate-600">TZS</span>
+                                </div>
+                                <ul class="space-y-4 text-[#335353] mb-10">
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Two Logo Concept</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Up to 2 Revision Rounds</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Basic Logo Mockups</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>PNG & Source File</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Editable Source File</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Essential Brand Guidelines</li>
+                                </ul>
+                            </div>
+                            <div class="flex-grow"></div>
+                            <button
+                                class="w-full py-3 px-6 rounded-lg bg-[#003333] text-white font-semibold hover:bg-[#002828] transition-colors duration-200 ease-in-out ">Get
+                                Started
+                            </button>
+                        </div>
+
+                        <!-- Simba Card -->
+                        <div
+                            class="bg-[url('/webp/simba.webp')] bg-cover bg-center bg-[#F2F5F5]/95 bg-blend-overlay rounded-2xl shadow-lg overflow-hidden border border-slate-200 p-8 flex flex-col h-full transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div>
+                                <div class="flex items-center mb-4 min-h-[60px]">
+                                    <svg class="w-14 h-14 mr-4" id="lion" data-name="lion"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94.35 107.73">
+                                        <defs>
+                                            <style>
+                                                .color {
+                                                    fill: #002828
+                                                }
+                                            </style>
+                                        </defs>
+                                        <path class="color"
+                                            d="M36.61 41.09h-7.24s1.1 1.05 3.34 3.24c-.83.51-1.4 1.28-1.51 2.19-.22 1.83 1.48 3.54 3.8 3.82 1.19.14 2.3-.12 3.14-.65 1.01 1 2.1 2.09 3.28 3.27V45.9c0-2.66-2.15-4.81-4.81-4.81m26.55 5.43c-.11-.91-.68-1.68-1.51-2.19 2.24-2.19 3.34-3.24 3.34-3.24h-7.24c-2.66 0-4.81 2.15-4.81 4.81v7.06c1.18-1.18 2.28-2.27 3.28-3.27.84.53 1.95.79 3.14.65 2.32-.28 4.02-1.99 3.8-3.82" />
+                                        <path class="color"
+                                            d="M90.67 28.35c-2.3-5.14-5.65-9.55-9.97-13.11a38.5 38.5 0 0 0-8.77-5.41l7.13-3.15-4.01-2.51C70.62 1.4 65.14 0 58.76 0c-5.4 0-9.88 1.02-11.59 1.47C45.46 1.02 40.97 0 35.58 0 29.2 0 23.72 1.4 19.29 4.17l-4.01 2.51 7.13 3.15c-2.6 1.16-5.7 2.88-8.77 5.41-4.32 3.56-7.67 7.97-9.97 13.11h.01C.84 34.7-.36 42.16.09 50.51l.16 3.01 4.05-.97c0 2.48.16 6.11.9 10.24.79 4.47 2.09 8.62 3.86 12.33 2.24 4.69 5.23 8.69 8.89 11.88l2.4 2.09 1.38-2.65c1.18 1.71 2.79 3.86 4.78 6.16 4.24 4.91 11.11 11.46 19.76 14.78l.9.35.9-.35c8.65-3.32 15.52-9.87 19.76-14.78 1.99-2.3 3.59-4.45 4.78-6.16l1.38 2.65 2.4-2.09c3.67-3.19 6.66-7.19 8.89-11.88 1.77-3.71 3.06-7.86 3.86-12.33.73-4.13.9-7.75.9-10.24l4.05.97.16-3.01c.46-8.36-.75-15.81-3.58-22.16M76.35 18.2c.39.29.77.59 1.16.91 3.72 3.06 6.6 6.85 8.58 11.28h.01c.23.53.45 1.07.66 1.61-4.46.22-7.55 1.88-9.5 3.44-.38.3-.72.61-1.04.92-1.44-3.63-3.7-7.4-7.25-10.3l-.32-.26c.54-2.07 2.25-5.7 7.7-7.6M60.88 60c1.38 2.2 2.99 5.53 2.82 8.89-.12 2.44-1.14 4.59-3.12 6.53l-1.2-.44-11.37-4.19c.21-1.65.68-3.66 1.73-4.41 1.9-1.34 5.13-3.46 0-3.79 0 0-1.23.67-2.57.67s-2.57-.67-2.57-.67c-5.13.33-1.9 2.45 0 3.79 1.05.74 1.52 2.76 1.73 4.41l-11.37 4.19-1.2.44c-1.97-1.94-2.99-4.08-3.12-6.51-.34-6.53 5.9-12.93 5.97-13l-3.56-3.54c-.16.16-2 2.03-3.81 4.93l-8.59-9.44c.21-3.02 1.4-12.62 7.92-17.93h.01c4.38-3.56 10.47-4.6 18.11-3.08l.49.1.49-.1c7.64-1.52 13.74-.48 18.11 3.08 6.52 5.31 7.71 14.91 7.92 17.93l-8.59 9.44c-1.81-2.89-3.66-4.77-3.81-4.93l-3.56 3.54s1.61 1.65 3.14 4.09m-5.82 21.94c-.06.03-.16.07-.4.07-.57 0-1.44-.25-2.36-.51-1.4-.4-3.15-.89-5.11-.89s-3.71.49-5.11.89c-.92.26-1.79.51-2.36.51-.24 0-.34-.04-.4-.08-.26-.37-.32-1.73-.09-3.16l7.97-2.93 7.96 2.93c.21 1.37.19 2.77-.09 3.17ZM26.72 6.26h.02c2.63-.82 5.58-1.24 8.85-1.24 5.98 0 10.82 1.44 10.86 1.45l.73.22.73-.22s4.88-1.45 10.86-1.45c3.26 0 6.22.41 8.85 1.24l-11.01 4.87 7.96 1.49s2.89.56 6.65 2.43c-3.19 1.84-5.03 4.19-6.09 6.13-.37.68-.67 1.35-.9 1.98-4.75-2.11-10.46-2.56-17.06-1.32-6.6-1.24-12.32-.79-17.06 1.32-.23-.63-.52-1.29-.9-1.98-1.05-1.93-2.89-4.28-6.08-6.12 3.74-1.86 6.6-2.43 6.64-2.44l7.96-1.49zM8.19 30.54c1.95-4.41 4.8-8.21 8.47-11.27h.01c.44-.38.89-.73 1.33-1.06 3.09 1.07 5.34 2.8 6.69 5.17.51.9.82 1.75 1 2.44-.1.08-.21.16-.31.25-3.54 2.9-5.81 6.66-7.25 10.3-.32-.31-.66-.61-1.04-.92-1.95-1.57-5.03-3.23-9.5-3.44q.285-.75.6-1.47m1.24 19.04.35-3.51-4.76 1.14c0-3.64.35-7.05 1.07-10.21 3.05-.11 5.63.64 7.68 2.21 1.56 1.2 2.36 2.56 2.61 3.03-.75 3.6-.79 6.27-.79 6.53v.98l2.88 3.17c-.51.16-1.05.34-1.6.57-2.16.9-4.81 2.55-7.15 5.58-.66-5.45-.29-9.44-.29-9.49m71.3 23.45c-1.43 2.99-3.21 5.64-5.3 7.92l-2.49-4.78-2.28 4.03s-2.44 4.3-6.69 9.2c-3.7 4.27-9.56 9.89-16.79 12.93-7.23-3.04-13.09-8.66-16.79-12.93-4.25-4.9-6.67-9.15-6.69-9.2l-2.27-4.04-2.49 4.79c-2.09-2.28-3.87-4.94-5.3-7.92-.96-2-1.76-4.15-2.41-6.43 3.16-8 8.9-9.19 11.2-9.34l4.42 4.86c-.81 2.16-1.32 4.55-1.2 7.03.21 4.27 2.23 8 5.99 11.09l1.11.91 1.3-.48c.04 1.99.58 4.15 2.39 5.39.95.65 2.05.98 3.27.98s2.52-.35 3.73-.7c1.22-.34 2.47-.7 3.74-.7s2.53.36 3.74.7 2.46.7 3.73.7 2.32-.33 3.27-.98c1.81-1.24 2.35-3.39 2.39-5.39l1.3.48 1.11-.91c3.76-3.09 5.78-6.82 5.99-11.09.12-2.48-.39-4.87-1.2-7.03l4.41-4.85c.84.06 2.16.25 3.63.86 3.37 1.4 5.92 4.25 7.58 8.47-.65 2.28-1.45 4.43-2.41 6.43zm3.85-26.95.34 3.5s.37 4.04-.29 9.49c-2.33-3.03-4.99-4.68-7.15-5.58-.55-.23-1.09-.42-1.6-.57l2.89-3.17v-.98c0-.25-.04-2.93-.79-6.53.46-.91 3.13-5.46 10.29-5.23.72 3.16 1.07 6.57 1.07 10.21z" />
+                                    </svg>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-[#002828]">Simba</h3>
+                                        <p class="text-md text-[#99cccc]">Professional Plan</p>
+                                    </div>
+                                </div>
+
+                                <p class="text-[#335353] mb-4 min-h-[70px]">Ideal for growing businesses that needs a
+                                    professional brand identity.</p>
+                                <div class="mb-4 min-h-[72px]">
+                                    <span class="text-4xl font-bold text-[#002828] mr-1">200,000</span>
+                                    <span class="text-md text-slate-600">TZS</span>
+                                </div>
+                                <ul class="space-y-4 text-[#335353] mb-10">
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Multiple Logo Concepts</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Up to 3 Revision Rounds</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Profession Logo Mockups</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>PNG, JPG, SVG & Source File</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Social Media Mockups</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Professional Brand Guidelines</li>
+                                </ul>
+                            </div>
+                            <div class="flex-grow"></div>
+                            <button
+                                class="w-full py-3 px-6 rounded-lg bg-[#003333] text-white font-semibold hover:bg-[#002828] transition-colors duration-200 ease-in-out">Get
+                                Started
+                            </button>
+                        </div>
+
+                        <!-- Tembo Card -->
+                        <div
+                            class="bg-[url('/webp/tembo.webp')] bg-cover bg-center bg-[#F2F5F5]/95 bg-blend-overlay rounded-2xl shadow-lg overflow-hidden border border-slate-200 p-8 flex flex-col h-full transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div>
+                                <div class="flex items-center mb-4 min-h-[60px]">
+                                    <svg class="w-14 h-14 mr-4" id="elephant" data-name="elephant"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117.94 106.81">
+                                        <defs>
+                                            <style>
+                                                .color {
+                                                    fill: #002828
+                                                }
+                                            </style>
+                                        </defs>
+                                        <path class="color"
+                                            d="M91.75 1.34c-3.99 0-7.69 1.26-11.03 3.74C77.63 1.41 74.69.29 74.31.15L73.88 0H44.07l-.43.15c-.38.13-3.32 1.25-6.41 4.93-3.34-2.48-7.04-3.74-11.03-3.74C12.94 1.34 1.32 15.41.83 16.01L0 17.02l2.96 13.04 2.04.1s3.46.23 7.51 2.73c2.46 1.52 4.64 3.56 6.48 6.07 2.35 3.21 4.15 7.2 5.36 11.87l1.27 4.91 3.35-3.81s2.34-2.65 6.07-6.78c1.3 3.14 2.01 5.7 2.26 8.02.32 3.04-.13 5.91-1.49 9.59l-1.14 3.09 4.24.64c-1.25 2.84-3.78 6.95-8.31 8.53l-6.09 2.12 5.8 2.83c.15.07 3.72 1.79 8.3 2.13.53.04 1.05.06 1.57.06 3.53 0 6.68-.92 9.34-2.71l.43 7.38-9.52 4.63-.06 1.62c-.14 4.13.9 7.38 3.1 9.65 3.89 4.02 10.27 4.06 15.93 4.06h.28c3.43 0 6.02-.88 7.7-2.62 1.61-1.67 1.79-3.52 1.79-4.16l.96-20.36c2.59 1.65 5.63 2.5 9.03 2.5.52 0 1.04-.02 1.57-.06 4.58-.34 8.15-2.06 8.3-2.13l5.8-2.83-6.09-2.12c-2.91-1.02-5.35-3.2-7.26-6.48-.46-.79-.83-1.56-1.13-2.25l2.95-.45-1.14-3.09c-1.36-3.69-1.81-6.56-1.49-9.59.24-2.32.96-4.88 2.26-8.02 3.73 4.13 6.04 6.75 6.07 6.78l3.35 3.81 1.27-4.91c1.18-4.58 2.94-8.52 5.24-11.7 1.8-2.5 3.94-4.55 6.35-6.09 4.04-2.57 7.56-2.87 7.76-2.88l2.02-.07L117.95 17l-.83-1.01c-.49-.6-12.11-14.67-25.37-14.67ZM39.13 76.77q-.51-.03-.99-.09c3.37-3 5.26-6.85 6.21-9.34l4.49.68.26 4.52c-2.39 3.08-5.74 4.5-9.97 4.23m25.43 6.77h-4.2v5.37h3.95c-.01.27-.45 9.43-.48 10.1-.02.5.07 1.09-.32 1.47-.42.41-1 .58-1.55.71-.74.18-1.52.23-2.28.23h-.14c-1.11 0-2.25 0-3.38-.03l-1.88-32.56-.03-.59h11.06l-.02.35-.29 6.19h-7.01v5.37h6.76l-.16 3.38Zm-15.17 9.54 4.67 8.21c-2.8-.22-5.32-.8-6.75-2.28-.92-.95-1.44-2.32-1.57-4.16l3.65-1.78Zm16.15-30.2H53.92l-.21-3.57h12zm15.64 13.79c-.28.03-.56.06-.84.08-4.16.31-7.48-1.01-9.88-3.92l.24-5.06 4.2-.64c.92 2.48 2.83 6.46 6.29 9.54Zm29.42-51.58c-1.87.39-4.81 1.26-7.99 3.23-3.05 1.89-5.74 4.4-7.99 7.47-1.92 2.62-3.52 5.64-4.77 9.04-1.48-1.66-3.43-3.82-5.71-6.32l-2.68-2.94-1.73 3.58c-2.66 5.5-4.02 9.66-4.42 13.47-.31 2.93-.06 5.76.79 8.9l-5.16.78.48-10.08a2.685 2.685 0 0 0-2.56-2.81 2.685 2.685 0 0 0-2.81 2.56v.13l-.09 1.84H53.39l-.11-1.84v-.16a2.71 2.71 0 0 0-2.85-2.53 2.7 2.7 0 0 0-2.53 2.84l.59 10.29-6.68-1.02c.85-3.14 1.1-5.98.79-8.9-.4-3.81-1.76-7.97-4.42-13.47l-1.73-3.58-2.68 2.94c-2.28 2.51-4.23 4.67-5.71 6.32-1.26-3.39-2.85-6.42-4.77-9.04-2.25-3.07-4.94-5.58-7.99-7.47-3.18-1.96-6.11-2.84-7.99-3.23L5.8 18.44c1.08-1.19 3.15-3.33 5.84-5.47 3.59-2.85 9.03-6.26 14.52-6.26 3.55 0 6.69 1.38 9.61 4.21l2.35 2.28 1.78-2.75c2.12-3.29 4.31-4.64 5.16-5.07h27.75c.84.43 3.04 1.79 5.16 5.07l1.78 2.75 2.35-2.28c2.92-2.83 6.06-4.21 9.61-4.21 8.94 0 17.68 8.78 20.37 11.73l-1.51 6.65Z">
+                                        </path>
+                                        <path class="color"
+                                            d="M71.45 28.83c-2.84 0-5.15 2.31-5.15 5.15v7.55c1.27-1.27 2.44-2.43 3.51-3.5.9.57 2.09.85 3.36.7 2.48-.3 4.3-2.13 4.06-4.09-.12-.98-.72-1.8-1.61-2.35 2.4-2.35 3.57-3.46 3.57-3.46h-7.75Zm-23.56 0h-7.75s1.17 1.12 3.57 3.46c-.89.54-1.49 1.37-1.61 2.35-.24 1.96 1.58 3.79 4.06 4.09 1.27.15 2.46-.13 3.36-.7 1.08 1.07 2.25 2.24 3.51 3.5v-7.55c0-2.84-2.31-5.15-5.15-5.15Zm-15.9-12.84c-.12.31-3 7.71-1.38 14.14l5.21-1.32c-1.2-4.73 1.14-10.79 1.16-10.85l-2.5-.98-2.5-.99Zm48.75 1.98c.02.06 2.36 6.12 1.16 10.85l5.21 1.32c1.63-6.43-1.25-13.83-1.38-14.14l-5 1.97Z">
+                                        </path>
+                                    </svg>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-[#002828]">Tembo</h3>
+                                        <p class="text-md text-[#99cccc]">Enterprise Plan</p>
+                                    </div>
+                                </div>
+                                <p class="text-[#335353] mb-4 min-h-[72px]">Ideal for well-established companies that
+                                    require
+                                    full-scale strategy.</p>
+                                <div class="mb-4 min-h-[72px]">
+                                    <span class="text-4xl font-bold text-[#002828]">Custom Quote</span>
+                                </div>
+                                <ul class="space-y-4 text-[#335353] mb-10">
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Full Logo Variations</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Unlimited Revisions</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Iconography & Illustrations</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Premium Marketing Materials</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Brand Strategy Consultation</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-6 h-6 text-[#335353] mr-3 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Comprehensive Brand Guidelines</li>
+                                </ul>
+                            </div>
+                            <div class="flex-grow"></div>
+                            <button
+                                class="w-full py-3 px-6 rounded-lg bg-[#003333] text-white font-semibold hover:bg-[#002828] transition-colors duration-200 ease-in-out">Contact
+                                Us
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Academy Plans Section -->
+                <section class="mt-16">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-[#002828] mb-4">Academy Plans</h2>
+                        <p class="text-lg text-slate-600 max-w-2xl mx-auto">Gain graphic design and branding skills with
+                            our expert-led courses</p>
+                    </div>
+                    <div class="animate-on-scroll group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Adobe Illustrator Card -->
+                        <div
+                            class="bg-[#FFFAF5] rounded-2xl shadow-lg overflow-hidden border border-slate-200 p-8 flex flex-col h-full transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div>
+                                <div class="flex items-center mb-4 min-h-[64px]">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg"
+                                        alt="Adobe Illustrator Logo" class="w-14 h-14 mr-4 p-1">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-[#002828]">Adobe Illustrator</h3>
+                                        <p class="text-sm text-slate-600">Beginner - Professional</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-600 mb-4 min-h-[80px]">Master the industry-standard tool for vector
+                                    graphics, from basic shapes to complex illustrations.</p>
+                                <div class="mb-4 min-h-[64px]">
+                                    <span class="text-4xl font-bold text-[#002828] mr-1">60,000</span>
+                                    <span class="text-md text-slate-600">TZS</span>
+
+                                </div>
+                                <ul class="space-y-3 text-sm text-[#335353] mb-6">
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Mastery of Vector Graphics</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Professional Logo & Icon Design</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Advanced Typography & Layout</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Creative Color Theory & Gradients</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Exporting for Web & Print</li>
+                                </ul>
+                            </div>
+                            <div class="flex-grow"></div>
+                            <a href="checkout.html?course=illustrator"
+                                class="block text-center w-full bg-[#330000] text-[#FF9A00] font-bold py-3 px-6 rounded-lg hover:bg-[#471A1A] transition-colors duration-300">
+                                Enroll Now
+                            </a>
+
+                        </div>
+
+                        <!-- Adobe Photoshop Card -->
+                        <div
+                            class="bg-[#F5FBFF] rounded-2xl shadow-lg overflow-hidden border border-slate-200 p-8 flex flex-col h-full transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div>
+                                <div class="flex items-center mb-4 min-h-[64px]">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
+                                        alt="Adobe Photoshop Logo" class="w-14 h-14 mr-4 p-1">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-[#002828]">Adobe Photoshop</h3>
+                                        <p class="text-sm text-slate-600">Beginner - Professional</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-600 mb-4 min-h-[80px]">Unlock the power of photo editing, digital
+                                    compositing, and graphic design.</p>
+                                <div class="mb-4 min-h-[64px]">
+                                    <span class="text-4xl font-bold text-[#002828] mr-1">50,000</span>
+                                    <span class="text-md text-slate-600">TZS</span>
+                                </div>
+                                <ul class="space-y-3 text-sm text-[#335353] mb-6">
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Advanced Photo Retouching</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Layer & Masking Techniques</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Graphic Design Fundamentals</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Social Media Design</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Intro to Digital Painting</li>
+                                </ul>
+                            </div>
+                            <div class="flex-grow"></div>
+                            <a href="checkout.html?course=photoshop"
+                                class="block text-center w-full bg-[#001E36] text-[#31A8FF] font-bold py-3 px-6 rounded-lg hover:bg-[#1A2E4D] transition-colors duration-300">
+                                Enroll Now
+                            </a>
+                        </div>
+
+                        <!-- Figma Card -->
+                        <div
+                            class="bg-[#FFF6F5] rounded-2xl shadow-lg overflow-hidden border border-slate-200 p-8 flex flex-col h-full transition-all duration-500 ease-out opacity-0 translate-y-8 group-[.visible]:opacity-100 group-[.visible]:translate-y-0">
+                            <div>
+                                <div class="flex items-center mb-4 min-h-[64px]">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
+                                        alt="Figma Logo" class="w-14 h-14 mr-4 p-1">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-[#002828]">Figma</h3>
+                                        <p class="text-sm text-slate-600">Beginner - Professional</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-600 mb-4 min-h-[80px]">Design and prototype modern interfaces from
+                                    the
+                                    ground up using collaborative tools.</p>
+                                <div class="mb-4 min-h-[64px]">
+                                    <span class="text-4xl font-bold text-[#002828] mr-1">55,000</span>
+                                    <span class="text-md text-slate-600">TZS</span>
+                                </div>
+                                <ul class="space-y-3 text-sm text-[#335353] mb-6">
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>UI/UX Design Fundamentals</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Interactive Prototyping</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Design Systems</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Collaboration Tools</li>
+                                    <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="w-5 h-5 text-[#335353] mr-2 flex-shrink-0">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="m9 12 2 2 4-4" />
+                                        </svg>Component Libraries</li>
+                                </ul>
+                            </div>
+                            <div class="flex-grow"></div>
+                            <a href="checkout.html?course=figma"
+                                class="block text-center w-full bg-[#F24E1E] text-[#fff] font-bold py-3 px-6 rounded-lg hover:bg-[#F46840] transition-colors duration-300">
+                                Enroll Now
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="footer" class="bg-[var(--background-footer)] text-[var(--text-light)] footer-with-overlay">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 relative">
+
+            <!-- Zone 1: CTA & Newsletter -->
+            <div class="py-10 border-b border-[var(--border-color)]">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+
+                    <!-- Left Column: Text and Form -->
+                    <div>
+                        <h2 class="text-3xl md:text-4xl md:center font-bold text-white">Join Our Community</h2>
+                        <p class="mt-4 text-white/50">
+                            Get expert insights, creative design inspiration, design tips, and exclusive updates on the
+                            latest trends in creative design.
+                        </p>
+                        <!-- Newsletter Form (Moved here) -->
+                        <form id="newsletter-form" class="w-full mt-8" novalidate>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <!-- Email Input -->
+                                <div class="flex-grow">
+                                    <label for="email-signup" class="sr-only">Your Email</label>
+                                    <input type="email" id="email-signup" required placeholder="name@example.com"
+                                        class="w-full p-3 bg-white/5 border border-white/20 rounded-md placeholder:text-gray-500 focus:outline-none focus:border-white focus:ring-0 transition-colors h-full">
+                                </div>
+                                <!-- Subscribe Button with new animation states -->
+                                <button id="subscribe-button" type="submit"
+                                    class="relative overflow-hidden flex items-center justify-center bg-[var(--secondary-color)] text-[var(--primary-color)] font-bold py-3 px-6 rounded-md hover:bg-[#7aa9a9] transition-all duration-300">
+                                    <span class="btn-text">Subscribe</span>
+                                    <span class="loader hidden"></span>
+                                    <span class="success-message hidden items-center gap-1">Subscribed</span>
+                                    <div class="confetti-container">
+                                        <!-- Particles for the animation -->
+                                        <div class="confetti-piece"></div>
+                                        <div class="confetti-piece"></div>
+                                        <div class="confetti-piece"></div>
+                                        <div class="confetti-piece"></div>
+                                        <div class="confetti-piece"></div>
+                                        <div class="confetti-piece"></div>
+                                        <div class="confetti-piece"></div>
+                                        <div class="confetti-piece"></div>
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Right Column (Empty for now) -->
+                    <div>
+                        <!-- This space is now available for future content -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zone 2: Core Content (Link Grid) -->
+            <div class="py-12 md:py-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+
+                <!-- Company Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">About Us</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Who We Are</a></li>
+                        <li><a href="#" class="footer-link">Our Partnerships</a></li>
+                        <li><a href="#" class="footer-link">Our Community</a></li>
+                        <li><a href="#" class="footer-link">Get in Touch</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">Expertise</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Brand Identity</a></li>
+                        <li><a href="#" class="footer-link">Rebranding Strategy</a></li>
+                        <li><a href="#" class="footer-link">Packaging Design</a></li>
+                        <li><a href="#" class="footer-link">Social Media Design</a></li>
+                    </ul>
+                </div>
+
+                <!-- Academy Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">Academy</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Adobe Illustrator</a></li>
+                        <li><a href="#" class="footer-link">Adobe Photoshop</a></li>
+                        <li><a href="#" class="footer-link">Adobe Premiere Pro</a></li>
+                        <li><a href="#" class="footer-link">Figma</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Free Templates</a></li>
+                        <li><a href="#" class="footer-link">Free Mockups</a></li>
+                        <li><a href="#" class="footer-link">Icon Library</a></li>
+                        <li><a href="#" class="footer-link">Image Editor</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal Column -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold tracking-wide text-white">Legal</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                        <li><a href="#" class="footer-link">Sitemap</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Zone 3: Meta & Copyright -->
+            <div class="py-6 border-t border-[var(--border-color)]">
+                <div class="flex flex-col sm:flex-row sm:justify-between items-center text-sm text-[var(--text-muted)]">
+                    <p class="text-sm text-center sm:text-left">
+                        <span class="relative top-[2.5px] text-[1.005rem]">&copy;</span>
+                        <span id="copyright-year"></span> Reinmax Creative. All Rights Reserved
+                    </p>
+                    <p class="text-sm text-center sm:text-right mt-2 sm:mt-0">
+                        Registered in Tanzania. BRELA No: 56***1
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Adobe Illustrator Course Popup -->
+    <div id="ai-course-popup"
+        class="fixed bottom-4 left-6 right-6 lg:left-[2rem] lg:bottom-8 lg:right-auto lg:max-w-xl bg-[#002828]/95 backdrop-blur-sm rounded-2xl shadow-2xl z-[10000] overflow-hidden
+        transition-all duration-500 opacity-0 pointer-events-none transform translate-y-[110%] lg:translate-y-0 lg:-translate-x-[110%]">
+
+        <!-- Close button moved here -->
+        <button id="ai-course-popup-close-btn"
+            class="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center text-white bg-white/20 backdrop-blur-sm transition-transform z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <div class="flex flex-col lg:flex-row relative">
+            <!-- Image section -->
+            <div id="ai-course-popup-image-container"
+                class="relative flex-shrink-0 w-full h-56 lg:w-52 lg:h-auto lg:rounded-l-2xl overflow-hidden">
+                <img src="https://i.ibb.co/35tdHHDh/popup.webp" alt="Promotional image for Adobe Illustrator course"
+                    class="w-full h-full object-cover">
+            </div>
+
+            <!-- Content section -->
+            <div id="ai-course-popup-content-container"
+                class="adobe-illustrator flex flex-col justify-center items-center lg:items-start text-center lg:text-left p-6">
+                <h2 class="text-xl font-bold text-white">Adobe Illustrator Course</h2>
+                <p class="text-sm text-gray-300 mt-1 leading-relaxed">
+                    Learn Adobe Illustrator for creating vector graphics, logos, and illustrations.
+                    Master design techniques and digital drawing tools.
+                </p>
+
+                <!-- Email form -->
+                <form id="ai-course-popup-form" class="w-full max-w-xs mx-auto lg:mx-0 mt-4" novalidate>
+                    <div>
+                        <label for="ai-course-popup-email-input"
+                            class="block text-sm font-medium text-gray-300 mb-1 text-left">Email</label>
+                        <input id="ai-course-popup-email-input" type="email" placeholder="name@example.com" required
+                            class="w-full px-4 py-2 bg-white/5 border border-white/20 text-white rounded-md focus:ring-2 focus:ring-[#99cccc] outline-none placeholder-gray-400">
+                    </div>
+                    <button type="submit"
+                        class="flex items-center justify-center w-full bg-[#E6EAEA] text-[#002828] font-semibold py-2 rounded-md hover:bg-gray-300 transition-colors shadow-sm h-[42px] mt-3">
+                        Get Started
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript file(s) -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

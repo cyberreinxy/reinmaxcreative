@@ -1,0 +1,1032 @@
+/*
+ * =============================================
+ *  1. GLOBAL STYLES & VARIABLES
+ * =============================================
+ */
+
+/* Color, typography, and sizing variables */
+:root {
+  /* Color Palette */
+  --primary-color: #002828;
+  --secondary-color: #99cccc;
+  --tertiary-color: #003333;
+  --quaternary-color: #efeeee;
+  --color-white: #ffffff;
+  --brand-accent: #004d4d;
+  --background-color: #f2f4f4;
+  --background-footer: #001a1a;
+  --border-color: rgba(148, 163, 163, 0.2);
+  --error-color: #ff7b7b;
+  --dark-bg: #111111;
+
+  /* Typography */
+  --text-color: #333333;
+  --text-light: #e0eaea;
+  --text-muted: #94a3a3;
+  --links-color: #3b82f6;
+
+  /* UI States */
+  --hover-color: #e6f5f5;
+  --muted-bg: #fafafa;
+
+  /* Sizing */
+  --header-height: 5rem;
+
+  /* Loader */
+  --vibe-transition-speed: 1.5s; /* slow & smooth */
+}
+
+/* Base HTML and Body styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Sora", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.overflow-hidden {
+  overflow: hidden;
+}
+
+/*
+ * =============================================
+ *  2. GENERAL LAYOUT & UTILITIES
+ * =============================================
+ */
+
+/* Main content wrapper */
+main {
+  position: relative;
+  isolation: isolate; /* Creates a new stacking context for overlays. */
+}
+
+/* Background overlay for blur effects */
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+/* Prevents section titles from being hidden by a fixed header */
+section[id] {
+  scroll-margin-top: 60px;
+}
+
+/* Font and color utility classes */
+.grotesk {
+  font-family: "Space Grotesk", sans-serif;
+}
+.text-primary {
+  color: var(--primary-color);
+}
+.text-secondary {
+  color: var(--secondary-color);
+}
+.bg-primary {
+  background-color: var(--primary-color);
+}
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+/* Global fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Media: Prevents images/videos from overflowing their containers */
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+/*
+ * =============================================
+ *  3. COMPONENT: PAGE LOADER
+ * =============================================
+ */
+
+/* Prevent scrolling while loader is active */
+body:not(.vibe-loaded) {
+  overflow: hidden;
+}
+
+/* Loader wrapper */
+.vibe-loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  background-image: linear-gradient(
+      rgba(0, 40, 40, 0.85),
+      rgba(0, 40, 40, 0.85)
+    ),
+    url("/webp/loader.webp");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  filter: blur(0);
+  /* The key is to transition visibility with a delay on exit */
+  transition: opacity var(--vibe-transition-speed) ease,
+    transform var(--vibe-transition-speed) ease,
+    filter var(--vibe-transition-speed) ease,
+    visibility 0s linear var(--vibe-transition-speed); /* Hide it AFTER the fade-out */
+}
+
+/* Loader ping animation */
+.vibe-loader-ping {
+  --uib-size: 50px;
+  --uib-speed: 1s;
+  --uib-color: white;
+  position: relative;
+  width: var(--uib-size);
+  height: var(--uib-size);
+  opacity: 1;
+  /* Ensure the ping animates out with the same properties as the wrapper */
+  transition: opacity var(--vibe-transition-speed) ease,
+    transform var(--vibe-transition-speed) ease;
+}
+
+.vibe-loader-ping::before,
+.vibe-loader-ping::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--uib-color);
+  animation: vibeLoaderPulse var(--uib-speed) linear infinite;
+  transform: scale(0);
+  opacity: 0;
+}
+
+.vibe-loader-ping::after {
+  animation-delay: calc(var(--uib-speed) / -2);
+}
+
+@keyframes vibeLoaderPulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Content and loader visibility states */
+.vibe-main-content {
+  opacity: 0;
+  transition: opacity var(--vibe-transition-speed) ease
+    var(--vibe-transition-speed);
+}
+
+body.vibe-loaded .vibe-loader-wrapper,
+body.vibe-loaded .vibe-loader-wrapper .vibe-loader-ping {
+  opacity: 0;
+  transform: scale(0.98);
+  filter: blur(3px);
+  visibility: hidden;
+  /* Remove transition from the hidden state to prevent flicker on tab switch */
+  transition: none;
+}
+
+body.vibe-loaded .vibe-main-content {
+  opacity: 1;
+}
+
+/*
+ * =============================================
+ *  4a. COMPONENT: SITE HEADER
+ * =============================================
+ */
+
+/* ===== Base styles ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding-top: 0; /* removed header padding for full-viewport hero */
+}
+
+body.menu-is-open {
+  overflow: hidden;
+}
+
+/* ===== Main Header ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0; /* Padding will be handled by the inner container */
+  background-color: transparent; /* Start completely transparent */
+  border-bottom: 1px solid transparent; /* Start with a transparent border */
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1),
+    background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 80rem; /* 1280px, matches max-w-7xl */
+  margin: 0 auto;
+  /* Consistent padding with all other sections */
+  padding: 0 1.5rem; /* px-6 */
+}
+
+/* ===== Logo & Menu ===== */
+.logo-container,
+.menu-toggle {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.logo {
+  height: 2.5rem;
+  width: auto;
+  display: block;
+  transition: fill 0.3s ease-in-out;
+}
+
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 2rem;
+  padding: 0;
+  line-height: 0;
+  z-index: 2;
+}
+
+.menu-toggle .icon {
+  transition: stroke 0.3s ease-in-out,
+    transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ===== Navigation Panel ===== */
+.navigation-panel {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 5rem;
+  background-color: var(--primary-color);
+  z-index: 1;
+  visibility: hidden;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 0,
+    0 0
+  ); /* Initial state: collapsed at the top */
+  /* Transition for closing: immediate clip-path, visibility change happens after */
+  transition: clip-path 0.7s cubic-bezier(0.86, 0, 0.07, 1), visibility 0s 0.7s;
+}
+
+.navigation-panel.is-open {
+  visibility: visible;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  /* Transition for opening: delay the clip-path animation to sync with header */
+  transition: clip-path 0.7s cubic-bezier(0.86, 0, 0.07, 1) 0.1s,
+    visibility 0s 0.1s;
+}
+
+/* ===== Links ===== */
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  gap: 1.75rem; /* Reduced gap between links */
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  transition: all 0.3s ease;
+}
+
+/* Staggered fade-in animation for nav links */
+.nav-links li {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.navigation-panel.is-open .nav-links li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navigation-panel.is-open .nav-links li:nth-child(1) {
+  transition-delay: 0.25s;
+}
+.navigation-panel.is-open .nav-links li:nth-child(2) {
+  transition-delay: 0.3s;
+}
+.navigation-panel.is-open .nav-links li:nth-child(3) {
+  transition-delay: 0.35s;
+}
+.navigation-panel.is-open .nav-links li:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.navigation-panel.is-open .nav-links li:nth-child(5) {
+  transition-delay: 0.45s;
+}
+.navigation-panel.is-open .nav-links li:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--quaternary-color);
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
+  font-weight: 550;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+/* ===== Header Scrolled State ===== */
+.site-header.scrolled-header {
+  /* Solid background on scroll */
+  background-color: var(--primary-color);
+  /* Apply glass effect when scrolled or menu is open */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-color: rgba(255, 255, 255, 0.1); /* Show border only when scrolled */
+}
+
+.site-header.scrolled-header .logo {
+  fill: var(--color-white);
+}
+
+.site-header.scrolled-header .menu-toggle .line {
+  stroke: var(--color-white);
+}
+
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 0 2rem; /* lg:px-8 */
+  }
+}
+
+/*
+ * =============================================
+ *  4b. COMPONENT: HERO SECTION
+ * =============================================
+ */
+
+/* Container fills viewport and creates a positioning context */
+.hero-container {
+  position: relative;
+  width: 100%;
+  /* Use Small Viewport Height (svh) to get a stable height that ignores browser UI changes, preventing jumps on mobile. */
+  height: 100svh;
+  min-height: 600px;
+}
+
+/* Ensure the video fully covers the container */
+.hero-container #hero-video,
+.hero-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: var(--dark-bg); /* Prevents flash of unstyled content */
+  display: block;
+}
+
+/* Dark overlay for better text contrast + centers content */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+  z-index: 2; /* Ensure content is above the new color overlay */
+}
+
+/* Staggered fade-up words used by script.js (class: fade-up-stagger) */
+.fade-up-stagger {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroFadeUp 0.6s ease forwards;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Wavy up entrance used for CTA button and video control */
+.wavy-up-animation {
+  animation: wavyUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes wavyUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Video control button wrapper bottom-right placement */
+#video-control-wrapper {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  z-index: 4; /* Above all other overlays */
+}
+
+/* Video loading indicator styles */
+#video-loading-indicator {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1; /* Above video, below overlay */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Styles for the custom play button overlay */
+#video-play-overlay {
+  display: flex; /* Use flex for centering */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+#video-play-overlay.visible {
+  opacity: 1;
+  background-color: rgba(
+    0,
+    26,
+    26,
+    0.5
+  ); /* Add a stronger background when visible */
+}
+
+/* Ensure the hero overlay content (text, CTA) is above the play overlay */
+.hero-overlay {
+  z-index: 3;
+}
+
+/* If Tailwind's h-screen is present on the hero <section>, neutralize it.
+   The hero height should be driven by .hero-container (100svh). */
+#home.h-screen {
+  height: auto !important;
+}
+
+/* Make sure large headings don’t overflow on very small screens */
+@media (max-width: 375px) {
+  #hero-text {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/*
+ * =============================================
+ *  5a. COMPONENT: VIDEO LOADER (HERO)
+ * =============================================
+ */
+
+/* By default, the video loader is hidden instantly */
+#video-loading-indicator {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* When the video is buffering, fade the loader in */
+.hero-container[data-video-state="waiting"] #video-loading-indicator {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+/*
+ * =============================================
+ *  5. COMPONENT: CREATIVE WORKFLOW
+ * =============================================
+ */
+
+/* Component-specific variables */
+#design-process {
+  --dp-card-bg-is-active: #e5f0f0;
+  --dp-border-color-active: #c0d8d8;
+  --dp-card-bg-default-icon: #f7fafa;
+  --primary-color: #002828;
+  --border-color: #e2e8f0;
+}
+
+.process-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* Process Visuals */
+#design-process .process-visuals {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  /* Set a default aspect ratio for mobile to maintain height */
+  aspect-ratio: 4 / 3;
+  /* On desktop, allow it to stretch to the container's height */
+  @media (min-width: 1024px) {
+    aspect-ratio: auto;
+  }
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+#design-process .process-visuals .visual-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  border-radius: 1rem;
+}
+
+#design-process .visual-image[data-index="-1"],
+#design-process .visual-image.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Accordion Group */
+#design-process .process-step-group {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  background-color: #ffffff;
+}
+
+#design-process .process-step-group.is-active {
+  background-color: var(--dp-card-bg-is-active);
+  border-color: var(--dp-border-color-active);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.process-accordion.has-active-step .process-step-group:not(.is-active):hover {
+  opacity: 1;
+  border-color: var(--dp-border-color-active);
+}
+
+/* Accordion Header */
+#design-process .step-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+#design-process .step-icon-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--dp-card-bg-default-icon);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+#design-process .process-step-group.is-active .step-icon-wrapper {
+  background-color: var(--tertiary-color);
+  border-color: var(--tertiary-color);
+}
+
+#design-process .step-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+  transition: color 0.05s ease;
+}
+
+#design-process .process-step-group.is-active .step-icon svg {
+  color: #ffffff;
+}
+
+#design-process .step-title {
+  color: var(--primary-color);
+  text-align: left;
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+/* Accordion Description */
+#design-process .step-description-wrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  padding: 0 1.5rem 0 calc(1.5rem + 48px + 1.5rem);
+  margin-top: 0;
+}
+
+#design-process .process-step-group.is-active .step-description-wrapper {
+  max-height: 500px; /* Increased to accommodate longer descriptions */
+  opacity: 1;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-top: -1.5rem;
+}
+
+#design-process .step-description {
+  color: var(--primary-color);
+  line-height: 1.6;
+  text-align: left;
+  border-top: 1px solid var(--dp-border-color-active);
+  padding-top: 1.5rem;
+}
+
+/* Accordion Toggle Icon */
+#design-process .step-toggle-icon {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+#design-process .step-toggle-icon span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#design-process .step-toggle-icon span:first-child {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+#design-process .step-toggle-icon span:last-child {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+#design-process
+  .process-step-group.is-active
+  .step-toggle-icon
+  span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+#design-process
+  .process-step-group.is-active
+  .step-toggle-icon
+  span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/*
+ * =============================================
+ *  6. COMPONENT: FOOTER
+ * =============================================
+ */
+
+/* Page Content Placeholder */
+.content-area {
+  min-height: 200vh;
+}
+
+/* Footer Link Styles */
+.footer-link {
+  position: relative;
+  display: inline-block;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--secondary);
+}
+
+.footer-link::after {
+  display: none;
+}
+
+/* Custom Form Validation Styles */
+.input-error {
+  border-color: var(--error-color) !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+.input-error::placeholder {
+  color: var(--error-color);
+  opacity: 0.8;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* Newsletter Button States */
+#subscribe-button .loader {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-color);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#subscribe-button.is-loading .btn-text,
+#subscribe-button.is-success .btn-text,
+#subscribe-button.is-success .loader {
+  display: none;
+}
+
+#subscribe-button.is-loading .loader {
+  display: block;
+}
+
+#subscribe-button.is-success .success-message {
+  display: flex;
+}
+
+/* Confetti Animation for Newsletter Success */
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #f0c420;
+  border-radius: 50%;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#subscribe-button.is-success .confetti-piece {
+  animation: confetti-burst 0.8s ease-out forwards;
+}
+
+@keyframes confetti-burst {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) rotate(360deg);
+  }
+}
+
+.confetti-piece:nth-child(1) {
+  --x: -60px;
+  --y: -40px;
+  background: #ff7a59;
+}
+.confetti-piece:nth-child(2) {
+  --x: 60px;
+  --y: -50px;
+  background: #3498db;
+}
+.confetti-piece:nth-child(3) {
+  --x: -30px;
+  --y: 50px;
+  background: #9b59b6;
+}
+.confetti-piece:nth-child(4) {
+  --x: 40px;
+  --y: 30px;
+  background: #2ecc71;
+}
+.confetti-piece:nth-child(5) {
+  --x: -70px;
+  --y: 10px;
+  background: #f1c40f;
+}
+.confetti-piece:nth-child(6) {
+  --x: 70px;
+  --y: 0px;
+  background: #e74c3c;
+}
+.confetti-piece:nth-child(7) {
+  --x: 0px;
+  --y: -60px;
+  background: #1abc9c;
+}
+.confetti-piece:nth-child(8) {
+  --x: 0px;
+  --y: 60px;
+  background: #e67e22;
+}
+
+/* Footer Background Overlay */
+.footer-with-overlay {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.footer-with-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url("https://i.ibb.co/zH541PsW/footer.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+}
+
+/* Responsive Footer Background */
+@media (max-width: 768px) {
+  .footer-with-overlay::before {
+    background-position: 75% center;
+  }
+}
+
+/* ==========================================
+    Styles for Adobe Illustrator Course Popup
+   ========================================== */
+
+/* Popup smooth open/close */
+#ai-course-popup {
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+
+#ai-course-popup.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#ai-course-popup.hidden {
+  opacity: 0;
+  transform: translateY(30%);
+  pointer-events: none;
+}
+
+/* Form shake animation */
+@keyframes ai-course-popup-form-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-7px) rotate(-1deg);
+  }
+  30% {
+    transform: translateX(5px) rotate(1deg);
+  }
+  45% {
+    transform: translateX(-4px) rotate(-1deg);
+  }
+  60% {
+    transform: translateX(2px) rotate(1deg);
+  }
+  75% {
+    transform: translateX(-1px) rotate(0);
+  }
+}
+
+.ai-course-popup-form-shake {
+  animation: ai-course-popup-form-shake 0.6s ease-out;
+}
+
+/* Error placeholder color */
+.ai-course-popup-placeholder-red::placeholder {
+  color: #ef4444;
+}
+
+/* Close button hover */
+#ai-course-popup-close-btn svg {
+  transition: transform 0.3s ease-in-out;
+}
+#ai-course-popup-close-btn:hover svg {
+  transform: rotate(360deg);
+}

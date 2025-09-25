@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinhard Baraka - Reinmax Creative & Design</title>
+
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            // Safelist ensures these classes are always included
+            safelist: [
+                'bg-green-50',
+                'text-green-800',
+                'bg-red-50',
+                'text-red-500',
+            ],
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#002828",
+                        secondary: "#99cccc",
+                        tertiary: "#003333",
+                        danger: "#ef4444",
+                        dangerHover: "#dc2626",
+                    },
+                    fontFamily: {
+                        sora: ["Sora", "sans-serif"],
+                        grotesk: ["Space Grotesk", "sans-serif"],
+                        robotoSlab: ["Roboto Slab", "serif"],
+                        gothic: ["Gothic A1", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-color: #002828;
+            --dark-bg: #111111;
+            --light-bg: #f9faf9;
+            --text-light: #f7fafc;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--brand-color);
+            overflow-x: hidden;
+        }
+
+        /* The header now has the glass effect permanently, but starts hidden. */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+
+            /* Glassmorphism styles are now permanent */
+            background-color: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+            /* Start hidden and transition smoothly */
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* This class is ADDED by JavaScript to make the header appear */
+        .header-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Logo and icon are now permanently dark to be visible on the white glass */
+        .site-header .logo-container svg path {
+            fill: var(--brand-color);
+        }
+
+        .site-header .menu-icon svg path {
+            stroke: var(--brand-color);
+        }
+
+        .hero-container {
+            height: 100vh;
+            position: relative;
+            background-color: var(--dark-bg);
+        }
+
+        .sticky-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #interactive-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-image: url('https://images.unsplash.com/photo-1616088410192-d1b123712994?q=80&w=1920&auto=format&fit=crop');
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .content-section {
+            background-color: var(--light-bg);
+            padding: 5rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Sophisticated "Frosted Glass" effect with enhanced depth */
+        .fsl-glass-card {
+            /* A cool, desaturated gradient for a more sophisticated "frosted" tint */
+            background: linear-gradient(0deg, rgba(0, 40, 40, 0.2), rgba(0, 40, 40, 0.1));
+
+            /* High blur remains the core of the effect */
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+
+            /* A brighter, crisper border to define the crystalline edge */
+            border: 1px solid rgba(255, 255, 255, 0.5);
+
+            /* THE KEY: An inner shadow gives the glass a 3D, frosted-edge look */
+            box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.05),
+                /* Inner highlight */ 0 8px 32px 0 rgba(14, 18, 82, 0.25);
+            /* Subtle drop shadow */
+        }
+
+        /* The main container bar */
+        #fsl-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(120%) translateZ(0);
+            -webkit-transform: translateX(-50%) translateY(120%) translateZ(0);
+            opacity: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            gap: 0.5rem;
+            border-radius: 9999px;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.5s ease;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Visibility class for the container */
+        #fsl-container.visible {
+            transform: translateX(-50%) translateY(0) translateZ(0);
+            -webkit-transform: translateX(-50%) translateY(0) translateZ(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Individual icon wrapper */
+        .fsl-item {
+            transform: translateY(100%) scale(0.7);
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.4s ease;
+        }
+
+        /* Staggered animation for icons appearing */
+        #fsl-container.visible .fsl-item {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        #fsl-container.visible .fsl-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        #fsl-container.visible .fsl-item:nth-child(2) {
+            transition-delay: 0.25s;
+        }
+
+        #fsl-container.visible .fsl-item:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        #fsl-container.visible .fsl-item:nth-child(4) {
+            transition-delay: 0.35s;
+        }
+
+        #fsl-container.visible .fsl-item:nth-child(5) {
+            transition-delay: 0.4s;
+        }
+
+        /* General styling for all icon buttons */
+        .fsl-item a,
+        .fsl-item button {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Specific background for social links */
+        .fsl-item a {
+            background-color: #e5eaeb;
+            /* gray-200 */
+            color: #002828;
+        }
+
+        .fsl-item a:hover {
+            background-color: #d1d5db;
+            /* gray-300 */
+        }
+
+        /* Hover animation for the close button's SVG */
+        #fsl-close-svg {
+            transition: transform 0.35s ease-in-out;
+        }
+
+        #fsl-close-button:hover #fsl-close-svg {
+            transform: rotate(180deg);
+        }
+    </style>
+    <!-- Socials CSS -->
+    <link rel="stylesheet" href="socials.css">
+</head>
+
+<body>
+    <!-- Socials Floating Panel -->
+    <div id="fsl-container" class="fsl-glass-card">
+        <div class="fsl-item"><a href="https://instagram.com" target="_blank"
+                class="bg-white/30 text-primary hover:bg-white/50"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg></a></div>
+        <div class="fsl-item"><a href="https://twitter.com" target="_blank"
+                class="bg-white/30 text-primary hover:bg-white/50"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                </svg></a></div>
+        <div class="fsl-item"><a href="https://dribbble.com" target="_blank"
+                class="bg-white/30 text-primary hover:bg-white/50"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94" />
+                    <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32" />
+                    <path d="M8.56 2.75c4.37 6 6 9.42 8 17.72" />
+                </svg></a></div>
+        <div class="fsl-item"><a href="https://twitch.tv" target="_blank"
+                class="bg-white/30 text-primary hover:bg-white/50"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7" />
+                </svg></a></div>
+        <div class="fsl-item">
+            <button id="fsl-close-button" class="bg-danger text-white hover:bg-dangerHover">
+                <svg id="fsl-close-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <header class="site-header p-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="logo-container">
+                <svg class="h-6 w-auto" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1494.7 370.6">
+                    <path
+                        d="M0 370.48h370.09L185.05 185.43H370.6V.38H0zM1124.61 0v370.6h185.04V185.05l185.05 185.04V0zM809.07.26H438.98v370.09h370.61V185.3H624.03zm68.9 82.17L1056.23.26H877.97zm0 66.63h178.26v221.28H877.97z" />
+                </svg>
+            </div>
+            <div class="cursor-pointer menu-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6H20M4 12H20M4 18H20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-container">
+        <div class="sticky-container">
+            <div id="interactive-image"></div>
+            <div class="hero-overlay">
+                <div class="max-w-4xl">
+                    <h1 class="text-4xl sm:text-7xl font-extrabold leading-tight" style="color: var(--text-light);">
+                        Where vision flows into reality.
+                    </h1>
+                    <p class="text-lg sm:text-2xl mt-4" style="color: #e2e8f0;">
+                        Scroll to discover the current.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Me Section -->
+    <div class="content-section" id="main">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="https://i.ibb.co/kdYjp67/brainstorming.webp" alt="Portrait of Reinhard Baraka"
+                    class="rounded-lg shadow-xl w-full h-full object-cover aspect-square">
+            </div>
+            <div class="md:w-1/2 text-left">
+                <h2 class="text-3xl font-bold mb-4">Hi, I'm Reinhard Baraka</h2>
+                <p class="text-lg text-gray-700 mb-4">I'm the creative force behind Reinmax Creative. With a passion for
+                    building beautiful, functional, and user-centric experiences, I believe great design is not just
+                    about aesthetics, but about creating clear communication and solving problems.</p>
+                <p class="text-lg text-gray-700">My goal is to partner with brands to find their core message and bring
+                    it to life with clarity and impact.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personal Mission Statement -->
+    <div class="content-section pt-0">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">My Craft</h2>
+            <p class="text-lg" style="color: #333;">I don't just build websites; I create fluid digital experiences that
+                adapt, engage, and leave a lasting impression. Like water, good design is intuitive, powerful, and
+                essential. Let's create something that flows.</p>
+        </div>
+    </div>
+
+    <!-- Featured Projects Section -->
+    <div class="content-section py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1620398602693-5499298e3b5e?q=80&w=1974&auto=format&fit=crop"
+                        alt="A screenshot of a modern web application with a dashboard and charts"
+                        class="w-full h-64 object-cover">
+                    <div class="p-6 text-left">
+                        <div class="flex gap-2 mb-2">
+                            <span
+                                class="bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Branding</span>
+                            <span
+                                class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">UI/UX</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Project Aura</h3>
+                        <p class="text-gray-600">A complete rebranding and digital presence for a cutting-edge tech
+                            startup, focusing on a clean, futuristic aesthetic.</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1606822557574-e3c3917d5918?q=80&w=1920&auto=format&fit=crop"
+                        alt="A responsive e-commerce platform for a sustainable fashion brand"
+                        class="w-full h-64 object-cover">
+                    <div class="p-6 text-left">
+                        <div class="flex gap-2 mb-2">
+                            <span
+                                class="bg-pink-100 text-pink-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">E-Commerce</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Web
+                                Development</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Flow Threads</h3>
+                        <p class="text-gray-600">A responsive e-commerce platform for a sustainable fashion brand,
+                            designed to provide a seamless shopping experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Toolkit Section -->
+    <div class="content-section py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-12">My Toolkit</h2>
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
+                <div class="flex flex-col items-center gap-2 text-gray-500">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/figma.svg" alt="Figma Logo" class="h-12 w-12">
+                    <span>Figma</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-gray-500">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/html5.svg" alt="HTML5 Logo" class="h-12 w-12">
+                    <span>HTML5</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-gray-500">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/css3.svg" alt="CSS3 Logo" class="h-12 w-12">
+                    <span>CSS3</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-gray-500">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/tailwindcss.svg" alt="Tailwind CSS Logo" class="h-12 w-12">
+                    <span>Tailwind CSS</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-gray-500">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/javascript.svg" alt="JavaScript Logo" class="h-12 w-12">
+                    <span>JavaScript</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-gray-500">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/react.svg" alt="React Logo" class="h-12 w-12">
+                    <span>React</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="py-20" style="background-color: var(--dark-bg);">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white">Let's create something beautiful.</h2>
+            <p class="text-lg text-gray-400 mb-10">Have a project in mind? I'd love to hear about it.</p>
+            <div class="flex flex-col items-center gap-4">
+                <a href="mailto:reinhardbaraka@gmail.com"
+                    class="text-2xl sm:text-3xl text-white font-semibold hover:text-teal-300 transition-colors border-b-2 border-transparent hover:border-teal-300 pb-1">
+                    reinhardbaraka@gmail.com
+                </a>
+                <span class="text-gray-500">or</span>
+                <a href="tel:0678700731" class="text-xl text-gray-300 hover:text-white transition-colors">
+                    0678700731
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-6" style="background-color: #000;">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2024 Reinmax Creative & Design. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if the screen width is large enough to support the ripple effect
+            if (window.innerWidth > 768) {
+                const interactiveImage = $('#interactive-image');
+                interactiveImage.ripples({
+                    resolution: 512,
+                    dropRadius: 20,
+                    perturbance: 0.015,
+                    interactive: false
+                });
+
+                let ambientRippleInterval;
+
+                function startAmbientAnimation() {
+                    if (ambientRippleInterval) return;
+                    ambientRippleInterval = setInterval(() => {
+                        const $el = interactiveImage;
+                        const randX = Math.random() * $el.outerWidth();
+                        const randY = Math.random() * $el.outerHeight();
+                        const randRadius = 20;
+                        const randStrength = 0.02 + Math.random() * 0.02;
+                        $el.ripples('drop', randX, randY, randRadius, randStrength);
+                    }, 2500);
+                }
+
+                function stopAmbientAnimation() {
+                    clearInterval(ambientRippleInterval);
+                    ambientRippleInterval = null;
+                }
+                setTimeout(() => {
+                    const $el = interactiveImage;
+                    const x = $el.outerWidth() / 2;
+                    const y = $el.outerHeight() / 2;
+                    $el.ripples('drop', x, y, 40, 0.05);
+                    startAmbientAnimation();
+                }, 1000);
+
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        stopAmbientAnimation();
+                    } else {
+                        startAmbientAnimation();
+                    }
+                });
+            }
+
+            const siteHeader = document.querySelector('.site-header');
+
+            function handleHeaderScroll() {
+                if (window.scrollY > 20) {
+                    siteHeader.classList.add('header-visible');
+                } else {
+                    siteHeader.classList.remove('header-visible');
+                }
+            }
+            window.addEventListener('scroll', handleHeaderScroll);
+            handleHeaderScroll();
+        });
+
+        window.addEventListener("load", () => {
+            // All IDs are prefixed with "fsl-" to prevent conflicts
+            const socialBar = document.getElementById("fsl-container");
+            const closeButton = document.getElementById("fsl-close-button");
+
+            const checkScrollPosition = () => {
+                const isAtBottom =
+                    window.innerHeight + window.scrollY >= document.body.scrollHeight - 5;
+                if (isAtBottom) {
+                    socialBar.classList.add("visible");
+                }
+            };
+
+            const initialTimeout = setTimeout(() => {
+                if (!socialBar.classList.contains("visible")) {
+                    socialBar.classList.add("visible");
+                }
+            }, 2000);
+
+            window.addEventListener("scroll", checkScrollPosition);
+
+            closeButton.addEventListener("click", () => {
+                socialBar.classList.remove("visible");
+            });
+        });
+    </script>
+</body>
+
+</html>
